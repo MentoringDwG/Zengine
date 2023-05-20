@@ -1,7 +1,2 @@
-﻿  main.cpp
-  Trwa generowanie kodu
-  1 of 4 functions (25.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Zakończono generowanie kodu
-  ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\FirstProjectSFML\ProjectSFML\x64\Release\ProjectSFML.exe
+﻿Zengine.obj : error LNK2001: nierozpoznany symbol zewnętrzny "private: static class Zengine * Zengine::Engine" (?Engine@Zengine@@0PEAV1@EA)
+C:\Users\Admin\Documents\GitHub\Zengine\FirstProjectSFML\ProjectSFML\x64\Release\ProjectSFML.exe : fatal error LNK1120: liczba nierozpoznanych elementów zewnętrznych: 1
