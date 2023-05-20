@@ -1,6 +1,8 @@
 #include "Zengine.h"
 #include <SFML/Graphics.hpp>
 
+Zengine* Zengine::Engine = nullptr;
+
 Zengine* Zengine::CreateInstance()
 {
 	Engine = new Zengine();
