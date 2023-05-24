@@ -19,17 +19,20 @@ void Zengine::Run()
 void Zengine::MainLoop()
 {
 	// Kazda klatka bedzie obslugiwana w tym miejscu
-	while (engineRunning)
-	{
-		//ProcessInput();
-		//ProcessGameLogic();
-		//Render();
+	//ProcessInput();
+	//ProcessGameLogic();
+	//Render();
 
-        sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-        sf::CircleShape shape(100.f);
-        shape.setFillColor(sf::Color::Green);
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
+    sf::Texture image;
+    image.loadFromFile("Graphics/World.png");
+    sf::Sprite firstSprite;
+    firstSprite.setTexture(image);
+    firstSprite.setPosition(0, 0);
+    //sf::CircleShape shape(100.f);
+    //shape.setFillColor(sf::Color::Green);
 
-        while (window.isOpen())
+    while (window.isOpen())
         {
             sf::Event event;
             while (window.pollEvent(event))
@@ -39,10 +42,9 @@ void Zengine::MainLoop()
             }
 
             window.clear();
-            window.draw(shape);
+            window.draw(firstSprite);
             window.display();
         }
-	}
 }
 
 void Zengine::Shutdown()
