@@ -151,14 +151,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssetsManager.cpp" />
     <ClCompile Include="IEngineModule.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="TextureAsset.cpp" />
     <ClCompile Include="Zengine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetsManager.h" />
     <ClInclude Include="IEngineModule.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="TextureAsset.h" />
     <ClInclude Include="Zengine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
