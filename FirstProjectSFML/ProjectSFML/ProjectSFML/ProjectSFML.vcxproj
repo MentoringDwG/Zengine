@@ -156,6 +156,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="TextureAsset.cpp" />
+    <ClCompile Include="World.cpp" />
     <ClCompile Include="Zengine.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +164,7 @@
     <ClInclude Include="IEngineModule.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="TextureAsset.h" />
+    <ClInclude Include="World.h" />
     <ClInclude Include="Zengine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

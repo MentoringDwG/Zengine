@@ -1,9 +1,9 @@
-﻿  AssetsManager.cpp
-  TextureAsset.cpp
-  Zengine.cpp
+﻿  World.cpp
+C:\Users\Admin\Documents\GitHub\Zengine\FirstProjectSFML\ProjectSFML\ProjectSFML\World.cpp(68,36): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\Admin\Documents\GitHub\Zengine\FirstProjectSFML\ProjectSFML\ProjectSFML\World.cpp(68,33): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
   Trwa generowanie kodu
-  3 of 218 functions ( 1.4%) were compiled, the rest were copied from previous compilation.
+  3 of 280 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    9 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\FirstProjectSFML\ProjectSFML\x64\Release\ProjectSFML.exe

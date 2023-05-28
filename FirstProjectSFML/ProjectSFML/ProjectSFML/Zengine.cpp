@@ -1,10 +1,10 @@
 #include "Zengine.h"
 #include <SFML/Graphics.hpp>
-#include "TextureAsset.h"
-#include "AssetsManager.h"
+#include "World.h"
 
 Zengine* Zengine::Engine = nullptr;
-AssetsManager assetsManager;
+
+World world;
 
 Zengine* Zengine::CreateInstance()
 {
@@ -16,12 +16,10 @@ void Zengine::Run()
 {
 	// Inicjalizacja silnika
 	engineRunning = true;
-
-    TextureAsset texturAsset("Graphics/Map/1.png", "1");
-    assetsManager.Textures["1"] = &texturAsset;
     
+	world.LoadWorld();
 
-	MainLoop();
+	//MainLoop();
 }
 
 void Zengine::MainLoop()
@@ -31,25 +29,6 @@ void Zengine::MainLoop()
 	//ProcessInput();
 	//ProcessGameLogic();
 	//Render();
-
-    sf::RenderWindow window(sf::VideoMode(100, 100), "SFML works!");
-    sf::Sprite firstSprite;
-    firstSprite.setTexture(assetsManager.GetTextureAsset("1")->TextureSFML);
-    firstSprite.setPosition(0, 0);
-
-    while (window.isOpen())
-        {
-            sf::Event event;
-            while (window.pollEvent(event))
-            {
-                if (event.type == sf::Event::Closed)
-                    window.close();
-            }
-
-            window.clear();
-            window.draw(firstSprite);
-            window.display();
-        }
 }
 
 void Zengine::Shutdown()
