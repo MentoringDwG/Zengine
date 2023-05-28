@@ -4,7 +4,6 @@
 #include "AssetsManager.h"
 
 Zengine* Zengine::Engine = nullptr;
-TextureAsset texturAsset;
 AssetsManager assetsManager;
 
 Zengine* Zengine::CreateInstance()
@@ -17,7 +16,11 @@ void Zengine::Run()
 {
 	// Inicjalizacja silnika
 	engineRunning = true;
-    texturAsset.TextureInitialize();
+
+    TextureAsset texturAsset("Graphics/Map/1.png", "1");
+    assetsManager.Textures["1"] = &texturAsset;
+    
+
 	MainLoop();
 }
 
@@ -31,10 +34,6 @@ void Zengine::MainLoop()
 
     sf::RenderWindow window(sf::VideoMode(100, 100), "SFML works!");
     sf::Sprite firstSprite;
-    //sf::Texture image;
-    //image.loadFromFile("Graphics/Map/1.png");
-    //firstSprite.setTexture(image);
-    cout << "Texture loop: " << assetsManager.Textures["1"]<<endl;
     firstSprite.setTexture(assetsManager.GetTextureAsset("1")->TextureSFML);
     firstSprite.setPosition(0, 0);
 

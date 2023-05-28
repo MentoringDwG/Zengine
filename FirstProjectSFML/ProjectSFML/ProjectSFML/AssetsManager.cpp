@@ -1,9 +1,10 @@
 #include "AssetsManager.h"
 #include "TextureAsset.h"
 
+AssetsManager* AssetsManager::Assets = nullptr;
+
 TextureAsset* AssetsManager::GetTextureAsset(string Name)
 {
-	AssetsManager assetManager;
-	cout << "Texture manager: " << assetManager.Textures["1"];
-	return assetManager.Textures[Name];
+	return Textures[Name];
 }
+
