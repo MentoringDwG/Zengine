@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+FirstProjectSFML\ProjectSFML\ProjectSFML\x64\Release\
+*.pdb
+*.ipch
+*.tlog
+*.vsidx
