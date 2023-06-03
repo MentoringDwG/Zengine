@@ -11,7 +11,7 @@ class AssetsManager
 public:
 	std::map<string, TextureAsset*> Textures;
 
-	TextureAsset* GetTextureAsset(string Name);
+	TextureAsset GetTextureAsset(string Name);
 
 private:
 	static class AssetsManager* Assets;

@@ -3,8 +3,8 @@
 
 AssetsManager* AssetsManager::Assets = nullptr;
 
-TextureAsset* AssetsManager::GetTextureAsset(string Name)
+TextureAsset AssetsManager::GetTextureAsset(string Name)
 {
-	return Textures[Name];
+	return *Textures[Name];
 }
 

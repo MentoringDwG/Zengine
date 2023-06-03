@@ -1,5 +1,7 @@
 Graphics/Map/1.png 1
 Graphics/Map/3.png 3
+Graphics/Map/5.png 5
+Graphics/Map/6.png 6
 Graphics/Map/16.png 16
 Graphics/Map/23.png 23
 Graphics/Map/24.png 24
@@ -18,5 +20,9 @@ Graphics/Map/83.png 83
 Graphics/Map/84.png 84
 Graphics/Map/85.png 85
 Graphics/Map/86.png 86
+Graphics/Map/92.png 92
+Graphics/Map/94.png 94
+Graphics/Map/125.png 125
 Graphics/Map/135.png 135
+Graphics/Map/141.png 141
 Graphics/Map/176.png 176
