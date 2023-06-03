@@ -158,6 +158,9 @@
     <ClCompile Include="TextureAsset.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="Zengine.cpp" />
+    <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp" />
+    <ClCompile Include="Zengine\InputModule\InputHandler.cpp" />
+    <ClCompile Include="Zengine\InputModule\InputProcessorModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetsManager.h" />
@@ -166,6 +169,9 @@
     <ClInclude Include="TextureAsset.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="Zengine.h" />
+    <ClInclude Include="Zengine\InputModule\CharacterInputHandler.h" />
+    <ClInclude Include="Zengine\InputModule\InputHandler.h" />
+    <ClInclude Include="Zengine\InputModule\InputProcessorModule.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

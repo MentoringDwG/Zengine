@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Zengine">
+      <UniqueIdentifier>{2d2dfd4a-527c-4e2f-9250-d3d433bbc9bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\InputModule">
+      <UniqueIdentifier>{61112c5e-5f9e-435a-af79-25bd6c638e53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,6 +42,15 @@
     <ClCompile Include="World.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp">
+      <Filter>Zengine\InputModule</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\InputModule\InputHandler.cpp">
+      <Filter>Zengine\InputModule</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\InputModule\InputProcessorModule.cpp">
+      <Filter>Zengine\InputModule</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine.h">
@@ -55,6 +70,15 @@
     </ClInclude>
     <ClInclude Include="World.h">
       <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
+      <Filter>Zengine\InputModule</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\InputModule\CharacterInputHandler.h">
+      <Filter>Zengine\InputModule</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\InputModule\InputHandler.h">
+      <Filter>Zengine\InputModule</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
