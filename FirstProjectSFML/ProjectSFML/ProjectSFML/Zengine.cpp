@@ -17,7 +17,7 @@ void Zengine::Run()
 	// Inicjalizacja silnika
 	engineRunning = true;
     
-	world.LoadWorld();
+	world.LoadWorld("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
 
 	//MainLoop();
 }

@@ -8,13 +8,10 @@ using namespace std;
 
 AssetsManager assetsManager;
 
-string Tab[17][30];
-sf::RectangleShape tileMap[17][30];
-
-void World::TextureInitialization()
+void World::TextureInitialization(string pathToTexturesTxt)
 {
 	ifstream file;
-	file.open("Textures/TexturesLevel1.txt");
+	file.open(pathToTexturesTxt);
 	string path, name;
 
 
@@ -29,28 +26,57 @@ void World::TextureInitialization()
     file.close();
 }
 
-void World::TileMapInitialization()
+void World::TileMapInitialization(string pathToTileTxt, sf::RenderWindow &windowIn)
 {
     ifstream file;
-    file.open("Tiles/TxtFiles/Level1.txt");
+    file.open(pathToTileTxt);
 
-    for (int i = 0; i < 17; i++)
+    //Downloading dimensions from a file and creating a two-dimensional dynamic array
+    int dimension1, dimension2;
+    file >> dimension1;
+    file >> dimension2;
+
+    string** Tab = new string * [dimension1];
+    for (int i = 0; i < dimension1; i++)
     {
-        for (int j = 0; j < 30; j++)
+        Tab[i] = new string[dimension2];
+    }
+
+    //Loading the texture number needed for the tilemap into a two-dimensional dynamic array
+    for (int i = 0; i < dimension1; i++)
+    {
+        for (int j = 0; j < dimension2; j++)
         {
             file >> Tab[i][j];
-            cout << Tab[i][j] << " ";
         }
-        cout << endl;
+    }
+
+    //Creating a dynamic tile map
+    sf::RectangleShape **tileMap = new sf::RectangleShape * [dimension1];
+    for (int i = 0; i < dimension1; i++)
+    {
+        tileMap[i] = new sf::RectangleShape[dimension2];
+    }
+
+    //Filling and drawing a dynamic tilemap
+    for (int i = 0; i < dimension1; i++)
+    {
+        for (int j = 0; j < dimension2; j++)
+        {
+            const sf::Texture texcure = assetsManager.GetTextureAsset(Tab[i][j]).TextureSFML;
+            tileMap[i][j].setSize(sf::Vector2f(32.0f, 32.0f));
+            tileMap[i][j].setTexture(&texcure);
+            tileMap[i][j].setPosition(j * 32.f, i * 32.f);
+            windowIn.draw(tileMap[i][j]);
+        }
     }
 
     file.close();
 }
 
-void World::LoadWorld()
+void World::LoadWorld(string pathToTexturesTxt, string pathToTileTxt)
 {
-    World::TextureInitialization();
-    World::TileMapInitialization();
+    World::TextureInitialization(pathToTexturesTxt);
 
     sf::RenderWindow window(sf::VideoMode(960,544), "SFML works!");
 
@@ -75,17 +101,7 @@ void World::LoadWorld()
         //Render game elements
         window.setView(mainView);
 
-        for (int i = 0; i < 17; i++)
-        {
-            for (int j = 0; j < 30; j++)
-            {
-                const sf::Texture texcure = assetsManager.GetTextureAsset(Tab[i][j]).TextureSFML;
-                tileMap[i][j].setSize(sf::Vector2f(32.0f, 32.0f));
-                tileMap[i][j].setTexture(&texcure);
-                tileMap[i][j].setPosition(j * 32.f, i * 32.f);
-                window.draw(tileMap[i][j]);
-            }
-        }
+        World::TileMapInitialization(pathToTileTxt, window);
 
         //Draw UI
         window.setView(window.getDefaultView()); 
