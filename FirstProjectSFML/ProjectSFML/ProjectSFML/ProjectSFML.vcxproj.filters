@@ -19,14 +19,14 @@
     <Filter Include="Zengine\InputModule">
       <UniqueIdentifier>{61112c5e-5f9e-435a-af79-25bd6c638e53}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Zengine\Main_class_of_modules">
-      <UniqueIdentifier>{f5e57e6e-0f3c-4d8f-b5df-2c4ebfbf286c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Zengine\Renderer">
       <UniqueIdentifier>{105a1f89-08f2-4266-8c9e-4a6ca9f51da1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Zengine\World">
       <UniqueIdentifier>{a0d55ee9-3574-4908-a660-5900755dc025}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\Interfaces">
+      <UniqueIdentifier>{f5e57e6e-0f3c-4d8f-b5df-2c4ebfbf286c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -38,9 +38,6 @@
     </ClCompile>
     <ClCompile Include="Zengine\InputModule\InputProcessorModule.cpp">
       <Filter>Zengine\InputModule</Filter>
-    </ClCompile>
-    <ClCompile Include="Zengine\Main_class_of_modules\IEngineModule.cpp">
-      <Filter>Zengine\Main_class_of_modules</Filter>
     </ClCompile>
     <ClCompile Include="Zengine\Renderer\Renderer.cpp">
       <Filter>Zengine\Renderer</Filter>
@@ -60,6 +57,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\Interfaces\IEngineModule.cpp">
+      <Filter>Zengine\Interfaces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -70,9 +70,6 @@
     </ClInclude>
     <ClInclude Include="Zengine\InputModule\InputHandler.h">
       <Filter>Zengine\InputModule</Filter>
-    </ClInclude>
-    <ClInclude Include="Zengine\Main_class_of_modules\IEngineModule.h">
-      <Filter>Zengine\Main_class_of_modules</Filter>
     </ClInclude>
     <ClInclude Include="Zengine\Renderer\Renderer.h">
       <Filter>Zengine\Renderer</Filter>
@@ -88,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="Zengine\Zengine.h">
       <Filter>Zengine</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Interfaces\IEngineModule.h">
+      <Filter>Zengine\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

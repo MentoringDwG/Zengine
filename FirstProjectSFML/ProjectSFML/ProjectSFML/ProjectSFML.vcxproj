@@ -155,7 +155,7 @@
     <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp" />
     <ClCompile Include="Zengine\InputModule\InputHandler.cpp" />
     <ClCompile Include="Zengine\InputModule\InputProcessorModule.cpp" />
-    <ClCompile Include="Zengine\Main_class_of_modules\IEngineModule.cpp" />
+    <ClCompile Include="Zengine\Interfaces\IEngineModule.cpp" />
     <ClCompile Include="Zengine\Renderer\Renderer.cpp" />
     <ClCompile Include="Zengine\World\AssetsManager.cpp" />
     <ClCompile Include="Zengine\World\TextureAsset.cpp" />
@@ -166,7 +166,7 @@
     <ClInclude Include="Zengine\InputModule\CharacterInputHandler.h" />
     <ClInclude Include="Zengine\InputModule\InputHandler.h" />
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h" />
-    <ClInclude Include="Zengine\Main_class_of_modules\IEngineModule.h" />
+    <ClInclude Include="Zengine\Interfaces\IEngineModule.h" />
     <ClInclude Include="Zengine\Renderer\Renderer.h" />
     <ClInclude Include="Zengine\World\AssetsManager.h" />
     <ClInclude Include="Zengine\World\TextureAsset.h" />

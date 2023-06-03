@@ -2,7 +2,7 @@
 
 // G³ówna klasa silnika gry
 
-#include "Main_class_of_modules/IEngineModule.h"
+#include "Interfaces/IEngineModule.h"
 #include <vector>
 
 namespace sf { class RenderWindow; }
