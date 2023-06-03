@@ -20,10 +20,10 @@ void Zengine::Run()
 	engineRunning = true;
 
 	InputProcessor = new InputProcessorModule();
-    
-	window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Zengine");
-	//world.LoadWorld();	
 
+	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
+
+	world.TextureInitialization("Textures/TexturesLevel1.txt");
 	MainLoop();
 }
 
@@ -36,11 +36,25 @@ void Zengine::MainLoop()
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&mario.InputHandler));
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&luigi.InputHandler));
 
+	sf::View mainView;
+	mainView.setSize(960, 544);
+	mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
+
 	while (window->isOpen())
 	{
 		ProcessInput(window);
 		window->clear();
+
+		//Render game elements
+		window->setView(mainView);
+
+		world.LoadWorld("Tiles/TxtFiles/Level1.txt", *window);
+
+		//Draw UI
+		window->setView(window->getDefaultView());
+
 		window->display();
+
 	}
 
 	//ProcessGameLogic();
@@ -62,4 +76,5 @@ void Zengine::ProcessInput(sf::RenderWindow* inWindow)
 
 void Zengine::Shutdown()
 {
+
 }

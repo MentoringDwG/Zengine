@@ -26,7 +26,7 @@ void World::TextureInitialization(string pathToTexturesTxt)
     file.close();
 }
 
-void World::TileMapInitialization(string pathToTileTxt, sf::RenderWindow &windowIn)
+void World::LoadWorld(string pathToTileTxt, sf::RenderWindow &windowIn)
 {
     ifstream file;
     file.open(pathToTileTxt);
@@ -74,39 +74,3 @@ void World::TileMapInitialization(string pathToTileTxt, sf::RenderWindow &window
     file.close();
 }
 
-void World::LoadWorld(string pathToTexturesTxt, string pathToTileTxt)
-{
-    World::TextureInitialization(pathToTexturesTxt);
-
-    sf::RenderWindow window(sf::VideoMode(960,544), "SFML works!");
-
-    sf::View mainView;
-    mainView.setSize(960,544); 
-    mainView.setCenter(window.getSize().x / 2.f, window.getSize().y / 2.f);
-
-    sf::Sprite firstSprite;
-    int x = 0, y = 0;
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-
-        //Render game elements
-        window.setView(mainView);
-
-        World::TileMapInitialization(pathToTileTxt, window);
-
-        //Draw UI
-        window.setView(window.getDefaultView()); 
-
-
-        window.display();
-    }
-}
