@@ -31,7 +31,6 @@ void World::TextureInitialization()
 
 void World::TileMapInitialization()
 {
-    cout << "xd" << endl;
     ifstream file;
     file.open("Tiles/TxtFiles/Level1.txt");
 
@@ -40,18 +39,9 @@ void World::TileMapInitialization()
         for (int j = 0; j < 30; j++)
         {
             file >> Tab[i][j];
+            cout << Tab[i][j] << " ";
         }
-    }
-
-    for (int i = 0; i < 17; i++)
-    {
-        for (int j = 0; j < 30; j++)
-        {
-            const sf::Texture texcure= assetsManager.GetTextureAsset(Tab[i][j]).TextureSFML;
-            int* texctureW = *texcure;
-            tileMap[i][j].setTexture(texcure);
-            tileMap[i][j].setPosition(i * 16.f, j * 16.f);
-        }
+        cout << endl;
     }
 
     file.close();
@@ -62,10 +52,10 @@ void World::LoadWorld()
     World::TextureInitialization();
     World::TileMapInitialization();
 
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(960,544), "SFML works!");
 
     sf::View mainView;
-    mainView.setSize(1920, 1080); 
+    mainView.setSize(960,544); 
     mainView.setCenter(window.getSize().x / 2.f, window.getSize().y / 2.f);
 
     sf::Sprite firstSprite;
@@ -81,25 +71,25 @@ void World::LoadWorld()
         }
 
         window.clear();
-        window.setView(mainView);
 
         //Render game elements
-
-        //firstSprite.setTexture(assetsManager.GetTextureAsset(Tab[1][0])->TextureSFML);
-        //firstSprite.setPosition(x, y);
-        //window.draw(firstSprite);
+        window.setView(mainView);
 
         for (int i = 0; i < 17; i++)
         {
             for (int j = 0; j < 30; j++)
             {
+                const sf::Texture texcure = assetsManager.GetTextureAsset(Tab[i][j]).TextureSFML;
+                tileMap[i][j].setSize(sf::Vector2f(32.0f, 32.0f));
+                tileMap[i][j].setTexture(&texcure);
+                tileMap[i][j].setPosition(j * 32.f, i * 32.f);
                 window.draw(tileMap[i][j]);
             }
         }
 
-        window.setView(window.getDefaultView());
+        //Draw UI
+        window.setView(window.getDefaultView()); 
 
-        //Draw UI 
 
         window.display();
     }

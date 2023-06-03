@@ -1,7 +1,7 @@
 ﻿  World.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\FirstProjectSFML\ProjectSFML\ProjectSFML\World.cpp(51,30): error C2100: niedozwolony operator pośredni
-C:\Users\Admin\Documents\GitHub\Zengine\FirstProjectSFML\ProjectSFML\ProjectSFML\World.cpp(51,38): error C2440: "inicjowanie": nie można konwertować z "const sf::Texture" na "int *"
-C:\Users\Admin\Documents\GitHub\Zengine\FirstProjectSFML\ProjectSFML\ProjectSFML\World.cpp(51,28): message : Nie jest dostępny żaden operator konwersji zdefiniowany przez użytkownika, który mógłby wykonać tę konwersję lub operator nie może zostać wywołany
-C:\Users\Admin\Documents\GitHub\Zengine\FirstProjectSFML\ProjectSFML\ProjectSFML\World.cpp(52,45): error C2664: „void sf::Shape::setTexture(const sf::Texture *,bool)”: nie można dokonać konwersji argumentu 1 z „const sf::Texture” do „const sf::Texture *”
-C:\Users\Admin\Documents\GitHub\Zengine\FirstProjectSFML\ProjectSFML\ProjectSFML\World.cpp(52,38): message : Nie jest dostępny żaden operator konwersji zdefiniowany przez użytkownika, który mógłby wykonać tę konwersję lub operator nie może zostać wywołany
-C:\Users\Admin\Documents\Libraries\SFML-2.5.1-windows-vc15-64-bit (1)\SFML-2.5.1\include\SFML\Graphics\Shape.hpp(74,10): message : zobacz deklarację „sf::Shape::setTexture”
+  Trwa generowanie kodu
+  0 of 287 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Zakończono generowanie kodu
+  ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\FirstProjectSFML\ProjectSFML\x64\Release\ProjectSFML.exe
