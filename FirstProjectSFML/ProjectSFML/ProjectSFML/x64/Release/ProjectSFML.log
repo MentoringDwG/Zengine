@@ -1,7 +1,6 @@
-﻿  main.cpp
-  Zengine.cpp
+﻿  Renderer.cpp
   Trwa generowanie kodu
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  Previous IPDB not found, fall back to full compilation.
   All 271 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\FirstProjectSFML\ProjectSFML\x64\Release\ProjectSFML.exe
