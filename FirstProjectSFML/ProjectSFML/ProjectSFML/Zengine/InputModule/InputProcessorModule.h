@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../IEngineModule.h"
+#include "../Main_class_of_modules/IEngineModule.h"
 #include <vector>
 #include <SFML/Window/Event.hpp>
 #include "InputHandler.h"

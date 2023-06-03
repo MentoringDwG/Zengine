@@ -1,8 +1,8 @@
 #include "Zengine.h"
 #include <SFML/Graphics.hpp>
-#include "World.h"
-#include "Zengine/InputModule/InputProcessorModule.h"
-#include "Zengine/InputModule/CharacterInputHandler.h"
+#include "World/World.h"
+#include "InputModule/InputProcessorModule.h"
+#include "InputModule/CharacterInputHandler.h"
 
 Zengine* Zengine::Engine = nullptr;
 
