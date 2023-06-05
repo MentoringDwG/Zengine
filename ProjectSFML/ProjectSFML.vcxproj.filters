@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Pliki źródłowe">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Pliki zasobów">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Zengine">
+      <UniqueIdentifier>{2d2dfd4a-527c-4e2f-9250-d3d433bbc9bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\InputModule">
+      <UniqueIdentifier>{61112c5e-5f9e-435a-af79-25bd6c638e53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\Renderer">
+      <UniqueIdentifier>{105a1f89-08f2-4266-8c9e-4a6ca9f51da1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\World">
+      <UniqueIdentifier>{a0d55ee9-3574-4908-a660-5900755dc025}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\Interfaces">
+      <UniqueIdentifier>{f5e57e6e-0f3c-4d8f-b5df-2c4ebfbf286c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\ZenObject">
+      <UniqueIdentifier>{1456e4d1-c2d0-468d-82d5-8c7d2ef697ac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp">
+      <Filter>Zengine\InputModule</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\InputModule\InputHandler.cpp">
+      <Filter>Zengine\InputModule</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\InputModule\InputProcessorModule.cpp">
+      <Filter>Zengine\InputModule</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Renderer\Renderer.cpp">
+      <Filter>Zengine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\World\AssetsManager.cpp">
+      <Filter>Zengine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\World\TextureAsset.cpp">
+      <Filter>Zengine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\World\World.cpp">
+      <Filter>Zengine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Zengine.cpp">
+      <Filter>Zengine</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Interfaces\IEngineModule.cpp">
+      <Filter>Zengine\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\ZenObject\ZenObject.cpp">
+      <Filter>Zengine\ZenObject</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
+      <Filter>Zengine\InputModule</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\InputModule\CharacterInputHandler.h">
+      <Filter>Zengine\InputModule</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\InputModule\InputHandler.h">
+      <Filter>Zengine\InputModule</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Renderer\Renderer.h">
+      <Filter>Zengine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\World\AssetsManager.h">
+      <Filter>Zengine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\World\TextureAsset.h">
+      <Filter>Zengine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\World\World.h">
+      <Filter>Zengine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Zengine.h">
+      <Filter>Zengine</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Interfaces\IEngineModule.h">
+      <Filter>Zengine\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\ZenObject\ZenObject.h">
+      <Filter>Zengine\ZenObject</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
