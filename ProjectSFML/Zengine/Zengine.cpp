@@ -3,7 +3,6 @@
 #include "World/World.h"
 #include "InputModule/InputProcessorModule.h"
 #include "InputModule/CharacterInputHandler.h"
-#include "Character/Character.h"
 
 Zengine* Zengine::Engine = nullptr;
 
@@ -24,7 +23,7 @@ void Zengine::Run()
 
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
 
-	world.Initialize("Mario");
+	world.Initialize("Mario", "Graphics/Mario.png");
 
 	MainLoop();
 }
@@ -37,6 +36,10 @@ void Zengine::MainLoop()
 	mainView.setSize(960, 544);
 	mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
 
+	sf::View playerView;
+	playerView.setSize(960, 544);
+	playerView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
+
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
 
 	while (window->isOpen())
@@ -48,6 +51,9 @@ void Zengine::MainLoop()
 		window->setView(mainView);
 
 		world.DrawMap(*window);
+
+		//render player 
+		window->setView(playerView);
 
 		//Draw UI
 		window->setView(window->getDefaultView());

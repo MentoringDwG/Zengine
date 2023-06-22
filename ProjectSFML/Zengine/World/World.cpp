@@ -1,8 +1,9 @@
 #include "World.h"
 #include "Map.h"
 #include "../ZenObject/ZenObject.h"
+#include <SFML/Graphics.hpp>
 
-void World::Initialize(string PlayerName)
+void World::Initialize(string PlayerName, string PlayerTexcurePath)
 {
 	World::_map = new Map();
 
