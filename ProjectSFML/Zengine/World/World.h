@@ -8,6 +8,12 @@ class World
 {
 	public:
 		void TextureInitialization(string pathToTexturesTxt);
-		void LoadWorld(string pathToTileTxt, sf::RenderWindow &windowIn);
+		void LoadWorld(string pathToTileTxt);
+		void DrawWorld(sf::RenderWindow& windowIn);
+
+	private:
+		string** Tab;
+		sf::RectangleShape** tileMap;
+		int dimension1, dimension2;
 };
 

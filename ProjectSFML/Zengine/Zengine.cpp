@@ -24,6 +24,7 @@ void Zengine::Run()
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
 
 	world.TextureInitialization("Textures/TexturesLevel1.txt");
+	world.LoadWorld("Tiles/TxtFiles/Level1.txt");
 	MainLoop();
 }
 
@@ -48,7 +49,7 @@ void Zengine::MainLoop()
 		//Render game elements
 		window->setView(mainView);
 
-		world.LoadWorld("Tiles/TxtFiles/Level1.txt", *window);
+		world.DrawWorld(*window);
 
 		//Draw UI
 		window->setView(window->getDefaultView());

@@ -26,20 +26,19 @@ void World::TextureInitialization(string pathToTexturesTxt)
     file.close();
 }
 
-void World::LoadWorld(string pathToTileTxt, sf::RenderWindow &windowIn)
+void World::LoadWorld(string pathToTileTxt)
 {
     ifstream file;
     file.open(pathToTileTxt);
 
     //Downloading dimensions from a file and creating a two-dimensional dynamic array
-    int dimension1, dimension2;
     file >> dimension1;
     file >> dimension2;
 
-    string** Tab = new string * [dimension1];
+    World::Tab = new string * [dimension1];
     for (int i = 0; i < dimension1; i++)
     {
-        Tab[i] = new string[dimension2];
+        World::Tab[i] = new string[dimension2];
     }
 
     //Loading the texture number needed for the tilemap into a two-dimensional dynamic array
@@ -47,30 +46,34 @@ void World::LoadWorld(string pathToTileTxt, sf::RenderWindow &windowIn)
     {
         for (int j = 0; j < dimension2; j++)
         {
-            file >> Tab[i][j];
+            file >> World::Tab[i][j];
         }
     }
 
     //Creating a dynamic tile map
-    sf::RectangleShape **tileMap = new sf::RectangleShape * [dimension1];
+    World::tileMap = new sf::RectangleShape * [dimension1];
     for (int i = 0; i < dimension1; i++)
     {
-        tileMap[i] = new sf::RectangleShape[dimension2];
+        World::tileMap[i] = new sf::RectangleShape[dimension2];
     }
 
+    file.close();
+}
+
+void World::DrawWorld(sf::RenderWindow& windowIn)
+{
     //Filling and drawing a dynamic tilemap
+
     for (int i = 0; i < dimension1; i++)
     {
         for (int j = 0; j < dimension2; j++)
         {
-            const sf::Texture texcure = assetsManager.GetTextureAsset(Tab[i][j]).TextureSFML;
-            tileMap[i][j].setSize(sf::Vector2f(32.0f, 32.0f));
-            tileMap[i][j].setTexture(&texcure);
-            tileMap[i][j].setPosition(j * 32.f, i * 32.f);
-            windowIn.draw(tileMap[i][j]);
+            const sf::Texture texcure = assetsManager.GetTextureAsset(World::Tab[i][j]).TextureSFML;
+            World::tileMap[i][j].setSize(sf::Vector2f(32.0f, 32.0f));
+            World::tileMap[i][j].setTexture(&texcure);
+            World::tileMap[i][j].setPosition(j * 32.f, i * 32.f);
+            windowIn.draw(World::tileMap[i][j]);
         }
     }
-
-    file.close();
 }
 
