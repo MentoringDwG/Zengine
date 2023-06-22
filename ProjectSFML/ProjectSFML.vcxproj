@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Zengine\Character\Character.cpp" />
     <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp" />
     <ClCompile Include="Zengine\InputModule\InputHandler.cpp" />
     <ClCompile Include="Zengine\InputModule\InputProcessorModule.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="Zengine\ZenObject\ZenObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Zengine\Character\Character.h" />
     <ClInclude Include="Zengine\InputModule\CharacterInputHandler.h" />
     <ClInclude Include="Zengine\InputModule\InputHandler.h" />
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h" />

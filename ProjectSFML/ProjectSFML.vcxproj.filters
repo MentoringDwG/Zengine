@@ -31,6 +31,9 @@
     <Filter Include="Zengine\World">
       <UniqueIdentifier>{a0d55ee9-3574-4908-a660-5900755dc025}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Zengine\Character">
+      <UniqueIdentifier>{de3812e4-64c5-4b78-a0ad-dd8b75161cf3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp">
@@ -69,6 +72,9 @@
     <ClCompile Include="Zengine\World\World.cpp">
       <Filter>Zengine\World</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\Character\Character.cpp">
+      <Filter>Zengine\Character</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -103,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="Zengine\World\World.h">
       <Filter>Zengine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Character\Character.h">
+      <Filter>Zengine\Character</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

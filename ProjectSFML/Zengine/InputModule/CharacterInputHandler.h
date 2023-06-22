@@ -12,13 +12,3 @@ public:
 
 	std::string name;
 };
-
-class Character
-{
-public:
-	Character(std::string name)
-	{
-		InputHandler.name = name;
-	}
-	CharacterInputHandler InputHandler;
-};

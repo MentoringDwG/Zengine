@@ -3,6 +3,7 @@
 #include "World/World.h"
 #include "InputModule/InputProcessorModule.h"
 #include "InputModule/CharacterInputHandler.h"
+#include "Character/Character.h"
 
 Zengine* Zengine::Engine = nullptr;
 
