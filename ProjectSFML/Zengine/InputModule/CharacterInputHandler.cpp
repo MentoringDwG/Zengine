@@ -1,4 +1,5 @@
 #include "CharacterInputHandler.h"
+#include "../Character/Character.h"
 
 bool CharacterInputHandler::ProcessInput(sf::Event& event)
 {
@@ -20,7 +21,13 @@ bool CharacterInputHandler::ProcessInput(sf::Event& event)
     return false;
 }
 
+
 bool CharacterInputHandler::CanConsumeInput()
 {
     return false;
+}
+
+void CharacterInputHandler::SetOwningCharacter(Character* character)
+{
+    CharacterInputHandler::OwningCharacter = character;
 }

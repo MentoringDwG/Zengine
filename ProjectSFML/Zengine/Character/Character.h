@@ -10,6 +10,7 @@ public:
 	{
 		InputHandler.name = name;
 	}
+
 	CharacterInputHandler InputHandler;
 };
 
