@@ -1,7 +1,10 @@
 ﻿  World.cpp
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\World\World.h(2,10): warning C4067: nieoczekiwane tokeny występujące po dyrektywie preprocesora - oczekiwano nowego wiersza
+  Zengine.cpp
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\World\World.h(2,10): warning C4067: nieoczekiwane tokeny występujące po dyrektywie preprocesora - oczekiwano nowego wiersza
   Trwa generowanie kodu
-  4 of 358 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
+  0 of 362 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\ProjectSFML.exe

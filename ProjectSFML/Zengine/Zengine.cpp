@@ -23,8 +23,8 @@ void Zengine::Run()
 
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
 
-	world.TextureInitialization("Textures/TexturesLevel1.txt");
-	world.LoadWorld("Tiles/TxtFiles/Level1.txt");
+	world.Initialize();
+
 	MainLoop();
 }
 
@@ -41,6 +41,8 @@ void Zengine::MainLoop()
 	mainView.setSize(960, 544);
 	mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
 
+	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
+
 	while (window->isOpen())
 	{
 		ProcessInput(window);
@@ -49,7 +51,7 @@ void Zengine::MainLoop()
 		//Render game elements
 		window->setView(mainView);
 
-		world.DrawWorld(*window);
+		world.DrawMap(*window);
 
 		//Draw UI
 		window->setView(window->getDefaultView());

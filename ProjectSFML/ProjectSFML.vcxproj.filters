@@ -22,14 +22,14 @@
     <Filter Include="Zengine\Renderer">
       <UniqueIdentifier>{105a1f89-08f2-4266-8c9e-4a6ca9f51da1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Zengine\World">
-      <UniqueIdentifier>{a0d55ee9-3574-4908-a660-5900755dc025}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Zengine\Interfaces">
       <UniqueIdentifier>{f5e57e6e-0f3c-4d8f-b5df-2c4ebfbf286c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Zengine\ZenObject">
       <UniqueIdentifier>{1456e4d1-c2d0-468d-82d5-8c7d2ef697ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\World">
+      <UniqueIdentifier>{a0d55ee9-3574-4908-a660-5900755dc025}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -51,7 +51,7 @@
     <ClCompile Include="Zengine\World\TextureAsset.cpp">
       <Filter>Zengine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Zengine\World\World.cpp">
+    <ClCompile Include="Zengine\World\Map.cpp">
       <Filter>Zengine\World</Filter>
     </ClCompile>
     <ClCompile Include="Zengine\Zengine.cpp">
@@ -65,6 +65,9 @@
     </ClCompile>
     <ClCompile Include="Zengine\ZenObject\ZenObject.cpp">
       <Filter>Zengine\ZenObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\World\World.cpp">
+      <Filter>Zengine\World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -86,7 +89,7 @@
     <ClInclude Include="Zengine\World\TextureAsset.h">
       <Filter>Zengine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Zengine\World\World.h">
+    <ClInclude Include="Zengine\World\Map.h">
       <Filter>Zengine\World</Filter>
     </ClInclude>
     <ClInclude Include="Zengine\Zengine.h">
@@ -97,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="Zengine\ZenObject\ZenObject.h">
       <Filter>Zengine\ZenObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\World\World.h">
+      <Filter>Zengine\World</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

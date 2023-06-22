@@ -1,19 +1,19 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <iostream>
+#include <iostream>;
+#include "Map.h"
+#include "../ZenObject/ZenObject.h"
 
-using namespace std; 
+using namespace std;
 
 class World
 {
 	public:
-		void TextureInitialization(string pathToTexturesTxt);
-		void LoadWorld(string pathToTileTxt);
-		void DrawWorld(sf::RenderWindow& windowIn);
+		void Initialize();
+		void MapInitialize(string pathToTexturesTxt, string pathToTileTxt);
+		void DrawMap(sf::RenderWindow& windowIn);
 
 	private:
-		string** Tab;
-		sf::RectangleShape** tileMap;
-		int dimension1, dimension2;
+		Map *_map;
+
 };
 
