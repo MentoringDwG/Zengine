@@ -163,6 +163,7 @@
     <ClCompile Include="Zengine\World\Map.cpp" />
     <ClCompile Include="Zengine\World\World.cpp" />
     <ClCompile Include="Zengine\Zengine.cpp" />
+    <ClCompile Include="Zengine\ZenObject\MovableObject.cpp" />
     <ClCompile Include="Zengine\ZenObject\ZenObject.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +178,7 @@
     <ClInclude Include="Zengine\World\Map.h" />
     <ClInclude Include="Zengine\World\World.h" />
     <ClInclude Include="Zengine\Zengine.h" />
+    <ClInclude Include="Zengine\ZenObject\MovableObject.h" />
     <ClInclude Include="Zengine\ZenObject\ZenObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

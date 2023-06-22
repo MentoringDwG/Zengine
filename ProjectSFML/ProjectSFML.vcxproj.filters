@@ -75,6 +75,9 @@
     <ClCompile Include="Zengine\Character\Character.cpp">
       <Filter>Zengine\Character</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\ZenObject\MovableObject.cpp">
+      <Filter>Zengine\ZenObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -112,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="Zengine\Character\Character.h">
       <Filter>Zengine\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\ZenObject\MovableObject.h">
+      <Filter>Zengine\ZenObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

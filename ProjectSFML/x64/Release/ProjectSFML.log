@@ -1,7 +1,7 @@
 ﻿  Character.cpp
-  CharacterInputHandler.cpp
   Zengine.cpp
 C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\World\World.h(2,10): warning C4067: nieoczekiwane tokeny występujące po dyrektywie preprocesora - oczekiwano nowego wiersza
+  MovableObject.cpp
   Trwa generowanie kodu
   1 of 362 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
