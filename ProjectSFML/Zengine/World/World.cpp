@@ -28,6 +28,14 @@ void World::TextureInitialization(string pathToTexturesTxt)
 
 void World::LoadWorld(string pathToTileTxt)
 {
+    //Memory release
+    for (int i = 0; i < dimension1; i++)
+    {
+        delete [] World::Tab[i];
+    }
+    delete [] World::Tab;
+
+
     ifstream file;
     file.open(pathToTileTxt);
 
