@@ -8,14 +8,12 @@ bool CharacterInputHandler::ProcessInput(sf::Event& event)
     {
         if (event.key.code == sf::Keyboard::A)
         {
-            // Move left
-            printf("%s : Move left\n", name.c_str());
+            OwningCharacter->MoveLeft();
         }
 
         if (event.key.code == sf::Keyboard::D)
-        {
-            // Move right
-            printf("%s : Move right\n", name.c_str());            
+        { 
+            OwningCharacter->MoveRight();
         }
     }
     return false;
