@@ -24,19 +24,14 @@ void Zengine::Run()
 
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
 
-	world.Initialize();
+	world.Initialize("Mario");
 
 	MainLoop();
 }
 
 void Zengine::MainLoop()
 {
-	// Kazda klatka bedzie obslugiwana w tym miejscu
-
-	Character mario("mario");
-	Character luigi("luigi");
-	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&mario.InputHandler));
-	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&luigi.InputHandler));
+	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&world.GetPlayer()->InputHandler));
 
 	sf::View mainView;
 	mainView.setSize(960, 544);
