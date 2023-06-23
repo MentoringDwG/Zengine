@@ -30,7 +30,8 @@ void Zengine::Run()
 
 void Zengine::MainLoop()
 {
-	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&world.GetPlayer()->InputHandler));
+	CharacterInputHandler inputHandler = world.GetPlayer()->GetInputHandler();
+	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&inputHandler));
 
 	sf::View mainView;
 	mainView.setSize(960, 544);

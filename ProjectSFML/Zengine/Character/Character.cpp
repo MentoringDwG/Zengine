@@ -2,10 +2,15 @@
 
 void Character::MoveLeft()
 {
-	cout <<Character::InputHandler.name <<" Move Left" << endl;
+	cout <<Character::inputHandler.name <<" Move Left" << endl;
 }
 
 void Character::MoveRight()
 {
-	cout << Character::InputHandler.name << " Move Right" << endl;
+	cout << Character::inputHandler.name << " Move Right" << endl;
+}
+
+CharacterInputHandler Character::GetInputHandler()
+{
+	return Character::inputHandler;
 }

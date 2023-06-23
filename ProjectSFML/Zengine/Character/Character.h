@@ -10,13 +10,14 @@ public:
 	virtual void MoveLeft() override;
 	virtual void MoveRight() override;
 
-	CharacterInputHandler InputHandler;
-
 	Character(std::string name)
-	{
-		InputHandler.name = name;
-		InputHandler.SetOwningCharacter(this);
-	}
+		{
+			inputHandler.name = name;
+			inputHandler.SetOwningCharacter(this);
+		}
+	CharacterInputHandler GetInputHandler();
 
+private:
+	CharacterInputHandler inputHandler;
 };
 
