@@ -3,6 +3,7 @@
 #include "World/World.h"
 #include "InputModule/InputProcessorModule.h"
 #include "InputModule/CharacterInputHandler.h"
+#include "Renderer/Renderer.h"
 
 Zengine* Zengine::Engine = nullptr;
 
@@ -20,9 +21,11 @@ void Zengine::Run()
 	engineRunning = true;
 
 	InputProcessor = new InputProcessorModule();
+	RenderModule = new Renderer();
 
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
 
+	RenderModule->Initialize(window);
 	world.Initialize();
 
 	MainLoop();
@@ -43,8 +46,11 @@ void Zengine::MainLoop()
 
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
 
+	RenderingStack renderStack;
 	while (window->isOpen())
 	{
+		renderStack.renderQueue.clear();
+
 		ProcessInput(window);
 		window->clear();
 
@@ -57,11 +63,10 @@ void Zengine::MainLoop()
 		window->setView(window->getDefaultView());
 
 		window->display();
-
+		RenderModule->ProcessDrawingElements(&renderStack);
 	}
 
 	//ProcessGameLogic();
-	//Render();
 }
 
 void Zengine::ProcessInput(sf::RenderWindow* inWindow)

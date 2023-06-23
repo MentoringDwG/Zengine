@@ -27,6 +27,7 @@ class Zengine
 		bool engineRunning = false;
 		std::vector<IEngineModule*> engineModules;
 		class InputProcessorModule* InputProcessor = nullptr;
+		class Renderer* RenderModule = nullptr;
 
 		sf::RenderWindow* window = nullptr;
 };
