@@ -1,33 +1,31 @@
 #pragma once
-
-// G³ówna klasa silnika gry
-
 #include "Interfaces/IEngineModule.h"
 #include <vector>
-
-namespace sf { class RenderWindow; }
+#include <SFML/Graphics.hpp>
 
 class Zengine
 {
-	public:
+public:
 
-		static Zengine* CreateInstance();
-		//static Zengine* GetInstance();
-		//IEngineModule GetModule();
+	static Zengine* CreateInstance();
+	//static Zengine* GetInstance();
+	//IEngineModule GetModule();
 
-		void Run();
-		void MainLoop();
-		void Shutdown();
+	void Run();
+	void MainLoop();
+	void Shutdown();
 
-	private:
+private:
+	void ProcessInput(sf::RenderWindow* inWindow);
 
-		void ProcessInput(sf::RenderWindow* inWindow);
+	static class Zengine* Engine;
+	bool engineRunning = false;
+	std::vector<IEngineModule*> engineModules;
+	class InputProcessorModule* InputProcessor = nullptr;
 
-		static class Zengine* Engine;
-		bool engineRunning = false;
-		std::vector<IEngineModule*> engineModules;
-		class InputProcessorModule* InputProcessor = nullptr;
-
-		sf::RenderWindow* window = nullptr;
+	sf::RenderWindow* window = nullptr;
+	sf::View mainView;
+	sf::View playerView;
+	void ViewInitialize();
 };
 

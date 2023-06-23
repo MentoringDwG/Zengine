@@ -28,20 +28,23 @@ void Zengine::Run()
 	MainLoop();
 }
 
+void Zengine::ViewInitialize()
+{
+	Zengine::mainView.setSize(960, 544);
+	Zengine::mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
+
+	Zengine::playerView.setSize(960, 544);
+	Zengine::playerView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
+}
+
+
 void Zengine::MainLoop()
 {
 	CharacterInputHandler inputHandler = world.GetPlayer()->GetInputHandler();
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&inputHandler));
 
-	sf::View mainView;
-	mainView.setSize(960, 544);
-	mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
-
-	sf::View playerView;
-	playerView.setSize(960, 544);
-	playerView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
-
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
+	ViewInitialize();
 
 	while (window->isOpen())
 	{
