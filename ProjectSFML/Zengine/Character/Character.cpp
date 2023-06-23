@@ -2,12 +2,12 @@
 
 void Character::MoveLeft()
 {
-	cout <<Character::inputHandler.name <<" Move Left" << endl;
+	cout <<Character::inputHandler.GetName() <<" Move Left" << endl;
 }
 
 void Character::MoveRight()
 {
-	cout << Character::inputHandler.name << " Move Right" << endl;
+	cout << Character::inputHandler.GetName() << " Move Right" << endl;
 }
 
 CharacterInputHandler Character::GetInputHandler()

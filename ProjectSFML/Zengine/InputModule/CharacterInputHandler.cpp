@@ -8,17 +8,16 @@ bool CharacterInputHandler::ProcessInput(sf::Event& event)
     {
         if (event.key.code == sf::Keyboard::A)
         {
-            OwningCharacter->MoveLeft();
+            owningCharacter->MoveLeft();
         }
 
         if (event.key.code == sf::Keyboard::D)
         { 
-            OwningCharacter->MoveRight();
+            owningCharacter->MoveRight();
         }
     }
     return false;
 }
-
 
 bool CharacterInputHandler::CanConsumeInput()
 {
@@ -27,5 +26,15 @@ bool CharacterInputHandler::CanConsumeInput()
 
 void CharacterInputHandler::SetOwningCharacter(Character* character)
 {
-    CharacterInputHandler::OwningCharacter = character;
+    CharacterInputHandler::owningCharacter = character;
+}
+
+void CharacterInputHandler::SetName(string nameIn)
+{
+    CharacterInputHandler::name = nameIn;
+}
+
+string CharacterInputHandler::GetName()
+{
+    return CharacterInputHandler::name;
 }

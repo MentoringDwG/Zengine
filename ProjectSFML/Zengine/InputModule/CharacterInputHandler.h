@@ -1,5 +1,4 @@
 #pragma once
-
 #include "InputHandler.h"
 #include <SFML/Window/Event.hpp>
 #include <iostream>
@@ -10,16 +9,16 @@ class Character;
 
 class CharacterInputHandler : public InputHandler
 {
-	public:
-		// Inherited via InputHandler
-		virtual bool ProcessInput(sf::Event& event) override;
-		virtual bool CanConsumeInput() override;
+public:
+	// Inherited via InputHandler
+	virtual bool ProcessInput(sf::Event& event) override;
+	virtual bool CanConsumeInput() override;
 
-		string name;
+	void SetOwningCharacter(Character* character);
+	void SetName(string nameIN);
+	string GetName();
 
-		void SetOwningCharacter(Character* character);
-
-	private:
-		class Character* OwningCharacter;
-
+private:
+	Character* owningCharacter;
+	string name;
 };

@@ -12,7 +12,7 @@ public:
 
 	Character(std::string name)
 		{
-			inputHandler.name = name;
+			inputHandler.SetName(name);
 			inputHandler.SetOwningCharacter(this);
 		}
 	CharacterInputHandler GetInputHandler();
