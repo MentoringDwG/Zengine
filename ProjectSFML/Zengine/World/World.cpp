@@ -7,7 +7,7 @@ void World::Initialize(string PlayerName, string PlayerTexcurePath)
 {
 	World::_map = new Map();
 
-	World::playerCharacter = new Character(PlayerName);
+	World::playerCharacter = new Character(PlayerName, PlayerTexcurePath);
 
 	//And the rest of the objects of the world
 }
