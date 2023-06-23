@@ -14,7 +14,6 @@ void Map::TextureInitialization(string pathToTexturesTxt)
 	file.open(pathToTexturesTxt);
 	string path, name;
 
-
 	while (!file.eof())
 	{
 		file >> path >> name;
@@ -34,7 +33,6 @@ void Map::LoadMap(string pathToTileTxt)
         delete [] Map::Tab[i];
     }
     delete [] Map::Tab;
-
 
     ifstream file;
     file.open(pathToTileTxt);

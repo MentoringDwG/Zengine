@@ -1,7 +1,7 @@
 #include "AssetsManager.h"
 #include "TextureAsset.h"
 
-AssetsManager* AssetsManager::Assets = nullptr;
+AssetsManager* AssetsManager::assets = nullptr;
 
 TextureAsset AssetsManager::GetTextureAsset(string Name)
 {

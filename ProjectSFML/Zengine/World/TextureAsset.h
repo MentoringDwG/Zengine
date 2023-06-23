@@ -7,12 +7,8 @@ using namespace std;
 
 class TextureAsset
 {
-
-
 public:
 	sf::Texture TextureSFML;
-	string TexturePath;
-	string TextureName;
 	TextureAsset()
 	{
 
@@ -22,5 +18,9 @@ public:
 	{
 		TextureSFML.loadFromFile(TexturePath);
 	}
+	
+private:
+	string TextureName;
+	string TexturePath;
 };
 

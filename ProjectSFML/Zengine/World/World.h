@@ -1,24 +1,18 @@
 #pragma once
-#include <iostream>
 #include "Map.h"
 #include "../ZenObject/ZenObject.h"
 #include "../Character/Character.h"
 
-using namespace std;
-
 class World
 {
-	public:
-		void Initialize(string PlayerName, string PlayerTexcurePath);
-		void MapInitialize(string pathToTexturesTxt, string pathToTileTxt);
-		void DrawMap(sf::RenderWindow& windowIn);
+public:
+	void Initialize(string PlayerName, string PlayerTexcurePath);
+	void MapInitialize(string pathToTexturesTxt, string pathToTileTxt);
+	void DrawMap(sf::RenderWindow& windowIn);
+	Character* GetPlayer();
 
-		Character* GetPlayer();
-
-
-	private:
-		Map *_map;
-		Character* playerCharacter;
-
+private:
+	Map *_map;
+	Character* playerCharacter;
 };
 
