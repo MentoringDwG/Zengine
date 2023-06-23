@@ -3,6 +3,7 @@
 #include "World/World.h"
 #include "InputModule/InputProcessorModule.h"
 #include "InputModule/CharacterInputHandler.h"
+#include "Renderer/Renderer.h"
 
 Zengine* Zengine::Engine = nullptr;
 
@@ -20,10 +21,12 @@ void Zengine::Run()
 	engineRunning = true;
 
 	InputProcessor = new InputProcessorModule();
+	RenderModule = new Renderer();
 
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
 
 	world.Initialize("Mario", "Graphics/Mario.png");
+	RenderModule->Initialize(window);
 
 	MainLoop();
 }
@@ -51,8 +54,11 @@ void Zengine::MainLoop()
 	player.setSize(sf::Vector2f(32.0f, 64.0f));
 	player.setTexture(&texcure);
 
+	RenderingStack renderStack;
 	while (window->isOpen())
 	{
+		renderStack.renderQueue.clear();
+
 		ProcessInput(window);
 		window->clear();
 
@@ -69,11 +75,10 @@ void Zengine::MainLoop()
 		window->setView(window->getDefaultView());
 
 		window->display();
-
+		RenderModule->ProcessDrawingElements(&renderStack);
 	}
 
 	//ProcessGameLogic();
-	//Render();
 }
 
 void Zengine::ProcessInput(sf::RenderWindow* inWindow)
