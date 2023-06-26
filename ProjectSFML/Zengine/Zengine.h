@@ -2,6 +2,7 @@
 #include "Interfaces/IEngineModule.h"
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include "Renderer/Renderer.h"
 
 class Zengine
 {
@@ -27,5 +28,6 @@ private:
 	sf::View mainView;
 	void ViewInitialize();
 	class Renderer* RenderModule = nullptr;
+	RenderingStack renderStack;
 };
 

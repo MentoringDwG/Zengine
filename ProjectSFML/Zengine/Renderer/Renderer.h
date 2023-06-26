@@ -1,16 +1,11 @@
 #pragma once
 #include "../Interfaces/IEngineModule.h"
 #include <vector> 
-#include <SFML/Graphics/Drawable.hpp>
-
-namespace sf
-{
-	class RenderWindow;
-}
+#include <SFML/Graphics.hpp>
 
 struct RenderObject
 {
-	sf::Drawable* drawable;
+	sf::RectangleShape* drawable;
 	int zOrder = 0;
 	// Do przekminienia przez ¯anetê jak zrobiæ dalej - layerowanie. :)
 	int layerId = 0;
@@ -18,7 +13,7 @@ struct RenderObject
 
 struct RenderingStack
 {
-	std::vector<RenderObject> renderQueue;
+	std::vector<RenderObject*> renderQueue;
 };
 
 class Renderer : IEngineModule

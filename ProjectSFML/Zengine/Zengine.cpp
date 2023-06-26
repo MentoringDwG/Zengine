@@ -27,6 +27,7 @@ void Zengine::Run()
 
 	world.Initialize("Mario", "Graphics/Mario.png");
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
+	world.DrawPlayer(&renderStack);
 
 	RenderModule->Initialize(window);
 	ViewInitialize();
@@ -46,10 +47,9 @@ void Zengine::MainLoop()
 	CharacterInputHandler inputHandler = world.GetPlayer()->GetInputHandler();
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&inputHandler));
 
-	RenderingStack renderStack;
 	while (window->isOpen())
 	{
-		renderStack.renderQueue.clear();
+		//renderStack.renderQueue.clear();
 
 		ProcessInput(window);
 		window->clear();
@@ -58,13 +58,12 @@ void Zengine::MainLoop()
 		window->setView(mainView);
 
 		//world.DrawMap(*window);
-		world.DrawPlayer(&renderStack);
+		RenderModule->ProcessDrawingElements(&renderStack);
 
 		//Draw UI
 		window->setView(window->getDefaultView());
 
 		window->display();
-		RenderModule->ProcessDrawingElements(&renderStack);
 	}
 
 	//ProcessGameLogic();

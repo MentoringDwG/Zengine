@@ -27,5 +27,6 @@ private:
 	CharacterInputHandler inputHandler;
 	TextureAsset *texcureAsset;
 	sf::RectangleShape character;
+	RenderObject characterRenderObject;
 };
 

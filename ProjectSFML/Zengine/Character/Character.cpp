@@ -31,5 +31,11 @@ void Character::DrawCharacter(RenderingStack* renderStack)
 	character.setSize(sf::Vector2f(32.0f, 64.0f));
 	character.setTexture(&texcure);
 	
+	characterRenderObject.drawable = &character;
+	characterRenderObject.zOrder = 1000;
+	characterRenderObject.layerId = 1;
+
+	renderStack->renderQueue.push_back(&characterRenderObject);
+
 	//windowIn.draw(character);
 }
