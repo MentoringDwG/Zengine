@@ -18,9 +18,9 @@ void World::MapInitialize(string pathToTexturesTxt, string pathToTileTxt)
 	map->LoadMap(pathToTileTxt);
 }
 
-void World::DrawMap(sf::RenderWindow& windowIn)
+void World::DrawMap(RenderingStack* renderStack)
 {
-	map->DrawMap(windowIn);
+	map->DrawMap(renderStack);
 }
 
 Character* World::GetPlayer()

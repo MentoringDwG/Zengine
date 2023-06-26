@@ -21,7 +21,7 @@ void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
 	//	sf::Drawable* drawable = renderStack->renderQueue[indexInQueue].drawable;
 	//	window->draw(*drawable);
 	//}
+	sf::Drawable* rectangleShape = renderStack->renderQueue[0]->drawable;
 
-	sf::RectangleShape rectangleShape = *renderStack->renderQueue[0]->drawable;
-	window->draw(rectangleShape);
+	window->draw(*rectangleShape);
 }

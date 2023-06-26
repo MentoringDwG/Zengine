@@ -25,8 +25,8 @@ public:
 
 private:
 	CharacterInputHandler inputHandler;
-	TextureAsset *texcureAsset;
+	TextureAsset * textureAsset;
 	sf::RectangleShape character;
-	RenderObject characterRenderObject;
+	RenderObject* characterRenderObject=nullptr;
 };
 

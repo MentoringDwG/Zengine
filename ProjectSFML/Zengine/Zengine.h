@@ -28,6 +28,6 @@ private:
 	sf::View mainView;
 	void ViewInitialize();
 	class Renderer* RenderModule = nullptr;
-	RenderingStack renderStack;
+	RenderingStack* renderStack = nullptr;
 };
 

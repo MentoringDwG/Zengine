@@ -17,25 +17,24 @@ CharacterInputHandler Character::GetInputHandler()
 
 void Character::SetTextureAsset(string Path, string Name)
 {
-	texcureAsset = new TextureAsset(Path, Name);
+	textureAsset = new TextureAsset(Path, Name);
 }
 
 TextureAsset Character::GetTextureAsset()
 {
-	return *texcureAsset;
+	return *textureAsset;
 }
 
 void Character::DrawCharacter(RenderingStack* renderStack)
 {
-	const sf::Texture texcure = GetTextureAsset().TextureSFML;
+	const sf::Texture texture = GetTextureAsset().TextureSFML;
 	character.setSize(sf::Vector2f(32.0f, 64.0f));
-	character.setTexture(&texcure);
+	character.setTexture(&texture);
 	
-	characterRenderObject.drawable = &character;
-	characterRenderObject.zOrder = 1000;
-	characterRenderObject.layerId = 1;
+	characterRenderObject = new RenderObject();
+	characterRenderObject->drawable = &character;
+	characterRenderObject->zOrder = 1000;
+	characterRenderObject->layerId = 1;
 
-	renderStack->renderQueue.push_back(&characterRenderObject);
-
-	//windowIn.draw(character);
+	renderStack->renderQueue.push_back(characterRenderObject);
 }

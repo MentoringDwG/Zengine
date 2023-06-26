@@ -3,6 +3,7 @@
 #include "AssetsManager.h"
 #include <iostream>
 #include <fstream>
+#include "../Renderer/Renderer.h"
 
 using namespace std;
 
@@ -66,7 +67,7 @@ void Map::LoadMap(string pathToTileTxt)
     file.close();
 }
 
-void Map::DrawMap(sf::RenderWindow& windowIn)
+void Map::DrawMap(RenderingStack* renderStack)
 {
     //Filling and drawing a dynamic tilemap
 
@@ -78,7 +79,14 @@ void Map::DrawMap(sf::RenderWindow& windowIn)
             tileMap[i][j].setSize(sf::Vector2f(32.0f, 32.0f));
             tileMap[i][j].setTexture(&texcure);
             tileMap[i][j].setPosition(j * 32.f, i * 32.f);
-            windowIn.draw(tileMap[i][j]);
+            
+            tileMapRenderObject = new RenderObject();
+            tileMapRenderObject->drawable = &tileMap[i][j];
+            tileMapRenderObject->zOrder = 0;
+            tileMapRenderObject->layerId = 0;
+
+            renderStack->renderQueue.push_back(tileMapRenderObject);
+            //windowIn.draw(tileMap[i][j]);
         }
     }
 }

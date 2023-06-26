@@ -22,15 +22,17 @@ void Zengine::Run()
 
 	InputProcessor = new InputProcessorModule();
 	RenderModule = new Renderer();
+	renderStack = new RenderingStack();
 
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
+	ViewInitialize();
+
+	RenderModule->Initialize(window);
 
 	world.Initialize("Mario", "Graphics/Mario.png");
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
-	world.DrawPlayer(&renderStack);
-
-	RenderModule->Initialize(window);
-	ViewInitialize();
+	//world.DrawPlayer(renderStack);
+	world.DrawMap(renderStack);
 
 	MainLoop();
 }
@@ -58,7 +60,7 @@ void Zengine::MainLoop()
 		window->setView(mainView);
 
 		//world.DrawMap(*window);
-		RenderModule->ProcessDrawingElements(&renderStack);
+		RenderModule->ProcessDrawingElements(renderStack);
 
 		//Draw UI
 		window->setView(window->getDefaultView());
