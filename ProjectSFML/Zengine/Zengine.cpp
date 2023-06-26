@@ -57,8 +57,8 @@ void Zengine::MainLoop()
 		//Render game elements
 		window->setView(mainView);
 
-		world.DrawMap(*window);
-		//world.DrawPlayer(*window);
+		//world.DrawMap(*window);
+		world.DrawPlayer(*RenderModule);
 
 		//Draw UI
 		window->setView(window->getDefaultView());

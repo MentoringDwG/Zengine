@@ -25,10 +25,10 @@ TextureAsset Character::GetTextureAsset()
 	return *texcureAsset;
 }
 
-void Character::DrawCharacter(sf::RenderWindow& windowIn)
+void Character::DrawCharacter(Renderer& RenderModule)
 {
 	const sf::Texture texcure = GetTextureAsset().TextureSFML;
 	character.setSize(sf::Vector2f(32.0f, 64.0f));
 	character.setTexture(&texcure);
-	windowIn.draw(character);
+	//windowIn.draw(character);
 }

@@ -28,8 +28,8 @@ Character* World::GetPlayer()
 	return playerCharacter;
 }
 
-void World::DrawPlayer(sf::RenderWindow& windowIn)
+void World::DrawPlayer(Renderer& RenderModule)
 {
-	playerCharacter->DrawCharacter(windowIn);
+	playerCharacter->DrawCharacter(RenderModule);
 }
 

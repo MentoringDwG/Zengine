@@ -4,6 +4,8 @@
 #include "../ZenObject/MovableObject.h"
 #include "../World/TextureAsset.h"
 
+class Renderer;
+
 class Character:public MovableObject
 {
 public:
@@ -20,7 +22,7 @@ public:
 	CharacterInputHandler GetInputHandler();
 	void SetTextureAsset(string Path, string Name);
 	TextureAsset GetTextureAsset();
-	void DrawCharacter(sf::RenderWindow& windowIn);
+	void DrawCharacter(Renderer& RenderModule);
 
 private:
 	CharacterInputHandler inputHandler;
