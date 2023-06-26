@@ -49,11 +49,6 @@ void Zengine::MainLoop()
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
 	ViewInitialize();
 
-	sf::RectangleShape player;
-	const sf::Texture texcure = world.GetPlayer()->GetTextureAsset().TextureSFML;
-	player.setSize(sf::Vector2f(32.0f, 64.0f));
-	player.setTexture(&texcure);
-
 	RenderingStack renderStack;
 	while (window->isOpen())
 	{
@@ -65,8 +60,9 @@ void Zengine::MainLoop()
 		//Render game elements
 		window->setView(mainView);
 
-		world.DrawMap(*window);
+		//world.DrawMap(*window);
 		//window->draw(player);
+		world.DrawPlayer(*window);
 
 		//render player 
 		window->setView(playerView);

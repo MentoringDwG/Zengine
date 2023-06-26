@@ -20,9 +20,11 @@ public:
 	CharacterInputHandler GetInputHandler();
 	void SetTextureAsset(string Path, string Name);
 	TextureAsset GetTextureAsset();
+	void DrawCharacter(sf::RenderWindow& windowIn);
 
 private:
 	CharacterInputHandler inputHandler;
 	TextureAsset *texcureAsset;
+	sf::RectangleShape character;
 };
 
