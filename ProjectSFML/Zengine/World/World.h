@@ -11,7 +11,7 @@ public:
 	void Initialize(string PlayerName, string PlayerTexcurePath);
 	void MapInitialize(string pathToTexturesTxt, string pathToTileTxt);
 	void DrawMap(sf::RenderWindow& windowIn);
-	void DrawPlayer(Renderer& RenderModule);
+	void DrawPlayer(RenderingStack* renderStack);
 	Character* GetPlayer();
 
 private:

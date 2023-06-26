@@ -58,7 +58,7 @@ void Zengine::MainLoop()
 		window->setView(mainView);
 
 		//world.DrawMap(*window);
-		world.DrawPlayer(*RenderModule);
+		world.DrawPlayer(&renderStack);
 
 		//Draw UI
 		window->setView(window->getDefaultView());

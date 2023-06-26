@@ -28,8 +28,8 @@ Character* World::GetPlayer()
 	return playerCharacter;
 }
 
-void World::DrawPlayer(Renderer& RenderModule)
+void World::DrawPlayer(RenderingStack* renderStack)
 {
-	playerCharacter->DrawCharacter(RenderModule);
+	playerCharacter->DrawCharacter(renderStack);
 }
 

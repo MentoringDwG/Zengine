@@ -3,8 +3,7 @@
 #include "../InputModule/CharacterInputHandler.h"
 #include "../ZenObject/MovableObject.h"
 #include "../World/TextureAsset.h"
-
-class Renderer;
+#include "../Renderer/Renderer.h"
 
 class Character:public MovableObject
 {
@@ -22,7 +21,7 @@ public:
 	CharacterInputHandler GetInputHandler();
 	void SetTextureAsset(string Path, string Name);
 	TextureAsset GetTextureAsset();
-	void DrawCharacter(Renderer& RenderModule);
+	void DrawCharacter(RenderingStack* renderStack);
 
 private:
 	CharacterInputHandler inputHandler;
