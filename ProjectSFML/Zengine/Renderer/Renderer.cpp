@@ -1,6 +1,5 @@
 #include "Renderer.h"
-
-#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics.hpp>
 
 void Renderer::Initialize(sf::RenderWindow* inWindow)
 {
@@ -22,4 +21,7 @@ void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
 	//	sf::Drawable* drawable = renderStack->renderQueue[indexInQueue].drawable;
 	//	window->draw(*drawable);
 	//}
+
+	sf::RectangleShape rectangleShape = *renderStack->renderQueue[0]->drawable;
+	window->draw(rectangleShape);
 }
