@@ -17,12 +17,12 @@ CharacterInputHandler Character::GetInputHandler()
 
 void Character::SetTextureAsset(string Path, string Name)
 {
-	Character::texcureAsset = new TextureAsset(Path, Name);
+	texcureAsset = new TextureAsset(Path, Name);
 }
 
 TextureAsset Character::GetTextureAsset()
 {
-	return *Character::texcureAsset;
+	return *texcureAsset;
 }
 
 void Character::DrawCharacter(sf::RenderWindow& windowIn)

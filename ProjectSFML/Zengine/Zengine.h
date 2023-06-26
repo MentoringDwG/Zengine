@@ -25,7 +25,6 @@ private:
 
 	sf::RenderWindow* window = nullptr;
 	sf::View mainView;
-	sf::View playerView;
 	void ViewInitialize();
 	class Renderer* RenderModule = nullptr;
 };

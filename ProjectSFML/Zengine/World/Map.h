@@ -12,7 +12,7 @@ public:
 	void DrawMap(sf::RenderWindow& windowIn);
 
 private:
-	string** Tab;
+	string** tab;
 	sf::RectangleShape** tileMap;
 	int dimension1, dimension2;
 };

@@ -13,7 +13,7 @@ public:
 	Character* GetPlayer();
 
 private:
-	Map *_map;
+	Map *map;
 	Character* playerCharacter;
 	sf::RectangleShape player;
 };

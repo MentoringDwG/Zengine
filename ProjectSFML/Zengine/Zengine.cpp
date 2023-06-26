@@ -26,18 +26,18 @@ void Zengine::Run()
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
 
 	world.Initialize("Mario", "Graphics/Mario.png");
+	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
+
 	RenderModule->Initialize(window);
+	ViewInitialize();
 
 	MainLoop();
 }
 
 void Zengine::ViewInitialize()
 {
-	Zengine::mainView.setSize(960, 544);
-	Zengine::mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
-
-	Zengine::playerView.setSize(960, 544);
-	Zengine::playerView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
+	mainView.setSize(960, 544);
+	mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
 }
 
 
@@ -45,9 +45,6 @@ void Zengine::MainLoop()
 {
 	CharacterInputHandler inputHandler = world.GetPlayer()->GetInputHandler();
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&inputHandler));
-
-	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
-	ViewInitialize();
 
 	RenderingStack renderStack;
 	while (window->isOpen())
@@ -60,12 +57,8 @@ void Zengine::MainLoop()
 		//Render game elements
 		window->setView(mainView);
 
-		//world.DrawMap(*window);
-		//window->draw(player);
-		world.DrawPlayer(*window);
-
-		//render player 
-		window->setView(playerView);
+		world.DrawMap(*window);
+		//world.DrawPlayer(*window);
 
 		//Draw UI
 		window->setView(window->getDefaultView());

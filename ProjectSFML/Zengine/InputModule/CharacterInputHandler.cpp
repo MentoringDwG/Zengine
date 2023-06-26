@@ -26,15 +26,15 @@ bool CharacterInputHandler::CanConsumeInput()
 
 void CharacterInputHandler::SetOwningCharacter(Character* character)
 {
-    CharacterInputHandler::owningCharacter = character;
+    owningCharacter = character;
 }
 
 void CharacterInputHandler::SetName(string nameIn)
 {
-    CharacterInputHandler::name = nameIn;
+    name = nameIn;
 }
 
 string CharacterInputHandler::GetName()
 {
-    return CharacterInputHandler::name;
+    return name;
 }
