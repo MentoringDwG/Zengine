@@ -18,6 +18,8 @@ public:
 			SetTextureAsset(Path, name);
 
 			moveSpeed = playerMoveSpeed;
+			
+			character.setOrigin(sf::Vector2f(character.getSize().x / 2, character.getSize().y / 2));
 		}
 
 	CharacterInputHandler GetInputHandler();
