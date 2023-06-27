@@ -1,7 +1,7 @@
-﻿  Zengine.cpp
+﻿  Renderer.cpp
   Trwa generowanie kodu
-  193 of 440 functions (43.9%) were compiled, the rest were copied from previous compilation.
+  17 of 440 functions ( 3.9%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    41 functions had inline decision re-evaluated but remain unchanged
+    7 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\ProjectSFML.exe

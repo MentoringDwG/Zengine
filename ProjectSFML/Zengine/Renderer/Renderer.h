@@ -5,7 +5,8 @@
 
 struct RenderObject
 {
-	sf::Drawable* drawable;
+	sf::RectangleShape* drawable;
+	sf::Texture* texcure;
 	int zOrder = 0;
 	// Do przekminienia przez ¯anetê jak zrobiæ dalej - layerowanie. :)
 	int layerId = 0;
