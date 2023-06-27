@@ -8,7 +8,7 @@ class Renderer;
 class World
 {
 public:
-	void Initialize(string PlayerName, string PlayerTexcurePath);
+	void Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed);
 	void MapInitialize(string pathToTexturesTxt, string pathToTileTxt);
 	void DrawMap(RenderingStack* renderStack);
 	void DrawPlayer(RenderingStack* renderStack);

@@ -11,11 +11,13 @@ public:
 	virtual void MoveLeft() override;
 	virtual void MoveRight() override;
 
-	Character(std::string name, string Path)
+	Character(std::string name, string Path, float playerMoveSpeed)
 		{
 			inputHandler.SetName(name);
 			inputHandler.SetOwningCharacter(this);
 			SetTextureAsset(Path, name);
+
+			moveSpeed = playerMoveSpeed;
 		}
 
 	CharacterInputHandler GetInputHandler();
@@ -24,10 +26,16 @@ public:
 	void DrawCharacter(RenderingStack* renderStack);
 
 private:
+	//Input
 	CharacterInputHandler inputHandler;
+
+	//Renderer
 	TextureAsset * textureAsset;
 	sf::RectangleShape character;
 	RenderObject* characterRenderObject=nullptr;
 	sf::Texture* texture = nullptr;
+
+	//movement
+	float moveSpeed;
 };
 

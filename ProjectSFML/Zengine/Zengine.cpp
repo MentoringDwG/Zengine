@@ -28,7 +28,7 @@ void Zengine::Run()
 
 	RenderModule->Initialize(window);
 
-	world.Initialize("Mario", "Graphics/Mario.png");
+	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
 
 	world.DrawPlayer(renderStack);
@@ -42,9 +42,6 @@ void Zengine::ViewInitialize()
 {
 	mainView.setSize(960, 544);
 	mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
-
-	playerView.setSize(960, 544);
-	playerView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
 }
 
 
