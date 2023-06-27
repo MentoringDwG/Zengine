@@ -32,7 +32,7 @@ void Zengine::Run()
 	world.Initialize("Mario", "Graphics/Mario.png");
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
 	world.DrawPlayer(renderStack);
-	//world.DrawMap(renderStack);
+	world.DrawMap(renderStack);
 
 	MainLoop();
 }
