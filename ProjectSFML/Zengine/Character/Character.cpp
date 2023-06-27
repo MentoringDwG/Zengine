@@ -27,13 +27,14 @@ TextureAsset Character::GetTextureAsset()
 
 void Character::DrawCharacter(RenderingStack* renderStack)
 {
-	sf::Texture texture = GetTextureAsset().TextureSFML;
+	texture = new sf::Texture();
+	*texture = GetTextureAsset().TextureSFML;
 	character.setSize(sf::Vector2f(32.0f, 64.0f));
-	character.setTexture(&texture);
+	character.setTexture(texture);
 	
 	characterRenderObject = new RenderObject();
 	characterRenderObject->drawable = &character;
-	characterRenderObject->texcure = &texture;
+	characterRenderObject->texcure = texture;
 	characterRenderObject->zOrder = 1000;
 	characterRenderObject->layerId = 1;
 

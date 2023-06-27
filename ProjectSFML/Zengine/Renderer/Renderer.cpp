@@ -23,7 +23,7 @@ void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
 	//}
 	sf::RectangleShape* rectangleShape = renderStack->renderQueue[0]->drawable;
 	sf::Texture texture=*renderStack->renderQueue[0]->texcure;
-	//texture.loadFromFile("Graphics/Mario.png");
+
 	rectangleShape->setTexture(&texture);
 	window->draw(*rectangleShape);
 }

@@ -28,5 +28,6 @@ private:
 	TextureAsset * textureAsset;
 	sf::RectangleShape character;
 	RenderObject* characterRenderObject=nullptr;
+	sf::Texture* texture = nullptr;
 };
 
