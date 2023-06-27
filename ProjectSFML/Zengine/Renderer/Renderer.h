@@ -22,6 +22,7 @@ class Renderer : IEngineModule
 public:
 	void Initialize(sf::RenderWindow* inWindow);
 	void ProcessDrawingElements(RenderingStack *renderStack);
+	void SortRenderStack(RenderingStack* renderStack);
 
 	virtual void Initialize() override {}
 	virtual void UnInitialize() override {}

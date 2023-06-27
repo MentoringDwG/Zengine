@@ -1,6 +1,7 @@
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\vc142.pdb
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\zenobject.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\movableobject.obj
+c:\users\admin\documents\github\zengine\projectsfml\x64\release\zengine.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\world.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\map.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\textureasset.obj
@@ -12,7 +13,6 @@ c:\users\admin\documents\github\zengine\projectsfml\x64\release\inputhandler.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\characterinputhandler.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\character.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\main.obj
-c:\users\admin\documents\github\zengine\projectsfml\x64\release\zengine.obj
 c:\users\admin\documents\github\zengine\x64\release\projectsfml.exe
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\projectsfml.ipdb
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\projectsfml.iobj

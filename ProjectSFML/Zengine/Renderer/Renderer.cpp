@@ -6,10 +6,8 @@ void Renderer::Initialize(sf::RenderWindow* inWindow)
 	window = inWindow;
 }
 
-void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
+void Renderer::SortRenderStack(RenderingStack* renderStack)
 {
-	//std::vector<int> sortedQueue;
-
 	int k;
 	RenderObject* pom;
 	for (int i = 0; i < renderStack->renderQueue.size(); ++i)
@@ -22,12 +20,14 @@ void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
 				k = j;
 			}
 		}
-
 		pom = renderStack->renderQueue[k];
 		renderStack->renderQueue[k] = renderStack->renderQueue[i];
 		renderStack->renderQueue[i] = pom;
 	}
+}
 
+void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
+{
 	for (int i = 0; i<renderStack->renderQueue.size(); ++i)
 	{		
 		sf::RectangleShape* rectangleShape = renderStack->renderQueue[i]->drawable;
@@ -36,11 +36,4 @@ void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
 		rectangleShape->setTexture(&texture);
 		window->draw(*rectangleShape);
 	}
-
-	//for (int i = 0; sortedQueue.size(); ++i)
-	//{
-	//	int indexInQueue = sortedQueue[i];
-	//	sf::Drawable* drawable = renderStack->renderQueue[indexInQueue].drawable;
-	//	window->draw(*drawable);
-	//}
 }

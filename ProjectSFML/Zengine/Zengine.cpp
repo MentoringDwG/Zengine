@@ -6,7 +6,6 @@
 #include "Renderer/Renderer.h"
 
 Zengine* Zengine::Engine = nullptr;
-
 World world;
 
 Zengine* Zengine::CreateInstance()
@@ -31,8 +30,10 @@ void Zengine::Run()
 
 	world.Initialize("Mario", "Graphics/Mario.png");
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
+
 	world.DrawPlayer(renderStack);
 	world.DrawMap(renderStack);
+	RenderModule->SortRenderStack(renderStack);
 
 	MainLoop();
 }
@@ -41,6 +42,9 @@ void Zengine::ViewInitialize()
 {
 	mainView.setSize(960, 544);
 	mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
+
+	playerView.setSize(960, 544);
+	playerView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
 }
 
 
@@ -51,16 +55,13 @@ void Zengine::MainLoop()
 
 	while (window->isOpen())
 	{
-		//renderStack.renderQueue.clear();
-
 		ProcessInput(window);
 		window->clear();
 
 		//Render game elements
 		window->setView(mainView);
-
-		//world.DrawMap(*window);
 		RenderModule->ProcessDrawingElements(renderStack);
+
 
 		//Draw UI
 		window->setView(window->getDefaultView());
