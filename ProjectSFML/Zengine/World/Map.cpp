@@ -3,6 +3,7 @@
 #include "AssetsManager.h"
 #include <iostream>
 #include <fstream>
+#include "../Renderer/Renderer.h"
 
 using namespace std;
 
@@ -30,9 +31,9 @@ void Map::LoadMap(string pathToTileTxt)
     //Memory release
     for (int i = 0; i < dimension1; i++)
     {
-        delete [] Tab[i];
+        delete [] tab[i];
     }
-    delete [] Tab;
+    delete [] tab;
 
     ifstream file;
     file.open(pathToTileTxt);
@@ -41,10 +42,10 @@ void Map::LoadMap(string pathToTileTxt)
     file >> dimension1;
     file >> dimension2;
 
-    Tab = new string * [dimension1];
+    tab = new string * [dimension1];
     for (int i = 0; i < dimension1; i++)
     {
-        Tab[i] = new string[dimension2];
+        tab[i] = new string[dimension2];
     }
 
     //Loading the texture number needed for the tilemap into a two-dimensional dynamic array
@@ -52,7 +53,7 @@ void Map::LoadMap(string pathToTileTxt)
     {
         for (int j = 0; j < dimension2; j++)
         {
-            file >> Tab[i][j];
+            file >>tab[i][j];
         }
     }
 
@@ -66,7 +67,7 @@ void Map::LoadMap(string pathToTileTxt)
     file.close();
 }
 
-void Map::DrawMap(sf::RenderWindow& windowIn)
+void Map::DrawMap(RenderingStack* renderStack)
 {
     //Filling and drawing a dynamic tilemap
 
@@ -74,11 +75,19 @@ void Map::DrawMap(sf::RenderWindow& windowIn)
     {
         for (int j = 0; j < dimension2; j++)
         {
-            const sf::Texture texcure = assetsManager.GetTextureAsset(Tab[i][j]).TextureSFML;
+            texture = new sf::Texture();
+            *texture = assetsManager.GetTextureAsset(tab[i][j]).TextureSFML;
             tileMap[i][j].setSize(sf::Vector2f(32.0f, 32.0f));
-            tileMap[i][j].setTexture(&texcure);
             tileMap[i][j].setPosition(j * 32.f, i * 32.f);
-            windowIn.draw(tileMap[i][j]);
+            
+            tileMapRenderObject = new RenderObject();
+            tileMapRenderObject->drawable = &tileMap[i][j];
+            tileMapRenderObject->texcure = texture;
+            tileMapRenderObject->zOrder = 0;
+            tileMapRenderObject->layerId = 0;
+
+            renderStack->renderQueue.push_back(tileMapRenderObject);
+            //windowIn.draw(tileMap[i][j]);
         }
     }
 }

@@ -3,11 +3,11 @@
 #include "../ZenObject/ZenObject.h"
 #include <SFML/Graphics.hpp>
 
-void World::Initialize(string PlayerName, string PlayerTexcurePath)
+void World::Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed)
 {
 	map = new Map();
 
-	playerCharacter = new Character(PlayerName, PlayerTexcurePath);
+	playerCharacter = new Character(PlayerName, PlayerTexcurePath, PlayerMoveSpeed);
 
 	//And the rest of the objects of the world
 }
@@ -18,13 +18,18 @@ void World::MapInitialize(string pathToTexturesTxt, string pathToTileTxt)
 	map->LoadMap(pathToTileTxt);
 }
 
-void World::DrawMap(sf::RenderWindow& windowIn)
+void World::DrawMap(RenderingStack* renderStack)
 {
-	map->DrawMap(windowIn);
+	map->DrawMap(renderStack);
 }
 
 Character* World::GetPlayer()
 {
 	return playerCharacter;
+}
+
+void World::DrawPlayer(RenderingStack* renderStack)
+{
+	playerCharacter->DrawCharacter(renderStack);
 }
 

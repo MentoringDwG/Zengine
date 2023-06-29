@@ -3,9 +3,9 @@
 #include "World/World.h"
 #include "InputModule/InputProcessorModule.h"
 #include "InputModule/CharacterInputHandler.h"
+#include "Renderer/Renderer.h"
 
 Zengine* Zengine::Engine = nullptr;
-
 World world;
 
 Zengine* Zengine::CreateInstance()
@@ -20,21 +20,28 @@ void Zengine::Run()
 	engineRunning = true;
 
 	InputProcessor = new InputProcessorModule();
+	RenderModule = new Renderer();
+	renderStack = new RenderingStack();
 
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
+	ViewInitialize();
 
-	world.Initialize("Mario", "Graphics/Mario.png");
+	RenderModule->Initialize(window);
+
+	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
+	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
+
+	world.DrawPlayer(renderStack);
+	world.DrawMap(renderStack);
+	RenderModule->SortRenderStack(renderStack);
 
 	MainLoop();
 }
 
 void Zengine::ViewInitialize()
 {
-	Zengine::mainView.setSize(960, 544);
-	Zengine::mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
-
-	Zengine::playerView.setSize(960, 544);
-	Zengine::playerView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
+	mainView.setSize(960, 544);
+	mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
 }
 
 
@@ -43,14 +50,6 @@ void Zengine::MainLoop()
 	CharacterInputHandler inputHandler = world.GetPlayer()->GetInputHandler();
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&inputHandler));
 
-	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
-	ViewInitialize();
-
-	sf::RectangleShape player;
-	const sf::Texture texcure = world.GetPlayer()->GetTextureAsset().TextureSFML;
-	player.setSize(sf::Vector2f(32.0f, 64.0f));
-	player.setTexture(&texcure);
-
 	while (window->isOpen())
 	{
 		ProcessInput(window);
@@ -58,22 +57,16 @@ void Zengine::MainLoop()
 
 		//Render game elements
 		window->setView(mainView);
+		RenderModule->ProcessDrawingElements(renderStack);
 
-		world.DrawMap(*window);
-		//window->draw(player);
-
-		//render player 
-		window->setView(playerView);
 
 		//Draw UI
 		window->setView(window->getDefaultView());
 
 		window->display();
-
 	}
 
 	//ProcessGameLogic();
-	//Render();
 }
 
 void Zengine::ProcessInput(sf::RenderWindow* inWindow)
