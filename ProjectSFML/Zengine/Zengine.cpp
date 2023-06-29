@@ -16,6 +16,7 @@ Zengine* Zengine::CreateInstance()
 
 void Zengine::Run()
 {
+	//Próba pull request
 	// Inicjalizacja silnika
 	engineRunning = true;
 
