@@ -8,14 +8,36 @@ bool CharacterInputHandler::ProcessInput(sf::Event& event)
     {
         if (event.key.code == sf::Keyboard::A)
         {
-            owningCharacter->MoveLeft();
+			isMovingLeft = true;
         }
 
         if (event.key.code == sf::Keyboard::D)
         { 
-            owningCharacter->MoveRight();
+			isMovingRight = true;
         }
     }
+
+	if (event.type == sf::Event::KeyReleased)
+	{
+		if (event.key.code == sf::Keyboard::A)
+		{
+			isMovingLeft = false;
+		}
+
+		if (event.key.code == sf::Keyboard::D)
+		{
+			isMovingRight = false;
+		}
+	}
+
+	if (isMovingLeft)
+	{
+		owningCharacter->MoveLeft();
+	}
+	if (isMovingRight)
+	{
+		owningCharacter->MoveRight();
+	}
     return false;
 }
 

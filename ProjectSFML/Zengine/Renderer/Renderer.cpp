@@ -31,9 +31,6 @@ void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
 	for (int i = 0; i<renderStack->renderQueue.size(); ++i)
 	{		
 		sf::RectangleShape* rectangleShape = renderStack->renderQueue[i]->drawable;
-		sf::Texture texture = *renderStack->renderQueue[i]->texcure;
-
-		rectangleShape->setTexture(&texture);
 		window->draw(*rectangleShape);
 	}
 }

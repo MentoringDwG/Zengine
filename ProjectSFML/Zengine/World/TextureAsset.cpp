@@ -4,6 +4,7 @@
 
 using namespace std;
 
-
-
-
+sf::Texture* TextureAsset::GetTexture()
+{
+	return &TextureSFML;
+}

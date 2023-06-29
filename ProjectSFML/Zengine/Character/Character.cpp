@@ -1,5 +1,16 @@
 #include "Character.h"
 
+Character::Character(std::string name, string Path, float playerMoveSpeed)
+{
+	inputHandler.SetName(name);
+	inputHandler.SetOwningCharacter(this);
+	SetTextureAsset(Path, name);
+
+	moveSpeed = playerMoveSpeed;
+
+	character.setOrigin(sf::Vector2f(character.getSize().x / 2, character.getSize().y / 2));
+}
+
 //MOVEMENT
 void Character::MoveLeft()
 {
@@ -35,14 +46,15 @@ TextureAsset Character::GetTextureAsset()
 
 void Character::DrawCharacter(RenderingStack* renderStack)
 {
-	texture = new sf::Texture();
-	*texture = GetTextureAsset().TextureSFML;
+	sf::Texture* texture = nullptr;
+	texture = textureAsset->GetTexture();
+
 	character.setSize(sf::Vector2f(32.0f, 64.0f));
 	character.setPosition(sf::Vector2f(10.0f, 416.0f));
-	
+	character.setTexture(texture);
+
 	characterRenderObject = new RenderObject();
 	characterRenderObject->drawable = &character;
-	characterRenderObject->texcure = texture;
 	characterRenderObject->zOrder = 1000;
 	characterRenderObject->layerId = 1;
 

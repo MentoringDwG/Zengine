@@ -19,6 +19,7 @@ public:
 		TextureSFML.loadFromFile(TexturePath);
 	}
 	
+	sf::Texture* GetTexture();
 private:
 	string TextureName;
 	string TexturePath;

@@ -16,7 +16,6 @@ private:
 	string** tab;
 	sf::RectangleShape** tileMap;
 	int dimension1, dimension2;
-	RenderObject* tileMapRenderObject = nullptr;
-	sf::Texture* texture = nullptr;
+	RenderObject* tileMapRenderObject = nullptr;	
 };
 

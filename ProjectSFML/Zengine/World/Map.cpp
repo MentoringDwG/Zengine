@@ -75,19 +75,19 @@ void Map::DrawMap(RenderingStack* renderStack)
     {
         for (int j = 0; j < dimension2; j++)
         {
-            texture = new sf::Texture();
-            *texture = assetsManager.GetTextureAsset(tab[i][j]).TextureSFML;
+            TextureAsset* textureAsset = assetsManager.GetTextureAsset(tab[i][j]);
+            sf::Texture *texture = textureAsset->GetTexture();
+
+            tileMap[i][j].setTexture(texture);
             tileMap[i][j].setSize(sf::Vector2f(32.0f, 32.0f));
             tileMap[i][j].setPosition(j * 32.f, i * 32.f);
             
             tileMapRenderObject = new RenderObject();
             tileMapRenderObject->drawable = &tileMap[i][j];
-            tileMapRenderObject->texcure = texture;
             tileMapRenderObject->zOrder = 0;
             tileMapRenderObject->layerId = 0;
 
             renderStack->renderQueue.push_back(tileMapRenderObject);
-            //windowIn.draw(tileMap[i][j]);
         }
     }
 }

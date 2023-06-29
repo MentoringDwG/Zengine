@@ -21,4 +21,7 @@ public:
 private:
 	Character* owningCharacter;
 	string name;
+
+	bool isMovingRight;
+	bool isMovingLeft;
 };
