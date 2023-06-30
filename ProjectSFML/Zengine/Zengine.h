@@ -3,11 +3,11 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include "Renderer/Renderer.h"
+#include <sstream>
 
 class Zengine
 {
 public:
-
 	static Zengine* CreateInstance();
 	//static Zengine* GetInstance();
 	//IEngineModule GetModule();
@@ -30,5 +30,11 @@ private:
 	void ViewInitialize();
 	class Renderer* RenderModule = nullptr;
 	RenderingStack* renderStack = nullptr;
+
+	sf::Font font;
+	void FontInitialize();;
+	sf::Text fpsText;
+	std::stringstream fpsStringstream;
+	void UIInitialize();
 };
 

@@ -9,13 +9,15 @@
 Zengine* Zengine::Engine = nullptr;
 World world;
 
-
 // long operation to time
-long long fib(long long n) {
-	if (n < 2) {
+long long fib(long long n) 
+{
+	if (n < 2) 
+	{
 		return n;
 	}
-	else {
+	else 
+	{
 		return fib(n - 1) + fib(n - 2);
 	}
 }
@@ -36,16 +38,18 @@ void Zengine::Run()
 	renderStack = new RenderingStack();
 
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
+	
 	ViewInitialize();
-
 	RenderModule->Initialize(window);
-
 	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
+	FontInitialize();
 
 	world.DrawPlayer(renderStack);
 	world.DrawMap(renderStack);
 	RenderModule->SortRenderStack(renderStack);
+
+	UIInitialize();
 
 	MainLoop();
 }
@@ -56,14 +60,31 @@ void Zengine::ViewInitialize()
 	mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
 }
 
+void Zengine::FontInitialize()
+{
+	font.loadFromFile("Fonts/Super_Mario_Bros_/SuperMarioBros.ttf");
+}
+
+void Zengine::UIInitialize()
+{
+	fpsText.setFont(font);
+	fpsText.setPosition(0, 0);
+	fpsText.setFillColor(sf::Color::White);
+	fpsText.setCharacterSize(20);
+}
+
 void Zengine::MainLoop()
 {
 	CharacterInputHandler inputHandler = world.GetPlayer()->GetInputHandler();
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&inputHandler));
 
+	window->setFramerateLimit(60);
+
 	auto start_time = std::chrono::high_resolution_clock::now();
 	auto end_time = std::chrono::high_resolution_clock::now();
 	auto time = end_time - start_time;
+	int frameTme = 1;
+	float fps = 60;
 
 	while (window->isOpen())
 	{
@@ -77,20 +98,24 @@ void Zengine::MainLoop()
 
 		//Draw UI
 		window->setView(window->getDefaultView());
+		window->draw(fpsText);
 
 		window->display();
 
 		end_time = std::chrono::high_resolution_clock::now();
 		time = end_time - start_time;
 
-		int frameTme = time / std::chrono::milliseconds(1);
+		frameTme = time / std::chrono::milliseconds(1);
 		if (frameTme == 0)
 		{
 			frameTme = 1;
 		}
 
-		float fps = 1000 / frameTme;
-		std::cout << "Frame took:" << frameTme << "ms. FPS = " << fps << "\n";
+		fps = 1000 / frameTme;
+
+		fpsStringstream.str(std::string());
+		fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
+		fpsText.setString(fpsStringstream.str());
 	}
 
 	//ProcessGameLogic();
