@@ -1,9 +1,7 @@
-﻿  Zengine.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(108,19): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(114,14): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
+﻿  CharacterInputHandler.cpp
   Trwa generowanie kodu
-  1 of 496 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  0 of 586 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\ProjectSFML.exe

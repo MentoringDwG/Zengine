@@ -14,20 +14,26 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 //MOVEMENT
 void Character::MoveLeft()
 {
-	cout <<Character::inputHandler.GetName() <<" Move Left" << endl;
-
 	character.setScale(sf::Vector2f(-1.0f, 1.0f));
 	character.move(sf::Vector2f(-1.0f * moveSpeed, 0.0f));
-
 }
 
 void Character::MoveRight()
 {
-	cout << Character::inputHandler.GetName() << " Move Right" << endl;
-
 	character.setScale(sf::Vector2f(1.0f, 1.0f));
 	character.move(sf::Vector2f(1.0f * moveSpeed, 0.0f));
 }
+
+void Character::MoveUp()
+{
+	character.move(sf::Vector2f(0.0f, -1.0f * moveSpeed));
+}
+
+void Character::MoveDown()
+{
+	character.move(sf::Vector2f(0.0f, 1.0f * moveSpeed));
+}
+
 
 CharacterInputHandler Character::GetInputHandler()
 {

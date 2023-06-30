@@ -10,6 +10,8 @@ class Character : public MovableObject
 public:
 	virtual void MoveLeft() override;
 	virtual void MoveRight() override;
+	virtual void MoveUp() override;
+	virtual void MoveDown() override;
 
 	Character(std::string name, string Path, float playerMoveSpeed);
 

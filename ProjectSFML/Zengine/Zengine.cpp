@@ -41,7 +41,7 @@ void Zengine::Run()
 	
 	ViewInitialize();
 	RenderModule->Initialize(window);
-	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
+	world.Initialize("Mario", "Graphics/Mario.png", 0.1f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
 	FontInitialize();
 

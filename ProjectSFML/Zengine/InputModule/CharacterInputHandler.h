@@ -2,6 +2,7 @@
 #include "InputHandler.h"
 #include <SFML/Window/Event.hpp>
 #include <iostream>
+#include <list>
 
 using namespace std;
 
@@ -22,6 +23,7 @@ private:
 	Character* owningCharacter;
 	string name;
 
-	bool isMovingRight;
-	bool isMovingLeft;
+	enum MovingStates;
+	MovingStates movingStates;
+	list<MovingStates> movingStatesList;
 };
