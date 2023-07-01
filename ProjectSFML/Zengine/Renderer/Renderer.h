@@ -27,6 +27,6 @@ public:
 	virtual void UnInitialize() override {}
 
 private:
-	sf::RenderWindow* window;
+	sf::RenderWindow* window=nullptr;
 };
 

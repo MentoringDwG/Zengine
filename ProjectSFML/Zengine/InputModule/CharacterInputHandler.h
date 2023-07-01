@@ -26,4 +26,7 @@ private:
 	enum MovingStates;
 	MovingStates movingStates;
 	list<MovingStates> movingStatesList;
+	list <MovingStates>::iterator itr;
+	void CheckAndAddMovingState(MovingStates state);
+	void CallingTheMovementFunction();
 };

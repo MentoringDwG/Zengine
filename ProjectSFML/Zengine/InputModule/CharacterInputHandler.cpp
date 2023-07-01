@@ -13,27 +13,27 @@ enum CharacterInputHandler::MovingStates
 
 bool CharacterInputHandler::ProcessInput(sf::Event& event)
 {
-    // Tutaj mozemy zaimplementowaæ nasz input dla gracza.
+    //Update List states
     if (event.type == sf::Event::KeyPressed)
     {
         if (event.key.code == sf::Keyboard::A)
         {
-			movingStatesList.push_back(movingLeft);
+			CheckAndAddMovingState(movingLeft);
         }
 
         if (event.key.code == sf::Keyboard::D)
         { 
-			movingStatesList.push_back(movingRight);
+			CheckAndAddMovingState(movingRight);
         }
 
 		if (event.key.code == sf::Keyboard::W)
 		{
-			movingStatesList.push_back(movingUp);
+			CheckAndAddMovingState(movingUp);
 		}
 
 		if (event.key.code == sf::Keyboard::S)
 		{
-			movingStatesList.push_back(movingDown);
+			CheckAndAddMovingState(movingDown);
 		}
     }
 
@@ -60,9 +60,32 @@ bool CharacterInputHandler::ProcessInput(sf::Event& event)
 		}
 	}
 
-	list <MovingStates>::iterator itr;
-	itr = movingStatesList.begin();
+	CallingTheMovementFunction();
 
+    return false;
+}
+
+void CharacterInputHandler::CheckAndAddMovingState(MovingStates state)
+{
+	bool canmove = true;
+	itr = movingStatesList.begin();
+	for (itr; itr != movingStatesList.end(); itr++)
+	{
+		if (*itr == state)
+		{
+			canmove = false;
+		}
+	}
+
+	if (canmove)
+	{
+		movingStatesList.push_back(state);
+	}
+}
+
+void CharacterInputHandler::CallingTheMovementFunction()
+{
+	itr = movingStatesList.begin();
 	for (itr; itr != movingStatesList.end(); itr++)
 	{
 		if (*itr == movingLeft)
@@ -81,14 +104,9 @@ bool CharacterInputHandler::ProcessInput(sf::Event& event)
 		{
 			owningCharacter->MoveDown();
 		}
-		else
-		{
-			continue;
-		}
 	}
-
-    return false;
 }
+
 
 bool CharacterInputHandler::CanConsumeInput()
 {

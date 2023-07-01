@@ -41,7 +41,7 @@ void Zengine::Run()
 	
 	ViewInitialize();
 	RenderModule->Initialize(window);
-	world.Initialize("Mario", "Graphics/Mario.png", 0.1f);
+	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
 	FontInitialize();
 
@@ -126,7 +126,6 @@ void Zengine::ProcessInput(sf::RenderWindow* inWindow)
 	sf::Event event;
 	while (inWindow->pollEvent(event))
 	{
-		cout << "Pooling input event..." << endl;
 		if (event.type == sf::Event::Closed)
 		{
 			inWindow->close();

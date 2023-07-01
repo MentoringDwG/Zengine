@@ -56,7 +56,7 @@ void Character::DrawCharacter(RenderingStack* renderStack)
 	texture = textureAsset->GetTexture();
 
 	character.setSize(sf::Vector2f(32.0f, 64.0f));
-	character.setPosition(sf::Vector2f(10.0f, 416.0f));
+	character.setPosition(sf::Vector2f(200.0f, 416.0f));
 	character.setTexture(texture);
 
 	characterRenderObject = new RenderObject();
