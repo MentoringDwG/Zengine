@@ -13,7 +13,14 @@ struct RenderObject
 
 struct RenderingStack
 {
+public:
 	std::vector<RenderObject*> renderQueue;
+	void DivisionOfObjectsIntoLayersByLayerId();
+
+private:
+	std::vector<RenderObject*> renderQueueLayer0;
+	std::vector<RenderObject*> renderQueueLayer1;
+	std::vector<RenderObject*> renderQueueLayer2;
 };
 
 class Renderer : IEngineModule

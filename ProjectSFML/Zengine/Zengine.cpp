@@ -47,6 +47,7 @@ void Zengine::Run()
 
 	world.DrawPlayer(renderStack);
 	world.DrawMap(renderStack);
+	renderStack->DivisionOfObjectsIntoLayersByLayerId();
 	RenderModule->SortRenderStack(renderStack);
 
 	UIInitialize();

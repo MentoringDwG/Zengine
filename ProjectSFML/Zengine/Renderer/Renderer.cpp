@@ -6,6 +6,40 @@ void Renderer::Initialize(sf::RenderWindow* inWindow)
 	window = inWindow;
 }
 
+void RenderingStack::DivisionOfObjectsIntoLayersByLayerId()
+{
+	renderQueueLayer0.clear();
+	renderQueueLayer1.clear();
+	renderQueueLayer2.clear();
+
+	for (int i = 0; i < renderQueue.size(); i++)
+	{
+		switch (renderQueue[i]->layerId)
+		{
+		case 0:
+		{
+			renderQueueLayer0.push_back(renderQueue[i]);
+			break;
+		}
+		case 1:
+		{
+			renderQueueLayer1.push_back(renderQueue[i]);
+			break;
+		}
+		case 2:
+		{
+			renderQueueLayer2.push_back(renderQueue[i]);
+			break;
+		}
+		default:
+		{
+			renderQueueLayer0.push_back(renderQueue[i]);
+			break;
+		}
+		}
+	}
+}
+
 void Renderer::SortRenderStack(RenderingStack* renderStack)
 {
 	int k;
