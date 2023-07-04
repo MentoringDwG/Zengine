@@ -20,13 +20,14 @@ public:
 	std::vector<RenderObject*> GetRenderQueueLayer1();
 	std::vector<RenderObject*> GetRenderQueueLayer2();
 
+	std::vector<RenderObject*> renderQueueLayer1;
+
 	void SetRenderQueueLayer0(std::vector<RenderObject*> sortedLayer);
 	void SetRenderQueueLayer1(std::vector<RenderObject*> sortedLayer);
 	void SetRenderQueueLayer2(std::vector<RenderObject*> sortedLayer);
 
 private:
 	std::vector<RenderObject*> renderQueueLayer0;
-	std::vector<RenderObject*> renderQueueLayer1;
 	std::vector<RenderObject*> renderQueueLayer2;
 };
 
@@ -43,5 +44,6 @@ public:
 private:
 	sf::RenderWindow* window=nullptr;
 	void SortLayer(std::vector<RenderObject*> &layer);
+	void DrawLayer(std::vector<RenderObject*> &layer);
 };
 

@@ -82,6 +82,18 @@ void Zengine::MainLoop()
 	int frameTme = 1;
 	float fps = 60;
 
+	sf::RectangleShape character;
+	sf::Texture* texture=nullptr;
+	texture->loadFromFile("Graphics / Mario.png");
+	character.setTexture(texture);
+	character.setSize(sf::Vector2f(32.0f, 64.0f));
+
+	RenderObject* characterRenderObject=new RenderObject();
+	characterRenderObject->drawable = &character;
+	characterRenderObject->zOrder = 10;
+	characterRenderObject->layerId = 1;
+
+
 	while (window->isOpen())
 	{
 		start_time = std::chrono::high_resolution_clock::now();
@@ -91,6 +103,7 @@ void Zengine::MainLoop()
 		world.DrawPlayer(renderStack);
 		world.DrawMap(renderStack);
 		renderStack->DivisionOfObjectsIntoLayersByLayerId();
+		renderStack->renderQueueLayer1.push_back(characterRenderObject);
 		RenderModule->SortRenderLayers(renderStack);
 
 		//Render game elements
@@ -115,8 +128,7 @@ void Zengine::MainLoop()
 		fps = 1000 / frameTme;
 
 		fpsStringstream.str(std::string());
-		//fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
-		fpsStringstream << renderStack->GetRenderQueueLayer0().size();
+		fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
 		fpsText.setString(fpsStringstream.str());
 	}
 

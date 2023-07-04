@@ -1,6 +1,8 @@
 #include "Renderer.h"
 #include <SFML/Graphics.hpp>
 
+#pragma optimize("", off)
+
 void Renderer::Initialize(sf::RenderWindow* inWindow)
 {
 	window = inWindow;
@@ -89,6 +91,11 @@ void Renderer::SortRenderLayers(RenderingStack* renderStack)
 
 void Renderer::SortLayer(std::vector<RenderObject*> &layer)
 {
+	if (layer.size() < 2)
+	{
+		return;
+	}
+
 	int k;
 	RenderObject* pom;
 	for (int i = 0; i < layer.size(); ++i)
@@ -109,9 +116,25 @@ void Renderer::SortLayer(std::vector<RenderObject*> &layer)
 
 void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
 {
-	for (int i = 0; i<renderStack->renderQueue.size(); ++i)
-	{		
-		sf::RectangleShape* rectangleShape = renderStack->GetRenderQueueLayer0()[i]->drawable;
+	std::vector<RenderObject*> layer;
+
+	layer = renderStack->GetRenderQueueLayer0();
+	DrawLayer(layer);
+
+	layer = renderStack->GetRenderQueueLayer1();
+	DrawLayer(layer);
+
+	layer = renderStack->GetRenderQueueLayer2();
+	DrawLayer(layer);
+}
+
+void Renderer::DrawLayer(std::vector<RenderObject*>& layer)
+{
+	for (int i = 0; i < layer.size(); ++i)
+	{
+		sf::RectangleShape* rectangleShape = layer[i]->drawable;
 		window->draw(*rectangleShape);
 	}
 }
+
+#pragma optimize("", off)

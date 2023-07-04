@@ -61,7 +61,7 @@ void Character::DrawCharacter(RenderingStack* renderStack)
 
 	characterRenderObject->drawable = &character;
 	characterRenderObject->zOrder = 1000;
-	characterRenderObject->layerId = 0;
+	characterRenderObject->layerId =1;
 
 	renderStack->renderQueue.push_back(characterRenderObject);
 }
