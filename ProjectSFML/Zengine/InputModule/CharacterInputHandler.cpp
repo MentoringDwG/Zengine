@@ -13,18 +13,27 @@ enum CharacterInputHandler::MovingStates
 
 bool CharacterInputHandler::ProcessInput(sf::Event& event)
 {
-    //Update List states
-    if (event.type == sf::Event::KeyPressed)
-    {
-        if (event.key.code == sf::Keyboard::A)
-        {
-			CheckAndAddMovingState(movingLeft);
-        }
+	KeyPressed(event);
+	KeyReleased(event);
 
-        if (event.key.code == sf::Keyboard::D)
-        { 
+	CallingTheMovementFunction();
+
+    return false;
+}
+
+void CharacterInputHandler::KeyPressed(sf::Event& event)
+{
+	if (event.type == sf::Event::KeyPressed)
+	{
+		if (event.key.code == sf::Keyboard::A)
+		{
+			CheckAndAddMovingState(movingLeft);
+		}
+
+		if (event.key.code == sf::Keyboard::D)
+		{
 			CheckAndAddMovingState(movingRight);
-        }
+		}
 
 		if (event.key.code == sf::Keyboard::W)
 		{
@@ -35,8 +44,29 @@ bool CharacterInputHandler::ProcessInput(sf::Event& event)
 		{
 			CheckAndAddMovingState(movingDown);
 		}
-    }
+	}
+}
 
+void CharacterInputHandler::CheckAndAddMovingState(MovingStates state)
+{
+	bool canmove = true;
+	itr = movingStatesList.begin();
+	for (itr; itr != movingStatesList.end(); itr++)
+	{
+		if (*itr == state)
+		{
+			canmove = false;
+		}
+	}
+
+	if (canmove)
+	{
+		movingStatesList.push_back(state);
+	}
+}
+
+void CharacterInputHandler::KeyReleased(sf::Event& event)
+{
 	if (event.type == sf::Event::KeyReleased)
 	{
 		if (event.key.code == sf::Keyboard::A)
@@ -58,28 +88,6 @@ bool CharacterInputHandler::ProcessInput(sf::Event& event)
 		{
 			movingStatesList.remove(movingDown);
 		}
-	}
-
-	CallingTheMovementFunction();
-
-    return false;
-}
-
-void CharacterInputHandler::CheckAndAddMovingState(MovingStates state)
-{
-	bool canmove = true;
-	itr = movingStatesList.begin();
-	for (itr; itr != movingStatesList.end(); itr++)
-	{
-		if (*itr == state)
-		{
-			canmove = false;
-		}
-	}
-
-	if (canmove)
-	{
-		movingStatesList.push_back(state);
 	}
 }
 
