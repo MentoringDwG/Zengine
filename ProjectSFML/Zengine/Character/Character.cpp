@@ -8,6 +8,7 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 
 	moveSpeed = playerMoveSpeed;
 
+	character.setPosition(sf::Vector2f(200.0f, 416.0f));
 	character.setOrigin(sf::Vector2f(character.getSize().x / 2, character.getSize().y / 2));
 }
 
@@ -56,10 +57,8 @@ void Character::DrawCharacter(RenderingStack* renderStack)
 	texture = textureAsset->GetTexture();
 
 	character.setSize(sf::Vector2f(32.0f, 64.0f));
-	character.setPosition(sf::Vector2f(200.0f, 416.0f));
 	character.setTexture(texture);
 
-	characterRenderObject = new RenderObject();
 	characterRenderObject->drawable = &character;
 	characterRenderObject->zOrder = 1000;
 	characterRenderObject->layerId = 1;

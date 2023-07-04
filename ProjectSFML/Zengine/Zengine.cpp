@@ -45,11 +45,6 @@ void Zengine::Run()
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
 	FontInitialize();
 
-	world.DrawPlayer(renderStack);
-	world.DrawMap(renderStack);
-	renderStack->DivisionOfObjectsIntoLayersByLayerId();
-	RenderModule->SortRenderStack(renderStack);
-
 	UIInitialize();
 
 	MainLoop();
@@ -92,6 +87,11 @@ void Zengine::MainLoop()
 		start_time = std::chrono::high_resolution_clock::now();
 		ProcessInput(window);
 		window->clear();
+		renderStack->renderQueue.clear();
+		world.DrawPlayer(renderStack);
+		world.DrawMap(renderStack);
+		renderStack->DivisionOfObjectsIntoLayersByLayerId();
+		RenderModule->SortRenderStack(renderStack);
 
 		//Render game elements
 		window->setView(mainView);

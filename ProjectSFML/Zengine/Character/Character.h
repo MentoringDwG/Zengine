@@ -27,7 +27,7 @@ private:
 	//Renderer
 	TextureAsset* textureAsset;
 	sf::RectangleShape character;
-	RenderObject* characterRenderObject=nullptr;
+	RenderObject* characterRenderObject= new RenderObject();
 
 	//movement
 	float moveSpeed;

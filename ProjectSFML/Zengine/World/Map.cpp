@@ -32,8 +32,10 @@ void Map::LoadMap(string pathToTileTxt)
     for (int i = 0; i < dimension1; i++)
     {
         delete [] tab[i];
+        delete[] tileMap[i];
     }
     delete [] tab;
+    delete[] tileMap;
 
     ifstream file;
     file.open(pathToTileTxt);
