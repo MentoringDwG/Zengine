@@ -91,7 +91,7 @@ void Zengine::MainLoop()
 		world.DrawPlayer(renderStack);
 		world.DrawMap(renderStack);
 		renderStack->DivisionOfObjectsIntoLayersByLayerId();
-		RenderModule->SortRenderStack(renderStack);
+		RenderModule->SortRenderLayers(renderStack);
 
 		//Render game elements
 		window->setView(mainView);
@@ -115,7 +115,8 @@ void Zengine::MainLoop()
 		fps = 1000 / frameTme;
 
 		fpsStringstream.str(std::string());
-		fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
+		//fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
+		fpsStringstream << renderStack->GetRenderQueueLayer0().size();
 		fpsText.setString(fpsStringstream.str());
 	}
 

@@ -40,23 +40,70 @@ void RenderingStack::DivisionOfObjectsIntoLayersByLayerId()
 	}
 }
 
-void Renderer::SortRenderStack(RenderingStack* renderStack)
+std::vector<RenderObject*> RenderingStack::GetRenderQueueLayer0()
+{
+	return renderQueueLayer0;
+}
+
+std::vector<RenderObject*> RenderingStack::GetRenderQueueLayer1()
+{
+	return renderQueueLayer1;
+}
+
+std::vector<RenderObject*> RenderingStack::GetRenderQueueLayer2()
+{
+	return renderQueueLayer2;
+}
+
+void RenderingStack::SetRenderQueueLayer0(std::vector<RenderObject*> sortedLayer)
+{
+	renderQueueLayer0 = sortedLayer;
+}
+
+void RenderingStack::SetRenderQueueLayer1(std::vector<RenderObject*> sortedLayer)
+{
+	renderQueueLayer1 = sortedLayer;
+}
+
+void RenderingStack::SetRenderQueueLayer2(std::vector<RenderObject*> sortedLayer)
+{
+	renderQueueLayer2 = sortedLayer;
+}
+
+void Renderer::SortRenderLayers(RenderingStack* renderStack)
+{
+	std::vector<RenderObject*> layer;
+
+	layer = renderStack->GetRenderQueueLayer0();
+	SortLayer(layer);
+	renderStack->SetRenderQueueLayer0(layer);
+
+	layer = renderStack->GetRenderQueueLayer1();
+	SortLayer(layer);
+	renderStack->SetRenderQueueLayer1(layer);
+
+	layer = renderStack->GetRenderQueueLayer2();
+	SortLayer(layer);
+	renderStack->SetRenderQueueLayer2(layer);
+}
+
+void Renderer::SortLayer(std::vector<RenderObject*> &layer)
 {
 	int k;
 	RenderObject* pom;
-	for (int i = 0; i < renderStack->renderQueue.size(); ++i)
+	for (int i = 0; i < layer.size(); ++i)
 	{
 		k = 1;
-		for (int j = i + 1; j < renderStack->renderQueue.size(); j++)
+		for (int j = i + 1; j < layer.size(); j++)
 		{
-			if (renderStack->renderQueue[j]->zOrder < renderStack->renderQueue[k]->zOrder)
+			if (layer[j]->zOrder < layer[k]->zOrder)
 			{
 				k = j;
 			}
 		}
-		pom = renderStack->renderQueue[k];
-		renderStack->renderQueue[k] = renderStack->renderQueue[i];
-		renderStack->renderQueue[i] = pom;
+		pom = layer[k];
+		layer[k] = layer[i];
+		layer[i] = pom;
 	}
 }
 
@@ -64,7 +111,7 @@ void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
 {
 	for (int i = 0; i<renderStack->renderQueue.size(); ++i)
 	{		
-		sf::RectangleShape* rectangleShape = renderStack->renderQueue[i]->drawable;
+		sf::RectangleShape* rectangleShape = renderStack->GetRenderQueueLayer0()[i]->drawable;
 		window->draw(*rectangleShape);
 	}
 }
