@@ -11,7 +11,6 @@ class Character;
 class CharacterInputHandler : public InputHandler
 {
 public:
-	// Inherited via InputHandler
 	virtual bool ProcessInput(sf::Event& event) override;
 	virtual bool CanConsumeInput() override;
 

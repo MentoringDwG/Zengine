@@ -7,27 +7,22 @@ struct RenderObject
 {
 	sf::RectangleShape* drawable;
 	int zOrder = 0;
-	// Do przekminienia przez ¯anetê jak zrobiæ dalej - layerowanie. :)
 	int layerId = 0;
 };
 
 struct RenderingStack
 {
 public:
+	void Clear();
 	std::vector<RenderObject*> renderQueue;
 	void DivisionOfObjectsIntoLayersByLayerId();
-	std::vector<RenderObject*> GetRenderQueueLayer0();
-	std::vector<RenderObject*> GetRenderQueueLayer1();
-	std::vector<RenderObject*> GetRenderQueueLayer2();
-
-	std::vector<RenderObject*> renderQueueLayer1;
-
-	void SetRenderQueueLayer0(std::vector<RenderObject*> sortedLayer);
-	void SetRenderQueueLayer1(std::vector<RenderObject*> sortedLayer);
-	void SetRenderQueueLayer2(std::vector<RenderObject*> sortedLayer);
+	std::vector<RenderObject*>* GetRenderQueueLayer0();
+	std::vector<RenderObject*>* GetRenderQueueLayer1();
+	std::vector<RenderObject*>* GetRenderQueueLayer2();
 
 private:
 	std::vector<RenderObject*> renderQueueLayer0;
+	std::vector<RenderObject*> renderQueueLayer1;
 	std::vector<RenderObject*> renderQueueLayer2;
 };
 

@@ -18,9 +18,9 @@ void World::MapInitialize(string pathToTexturesTxt, string pathToTileTxt)
 	map->LoadMap(pathToTileTxt);
 }
 
-void World::DrawMap(RenderingStack* renderStack)
+void World::AddMapToRenderStack(RenderingStack* renderStack)
 {
-	map->DrawMap(renderStack);
+	map->AddMapToRenderStack(renderStack);
 }
 
 Character* World::GetPlayer()
@@ -28,8 +28,8 @@ Character* World::GetPlayer()
 	return playerCharacter;
 }
 
-void World::DrawPlayer(RenderingStack* renderStack)
+void World::AddCharacterToRenderStack(RenderingStack* renderStack)
 {
-	playerCharacter->DrawCharacter(renderStack);
+	playerCharacter->AddCharacterToRenderStack(renderStack);
 }
 

@@ -51,7 +51,7 @@ TextureAsset Character::GetTextureAsset()
 	return *textureAsset;
 }
 
-void Character::DrawCharacter(RenderingStack* renderStack)
+void Character::AddCharacterToRenderStack(RenderingStack* renderStack)
 {
 	sf::Texture* texture = nullptr;
 	texture = textureAsset->GetTexture();
@@ -59,6 +59,7 @@ void Character::DrawCharacter(RenderingStack* renderStack)
 	character.setSize(sf::Vector2f(32.0f, 64.0f));
 	character.setTexture(texture);
 
+	characterRenderObject = new RenderObject();
 	characterRenderObject->drawable = &character;
 	characterRenderObject->zOrder = 1000;
 	characterRenderObject->layerId =1;

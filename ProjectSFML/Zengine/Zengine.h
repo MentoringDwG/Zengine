@@ -9,8 +9,6 @@ class Zengine
 {
 public:
 	static Zengine* CreateInstance();
-	//static Zengine* GetInstance();
-	//IEngineModule GetModule();
 
 	void Run();
 	void MainLoop();
@@ -30,6 +28,7 @@ private:
 	void ViewInitialize();
 	class Renderer* RenderModule = nullptr;
 	RenderingStack* renderStack = nullptr;
+	void RenderingStackInitialize();
 
 	sf::Font font;
 	void FontInitialize();;

@@ -28,51 +28,64 @@ void Map::TextureInitialization(string pathToTexturesTxt)
 
 void Map::LoadMap(string pathToTileTxt)
 {
-    //Memory release
-    for (int i = 0; i < dimension1; i++)
-    {
-        delete [] tab[i];
-        delete[] tileMap[i];
-    }
-    delete [] tab;
-    delete[] tileMap;
+    MemoryReleaseForLoadMap();
 
     ifstream file;
     file.open(pathToTileTxt);
-
-    //Downloading dimensions from a file and creating a two-dimensional dynamic array
     file >> dimension1;
     file >> dimension2;
 
+    CreatingTwoDimensionalDynamicArray();
+
+    LoadingTextureNumberIntoDynamicArray(&file);
+
+    CreatingDynamicTileMap();
+
+    file.close();
+}
+
+void Map::MemoryReleaseForLoadMap()
+{
+    for (int i = 0; i < dimension1; i++)
+    {
+        delete[] tab[i];
+        delete[] tileMap[i];
+    }
+    delete[] tab;
+    delete[] tileMap;
+}
+
+void Map::CreatingTwoDimensionalDynamicArray()
+{
     tab = new string * [dimension1];
     for (int i = 0; i < dimension1; i++)
     {
         tab[i] = new string[dimension2];
     }
+}
 
-    //Loading the texture number needed for the tilemap into a two-dimensional dynamic array
+void Map::LoadingTextureNumberIntoDynamicArray(ifstream* file)
+{
     for (int i = 0; i < dimension1; i++)
     {
         for (int j = 0; j < dimension2; j++)
         {
-            file >>tab[i][j];
+            *file >> tab[i][j];
         }
     }
+}
 
-    //Creating a dynamic tile map
+void Map::CreatingDynamicTileMap()
+{
     tileMap = new sf::RectangleShape * [dimension1];
     for (int i = 0; i < dimension1; i++)
     {
         tileMap[i] = new sf::RectangleShape[dimension2];
     }
-
-    file.close();
 }
 
-void Map::DrawMap(RenderingStack* renderStack)
+void Map::AddMapToRenderStack(RenderingStack* renderStack)
 {
-    //Filling and drawing a dynamic tilemap
-
     for (int i = 0; i < dimension1; i++)
     {
         for (int j = 0; j < dimension2; j++)

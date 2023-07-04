@@ -38,13 +38,15 @@ void Zengine::Run()
 	renderStack = new RenderingStack();
 
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
-	
+	window->setFramerateLimit(60);
 	ViewInitialize();
+
 	RenderModule->Initialize(window);
 	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
-	FontInitialize();
+	RenderingStackInitialize();
 
+	FontInitialize();
 	UIInitialize();
 
 	MainLoop();
@@ -54,6 +56,14 @@ void Zengine::ViewInitialize()
 {
 	mainView.setSize(960, 544);
 	mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
+}
+
+void Zengine::RenderingStackInitialize()
+{
+	world.AddCharacterToRenderStack(renderStack);
+	world.AddMapToRenderStack(renderStack);
+	renderStack->DivisionOfObjectsIntoLayersByLayerId();
+	RenderModule->SortRenderLayers(renderStack);
 }
 
 void Zengine::FontInitialize()
@@ -74,37 +84,19 @@ void Zengine::MainLoop()
 	CharacterInputHandler inputHandler = world.GetPlayer()->GetInputHandler();
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&inputHandler));
 
-	window->setFramerateLimit(60);
-
 	auto start_time = std::chrono::high_resolution_clock::now();
 	auto end_time = std::chrono::high_resolution_clock::now();
 	auto time = end_time - start_time;
 	int frameTme = 1;
 	float fps = 60;
 
-	sf::RectangleShape character;
-	sf::Texture* texture=nullptr;
-	texture->loadFromFile("Graphics / Mario.png");
-	character.setTexture(texture);
-	character.setSize(sf::Vector2f(32.0f, 64.0f));
-
-	RenderObject* characterRenderObject=new RenderObject();
-	characterRenderObject->drawable = &character;
-	characterRenderObject->zOrder = 10;
-	characterRenderObject->layerId = 1;
-
-
 	while (window->isOpen())
 	{
 		start_time = std::chrono::high_resolution_clock::now();
+
 		ProcessInput(window);
+
 		window->clear();
-		renderStack->renderQueue.clear();
-		world.DrawPlayer(renderStack);
-		world.DrawMap(renderStack);
-		renderStack->DivisionOfObjectsIntoLayersByLayerId();
-		renderStack->renderQueueLayer1.push_back(characterRenderObject);
-		RenderModule->SortRenderLayers(renderStack);
 
 		//Render game elements
 		window->setView(mainView);

@@ -49,17 +49,17 @@ void CharacterInputHandler::KeyPressed(sf::Event& event)
 
 void CharacterInputHandler::CheckAndAddMovingState(MovingStates state)
 {
-	bool canmove = true;
+	bool canAddState = true;
 	itr = movingStatesList.begin();
 	for (itr; itr != movingStatesList.end(); itr++)
 	{
 		if (*itr == state)
 		{
-			canmove = false;
+			canAddState = false;
 		}
 	}
 
-	if (canmove)
+	if (canAddState)
 	{
 		movingStatesList.push_back(state);
 	}

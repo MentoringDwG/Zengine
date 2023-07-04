@@ -1,19 +1,22 @@
 #include "Renderer.h"
 #include <SFML/Graphics.hpp>
 
-#pragma optimize("", off)
 
 void Renderer::Initialize(sf::RenderWindow* inWindow)
 {
 	window = inWindow;
 }
 
-void RenderingStack::DivisionOfObjectsIntoLayersByLayerId()
+void RenderingStack::Clear()
 {
+	renderQueue.clear();
 	renderQueueLayer0.clear();
 	renderQueueLayer1.clear();
 	renderQueueLayer2.clear();
+}
 
+void RenderingStack::DivisionOfObjectsIntoLayersByLayerId()
+{
 	for (int i = 0; i < renderQueue.size(); i++)
 	{
 		switch (renderQueue[i]->layerId)
@@ -42,51 +45,30 @@ void RenderingStack::DivisionOfObjectsIntoLayersByLayerId()
 	}
 }
 
-std::vector<RenderObject*> RenderingStack::GetRenderQueueLayer0()
+//RenderingStack getters 
+std::vector<RenderObject*>* RenderingStack::GetRenderQueueLayer0()
 {
-	return renderQueueLayer0;
+	return &renderQueueLayer0;
 }
 
-std::vector<RenderObject*> RenderingStack::GetRenderQueueLayer1()
+std::vector<RenderObject*>* RenderingStack::GetRenderQueueLayer1()
 {
-	return renderQueueLayer1;
+	return &renderQueueLayer1;
 }
 
-std::vector<RenderObject*> RenderingStack::GetRenderQueueLayer2()
+std::vector<RenderObject*>* RenderingStack::GetRenderQueueLayer2()
 {
-	return renderQueueLayer2;
-}
-
-void RenderingStack::SetRenderQueueLayer0(std::vector<RenderObject*> sortedLayer)
-{
-	renderQueueLayer0 = sortedLayer;
-}
-
-void RenderingStack::SetRenderQueueLayer1(std::vector<RenderObject*> sortedLayer)
-{
-	renderQueueLayer1 = sortedLayer;
-}
-
-void RenderingStack::SetRenderQueueLayer2(std::vector<RenderObject*> sortedLayer)
-{
-	renderQueueLayer2 = sortedLayer;
+	return &renderQueueLayer2;
 }
 
 void Renderer::SortRenderLayers(RenderingStack* renderStack)
 {
-	std::vector<RenderObject*> layer;
+	SortLayer(*renderStack->GetRenderQueueLayer0());
 
-	layer = renderStack->GetRenderQueueLayer0();
-	SortLayer(layer);
-	renderStack->SetRenderQueueLayer0(layer);
+	SortLayer(*renderStack->GetRenderQueueLayer1());
 
-	layer = renderStack->GetRenderQueueLayer1();
-	SortLayer(layer);
-	renderStack->SetRenderQueueLayer1(layer);
+	SortLayer(*renderStack->GetRenderQueueLayer2());
 
-	layer = renderStack->GetRenderQueueLayer2();
-	SortLayer(layer);
-	renderStack->SetRenderQueueLayer2(layer);
 }
 
 void Renderer::SortLayer(std::vector<RenderObject*> &layer)
@@ -116,16 +98,11 @@ void Renderer::SortLayer(std::vector<RenderObject*> &layer)
 
 void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
 {
-	std::vector<RenderObject*> layer;
+	DrawLayer(*renderStack->GetRenderQueueLayer0());
 
-	layer = renderStack->GetRenderQueueLayer0();
-	DrawLayer(layer);
+	DrawLayer(*renderStack->GetRenderQueueLayer1());
 
-	layer = renderStack->GetRenderQueueLayer1();
-	DrawLayer(layer);
-
-	layer = renderStack->GetRenderQueueLayer2();
-	DrawLayer(layer);
+	DrawLayer(*renderStack->GetRenderQueueLayer2());
 }
 
 void Renderer::DrawLayer(std::vector<RenderObject*>& layer)
@@ -136,5 +113,3 @@ void Renderer::DrawLayer(std::vector<RenderObject*>& layer)
 		window->draw(*rectangleShape);
 	}
 }
-
-#pragma optimize("", off)
