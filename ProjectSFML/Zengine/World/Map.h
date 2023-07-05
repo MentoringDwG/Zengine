@@ -10,12 +10,12 @@ class Map
 public:
 	void TextureInitialization(string pathToTexturesTxt);
 	void LoadMap(string pathToTileTxt);
-	void DrawMap(RenderingStack* renderStack);
+	void Draw(RenderingStack* renderStack);
 
 private:
 	string** tab;
 	sf::RectangleShape** tileMap;
-	int dimension1, dimension2;
+	int rows, columns;
 	RenderObject* tileMapRenderObject = nullptr;
 
 	void MemoryReleaseForLoadMap();

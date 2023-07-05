@@ -32,8 +32,8 @@ void Map::LoadMap(string pathToTileTxt)
 
     ifstream file;
     file.open(pathToTileTxt);
-    file >> dimension1;
-    file >> dimension2;
+    file >> rows;
+    file >> columns;
 
     CreatingTwoDimensionalDynamicArray();
 
@@ -46,7 +46,7 @@ void Map::LoadMap(string pathToTileTxt)
 
 void Map::MemoryReleaseForLoadMap()
 {
-    for (int i = 0; i < dimension1; i++)
+    for (int i = 0; i < rows; i++)
     {
         delete[] tab[i];
         delete[] tileMap[i];
@@ -57,18 +57,18 @@ void Map::MemoryReleaseForLoadMap()
 
 void Map::CreatingTwoDimensionalDynamicArray()
 {
-    tab = new string * [dimension1];
-    for (int i = 0; i < dimension1; i++)
+    tab = new string * [rows];
+    for (int i = 0; i < rows; i++)
     {
-        tab[i] = new string[dimension2];
+        tab[i] = new string[columns];
     }
 }
 
 void Map::LoadingTextureNumberIntoDynamicArray(ifstream* file)
 {
-    for (int i = 0; i < dimension1; i++)
+    for (int i = 0; i < rows; i++)
     {
-        for (int j = 0; j < dimension2; j++)
+        for (int j = 0; j < columns; j++)
         {
             *file >> tab[i][j];
         }
@@ -77,18 +77,18 @@ void Map::LoadingTextureNumberIntoDynamicArray(ifstream* file)
 
 void Map::CreatingDynamicTileMap()
 {
-    tileMap = new sf::RectangleShape * [dimension1];
-    for (int i = 0; i < dimension1; i++)
+    tileMap = new sf::RectangleShape * [rows];
+    for (int i = 0; i < rows; i++)
     {
-        tileMap[i] = new sf::RectangleShape[dimension2];
+        tileMap[i] = new sf::RectangleShape[columns];
     }
 }
 
-void Map::DrawMap(RenderingStack* renderStack)
+void Map::Draw(RenderingStack* renderStack)
 {
-    for (int i = 0; i < dimension1; i++)
+    for (int i = 0; i < rows; i++)
     {
-        for (int j = 0; j < dimension2; j++)
+        for (int j = 0; j < columns; j++)
         {
             TextureAsset* textureAsset = assetsManager.GetTextureAsset(tab[i][j]);
             sf::Texture *texture = textureAsset->GetTexture();

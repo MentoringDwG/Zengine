@@ -10,8 +10,7 @@ class World
 public:
 	void Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed);
 	void MapInitialize(string pathToTexturesTxt, string pathToTileTxt);
-	void DrawMap(RenderingStack* renderStack);
-	void DrawCharacter(RenderingStack* renderStack);
+	void Draw(RenderingStack* renderStack);
 	Character* GetPlayer();
 
 private:

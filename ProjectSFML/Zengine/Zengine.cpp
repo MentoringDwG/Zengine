@@ -59,8 +59,7 @@ void Zengine::ViewInitialize()
 
 void Zengine::RenderingStackInitialize()
 {
-	world.DrawCharacter(renderStack);
-	world.DrawMap(renderStack);
+	world.Draw(renderStack);
 	renderStack->DivisionOfObjectsIntoLayersByLayerId();
 	RenderModule->SortRenderLayers(renderStack);
 }
@@ -81,12 +80,6 @@ void Zengine::MainLoop()
 	CharacterInputHandler inputHandler = world.GetPlayer()->GetInputHandler();
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&inputHandler));
 
-	auto start_time = std::chrono::high_resolution_clock::now();
-	auto end_time = std::chrono::high_resolution_clock::now();
-	auto time = end_time - start_time;
-	int frameTme = 1;
-	float fps = 60;
-
 	while (window->isOpen())
 	{
 		start_time = std::chrono::high_resolution_clock::now();
@@ -106,19 +99,11 @@ void Zengine::MainLoop()
 		window->display();
 
 		end_time = std::chrono::high_resolution_clock::now();
-		time = end_time - start_time;
 
-		frameTme = time / std::chrono::milliseconds(1);
-		if (frameTme == 0)
-		{
-			frameTme = 1;
-		}
+		CountFrameTime();
+		CountFPS();
 
-		fps = 1000 / frameTme;
-
-		fpsStringstream.str(std::string());
-		fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
-		fpsText->text.setString(fpsStringstream.str());
+		SetUI();
 	}
 
 	//ProcessGameLogic();
@@ -135,6 +120,29 @@ void Zengine::ProcessInput(sf::RenderWindow* inWindow)
 		}
 		InputProcessor->ProcessInput(event);
 	}
+}
+
+void Zengine::CountFrameTime()
+{
+	time = end_time - start_time;
+
+	frameTme = time / std::chrono::milliseconds(1);
+	if (frameTme == 0)
+	{
+		frameTme = 1;
+	}
+}
+
+void Zengine::CountFPS()
+{
+	fps = 1000 / frameTme;
+}
+
+void Zengine::SetUI()
+{
+	fpsStringstream.str(std::string());
+	fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
+	fpsText->text.setString(fpsStringstream.str());
 }
 
 void Zengine::Shutdown()

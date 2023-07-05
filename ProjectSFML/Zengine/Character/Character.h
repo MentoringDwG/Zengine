@@ -18,7 +18,7 @@ public:
 	CharacterInputHandler GetInputHandler();
 	void SetTextureAsset(string Path, string Name);
 	TextureAsset GetTextureAsset();
-	void DrawCharacter(RenderingStack* renderStack);
+	void Draw(RenderingStack* renderStack);
 
 private:
 	//Input

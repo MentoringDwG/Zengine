@@ -51,7 +51,7 @@ TextureAsset Character::GetTextureAsset()
 	return *textureAsset;
 }
 
-void Character::DrawCharacter(RenderingStack* renderStack)
+void Character::Draw(RenderingStack* renderStack)
 {
 	sf::Texture* texture = nullptr;
 	texture = textureAsset->GetTexture();

@@ -5,6 +5,7 @@
 #include "Renderer/Renderer.h"
 #include <sstream>
 #include "ZenObject/ZenObject.h"
+#include <chrono>
 
 class Zengine
 {
@@ -20,6 +21,9 @@ private:
 	void ViewInitialize();
 	void RenderingStackInitialize();
 	void UIInitialize();
+	void CountFrameTime();
+	void CountFPS();
+	void SetUI();
 
 	static class Zengine* Engine;
 	class InputProcessorModule* InputProcessor = nullptr;
@@ -32,5 +36,11 @@ private:
 	std::vector<IEngineModule*> engineModules;
 	std::stringstream fpsStringstream;
 	bool engineRunning = false;
+
+	std::chrono::steady_clock::time_point start_time;
+	std::chrono::steady_clock::time_point end_time;
+	std::chrono::nanoseconds time;
+	int frameTme = 1;
+	float fps = 60;
 };
 
