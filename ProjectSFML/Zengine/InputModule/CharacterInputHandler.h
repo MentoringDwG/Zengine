@@ -28,6 +28,7 @@ private:
 	list <MovingStates>::iterator itr;
 	void KeyPressed(sf::Event& event);
 	void KeyReleased(sf::Event& event);
-	void CheckAndAddMovingState(MovingStates state);
+	bool CanAddMovingState(MovingStates state);
+	void AddMovingState(MovingStates state);
 	void CallingTheMovementFunction();
 };

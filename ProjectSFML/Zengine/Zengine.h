@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "Renderer/Renderer.h"
 #include <sstream>
+#include "ZenObject/ZenObject.h"
 
 class Zengine
 {
@@ -16,24 +17,20 @@ public:
 
 private:
 	void ProcessInput(sf::RenderWindow* inWindow);
+	void ViewInitialize();
+	void RenderingStackInitialize();
+	void UIInitialize();
 
 	static class Zengine* Engine;
-	bool engineRunning = false;
-	std::vector<IEngineModule*> engineModules;
 	class InputProcessorModule* InputProcessor = nullptr;
-
+	Renderer* RenderModule = nullptr;
+	RenderingStack* renderStack = nullptr;
+	ZenObject* fpsText;
 	sf::RenderWindow* window = nullptr;
 	sf::View mainView;
 	sf::View playerView;
-	void ViewInitialize();
-	class Renderer* RenderModule = nullptr;
-	RenderingStack* renderStack = nullptr;
-	void RenderingStackInitialize();
-
-	sf::Font font;
-	void FontInitialize();;
-	sf::Text fpsText;
+	std::vector<IEngineModule*> engineModules;
 	std::stringstream fpsStringstream;
-	void UIInitialize();
+	bool engineRunning = false;
 };
 

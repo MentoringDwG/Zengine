@@ -84,7 +84,7 @@ void Map::CreatingDynamicTileMap()
     }
 }
 
-void Map::AddMapToRenderStack(RenderingStack* renderStack)
+void Map::DrawMap(RenderingStack* renderStack)
 {
     for (int i = 0; i < dimension1; i++)
     {

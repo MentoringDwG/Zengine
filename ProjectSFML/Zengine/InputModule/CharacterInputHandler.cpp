@@ -27,42 +27,46 @@ void CharacterInputHandler::KeyPressed(sf::Event& event)
 	{
 		if (event.key.code == sf::Keyboard::A)
 		{
-			CheckAndAddMovingState(movingLeft);
+			AddMovingState(movingLeft);
 		}
 
 		if (event.key.code == sf::Keyboard::D)
 		{
-			CheckAndAddMovingState(movingRight);
+			AddMovingState(movingRight);
 		}
 
 		if (event.key.code == sf::Keyboard::W)
 		{
-			CheckAndAddMovingState(movingUp);
+			AddMovingState(movingUp);
 		}
 
 		if (event.key.code == sf::Keyboard::S)
 		{
-			CheckAndAddMovingState(movingDown);
+			AddMovingState(movingDown);
 		}
 	}
 }
 
-void CharacterInputHandler::CheckAndAddMovingState(MovingStates state)
+void CharacterInputHandler::AddMovingState(MovingStates state)
 {
-	bool canAddState = true;
+	if (CanAddMovingState(state))
+	{
+		movingStatesList.push_back(state);
+	}
+}
+
+bool CharacterInputHandler::CanAddMovingState(MovingStates state)
+{
 	itr = movingStatesList.begin();
 	for (itr; itr != movingStatesList.end(); itr++)
 	{
 		if (*itr == state)
 		{
-			canAddState = false;
+			return false;
 		}
 	}
 
-	if (canAddState)
-	{
-		movingStatesList.push_back(state);
-	}
+	return true;
 }
 
 void CharacterInputHandler::KeyReleased(sf::Event& event)

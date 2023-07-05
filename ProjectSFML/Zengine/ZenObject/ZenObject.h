@@ -15,6 +15,8 @@ public:
 	vector<ZenObject*> Children;
 	string Name;
 	sf::Vector2<float> Position;
+	sf::Text text;
+	sf::Font font;
 
 	ZenObject(int IDIn, string NameIn) :ID(IDIn), Name(NameIn)
 	{

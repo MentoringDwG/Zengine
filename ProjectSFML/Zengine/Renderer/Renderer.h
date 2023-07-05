@@ -16,6 +16,7 @@ public:
 	void Clear();
 	std::vector<RenderObject*> renderQueue;
 	void DivisionOfObjectsIntoLayersByLayerId();
+
 	std::vector<RenderObject*>* GetRenderQueueLayer0();
 	std::vector<RenderObject*>* GetRenderQueueLayer1();
 	std::vector<RenderObject*>* GetRenderQueueLayer2();

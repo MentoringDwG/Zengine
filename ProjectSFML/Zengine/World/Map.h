@@ -10,7 +10,7 @@ class Map
 public:
 	void TextureInitialization(string pathToTexturesTxt);
 	void LoadMap(string pathToTileTxt);
-	void AddMapToRenderStack(RenderingStack* renderStack);
+	void DrawMap(RenderingStack* renderStack);
 
 private:
 	string** tab;

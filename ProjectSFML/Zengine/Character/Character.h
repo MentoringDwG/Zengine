@@ -18,7 +18,7 @@ public:
 	CharacterInputHandler GetInputHandler();
 	void SetTextureAsset(string Path, string Name);
 	TextureAsset GetTextureAsset();
-	void AddCharacterToRenderStack(RenderingStack* renderStack);
+	void DrawCharacter(RenderingStack* renderStack);
 
 private:
 	//Input
@@ -27,7 +27,7 @@ private:
 	//Renderer
 	TextureAsset* textureAsset;
 	sf::RectangleShape character;
-	RenderObject* characterRenderObject= new RenderObject();
+	RenderObject* characterRenderObject = nullptr;
 
 	//movement
 	float moveSpeed;

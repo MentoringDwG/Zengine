@@ -46,7 +46,6 @@ void Zengine::Run()
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
 	RenderingStackInitialize();
 
-	FontInitialize();
 	UIInitialize();
 
 	MainLoop();
@@ -60,23 +59,21 @@ void Zengine::ViewInitialize()
 
 void Zengine::RenderingStackInitialize()
 {
-	world.AddCharacterToRenderStack(renderStack);
-	world.AddMapToRenderStack(renderStack);
+	world.DrawCharacter(renderStack);
+	world.DrawMap(renderStack);
 	renderStack->DivisionOfObjectsIntoLayersByLayerId();
 	RenderModule->SortRenderLayers(renderStack);
 }
 
-void Zengine::FontInitialize()
-{
-	font.loadFromFile("Fonts/Super_Mario_Bros_/SuperMarioBros.ttf");
-}
-
 void Zengine::UIInitialize()
 {
-	fpsText.setFont(font);
-	fpsText.setPosition(0, 0);
-	fpsText.setFillColor(sf::Color::White);
-	fpsText.setCharacterSize(20);
+	fpsText = new ZenObject(0, "fpsText");
+	fpsText->Position = sf::Vector2f(0, 0);
+	fpsText->text.setPosition(fpsText->Position);
+	fpsText->text.setFillColor(sf::Color::White);
+	fpsText->text.setCharacterSize(20);
+	fpsText->font.loadFromFile("Fonts/Super_Mario_Bros_/SuperMarioBros.ttf");
+	fpsText->text.setFont(fpsText->font);
 }
 
 void Zengine::MainLoop()
@@ -104,7 +101,7 @@ void Zengine::MainLoop()
 
 		//Draw UI
 		window->setView(window->getDefaultView());
-		window->draw(fpsText);
+		window->draw(fpsText->text);
 
 		window->display();
 
@@ -121,7 +118,7 @@ void Zengine::MainLoop()
 
 		fpsStringstream.str(std::string());
 		fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
-		fpsText.setString(fpsStringstream.str());
+		fpsText->text.setString(fpsStringstream.str());
 	}
 
 	//ProcessGameLogic();
