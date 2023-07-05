@@ -2,6 +2,7 @@
 #include "../Interfaces/IEngineModule.h"
 #include <vector> 
 #include <SFML/Graphics.hpp>
+#include <map>
 
 struct RenderObject
 {
@@ -12,19 +13,10 @@ struct RenderObject
 
 struct RenderingStack
 {
-public:
 	void Clear();
-	std::vector<RenderObject*> renderQueue;
 	void DivisionOfObjectsIntoLayersByLayerId();
-
-	std::vector<RenderObject*>* GetRenderQueueLayer0();
-	std::vector<RenderObject*>* GetRenderQueueLayer1();
-	std::vector<RenderObject*>* GetRenderQueueLayer2();
-
-private:
-	std::vector<RenderObject*> renderQueueLayer0;
-	std::vector<RenderObject*> renderQueueLayer1;
-	std::vector<RenderObject*> renderQueueLayer2;
+	std::vector<RenderObject*> renderQueue;
+	std::map <int, std::vector<RenderObject*>> renderLayers;
 };
 
 class Renderer : IEngineModule

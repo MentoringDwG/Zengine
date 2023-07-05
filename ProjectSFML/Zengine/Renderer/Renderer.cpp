@@ -10,65 +10,23 @@ void Renderer::Initialize(sf::RenderWindow* inWindow)
 void RenderingStack::Clear()
 {
 	renderQueue.clear();
-	renderQueueLayer0.clear();
-	renderQueueLayer1.clear();
-	renderQueueLayer2.clear();
+	renderLayers.clear();
 }
 
 void RenderingStack::DivisionOfObjectsIntoLayersByLayerId()
 {
 	for (int i = 0; i < renderQueue.size(); i++)
 	{
-		switch (renderQueue[i]->layerId)
-		{
-		case 0:
-		{
-			renderQueueLayer0.push_back(renderQueue[i]);
-			break;
-		}
-		case 1:
-		{
-			renderQueueLayer1.push_back(renderQueue[i]);
-			break;
-		}
-		case 2:
-		{
-			renderQueueLayer2.push_back(renderQueue[i]);
-			break;
-		}
-		default:
-		{
-			renderQueueLayer0.push_back(renderQueue[i]);
-			break;
-		}
-		}
+		renderLayers[renderQueue[i]->layerId].push_back(renderQueue[i]);
 	}
-}
-
-//RenderingStack getters 
-std::vector<RenderObject*>* RenderingStack::GetRenderQueueLayer0()
-{
-	return &renderQueueLayer0;
-}
-
-std::vector<RenderObject*>* RenderingStack::GetRenderQueueLayer1()
-{
-	return &renderQueueLayer1;
-}
-
-std::vector<RenderObject*>* RenderingStack::GetRenderQueueLayer2()
-{
-	return &renderQueueLayer2;
 }
 
 void Renderer::SortRenderLayers(RenderingStack* renderStack)
 {
-	SortLayer(*renderStack->GetRenderQueueLayer0());
-
-	SortLayer(*renderStack->GetRenderQueueLayer1());
-
-	SortLayer(*renderStack->GetRenderQueueLayer2());
-
+	for (auto itr = renderStack->renderLayers.begin(); itr != renderStack->renderLayers.end(); ++itr)
+	{
+		SortLayer(itr->second);
+	}
 }
 
 void Renderer::SortLayer(std::vector<RenderObject*> &layer)
@@ -98,11 +56,10 @@ void Renderer::SortLayer(std::vector<RenderObject*> &layer)
 
 void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
 {
-	DrawLayer(*renderStack->GetRenderQueueLayer0());
-
-	DrawLayer(*renderStack->GetRenderQueueLayer1());
-
-	DrawLayer(*renderStack->GetRenderQueueLayer2());
+	for (auto itr = renderStack->renderLayers.begin(); itr != renderStack->renderLayers.end(); ++itr)
+	{
+		DrawLayer(itr->second);
+	}
 }
 
 void Renderer::DrawLayer(std::vector<RenderObject*>& layer)
