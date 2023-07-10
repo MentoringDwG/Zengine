@@ -45,6 +45,7 @@ void Zengine::Run()
 	RenderModule->Initialize(window);
 	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
+	world.PhysicalZenObject2DInitialize(zenPhysics2D, "Graphics/Enemy1.png");
 	RenderingStackInitialize();
 
 	UIInitialize();
@@ -81,6 +82,7 @@ void Zengine::MainLoop()
 	CharacterInputHandler inputHandler = world.GetPlayer()->GetInputHandler();
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&inputHandler));
 
+
 	while (window->isOpen())
 	{
 		start_time = std::chrono::high_resolution_clock::now();
@@ -89,7 +91,7 @@ void Zengine::MainLoop()
 
 		window->clear();
 
-		zenPhysics2D->CalculatePhysics();
+		//zenPhysics2D->CalculatePhysics();
 
 		//Render game elements
 		window->setView(mainView);

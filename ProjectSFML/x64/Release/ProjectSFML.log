@@ -1,14 +1,18 @@
 ﻿  PhysicalZenObject2D.cpp
   ZenPhysics2D.cpp
 C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\ZenPhysics2D.h(12,24): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+  World.cpp
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\ZenPhysics2D.h(12,24): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+  ZenObject.cpp
   Zengine.cpp
 C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\ZenPhysics2D.h(12,24): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(132,18): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(141,13): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(134,18): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(143,13): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
   main.cpp
 C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\ZenPhysics2D.h(12,24): warning C4305: "inicjowanie": obcięcie z "double" do "float"
   Trwa generowanie kodu
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
-  All 724 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  5 of 769 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\ProjectSFML.exe

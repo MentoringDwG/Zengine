@@ -4,6 +4,12 @@
 class PhysicalZenObject2D:public ZenObject
 {
 public:
+
+	PhysicalZenObject2D(int IDIn, string NameIn) :ZenObject(IDIn, NameIn)
+	{
+
+	}
+
 	void CalculatePhysics();
 
 private:
