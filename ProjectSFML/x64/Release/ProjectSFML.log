@@ -1,18 +1,27 @@
-﻿  PhysicalZenObject2D.cpp
+﻿  main.cpp
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\ZenPhysics2D.h(13,24): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+  Character.cpp
+  CharacterInputHandler.cpp
+  InputHandler.cpp
+  InputProcessorModule.cpp
+  IEngineModule.cpp
+  PhysicalZenObject2D.cpp
   ZenPhysics2D.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\ZenPhysics2D.h(12,24): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\ZenPhysics2D.h(13,24): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+  Renderer.cpp
+  AssetsManager.cpp
+  TextureAsset.cpp
+  Map.cpp
   World.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\ZenPhysics2D.h(12,24): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-  ZenObject.cpp
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\ZenPhysics2D.h(13,24): warning C4305: "inicjowanie": obcięcie z "double" do "float"
   Zengine.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\ZenPhysics2D.h(12,24): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\ZenPhysics2D.h(13,24): warning C4305: "inicjowanie": obcięcie z "double" do "float"
 C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(134,18): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
 C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(143,13): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
-  main.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\ZenPhysics2D.h(12,24): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+  MovableObject.cpp
+  ZenObject.cpp
   Trwa generowanie kodu
-  5 of 769 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+  Previous IPDB not found, fall back to full compilation.
+  All 770 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\ProjectSFML.exe

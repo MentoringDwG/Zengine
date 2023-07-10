@@ -20,13 +20,13 @@ void World::MapInitialize(string pathToTexturesTxt, string pathToTileTxt)
 
 void World::PhysicalZenObject2DInitialize(ZenPhysics2D* zenPhysics2D, string enemySpritePath)
 {
-	PhysicalZenObject2D* enemy = new PhysicalZenObject2D(2, "Bird");
+	enemy = new PhysicalZenObject2D(2, "Bird");
 	
 	sf::Texture* texture = new sf::Texture;
 	texture->loadFromFile(enemySpritePath);
 
 	enemy->rectangleShape = new sf::RectangleShape;
-	enemy->rectangleShape->setPosition(sf::Vector2f(10.0f, 10.0f));
+	enemy->rectangleShape->setPosition(sf::Vector2f(512.0f, 288.0f));
 	enemy->rectangleShape->setSize(sf::Vector2f(32.0f, 32.0f));
 	enemy->rectangleShape->setTexture(texture);
 
@@ -37,6 +37,7 @@ void World::Draw(RenderingStack* renderStack)
 {
 	map->Draw(renderStack);
 	playerCharacter->Draw(renderStack);
+	enemy->Draw(renderStack);
 }
 
 Character* World::GetPlayer()

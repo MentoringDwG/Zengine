@@ -1,5 +1,6 @@
 #pragma once
 #include "../ZenObject/ZenObject.h"
+#include "../Renderer/Renderer.h"
 
 class PhysicalZenObject2D:public ZenObject
 {
@@ -11,6 +12,7 @@ public:
 	}
 
 	void CalculatePhysics();
+	void Draw(RenderingStack* renderStack);
 
 private:
 	float mass = 1.0f;
@@ -19,6 +21,8 @@ private:
 
 	std::vector<float> velocity;
 	std::vector<float> transposition;
+
+	RenderObject* physicalRenderObject = nullptr;
 
 	//Variable to debug
 	std::vector<float> acceleration;

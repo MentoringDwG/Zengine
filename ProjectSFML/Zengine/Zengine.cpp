@@ -100,7 +100,7 @@ void Zengine::MainLoop()
 		//Draw UI
 		window->setView(window->getDefaultView());
 		window->draw(fpsText->text);
-
+		//window->draw(*zenPhysics2D->PhysicalObjects[0]->rectangleShape);
 		window->display();
 
 		end_time = std::chrono::high_resolution_clock::now();
