@@ -6,6 +6,7 @@
 #include <sstream>
 #include "ZenObject/ZenObject.h"
 #include <chrono>
+#include "Physics2D/ZenPhysics2D.h"
 
 class Zengine
 {
@@ -29,6 +30,7 @@ private:
 	class InputProcessorModule* InputProcessor = nullptr;
 	Renderer* RenderModule = nullptr;
 	RenderingStack* renderStack = nullptr;
+	ZenPhysics2D* zenPhysics2D = nullptr;
 	ZenObject* fpsText;
 	sf::RenderWindow* window = nullptr;
 	sf::View mainView;

@@ -36,6 +36,7 @@ void Zengine::Run()
 	InputProcessor = new InputProcessorModule();
 	RenderModule = new Renderer();
 	renderStack = new RenderingStack();
+	zenPhysics2D = new ZenPhysics2D();
 
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
 	window->setFramerateLimit(60);
@@ -87,6 +88,8 @@ void Zengine::MainLoop()
 		ProcessInput(window);
 
 		window->clear();
+
+		zenPhysics2D->CalculatePhysics();
 
 		//Render game elements
 		window->setView(mainView);

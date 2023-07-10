@@ -34,6 +34,9 @@
     <Filter Include="Zengine\Character">
       <UniqueIdentifier>{de3812e4-64c5-4b78-a0ad-dd8b75161cf3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Zengine\Physics2D">
+      <UniqueIdentifier>{2ed1d65b-89f8-4085-899f-f21c169dff33}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp">
@@ -78,6 +81,12 @@
     <ClCompile Include="Zengine\ZenObject\MovableObject.cpp">
       <Filter>Zengine\ZenObject</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\Physics2D\ZenPhysics2D.cpp">
+      <Filter>Zengine\Physics2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Physics2D\PhysicalZenObject2D.cpp">
+      <Filter>Zengine\Physics2D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -118,6 +127,12 @@
     </ClInclude>
     <ClInclude Include="Zengine\ZenObject\MovableObject.h">
       <Filter>Zengine\ZenObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Physics2D\ZenPhysics2D.h">
+      <Filter>Zengine\Physics2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Physics2D\PhysicalZenObject2D.h">
+      <Filter>Zengine\Physics2D</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

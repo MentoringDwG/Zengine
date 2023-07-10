@@ -157,6 +157,8 @@
     <ClCompile Include="Zengine\InputModule\InputHandler.cpp" />
     <ClCompile Include="Zengine\InputModule\InputProcessorModule.cpp" />
     <ClCompile Include="Zengine\Interfaces\IEngineModule.cpp" />
+    <ClCompile Include="Zengine\Physics2D\PhysicalZenObject2D.cpp" />
+    <ClCompile Include="Zengine\Physics2D\ZenPhysics2D.cpp" />
     <ClCompile Include="Zengine\Renderer\Renderer.cpp" />
     <ClCompile Include="Zengine\World\AssetsManager.cpp" />
     <ClCompile Include="Zengine\World\TextureAsset.cpp" />
@@ -172,6 +174,8 @@
     <ClInclude Include="Zengine\InputModule\InputHandler.h" />
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h" />
     <ClInclude Include="Zengine\Interfaces\IEngineModule.h" />
+    <ClInclude Include="Zengine\Physics2D\PhysicalZenObject2D.h" />
+    <ClInclude Include="Zengine\Physics2D\ZenPhysics2D.h" />
     <ClInclude Include="Zengine\Renderer\Renderer.h" />
     <ClInclude Include="Zengine\World\AssetsManager.h" />
     <ClInclude Include="Zengine\World\TextureAsset.h" />
