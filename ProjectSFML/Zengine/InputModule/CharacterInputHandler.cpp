@@ -28,21 +28,25 @@ void CharacterInputHandler::KeyPressed(sf::Event& event)
 		if (event.key.code == sf::Keyboard::A)
 		{
 			AddMovingState(movingLeft);
+			movingStatesList.remove(movingRight);
 		}
 
 		if (event.key.code == sf::Keyboard::D)
 		{
 			AddMovingState(movingRight);
+			movingStatesList.remove(movingLeft);
 		}
 
 		if (event.key.code == sf::Keyboard::W)
 		{
 			AddMovingState(movingUp);
+			movingStatesList.remove(movingDown);
 		}
 
 		if (event.key.code == sf::Keyboard::S)
 		{
 			AddMovingState(movingDown);
+			movingStatesList.remove(movingUp);
 		}
 	}
 }
