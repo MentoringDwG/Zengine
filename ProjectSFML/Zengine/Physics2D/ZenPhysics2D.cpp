@@ -12,3 +12,8 @@ void ZenPhysics2D::CalculatePhysics()
 		physicalObject->CalculatePhysics();
 	}
 }
+
+std::chrono::nanoseconds ZenPhysics2D::GetPhysicsTimeStep()
+{
+	return physicsTimeStep;
+}

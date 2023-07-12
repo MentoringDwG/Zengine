@@ -82,17 +82,20 @@ void Zengine::MainLoop()
 	CharacterInputHandler inputHandler = world.GetPlayer()->GetInputHandler();
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&inputHandler));
 
-
+	Timer* timerForPhysics = new Timer();
 	while (window->isOpen())
 	{
-		start_time = std::chrono::high_resolution_clock::now();
-
+		Timer* timerForFPSCounter = new Timer();
 		ProcessInput(window);
-
 		window->clear();
 
-		//zenPhysics2D->CalculatePhysics();
-
+		timerForPhysics->TimerStop();
+		if (timerForPhysics->time >= zenPhysics2D->GetPhysicsTimeStep())
+		{
+			zenPhysics2D->CalculatePhysics();
+			timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
+		}
+		
 		//Render game elements
 		window->setView(mainView);
 		RenderModule->ProcessDrawingElements(renderStack);
@@ -100,18 +103,15 @@ void Zengine::MainLoop()
 		//Draw UI
 		window->setView(window->getDefaultView());
 		window->draw(fpsText->text);
-		//window->draw(*zenPhysics2D->PhysicalObjects[0]->rectangleShape);
 		window->display();
 
-		end_time = std::chrono::high_resolution_clock::now();
-
-		CountFrameTime();
 		CountFPS();
-
 		SetUI();
-	}
 
-	//ProcessGameLogic();
+		timerForFPSCounter->TimerStop();
+		CountFrameTime(timerForFPSCounter->time);
+		delete timerForFPSCounter;
+	}
 }
 
 void Zengine::ProcessInput(sf::RenderWindow* inWindow)
@@ -127,10 +127,8 @@ void Zengine::ProcessInput(sf::RenderWindow* inWindow)
 	}
 }
 
-void Zengine::CountFrameTime()
+void Zengine::CountFrameTime(std::chrono::nanoseconds time)
 {
-	time = end_time - start_time;
-
 	frameTme = time / std::chrono::milliseconds(1);
 	if (frameTme == 0)
 	{

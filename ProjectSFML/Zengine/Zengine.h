@@ -8,6 +8,25 @@
 #include <chrono>
 #include "Physics2D/ZenPhysics2D.h"
 
+struct Timer
+{
+	std::chrono::steady_clock::time_point start_time;
+	std::chrono::steady_clock::time_point end_time;
+	std::chrono::nanoseconds time;
+
+	Timer()
+	{
+		start_time = std::chrono::high_resolution_clock::now();
+	}
+
+	void TimerStop()
+	{
+		end_time = std::chrono::high_resolution_clock::now();
+		time = end_time - start_time;
+	}
+};
+
+
 class Zengine
 {
 public:
@@ -22,7 +41,7 @@ private:
 	void ViewInitialize();
 	void RenderingStackInitialize();
 	void UIInitialize();
-	void CountFrameTime();
+	void CountFrameTime(std::chrono::nanoseconds time);
 	void CountFPS();
 	void SetUI();
 
@@ -39,9 +58,6 @@ private:
 	std::stringstream fpsStringstream;
 	bool engineRunning = false;
 
-	std::chrono::steady_clock::time_point start_time;
-	std::chrono::steady_clock::time_point end_time;
-	std::chrono::nanoseconds time;
 	int frameTme = 1;
 	float fps = 60;
 };

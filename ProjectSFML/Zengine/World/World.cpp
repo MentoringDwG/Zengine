@@ -2,7 +2,9 @@
 #include "Map.h"
 #include "../ZenObject/ZenObject.h"
 #include <SFML/Graphics.hpp>
+#include "../Physics2D/ZenPhysics2D.h"
 
+#pragma optimize("", off)
 void World::Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed)
 {
 	map = new Map();
@@ -18,19 +20,11 @@ void World::MapInitialize(string pathToTexturesTxt, string pathToTileTxt)
 	map->LoadMap(pathToTileTxt);
 }
 
-void World::PhysicalZenObject2DInitialize(ZenPhysics2D* zenPhysics2D, string enemySpritePath)
+void World::PhysicalZenObject2DInitialize(ZenPhysics2D *zenPhysics2D, string enemySpritePath)
 {
-	enemy = new PhysicalZenObject2D(2, "Bird");
-	
-	sf::Texture* texture = new sf::Texture;
-	texture->loadFromFile(enemySpritePath);
-
-	enemy->rectangleShape = new sf::RectangleShape;
-	enemy->rectangleShape->setPosition(sf::Vector2f(512.0f, 288.0f));
-	enemy->rectangleShape->setSize(sf::Vector2f(32.0f, 32.0f));
-	enemy->rectangleShape->setTexture(texture);
-
+	enemy = new PhysicalZenObject2D(2, "Bird", enemySpritePath, sf::Vector2f(512.0f, 288.0f));
 	zenPhysics2D->RegisterPhysicalObject(enemy);
+	enemy->AddForce(1.0f, 9.0f, 1.0f, -1);
 }
 
 void World::Draw(RenderingStack* renderStack)
@@ -45,4 +39,5 @@ Character* World::GetPlayer()
 	return playerCharacter;
 }
 
+#pragma optimize("", on)
 

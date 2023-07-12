@@ -12,7 +12,7 @@ class World
 public:
 	void Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed);
 	void MapInitialize(string pathToTexturesTxt, string pathToTileTxt);
-	void PhysicalZenObject2DInitialize(ZenPhysics2D* zenPhysics2D, string enemySpritePath);
+	void PhysicalZenObject2DInitialize(ZenPhysics2D *zenPhysics2D, string enemySpritePath);
 	void Draw(RenderingStack* renderStack);
 	Character* GetPlayer();
 
