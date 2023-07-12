@@ -8,11 +8,12 @@ class ZenPhysics2D
 public:
 	void RegisterPhysicalObject(PhysicalZenObject2D* physicalObject);
 	void CalculatePhysics();
-	std::chrono::nanoseconds GetPhysicsTimeStep();
-	std::vector<PhysicalZenObject2D*> PhysicalObjects;
+	int GetPhysicsTimeStep();
 
 private:
-	std::chrono::nanoseconds physicsTimeStep = (std::chrono::nanoseconds)30; // ms
+	int physicsTimeStep = 30; // ms
 	float globalGravity = 0.0f;
+
+	std::vector<PhysicalZenObject2D*> PhysicalObjects;
 };
 

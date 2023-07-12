@@ -24,7 +24,22 @@ void World::PhysicalZenObject2DInitialize(ZenPhysics2D *zenPhysics2D, string ene
 {
 	enemy = new PhysicalZenObject2D(2, "Bird", enemySpritePath, sf::Vector2f(512.0f, 288.0f));
 	zenPhysics2D->RegisterPhysicalObject(enemy);
-	enemy->AddForce(1.0f, 9.0f, 1.0f, -1);
+	enemy->AddForce(1.0f, 3.0f, 3.0f, -1);
+}
+
+void World::ForceToPhysicsObject()
+{
+	if (enemy->GetTransposition() == 0)
+	{
+		if (enemy->forceDirection == -1)
+		{
+			enemy->AddForce(1.0f, 3.0f, 3.0f, 1);
+		}
+		else
+		{
+			enemy->AddForce(1.0f, 3.0f, 3.0f, -1);
+		}
+	}
 }
 
 void World::Draw(RenderingStack* renderStack)

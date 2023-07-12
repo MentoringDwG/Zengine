@@ -90,12 +90,12 @@ void Zengine::MainLoop()
 		window->clear();
 
 		timerForPhysics->TimerStop();
-		if (timerForPhysics->time >= zenPhysics2D->GetPhysicsTimeStep())
+		if (timerForPhysics->timeMs >= zenPhysics2D->GetPhysicsTimeStep())
 		{
+			world.ForceToPhysicsObject();
 			zenPhysics2D->CalculatePhysics();
 			timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
 		}
-		
 		//Render game elements
 		window->setView(mainView);
 		RenderModule->ProcessDrawingElements(renderStack);
@@ -144,7 +144,7 @@ void Zengine::CountFPS()
 void Zengine::SetUI()
 {
 	fpsStringstream.str(std::string());
-	fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
+	//fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
 	fpsText->text.setString(fpsStringstream.str());
 }
 

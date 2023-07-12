@@ -15,6 +15,7 @@ public:
 	void PhysicalZenObject2DInitialize(ZenPhysics2D *zenPhysics2D, string enemySpritePath);
 	void Draw(RenderingStack* renderStack);
 	Character* GetPlayer();
+	void ForceToPhysicsObject();
 
 private:
 	Map *map;
