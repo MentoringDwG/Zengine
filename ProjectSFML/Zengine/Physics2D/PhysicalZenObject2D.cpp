@@ -1,5 +1,4 @@
 #include "PhysicalZenObject2D.h"
-#pragma optimize("", off)
 
 enum PhysicalZenObject2D::ForceDirection
 {
@@ -28,21 +27,25 @@ void PhysicalZenObject2D::CalculatePhysics()
 
 	if (forceDirection==left && transposition[0] > -0.5)
 	{
-		transposition[0] = 0;
-		slowdownPercentage = 1;
+		ResettingVariables();
 		return;
 	}
 
 	if (forceDirection == right && transposition[0] < 0.5)
 	{
-		transposition[0] = 0;
-		slowdownPercentage = 1;
+		ResettingVariables();
 		return;
 	}
 
 	rectangleShape->move(sf::Vector2f(transposition[0], 0.0f));
 	velocity[0]= velocity[0] - (slowdownPercentage * velocity[0] / 100);
 	slowdownPercentage = slowdownPercentage + 0.1;
+}
+
+void PhysicalZenObject2D::ResettingVariables()
+{
+	transposition[0] = 0;
+	slowdownPercentage = 1;
 }
 
 //direction: -1 - left, 1 -right
@@ -75,5 +78,3 @@ float PhysicalZenObject2D::GetTransposition()
 {
 	return transposition[0];
 }
-
-#pragma optimize("", on)

@@ -96,6 +96,7 @@ void Zengine::MainLoop()
 			zenPhysics2D->CalculatePhysics();
 			timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
 		}
+
 		//Render game elements
 		window->setView(mainView);
 		RenderModule->ProcessDrawingElements(renderStack);

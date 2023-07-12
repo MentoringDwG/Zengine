@@ -20,15 +20,15 @@ private:
 	float fakeDrag = 0.0f;
 	float gravity = 0.0f;
 	float force = 1.0f;
+	float slowdownPercentage = 1;
 	int direction = 1;
 
 	std::vector<float> velocity;
 	std::vector<float> transposition;
+	std::vector<float> acceleration;
 
 	RenderObject* physicalRenderObject = nullptr;
-	float slowdownPercentage = 1;
 
-	//Variable to debug
-	std::vector<float> acceleration;
+	void ResettingVariables();
 };
 
