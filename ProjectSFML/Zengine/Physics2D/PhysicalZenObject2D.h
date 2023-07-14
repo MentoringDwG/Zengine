@@ -3,6 +3,7 @@
 #include "../Renderer/Renderer.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "../Structs/Vector2.h"
 
 class PhysicalZenObject2D:public ZenObject
 {
@@ -23,9 +24,9 @@ private:
 	float slowdownPercentage = 1;
 	int direction = 1;
 
-	std::vector<float> velocity;
-	std::vector<float> transposition;
-	std::vector<float> acceleration;
+	Vector2* velocity;
+	Vector2* transposition;
+	Vector2* acceleration;
 
 	RenderObject* physicalRenderObject = nullptr;
 

@@ -8,9 +8,9 @@ enum PhysicalZenObject2D::ForceDirection
 
 PhysicalZenObject2D::PhysicalZenObject2D(int IDIn, string NameIn, string enemySpritePath, sf::Vector2f startPosition) :ZenObject(IDIn, NameIn)
 {
-	velocity.push_back(0);
-	transposition.push_back(0.1);
-	acceleration.push_back(0);
+	velocity = new Vector2(0, 0);
+	transposition = new Vector2(0.1, 0);
+	acceleration = new Vector2(0, 0);
 
 	sf::Texture* texture = new sf::Texture;
 	texture->loadFromFile(enemySpritePath);
@@ -23,28 +23,28 @@ PhysicalZenObject2D::PhysicalZenObject2D(int IDIn, string NameIn, string enemySp
 
 void PhysicalZenObject2D::CalculatePhysics()
 {
-	transposition[0] = velocity[0] - (slowdownPercentage * velocity[0] / 100);
+	transposition->x = velocity->x - (slowdownPercentage * velocity->x / 100);
 
-	if (forceDirection==left && transposition[0] > -0.5)
+	if (forceDirection==left && transposition->x > -0.5)
 	{
 		ResettingVariables();
 		return;
 	}
 
-	if (forceDirection == right && transposition[0] < 0.5)
+	if (forceDirection == right && transposition->x < 0.5)
 	{
 		ResettingVariables();
 		return;
 	}
 
-	rectangleShape->move(sf::Vector2f(transposition[0], 0.0f));
-	velocity[0]= velocity[0] - (slowdownPercentage * velocity[0] / 100);
+	rectangleShape->move(sf::Vector2f(transposition->x, 0.0f));
+	velocity->x= velocity->x - (slowdownPercentage * velocity->x / 100);
 	slowdownPercentage = slowdownPercentage + 0.1;
 }
 
 void PhysicalZenObject2D::ResettingVariables()
 {
-	transposition[0] = 0;
+	transposition->SetVector2(0, 0);
 	slowdownPercentage = 1;
 }
 
@@ -57,11 +57,11 @@ void PhysicalZenObject2D::AddForce(float massIn, float forceIN, float time, int 
 	mass = massIn;
 	force = forceIN*direction;
 
-	acceleration[0] = force / mass;
+	acceleration->x = force / mass;
 
-	float s = (acceleration[0] * time * time) / 2;
+	float s = (acceleration->x * time * time) / 2;
 
-	velocity[0] = s / time;
+	velocity->x = s / time;
 }
 
 void PhysicalZenObject2D::Draw(RenderingStack* renderStack)
@@ -76,5 +76,5 @@ void PhysicalZenObject2D::Draw(RenderingStack* renderStack)
 
 float PhysicalZenObject2D::GetTransposition()
 {
-	return transposition[0];
+	return transposition->x;
 }
