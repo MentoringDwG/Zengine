@@ -39,8 +39,7 @@ void PhysicalZenObject2D::ResettingVariables()
 	fakeDrag = 1;
 }
 
-//direction: -1 - left, 1 -right
-void PhysicalZenObject2D::ApplyForceToPhysicsObject(float massIn, float forceIN, float time)
+void PhysicalZenObject2D::AddForce(float massIn, float forceIN, float time)
 {
 	mass = massIn;
 	force = forceIN;

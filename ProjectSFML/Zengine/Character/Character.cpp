@@ -4,6 +4,7 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 {
 	inputHandler.SetName(name);
 	inputHandler.SetOwningCharacter(this);
+
 	SetTextureAsset(Path, name);
 
 	moveSpeed = playerMoveSpeed;
@@ -60,10 +61,6 @@ void Character::Draw(RenderingStack* renderStack)
 	zenShape->SetSize(sf::Vector2f(32.0f, 64.0f));
 	zenShape->SetTexture(texture);
 
-	characterRenderObject = new RenderObject();
-	characterRenderObject->drawable = zenShape->Draw();
-	characterRenderObject->zOrder = 1000;
-	characterRenderObject->layerId = 1;
-
+	characterRenderObject = new RenderObject(zenShape->Draw(), 1000, 1);
 	renderStack->renderQueue.push_back(characterRenderObject);
 }

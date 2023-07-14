@@ -7,6 +7,13 @@ void Renderer::Initialize(sf::RenderWindow* inWindow)
 	window = inWindow;
 }
 
+RenderObject::RenderObject(sf::RectangleShape* drawable, int zOrder, int layerId)
+{
+	this->drawable = drawable;
+	this->zOrder = zOrder;
+	this->layerId = layerId;
+}
+
 void RenderingStack::Clear()
 {
 	renderQueue.clear();

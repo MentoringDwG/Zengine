@@ -10,13 +10,12 @@
 class PhysicalZenObject2D:public ZenObject
 {
 public:
+	ZenShape* zenShape;
 	PhysicalZenObject2D(int IDIn, string NameIn, string enemySpritePath, sf::Vector2f startPosition);
 	void CalculatePhysics();
-	void ApplyForceToPhysicsObject(float mass, float force, float time);
+	void AddForce(float mass, float force, float time);
 	float GetTransposition();
 	float GetVelocityX();
-
-	ZenShape* zenShape;
 
 private:
 	float mass = 1.0f;

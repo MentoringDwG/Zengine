@@ -1,14 +1,15 @@
 #pragma once
 
-#include "Interfaces/IEngineModule.h"
 #include <vector>
 #include <SFML/Graphics.hpp>
-#include "Renderer/Renderer.h"
 #include <sstream>
+#include <chrono>
+#include "Interfaces/IEngineModule.h"
+#include "InputModule/CharacterInputHandler.h"
+#include "Renderer/Renderer.h"
 #include "ZenObject/ZenObject.h"
 #include "Physics2D/ZenPhysics2D.h"
 #include "ZenObject/ZenText.h"
-
 
 class Zengine
 {
@@ -23,6 +24,7 @@ private:
 	void ProcessInput(sf::RenderWindow* inWindow);
 	void ViewInitialize();
 	void RenderingStackInitialize();
+	void CharacterInputHandlerInitialize();
 	void UIInitialize();
 	void CountFrameTime(std::chrono::nanoseconds time);
 	void CountFPS();
@@ -33,6 +35,7 @@ private:
 	Renderer* RenderModule = nullptr;
 	RenderingStack* renderStack = nullptr;
 	ZenPhysics2D* zenPhysics2D = nullptr;
+	CharacterInputHandler characterInputHandler;
 	ZenText* fpsText;
 	sf::RenderWindow* window = nullptr;
 	sf::View mainView;

@@ -15,8 +15,8 @@ public:
 	void MapInitialize(string pathToTexturesTxt, string pathToTileTxt);
 	void PhysicalZenObject2DInitialize(ZenPhysics2D *zenPhysics2D, string enemySpritePath);
 	void Draw(RenderingStack* renderStack, ZenPhysics2D* zenPhysics2D);
+	void ApplyForceToPhysicsObject();
 	Character* GetPlayer();
-	void ForceToPhysicsObject();
 
 private:
 	Map *map;

@@ -10,7 +10,6 @@ enum CharacterInputHandler::MovingStates
 	movingDown = 4
 };
 
-
 bool CharacterInputHandler::ProcessInput(sf::Event& event)
 {
 	KeyPressed(event);

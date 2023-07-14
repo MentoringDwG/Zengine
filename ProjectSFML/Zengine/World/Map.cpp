@@ -97,11 +97,7 @@ void Map::Draw(RenderingStack* renderStack)
             tileMap[i][j].setSize(sf::Vector2f(32.0f, 32.0f));
             tileMap[i][j].setPosition(j * 32.f, i * 32.f);
             
-            tileMapRenderObject = new RenderObject();
-            tileMapRenderObject->drawable = &tileMap[i][j];
-            tileMapRenderObject->zOrder = 0;
-            tileMapRenderObject->layerId = 0;
-
+            tileMapRenderObject = new RenderObject(&tileMap[i][j], 0, 0);
             renderStack->renderQueue.push_back(tileMapRenderObject);
         }
     }

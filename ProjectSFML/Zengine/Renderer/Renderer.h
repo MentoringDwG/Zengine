@@ -7,6 +7,8 @@
 
 struct RenderObject
 {
+	RenderObject(sf::RectangleShape* drawable, int zOrder, int layerId);
+
 	sf::RectangleShape* drawable;
 	int zOrder = 0;
 	int layerId = 0;

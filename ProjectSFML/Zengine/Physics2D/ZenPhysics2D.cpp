@@ -9,11 +9,7 @@ void ZenPhysics2D::Draw(RenderingStack* renderStack)
 {
 	for (PhysicalZenObject2D* physicalObject : PhysicalObjects)
 	{
-		RenderObject* physicalRenderObject = new RenderObject;
-		physicalRenderObject->drawable = physicalObject->zenShape->Draw();
-		physicalRenderObject->layerId = 1;
-		physicalRenderObject->zOrder = 1000;
-
+		RenderObject* physicalRenderObject = new RenderObject(physicalObject->zenShape->Draw(), 1000, 1);
 		renderStack->renderQueue.push_back(physicalRenderObject);
 	}
 }

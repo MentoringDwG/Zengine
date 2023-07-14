@@ -1,26 +1,12 @@
-#include "Zengine.h"
 #include <SFML/Graphics.hpp>
+#include "Zengine.h"
 #include "World/World.h"
 #include "InputModule/InputProcessorModule.h"
-#include "InputModule/CharacterInputHandler.h"
 #include "Renderer/Renderer.h"
 #include "Structs/Timer.h"
 
 Zengine* Zengine::Engine = nullptr;
 World world;
-
-// long operation to time
-long long fib(long long n) 
-{
-	if (n < 2) 
-	{
-		return n;
-	}
-	else 
-	{
-		return fib(n - 1) + fib(n - 2);
-	}
-}
 
 Zengine* Zengine::CreateInstance()
 {
@@ -30,7 +16,6 @@ Zengine* Zengine::CreateInstance()
 
 void Zengine::Run()
 {
-	// Inicjalizacja silnika
 	engineRunning = true;
 
 	InputProcessor = new InputProcessorModule();
@@ -77,20 +62,21 @@ void Zengine::UIInitialize()
 
 void Zengine::MainLoop()
 {
-	CharacterInputHandler inputHandler = world.GetPlayer()->GetInputHandler();
-	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&inputHandler));
+	CharacterInputHandlerInitialize();
 
 	Timer* timerForPhysics = new Timer();
 	while (window->isOpen())
 	{
 		Timer* timerForFPSCounter = new Timer();
+
 		ProcessInput(window);
+
 		window->clear();
 
 		timerForPhysics->TimerStop();
 		if (timerForPhysics->timeMs >= zenPhysics2D->GetPhysicsTimeStep())
 		{
-			world.ForceToPhysicsObject();
+			world.ApplyForceToPhysicsObject();
 			zenPhysics2D->CalculatePhysics();
 			timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
 		}
@@ -111,6 +97,12 @@ void Zengine::MainLoop()
 		CountFrameTime(timerForFPSCounter->time);
 		delete timerForFPSCounter;
 	}
+}
+
+void Zengine::CharacterInputHandlerInitialize()
+{
+	characterInputHandler = world.GetPlayer()->GetInputHandler();
+	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&characterInputHandler));
 }
 
 void Zengine::ProcessInput(sf::RenderWindow* inWindow)
