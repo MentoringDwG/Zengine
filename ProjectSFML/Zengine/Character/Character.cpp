@@ -8,31 +8,32 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 
 	moveSpeed = playerMoveSpeed;
 
-	character.setPosition(sf::Vector2f(200.0f, 416.0f));
-	character.setOrigin(sf::Vector2f(character.getSize().x / 2, character.getSize().y / 2));
+	zenShape = new ZenShape(0, name);
+	zenShape->SetPosition(sf::Vector2f(200.0f, 416.0f));
+	zenShape->SetOrigin(sf::Vector2f(zenShape->GetSize().x / 2, zenShape->GetSize().y / 2));
 }
 
 //MOVEMENT
 void Character::MoveLeft()
 {
-	character.setScale(sf::Vector2f(-1.0f, 1.0f));
-	character.move(sf::Vector2f(-1.0f * moveSpeed, 0.0f));
+	zenShape->SetScale(sf::Vector2f(-1.0f, 1.0f));
+	zenShape->MoveObject(sf::Vector2f(-1.0f * moveSpeed, 0.0f));
 }
 
 void Character::MoveRight()
 {
-	character.setScale(sf::Vector2f(1.0f, 1.0f));
-	character.move(sf::Vector2f(1.0f * moveSpeed, 0.0f));
+	zenShape->SetScale(sf::Vector2f(1.0f, 1.0f));
+	zenShape->MoveObject(sf::Vector2f(1.0f * moveSpeed, 0.0f));
 }
 
 void Character::MoveUp()
 {
-	character.move(sf::Vector2f(0.0f, -1.0f * moveSpeed));
+	zenShape->MoveObject(sf::Vector2f(0.0f, -1.0f * moveSpeed));
 }
 
 void Character::MoveDown()
 {
-	character.move(sf::Vector2f(0.0f, 1.0f * moveSpeed));
+	zenShape->MoveObject(sf::Vector2f(0.0f, 1.0f * moveSpeed));
 }
 
 
@@ -56,11 +57,11 @@ void Character::Draw(RenderingStack* renderStack)
 	sf::Texture* texture = nullptr;
 	texture = textureAsset->GetTexture();
 
-	character.setSize(sf::Vector2f(32.0f, 64.0f));
-	character.setTexture(texture);
+	zenShape->SetSize(sf::Vector2f(32.0f, 64.0f));
+	zenShape->SetTexture(texture);
 
 	characterRenderObject = new RenderObject();
-	characterRenderObject->drawable = &character;
+	characterRenderObject->drawable = zenShape->Draw();
 	characterRenderObject->zOrder = 1000;
 	characterRenderObject->layerId = 1;
 

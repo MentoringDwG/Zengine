@@ -31,9 +31,6 @@ private:
 	Vector2* transposition;
 	Vector2* acceleration;
 
-	RenderObject* physicalRenderObject = nullptr;
-
-
 	void ResettingVariables();
 };
 

@@ -12,10 +12,14 @@ public:
 	};
 
 	void SetTexture(string texcurePath);
+	void SetTexture(sf::Texture* texture);
 	void SetPosition(sf::Vector2f vector);
 	void SetSize(sf::Vector2f vector);
+	void SetScale(sf::Vector2f vector);
 	void MoveObject(sf::Vector2f vector);
+	void SetOrigin(sf::Vector2f vector);
 	sf::RectangleShape* Draw();
+	sf::Vector2f GetSize();
 
 private:
 	sf::RectangleShape* rectangleShape = nullptr;

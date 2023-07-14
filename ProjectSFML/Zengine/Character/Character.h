@@ -5,6 +5,7 @@
 #include "../ZenObject/MovableObject.h"
 #include "../World/TextureAsset.h"
 #include "../Renderer/Renderer.h"
+#include "../ZenObject/ZenShape.h"
 
 class Character : public MovableObject
 {
@@ -27,8 +28,8 @@ private:
 
 	//Renderer
 	TextureAsset* textureAsset;
-	sf::RectangleShape character;
 	RenderObject* characterRenderObject = nullptr;
+	ZenShape* zenShape = nullptr;
 
 	//movement
 	float moveSpeed;

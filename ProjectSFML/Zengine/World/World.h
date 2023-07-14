@@ -21,7 +21,6 @@ public:
 private:
 	Map *map;
 	Character* playerCharacter;
-	sf::RectangleShape player;
 	PhysicalZenObject2D* enemy;
 };
 

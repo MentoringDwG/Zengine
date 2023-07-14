@@ -6,6 +6,11 @@ void ZenShape::SetTexture(string texcurePath)
 	rectangleShape->setTexture(texture);
 }
 
+void ZenShape::SetTexture(sf::Texture* texture)
+{
+	rectangleShape->setTexture(texture);
+}
+
 void ZenShape::SetPosition(sf::Vector2f vector)
 {
 	Position = vector;
@@ -20,6 +25,21 @@ void ZenShape::SetSize(sf::Vector2f vector)
 void ZenShape::MoveObject(sf::Vector2f vector)
 {
 	rectangleShape->move(vector);
+}
+
+void ZenShape::SetOrigin(sf::Vector2f vector)
+{
+	rectangleShape->setOrigin(vector);
+}
+
+sf::Vector2f ZenShape::GetSize()
+{
+	return rectangleShape->getSize();
+}
+
+void ZenShape::SetScale(sf::Vector2f vector)
+{
+	rectangleShape->setScale(vector);
 }
 
 sf::RectangleShape* ZenShape::Draw()
