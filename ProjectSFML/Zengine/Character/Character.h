@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include "../InputModule/CharacterInputHandler.h"
 #include "../ZenObject/MovableObject.h"

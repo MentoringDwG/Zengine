@@ -68,13 +68,11 @@ void Zengine::RenderingStackInitialize()
 
 void Zengine::UIInitialize()
 {
-	fpsText = new ZenObject(0, "fpsText");
-	fpsText->Position = sf::Vector2f(0, 0);
-	fpsText->text.setPosition(fpsText->Position);
-	fpsText->text.setFillColor(sf::Color::White);
-	fpsText->text.setCharacterSize(20);
-	fpsText->font.loadFromFile("Fonts/Super_Mario_Bros_/SuperMarioBros.ttf");
-	fpsText->text.setFont(fpsText->font);
+	fpsText = new ZenText(0, "fpsText");
+	fpsText->SetPosition(sf::Vector2f(0, 0));
+	fpsText->SetColor(sf::Color::White);
+	fpsText->SetSize(20);
+	fpsText->SetFont("Fonts/Super_Mario_Bros_/SuperMarioBros.ttf");
 }
 
 void Zengine::MainLoop()
@@ -103,7 +101,7 @@ void Zengine::MainLoop()
 
 		//Draw UI
 		window->setView(window->getDefaultView());
-		window->draw(fpsText->text);
+		window->draw(fpsText->Draw());
 		window->display();
 
 		CountFPS();
@@ -145,8 +143,8 @@ void Zengine::CountFPS()
 void Zengine::SetUI()
 {
 	fpsStringstream.str(std::string());
-	//fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
-	fpsText->text.setString(fpsStringstream.str());
+	fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
+	fpsText->SetText(fpsStringstream.str());
 }
 
 void Zengine::Shutdown()

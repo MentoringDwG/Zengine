@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Interfaces/IEngineModule.h"
 #include <vector>
 #include <SFML/Graphics.hpp>
@@ -7,6 +8,7 @@
 #include "ZenObject/ZenObject.h"
 #include <chrono>
 #include "Physics2D/ZenPhysics2D.h"
+#include "ZenObject/ZenText.h"
 
 struct Timer
 {
@@ -52,7 +54,7 @@ private:
 	Renderer* RenderModule = nullptr;
 	RenderingStack* renderStack = nullptr;
 	ZenPhysics2D* zenPhysics2D = nullptr;
-	ZenObject* fpsText;
+	ZenText* fpsText;
 	sf::RenderWindow* window = nullptr;
 	sf::View mainView;
 	sf::View playerView;

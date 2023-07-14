@@ -1,4 +1,5 @@
 #pragma once
+
 #include "../ZenObject/ZenObject.h"
 #include "../Renderer/Renderer.h"
 #include <SFML/Graphics.hpp>

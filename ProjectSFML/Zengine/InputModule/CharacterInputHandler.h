@@ -1,4 +1,5 @@
 #pragma once
+
 #include "InputHandler.h"
 #include <SFML/Window/Event.hpp>
 #include <iostream>

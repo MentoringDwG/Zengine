@@ -93,6 +93,9 @@
     <ClCompile Include="Zengine\Structs\Vector2.cpp">
       <Filter>Zengine\Structs</Filter>
     </ClCompile>
+    <ClCompile Include="ZenText.cpp">
+      <Filter>Zengine\ZenObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -142,6 +145,9 @@
     </ClInclude>
     <ClInclude Include="Zengine\Structs\Vector2.h">
       <Filter>Zengine\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\ZenObject\ZenText.h">
+      <Filter>Zengine\ZenObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

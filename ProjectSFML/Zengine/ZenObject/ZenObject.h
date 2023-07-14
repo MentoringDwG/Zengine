@@ -1,4 +1,5 @@
 #pragma once
+
 #include <vector>
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -15,8 +16,6 @@ public:
 	vector<ZenObject*> Children;
 	string Name;
 	sf::Vector2<float> Position;
-	sf::Text text;
-	sf::Font font;
 	sf::RectangleShape* rectangleShape = nullptr;
 
 	ZenObject(int IDIn, string NameIn) :ID(IDIn), Name(NameIn)

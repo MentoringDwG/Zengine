@@ -168,6 +168,7 @@
     <ClCompile Include="Zengine\Zengine.cpp" />
     <ClCompile Include="Zengine\ZenObject\MovableObject.cpp" />
     <ClCompile Include="Zengine\ZenObject\ZenObject.cpp" />
+    <ClCompile Include="ZenText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\Character\Character.h" />
@@ -186,6 +187,7 @@
     <ClInclude Include="Zengine\Zengine.h" />
     <ClInclude Include="Zengine\ZenObject\MovableObject.h" />
     <ClInclude Include="Zengine\ZenObject\ZenObject.h" />
+    <ClInclude Include="Zengine\ZenObject\ZenText.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
