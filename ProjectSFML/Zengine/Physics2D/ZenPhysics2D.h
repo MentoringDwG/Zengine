@@ -7,6 +7,7 @@ class ZenPhysics2D
 {
 public:
 	void RegisterPhysicalObject(PhysicalZenObject2D* physicalObject);
+	void RemovingObjectFromPhysics(PhysicalZenObject2D* physicalObject);
 	void CalculatePhysics();
 	int GetPhysicsTimeStep();
 
