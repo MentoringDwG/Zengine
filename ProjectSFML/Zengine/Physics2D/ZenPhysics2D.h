@@ -10,6 +10,7 @@ public:
 	void RegisterPhysicalObject(PhysicalZenObject2D* physicalObject);
 	void RemovingObjectFromPhysics(PhysicalZenObject2D* physicalObject);
 	void CalculatePhysics();
+	void Draw(RenderingStack* renderStack);
 	int GetPhysicsTimeStep();
 
 private:

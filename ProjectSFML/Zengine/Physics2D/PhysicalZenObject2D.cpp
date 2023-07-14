@@ -61,16 +61,6 @@ void PhysicalZenObject2D::AddForce(float massIn, float forceIN, float time, int 
 	velocity->x = s / time;
 }
 
-void PhysicalZenObject2D::Draw(RenderingStack* renderStack)
-{
-	physicalRenderObject = new RenderObject();
-	physicalRenderObject->drawable = zenShape->Draw();
-	physicalRenderObject->zOrder = 1000;
-	physicalRenderObject->layerId = 1;
-
-	renderStack->renderQueue.push_back(physicalRenderObject);
-}
-
 float PhysicalZenObject2D::GetTransposition()
 {
 	return transposition->x;

@@ -61,7 +61,7 @@ void Zengine::ViewInitialize()
 
 void Zengine::RenderingStackInitialize()
 {
-	world.Draw(renderStack);
+	world.Draw(renderStack, zenPhysics2D);
 	renderStack->DivisionOfObjectsIntoLayersByLayerId();
 	RenderModule->SortRenderLayers(renderStack);
 }

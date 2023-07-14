@@ -42,11 +42,11 @@ void World::ForceToPhysicsObject()
 	}
 }
 
-void World::Draw(RenderingStack* renderStack)
+void World::Draw(RenderingStack* renderStack, ZenPhysics2D* zenPhysics2D)
 {
 	map->Draw(renderStack);
 	playerCharacter->Draw(renderStack);
-	enemy->Draw(renderStack);
+	zenPhysics2D->Draw(renderStack);
 }
 
 Character* World::GetPlayer()

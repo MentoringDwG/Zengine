@@ -14,9 +14,10 @@ public:
 	ForceDirection forceDirection;
 	PhysicalZenObject2D(int IDIn, string NameIn, string enemySpritePath, sf::Vector2f startPosition);
 	void CalculatePhysics();
-	void Draw(RenderingStack* renderStack);
 	void AddForce(float mass, float force, float time, int direction);
 	float GetTransposition();
+
+	ZenShape* zenShape;
 
 private:
 	float mass = 1.0f;
@@ -32,7 +33,6 @@ private:
 
 	RenderObject* physicalRenderObject = nullptr;
 
-	ZenShape* zenShape;
 
 	void ResettingVariables();
 };
