@@ -4,7 +4,6 @@
 #include <SFML/Graphics.hpp>
 #include "../Physics2D/ZenPhysics2D.h"
 
-#pragma optimize("", off)
 void World::Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed)
 {
 	map = new Map();
@@ -24,20 +23,20 @@ void World::PhysicalZenObject2DInitialize(ZenPhysics2D *zenPhysics2D, string ene
 {
 	enemy = new PhysicalZenObject2D(2, "Bird", enemySpritePath, sf::Vector2f(512.0f, 288.0f));
 	zenPhysics2D->RegisterPhysicalObject(enemy);
-	enemy->AddForce(1.0f, 3.0f, 3.0f, -1);
+	enemy->ApplyForceToPhysicsObject(1.0f, -3.0f, 3.0f);
 }
 
 void World::ForceToPhysicsObject()
 {
 	if (enemy->GetTransposition() == 0)
 	{
-		if (enemy->forceDirection == -1)
+		if (enemy->GetVelocityX()<0)
 		{
-			enemy->AddForce(1.0f, 3.0f, 3.0f, 1);
+			enemy->ApplyForceToPhysicsObject(1.0f, 3.0f, 3.0f);
 		}
 		else
 		{
-			enemy->AddForce(1.0f, 3.0f, 3.0f, -1);
+			enemy->ApplyForceToPhysicsObject(1.0f, -3.0f, 3.0f);
 		}
 	}
 }
@@ -53,6 +52,4 @@ Character* World::GetPlayer()
 {
 	return playerCharacter;
 }
-
-#pragma optimize("", on)
 

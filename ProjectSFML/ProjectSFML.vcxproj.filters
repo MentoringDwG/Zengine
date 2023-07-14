@@ -99,6 +99,9 @@
     <ClCompile Include="Zengine\ZenObject\ZenShape.cpp">
       <Filter>Zengine\ZenObject</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\Structs\Timer.cpp">
+      <Filter>Zengine\Structs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -154,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="Zengine\ZenObject\ZenShape.h">
       <Filter>Zengine\ZenObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Structs\Timer.h">
+      <Filter>Zengine\Structs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

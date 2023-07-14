@@ -14,7 +14,7 @@ public:
 	int GetPhysicsTimeStep();
 
 private:
-	int physicsTimeStep = 30; // ms
+	int physicsTimeStep = 30;	//0.03 seconds
 	float globalGravity = 0.0f;
 
 	std::vector<PhysicalZenObject2D*> PhysicalObjects;

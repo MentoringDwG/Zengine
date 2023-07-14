@@ -1,11 +1,5 @@
 #include "PhysicalZenObject2D.h"
 
-enum PhysicalZenObject2D::ForceDirection
-{
-	left = -1,
-	right = 1
-};
-
 PhysicalZenObject2D::PhysicalZenObject2D(int IDIn, string NameIn, string enemySpritePath, sf::Vector2f startPosition) :ZenObject(IDIn, NameIn)
 {
 	velocity = new Vector2(0, 0);
@@ -20,39 +14,36 @@ PhysicalZenObject2D::PhysicalZenObject2D(int IDIn, string NameIn, string enemySp
 
 void PhysicalZenObject2D::CalculatePhysics()
 {
-	transposition->x = velocity->x - (slowdownPercentage * velocity->x / 100);
+	transposition->x = velocity->x - (fakeDrag * velocity->x / 100);
 
-	if (forceDirection==left && transposition->x > -0.5)
+	if (velocity->x<0 && transposition->x > -0.5)
 	{
 		ResettingVariables();
 		return;
 	}
 
-	if (forceDirection == right && transposition->x < 0.5)
+	if (velocity->x>0 && transposition->x < 0.5)
 	{
 		ResettingVariables();
 		return;
 	}
 
 	zenShape->MoveObject(sf::Vector2f(transposition->x, 0.0f));
-	velocity->x= velocity->x - (slowdownPercentage * velocity->x / 100);
-	slowdownPercentage = slowdownPercentage + 0.1;
+	velocity->x= velocity->x - (fakeDrag * velocity->x / 100);
+	fakeDrag = fakeDrag + 0.1;
 }
 
 void PhysicalZenObject2D::ResettingVariables()
 {
 	transposition->SetVector2(0, 0);
-	slowdownPercentage = 1;
+	fakeDrag = 1;
 }
 
 //direction: -1 - left, 1 -right
-void PhysicalZenObject2D::AddForce(float massIn, float forceIN, float time, int direction)
+void PhysicalZenObject2D::ApplyForceToPhysicsObject(float massIn, float forceIN, float time)
 {
-	if (direction == -1) forceDirection = left;
-	if (direction == 1) forceDirection = right;
-
 	mass = massIn;
-	force = forceIN*direction;
+	force = forceIN;
 
 	acceleration->x = force / mass;
 
@@ -64,4 +55,9 @@ void PhysicalZenObject2D::AddForce(float massIn, float forceIN, float time, int 
 float PhysicalZenObject2D::GetTransposition()
 {
 	return transposition->x;
+}
+
+float PhysicalZenObject2D::GetVelocityX()
+{
+	return velocity->x;
 }

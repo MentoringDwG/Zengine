@@ -10,22 +10,19 @@
 class PhysicalZenObject2D:public ZenObject
 {
 public:
-	enum ForceDirection;
-	ForceDirection forceDirection;
 	PhysicalZenObject2D(int IDIn, string NameIn, string enemySpritePath, sf::Vector2f startPosition);
 	void CalculatePhysics();
-	void AddForce(float mass, float force, float time, int direction);
+	void ApplyForceToPhysicsObject(float mass, float force, float time);
 	float GetTransposition();
+	float GetVelocityX();
 
 	ZenShape* zenShape;
 
 private:
 	float mass = 1.0f;
-	float fakeDrag = 0.0f;
+	float fakeDrag = 1.0f;
 	float gravity = 0.0f;
 	float force = 1.0f;
-	float slowdownPercentage = 1;
-	int direction = 1;
 
 	Vector2* velocity;
 	Vector2* transposition;

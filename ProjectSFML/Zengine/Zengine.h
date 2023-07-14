@@ -6,29 +6,8 @@
 #include "Renderer/Renderer.h"
 #include <sstream>
 #include "ZenObject/ZenObject.h"
-#include <chrono>
 #include "Physics2D/ZenPhysics2D.h"
 #include "ZenObject/ZenText.h"
-
-struct Timer
-{
-	std::chrono::steady_clock::time_point start_time;
-	std::chrono::steady_clock::time_point end_time;
-	std::chrono::nanoseconds time;
-	int timeMs;
-
-	Timer()
-	{
-		start_time = std::chrono::high_resolution_clock::now();
-	}
-
-	void TimerStop()
-	{
-		end_time = std::chrono::high_resolution_clock::now();
-		time = end_time - start_time;
-		timeMs = time / std::chrono::milliseconds(1);
-	}
-};
 
 
 class Zengine
