@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "../Structs/Vector2.h"
+#include "../ZenObject/ZenShape.h"
 
 class PhysicalZenObject2D:public ZenObject
 {
@@ -30,6 +31,8 @@ private:
 	Vector2* acceleration;
 
 	RenderObject* physicalRenderObject = nullptr;
+
+	ZenShape* zenShape;
 
 	void ResettingVariables();
 };

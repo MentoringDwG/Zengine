@@ -16,7 +16,6 @@ public:
 	vector<ZenObject*> Children;
 	string Name;
 	sf::Vector2<float> Position;
-	sf::RectangleShape* rectangleShape = nullptr;
 
 	ZenObject(int IDIn, string NameIn) :ID(IDIn), Name(NameIn)
 	{

@@ -12,13 +12,10 @@ PhysicalZenObject2D::PhysicalZenObject2D(int IDIn, string NameIn, string enemySp
 	transposition = new Vector2(0.1, 0);
 	acceleration = new Vector2(0, 0);
 
-	sf::Texture* texture = new sf::Texture;
-	texture->loadFromFile(enemySpritePath);
-
-	rectangleShape = new sf::RectangleShape;
-	rectangleShape->setPosition(startPosition);
-	rectangleShape->setSize(sf::Vector2f(32.0f, 32.0f));
-	rectangleShape->setTexture(texture);
+	zenShape = new ZenShape(3, "zenShape");
+	zenShape->SetTexture(enemySpritePath);
+	zenShape->SetPosition(startPosition);
+	zenShape->SetSize(sf::Vector2f(32.0f, 32.0f));
 }
 
 void PhysicalZenObject2D::CalculatePhysics()
@@ -37,7 +34,7 @@ void PhysicalZenObject2D::CalculatePhysics()
 		return;
 	}
 
-	rectangleShape->move(sf::Vector2f(transposition->x, 0.0f));
+	zenShape->MoveObject(sf::Vector2f(transposition->x, 0.0f));
 	velocity->x= velocity->x - (slowdownPercentage * velocity->x / 100);
 	slowdownPercentage = slowdownPercentage + 0.1;
 }
@@ -67,7 +64,7 @@ void PhysicalZenObject2D::AddForce(float massIn, float forceIN, float time, int 
 void PhysicalZenObject2D::Draw(RenderingStack* renderStack)
 {
 	physicalRenderObject = new RenderObject();
-	physicalRenderObject->drawable = rectangleShape;
+	physicalRenderObject->drawable = zenShape->Draw();
 	physicalRenderObject->zOrder = 1000;
 	physicalRenderObject->layerId = 1;
 
