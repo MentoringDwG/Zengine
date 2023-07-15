@@ -6,6 +6,7 @@
 #include "../World/TextureAsset.h"
 #include "../Renderer/Renderer.h"
 #include "../ZenObject/ZenShape.h"
+#include "../Colliders/CircleCollider2D.h";
 
 class Character : public MovableObject
 {
@@ -21,17 +22,18 @@ public:
 	void SetTextureAsset(string Path, string Name);
 	TextureAsset GetTextureAsset();
 	void Draw(RenderingStack* renderStack);
+	void SetCollider(Vector2* position, float radius);
 
 private:
-	//Input
 	CharacterInputHandler inputHandler;
 
-	//Renderer
 	TextureAsset* textureAsset;
 	RenderObject* characterRenderObject = nullptr;
 	ZenShape* zenShape = nullptr;
 
-	//movement
 	float moveSpeed;
+
+	CircleCollider2D* collider2D;
+	void HandleCollisionStart(const CircleCollider2D* other);
 };
 

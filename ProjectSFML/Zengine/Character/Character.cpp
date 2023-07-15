@@ -1,4 +1,6 @@
 #include "Character.h"
+#include <functional>
+
 
 Character::Character(std::string name, string Path, float playerMoveSpeed)
 {
@@ -64,3 +66,15 @@ void Character::Draw(RenderingStack* renderStack)
 	characterRenderObject = new RenderObject(zenShape->Draw(), 1000, 1);
 	renderStack->renderQueue.push_back(characterRenderObject);
 }
+
+void Character::SetCollider(Vector2* position, float radius)
+{
+	collider2D = new CircleCollider2D(position, radius, zenShape);
+	collider2D->OnCollisionStart = std::bind(&Character::HandleCollisionStart, this, std::placeholders::_1);
+}
+	
+void Character::HandleCollisionStart(const CircleCollider2D* other)
+{
+	cout << "Characetr hier";
+}
+
