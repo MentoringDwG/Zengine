@@ -18,7 +18,7 @@ void Vector2::SetVector2(float x, float y)
 	this->y = y;
 }
 
-float Vector2::GetDistance(const Vector2& other)
+float Vector2::GetDistance(const Vector2* other)
 {
-	return sqrt(pow(x - other.x, 2) + pow(y - other.y, 2));
+	return sqrt(pow(x - other->x, 2) + pow(y - other->y, 2));
 }

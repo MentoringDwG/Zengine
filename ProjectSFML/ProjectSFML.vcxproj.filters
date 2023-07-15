@@ -40,6 +40,9 @@
     <Filter Include="Zengine\Structs">
       <UniqueIdentifier>{c4441907-0759-4078-9a7f-faba8714898b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Zengine\Colliders">
+      <UniqueIdentifier>{348827ee-6d59-42f7-a833-3d9cdc5017a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp">
@@ -102,6 +105,9 @@
     <ClCompile Include="Zengine\Structs\Timer.cpp">
       <Filter>Zengine\Structs</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\Colliders\CircleCollider2D.cpp">
+      <Filter>Zengine\Colliders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -160,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="Zengine\Structs\Timer.h">
       <Filter>Zengine\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Colliders\CircleCollider2D.h">
+      <Filter>Zengine\Colliders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
