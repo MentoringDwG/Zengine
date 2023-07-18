@@ -1,7 +1,6 @@
 #include "Character.h"
 #include <functional>
 
-
 Character::Character(std::string name, string PathR, string PathL, float playerMoveSpeed)
 {
 	inputHandler.SetName(name);

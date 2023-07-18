@@ -32,13 +32,12 @@ private:
 	TextureAsset* textureAsset;
 	RenderObject* characterRenderObject = nullptr;
 	sf::Texture* texture = nullptr;
-	void SetGraphicsForMovement(string Path);
+	CircleCollider2D* collider2D = nullptr;
 	string PathR;
 	string PathL;
-
 	float moveSpeed;
 
-	CircleCollider2D* collider2D = nullptr;
 	void HandleCollisionStart(CircleCollider2D* other);
+	void SetGraphicsForMovement(string Path);
 };
 

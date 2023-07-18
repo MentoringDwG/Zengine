@@ -7,9 +7,7 @@
 void World::Initialize(string PlayerName, string PlayerTexcurePathR, string PlayerTexcurePathL, float PlayerMoveSpeed)
 {
 	map = new Map();
-
 	playerCharacter = new Character(PlayerName, PlayerTexcurePathR, PlayerTexcurePathL, PlayerMoveSpeed);
-
 	coinCounter = new CoinCounter(1, "coinCounter", sf::Vector2f(0, 0));
 }
 

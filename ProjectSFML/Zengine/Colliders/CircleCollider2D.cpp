@@ -4,8 +4,6 @@
 CircleCollider2D::CircleCollider2D(Vector2* position, float radius, ZenObject* owner)
 {
 	this->position = position;
-	this->position->x = position->x + owner->size.x / 2;
-	this->position->y = position->y + owner->size.y / 2;
 	this->radius = radius;
 	SetOwner(owner);
 
@@ -14,7 +12,20 @@ CircleCollider2D::CircleCollider2D(Vector2* position, float radius, ZenObject* o
 	circle.setFillColor(sf::Color::Transparent);
 	circle.setOutlineColor(sf::Color::Green);
 	circle.setOutlineThickness(1);
-	circle.setPosition(owner->Position.x + owner->size.x / 2, owner->Position.y + owner->size.y / 2);
+
+	SetPosition(sf::Vector2f(position->x, position->y));
+}
+
+void CircleCollider2D::SetOwner(ZenObject* inOwner)
+{
+	owner = inOwner;
+}
+
+void CircleCollider2D::SetPosition(sf::Vector2f vector)
+{
+	circle.setPosition(vector.x + owner->size.x / 2, vector.y + owner->size.y / 2);
+	position->x = vector.x + owner->size.x / 2;
+	position->y = vector.y + owner->size.y / 2;
 }
 
 bool CircleCollider2D::CheckCollision(CircleCollider2D* otherCollider)
@@ -47,16 +58,4 @@ bool CircleCollider2D::HasCollision()
 ZenObject* CircleCollider2D::GetOwner()
 {
 	return owner;
-}
-
-void CircleCollider2D::SetOwner(ZenObject* inOwner)
-{
-	owner = inOwner;
-}
-
-void CircleCollider2D::SetPosition(sf::Vector2f vector)
-{
-	circle.setPosition(vector.x+owner->size.x/2, vector.y+owner->size.y/2);
-	position->x = vector.x + owner->size.x / 2;
-	position->y = vector.y + owner->size.y / 2;
 }
