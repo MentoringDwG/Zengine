@@ -15,6 +15,9 @@ public:
 	std::function<void(const CircleCollider2D* other)> OnCollisionStart;
 	ZenObject* GetOwner();
 	void SetOwner(ZenObject* inOwner);
+	void SetPosition(sf::Vector2f vector);
+
+	sf::CircleShape circle;
 
 private:
 	Vector2* position;

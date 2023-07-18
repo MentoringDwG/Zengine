@@ -1,18 +1,13 @@
 ﻿  Character.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Character\Character.h(9,10): warning C4067: nieoczekiwane tokeny występujące po dyrektywie preprocesora - oczekiwano nowego wiersza
-  CircleCollider2D.cpp
   CharacterInputHandler.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Character\Character.h(9,10): warning C4067: nieoczekiwane tokeny występujące po dyrektywie preprocesora - oczekiwano nowego wiersza
   World.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Character\Character.h(9,10): warning C4067: nieoczekiwane tokeny występujące po dyrektywie preprocesora - oczekiwano nowego wiersza
   Zengine.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Character\Character.h(9,10): warning C4067: nieoczekiwane tokeny występujące po dyrektywie preprocesora - oczekiwano nowego wiersza
 C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Structs\Timer.h(22,17): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(123,18): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(132,13): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(127,18): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(136,13): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
   Trwa generowanie kodu
-  8 of 807 functions ( 1.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    21 functions had inline decision re-evaluated but remain unchanged
+  20 of 934 functions ( 2.1%) were compiled, the rest were copied from previous compilation.
+    2 functions were new in current compilation
+    48 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\ProjectSFML.exe

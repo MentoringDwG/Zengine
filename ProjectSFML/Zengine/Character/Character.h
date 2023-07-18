@@ -6,7 +6,8 @@
 #include "../World/TextureAsset.h"
 #include "../Renderer/Renderer.h"
 #include "../ZenObject/ZenShape.h"
-#include "../Colliders/CircleCollider2D.h";
+#include "../Colliders/CircleCollider2D.h"
+#include "../Physics2D/ZenPhysics2D.h"
 
 class Character : public MovableObject
 {
@@ -16,24 +17,28 @@ public:
 	virtual void MoveUp() override;
 	virtual void MoveDown() override;
 
-	Character(std::string name, string Path, float playerMoveSpeed);
+	Character(std::string name, string PathR, string PathL, float playerMoveSpeed);
 
 	CharacterInputHandler GetInputHandler();
 	void SetTextureAsset(string Path, string Name);
 	TextureAsset GetTextureAsset();
 	void Draw(RenderingStack* renderStack);
-	void SetCollider(Vector2* position, float radius);
+	void SetCollider(Vector2* position, float radius, ZenPhysics2D* zenPhysics2D);
+	ZenShape* zenShape = nullptr;
 
 private:
 	CharacterInputHandler inputHandler;
 
 	TextureAsset* textureAsset;
 	RenderObject* characterRenderObject = nullptr;
-	ZenShape* zenShape = nullptr;
+	sf::Texture* texture = nullptr;
+	void SetGraphicsForMovement(string Path);
+	string PathR;
+	string PathL;
 
 	float moveSpeed;
 
-	CircleCollider2D* collider2D;
+	CircleCollider2D* collider2D = nullptr;
 	void HandleCollisionStart(const CircleCollider2D* other);
 };
 

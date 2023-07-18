@@ -20,6 +20,8 @@ public:
 	void SetOrigin(sf::Vector2f vector);
 	sf::RectangleShape* Draw();
 	sf::Vector2f GetSize();
+	sf::Vector2f GetOrigin();
+	sf::Vector2f GetPosition();
 
 private:
 	sf::RectangleShape* rectangleShape = nullptr;

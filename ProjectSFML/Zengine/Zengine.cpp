@@ -28,7 +28,7 @@ void Zengine::Run()
 	ViewInitialize();
 
 	RenderModule->Initialize(window);
-	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
+	world.Initialize("Mario", "Graphics/MarioR.png", "Graphics/MarioL.png", 2.0f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
 	world.PhysicalZenObject2DInitialize(zenPhysics2D, "Graphics/Enemy1.png");
 	RenderingStackInitialize();
@@ -88,6 +88,10 @@ void Zengine::MainLoop()
 		//Draw UI
 		window->setView(window->getDefaultView());
 		window->draw(fpsText->Draw());
+
+		//Draw Colliders
+		zenPhysics2D->DrawColliders(window);
+
 		window->display();
 
 		CountFPS();
@@ -135,7 +139,8 @@ void Zengine::CountFPS()
 void Zengine::SetUI()
 {
 	fpsStringstream.str(std::string());
-	fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
+	//fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
+	fpsStringstream << "x: " << world.GetPlayer()->zenShape->GetPosition().x << " y: " << world.GetPlayer()->zenShape->GetPosition().y;
 	fpsText->SetText(fpsStringstream.str());
 }
 

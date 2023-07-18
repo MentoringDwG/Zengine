@@ -2,12 +2,14 @@
 #include <functional>
 
 
-Character::Character(std::string name, string Path, float playerMoveSpeed)
+Character::Character(std::string name, string PathR, string PathL, float playerMoveSpeed)
 {
 	inputHandler.SetName(name);
 	inputHandler.SetOwningCharacter(this);
 
-	SetTextureAsset(Path, name);
+	SetTextureAsset(PathR, name);
+	this->PathR = PathR;
+	this->PathL = PathL;
 
 	moveSpeed = playerMoveSpeed;
 
@@ -19,30 +21,41 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 //MOVEMENT
 void Character::MoveLeft()
 {
-	zenShape->SetScale(sf::Vector2f(-1.0f, 1.0f));
+	SetGraphicsForMovement(PathL);
 	zenShape->MoveObject(sf::Vector2f(-1.0f * moveSpeed, 0.0f));
+	collider2D->SetPosition(zenShape->GetPosition());
 }
 
 void Character::MoveRight()
 {
-	zenShape->SetScale(sf::Vector2f(1.0f, 1.0f));
+	SetGraphicsForMovement(PathR);
 	zenShape->MoveObject(sf::Vector2f(1.0f * moveSpeed, 0.0f));
+	collider2D->SetPosition(zenShape->GetPosition());
 }
 
 void Character::MoveUp()
 {
 	zenShape->MoveObject(sf::Vector2f(0.0f, -1.0f * moveSpeed));
+	collider2D->SetPosition(zenShape->GetPosition());
 }
 
 void Character::MoveDown()
 {
 	zenShape->MoveObject(sf::Vector2f(0.0f, 1.0f * moveSpeed));
+	collider2D->SetPosition(zenShape->GetPosition());
 }
 
 
 CharacterInputHandler Character::GetInputHandler()
 {
 	return Character::inputHandler;
+}
+
+void  Character::SetGraphicsForMovement(string Path)
+{
+	textureAsset->SetPath(Path);
+	texture = textureAsset->GetTexture();
+	zenShape->SetTexture(texture);
 }
 
 void Character::SetTextureAsset(string Path, string Name)
@@ -57,7 +70,6 @@ TextureAsset Character::GetTextureAsset()
 
 void Character::Draw(RenderingStack* renderStack)
 {
-	sf::Texture* texture = nullptr;
 	texture = textureAsset->GetTexture();
 
 	zenShape->SetSize(sf::Vector2f(32.0f, 64.0f));
@@ -67,10 +79,11 @@ void Character::Draw(RenderingStack* renderStack)
 	renderStack->renderQueue.push_back(characterRenderObject);
 }
 
-void Character::SetCollider(Vector2* position, float radius)
+void Character::SetCollider(Vector2* position, float radius, ZenPhysics2D* zenPhysics2D)
 {
 	collider2D = new CircleCollider2D(position, radius, zenShape);
 	collider2D->OnCollisionStart = std::bind(&Character::HandleCollisionStart, this, std::placeholders::_1);
+	zenPhysics2D->RegisterCollider(collider2D);
 }
 	
 void Character::HandleCollisionStart(const CircleCollider2D* other)

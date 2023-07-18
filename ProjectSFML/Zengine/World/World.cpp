@@ -4,11 +4,11 @@
 #include <SFML/Graphics.hpp>
 #include "../Physics2D/ZenPhysics2D.h"
 
-void World::Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed)
+void World::Initialize(string PlayerName, string PlayerTexcurePathR, string PlayerTexcurePathL, float PlayerMoveSpeed)
 {
 	map = new Map();
 
-	playerCharacter = new Character(PlayerName, PlayerTexcurePath, PlayerMoveSpeed);
+	playerCharacter = new Character(PlayerName, PlayerTexcurePathR, PlayerTexcurePathL, PlayerMoveSpeed);
 
 	//And the rest of the objects of the world
 }
@@ -24,6 +24,8 @@ void World::PhysicalZenObject2DInitialize(ZenPhysics2D *zenPhysics2D, string ene
 	enemy = new PhysicalZenObject2D(2, "Bird", enemySpritePath, sf::Vector2f(512.0f, 288.0f));
 	zenPhysics2D->RegisterPhysicalObject(enemy);
 	enemy->AddForce(1.0f, -3.0f, 3.0f);
+
+	playerCharacter->SetCollider(new Vector2(playerCharacter->zenShape->GetOrigin().x, playerCharacter->zenShape->GetOrigin().y), 30, zenPhysics2D);
 }
 
 void World::ApplyForceToPhysicsObject()

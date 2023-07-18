@@ -46,3 +46,13 @@ sf::RectangleShape* ZenShape::Draw()
 {
 	return rectangleShape;
 }
+
+sf::Vector2f ZenShape::GetOrigin()
+{
+	return rectangleShape->getOrigin();
+}
+
+sf::Vector2f ZenShape::GetPosition()
+{
+	return rectangleShape->getPosition();
+}
