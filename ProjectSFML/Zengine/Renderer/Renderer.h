@@ -18,6 +18,7 @@ struct RenderingStack
 {
 	void Clear();
 	void DivisionOfObjectsIntoLayersByLayerId();
+	void RemoveFromRenderLayers(RenderObject* renderObjectToRemove);
 	std::vector<RenderObject*> renderQueue;
 	std::map <int, std::vector<RenderObject*>> renderLayers;
 };

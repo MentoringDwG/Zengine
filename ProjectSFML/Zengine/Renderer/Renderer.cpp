@@ -1,7 +1,7 @@
 #include "Renderer.h"
 #include <SFML/Graphics.hpp>
 
-
+#pragma optimize("", off)
 void Renderer::Initialize(sf::RenderWindow* inWindow)
 {
 	window = inWindow;
@@ -25,6 +25,18 @@ void RenderingStack::DivisionOfObjectsIntoLayersByLayerId()
 	for (int i = 0; i < renderQueue.size(); i++)
 	{
 		renderLayers[renderQueue[i]->layerId].push_back(renderQueue[i]);
+	}
+}
+
+void RenderingStack::RemoveFromRenderLayers(RenderObject* renderObjectToRemove)
+{
+	for (auto itr = renderLayers[renderObjectToRemove->layerId].begin(); itr != renderLayers[renderObjectToRemove->layerId].end(); ++itr)
+	{
+		if (*itr == renderObjectToRemove)
+		{
+			renderLayers[renderObjectToRemove->layerId].erase(itr);
+			return;
+		}
 	}
 }
 
@@ -77,3 +89,5 @@ void Renderer::DrawLayer(std::vector<RenderObject*>& layer)
 		window->draw(*rectangleShape);
 	}
 }
+
+#pragma optimize("", on)

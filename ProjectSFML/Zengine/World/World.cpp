@@ -4,14 +4,11 @@
 #include <SFML/Graphics.hpp>
 #include "../Physics2D/ZenPhysics2D.h"
 
-#pragma optimize("", off)
 void World::Initialize(string PlayerName, string PlayerTexcurePathR, string PlayerTexcurePathL, float PlayerMoveSpeed)
 {
 	map = new Map();
 
 	playerCharacter = new Character(PlayerName, PlayerTexcurePathR, PlayerTexcurePathL, PlayerMoveSpeed);
-
-	//And the rest of the objects of the world
 }
 
 void World::MapInitialize(string pathToTexturesTxt, string pathToTileTxt)
@@ -66,4 +63,3 @@ Character* World::GetPlayer()
 {
 	return playerCharacter;
 }
-#pragma optimize("", on)

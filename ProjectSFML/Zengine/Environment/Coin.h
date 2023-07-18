@@ -15,6 +15,7 @@ public:
 private:
 	ZenShape* zenShape = nullptr;
 	RenderObject* coinRenderObject = nullptr;
+	RenderingStack* renderStack = nullptr;
 	CircleCollider2D* collider = nullptr;
 	ZenPhysics2D* zenPhysics2D = nullptr;
 
