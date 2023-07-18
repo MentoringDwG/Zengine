@@ -86,6 +86,6 @@ void Character::SetCollider(Vector2* position, float radius, ZenPhysics2D* zenPh
 	
 void Character::HandleCollisionStart(CircleCollider2D* other)
 {
-	cout << "Characetr hier";
+
 }
 

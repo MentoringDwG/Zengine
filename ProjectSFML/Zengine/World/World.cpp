@@ -9,6 +9,8 @@ void World::Initialize(string PlayerName, string PlayerTexcurePathR, string Play
 	map = new Map();
 
 	playerCharacter = new Character(PlayerName, PlayerTexcurePathR, PlayerTexcurePathL, PlayerMoveSpeed);
+
+	coinCounter = new CoinCounter(1, "coinCounter", sf::Vector2f(0, 0));
 }
 
 void World::MapInitialize(string pathToTexturesTxt, string pathToTileTxt)
@@ -43,10 +45,10 @@ void World::ApplyForceToPhysicsObject()
 
 void World::EnvironmentInitialize(string CoinPath, sf::Vector2f position1, sf::Vector2f position2, ZenPhysics2D* zenPhysics2D)
 {
-	coin1 = new Coin(4, "coin1", CoinPath, position1);
+	coin1 = new Coin(4, "Coin", CoinPath, position1, coinCounter);
 	coin1->SetCollider(new Vector2(position1.x, position1.y), 20, zenPhysics2D);
 
-	coin2 = new Coin(5, "coin2", CoinPath, position2);
+	coin2 = new Coin(5, "Coin", CoinPath, position2, coinCounter);
 	coin2->SetCollider(new Vector2(position2.x, position2.y), 20, zenPhysics2D);
 }
 

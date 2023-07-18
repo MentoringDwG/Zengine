@@ -91,6 +91,7 @@ void Zengine::MainLoop()
 		//Draw UI
 		window->setView(window->getDefaultView());
 		window->draw(fpsText->Draw());
+		world.coinCounter->DrawCoinCounter(window);
 
 		window->display();
 

@@ -6,6 +6,9 @@
 #include "../Physics2D/ZenPhysics2D.h"
 #include "../Physics2D/PhysicalZenObject2D.h"
 #include "../Environment/Coin.h"
+#include "../ZenObject/ZenText.h"
+#include "../Environment/CoinCounter.h"
+#include <sstream>
 
 class Renderer;
 
@@ -19,6 +22,7 @@ public:
 	void Draw(RenderingStack* renderStack, ZenPhysics2D* zenPhysics2D);
 	void ApplyForceToPhysicsObject();
 	Character* GetPlayer();
+	CoinCounter* coinCounter;
 
 private:
 	Map *map;

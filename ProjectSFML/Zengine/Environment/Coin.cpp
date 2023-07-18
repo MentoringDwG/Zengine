@@ -1,11 +1,13 @@
 #include "Coin.h"
 
-Coin::Coin(int IDIn, string NameIn, string CoinPath, sf::Vector2f position)
+Coin::Coin(int IDIn, string NameIn, string CoinPath, sf::Vector2f position, CoinCounter* coinCounter)
 {
 	zenShape = new ZenShape(IDIn, NameIn, sf::Vector2f(32, 32));
 	zenShape->SetTexture(CoinPath);
 	zenShape->SetPosition(position);
 	zenShape->SetSize(sf::Vector2f(32, 32));
+
+	this->coinCounter = coinCounter;
 }
 
 void Coin::Draw(RenderingStack* renderStack)
@@ -27,8 +29,9 @@ void Coin::HandleCollisionStart(CircleCollider2D* other)
 {
 	if (other->GetOwner()->Name == "Mario")
 	{
-		cout << "Jest kolizja z: " << other->GetOwner()->Name<<endl;
 		renderStack->RemoveFromRenderLayers(coinRenderObject);
 		zenPhysics2D->RemovingCollider(collider);
+
+		coinCounter->CoinCounterUpdate();
 	}
 }

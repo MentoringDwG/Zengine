@@ -114,6 +114,9 @@
     <ClCompile Include="Zengine\Environment\Coin.cpp">
       <Filter>Zengine\Environment</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\Environment\CoinCounter.cpp">
+      <Filter>Zengine\Environment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -177,6 +180,9 @@
       <Filter>Zengine\Colliders</Filter>
     </ClInclude>
     <ClInclude Include="Zengine\Environment\Coin.h">
+      <Filter>Zengine\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Environment\CoinCounter.h">
       <Filter>Zengine\Environment</Filter>
     </ClInclude>
   </ItemGroup>
