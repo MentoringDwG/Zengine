@@ -13,9 +13,9 @@ Character::Character(std::string name, string PathR, string PathL, float playerM
 
 	moveSpeed = playerMoveSpeed;
 
-	zenShape = new ZenShape(0, name);
+	zenShape = new ZenShape(0, name, sf::Vector2f(32, 64));
 	zenShape->SetPosition(sf::Vector2f(200.0f, 416.0f));
-	zenShape->SetOrigin(sf::Vector2f(zenShape->GetSize().x / 2, zenShape->GetSize().y / 2));
+	zenShape->SetSize(sf::Vector2f(32.0f, 64.0f));
 }
 
 //MOVEMENT
@@ -71,8 +71,6 @@ TextureAsset Character::GetTextureAsset()
 void Character::Draw(RenderingStack* renderStack)
 {
 	texture = textureAsset->GetTexture();
-
-	zenShape->SetSize(sf::Vector2f(32.0f, 64.0f));
 	zenShape->SetTexture(texture);
 
 	characterRenderObject = new RenderObject(zenShape->Draw(), 1000, 1);
@@ -86,7 +84,7 @@ void Character::SetCollider(Vector2* position, float radius, ZenPhysics2D* zenPh
 	zenPhysics2D->RegisterCollider(collider2D);
 }
 	
-void Character::HandleCollisionStart(const CircleCollider2D* other)
+void Character::HandleCollisionStart(CircleCollider2D* other)
 {
 	cout << "Characetr hier";
 }

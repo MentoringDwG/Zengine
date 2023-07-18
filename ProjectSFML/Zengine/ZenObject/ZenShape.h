@@ -5,7 +5,7 @@
 class ZenShape: public ZenObject
 {
 public:
-	ZenShape(int IDIn, string NameIn) :ZenObject(IDIn, NameIn)
+	ZenShape(int IDIn, string NameIn, sf::Vector2f sizeIn) :ZenObject(IDIn, NameIn, sizeIn)
 	{
 		rectangleShape = new sf::RectangleShape();
 		texture = new sf::Texture();

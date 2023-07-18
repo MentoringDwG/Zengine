@@ -43,6 +43,9 @@
     <Filter Include="Zengine\Colliders">
       <UniqueIdentifier>{348827ee-6d59-42f7-a833-3d9cdc5017a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Zengine\Environment">
+      <UniqueIdentifier>{0827fe59-8fd6-4e43-b0e5-21fbc3bfe247}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp">
@@ -108,6 +111,9 @@
     <ClCompile Include="Zengine\Colliders\CircleCollider2D.cpp">
       <Filter>Zengine\Colliders</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\Environment\Coin.cpp">
+      <Filter>Zengine\Environment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -169,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="Zengine\Colliders\CircleCollider2D.h">
       <Filter>Zengine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Environment\Coin.h">
+      <Filter>Zengine\Environment</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

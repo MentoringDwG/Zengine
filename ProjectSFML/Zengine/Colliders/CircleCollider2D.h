@@ -12,7 +12,7 @@ public:
 	bool CheckCollision(CircleCollider2D* otherCollider);
 	bool HasCollision();
 
-	std::function<void(const CircleCollider2D* other)> OnCollisionStart;
+	std::function<void(CircleCollider2D*)> OnCollisionStart;
 	ZenObject* GetOwner();
 	void SetOwner(ZenObject* inOwner);
 	void SetPosition(sf::Vector2f vector);

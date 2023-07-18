@@ -30,6 +30,7 @@ void Zengine::Run()
 	RenderModule->Initialize(window);
 	world.Initialize("Mario", "Graphics/MarioR.png", "Graphics/MarioL.png", 2.0f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
+	world.EnvironmentInitialize("Graphics/coin.png", sf::Vector2f(192, 128), sf::Vector2f(608, 192), zenPhysics2D);
 	world.PhysicalZenObject2DInitialize(zenPhysics2D, "Graphics/Enemy1.png");
 	RenderingStackInitialize();
 
@@ -53,7 +54,7 @@ void Zengine::RenderingStackInitialize()
 
 void Zengine::UIInitialize()
 {
-	fpsText = new ZenText(0, "fpsText");
+	fpsText = new ZenText(0, "fpsText", sf::Vector2f(0, 0));
 	fpsText->SetPosition(sf::Vector2f(0, 0));
 	fpsText->SetColor(sf::Color::White);
 	fpsText->SetSize(20);
@@ -80,17 +81,16 @@ void Zengine::MainLoop()
 			zenPhysics2D->CalculatePhysics();
 			timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
 		}
+		zenPhysics2D->CalculateCollision();
 
 		//Render game elements
 		window->setView(mainView);
 		RenderModule->ProcessDrawingElements(renderStack);
+		zenPhysics2D->DrawColliders(window);
 
 		//Draw UI
 		window->setView(window->getDefaultView());
 		window->draw(fpsText->Draw());
-
-		//Draw Colliders
-		zenPhysics2D->DrawColliders(window);
 
 		window->display();
 
@@ -139,8 +139,7 @@ void Zengine::CountFPS()
 void Zengine::SetUI()
 {
 	fpsStringstream.str(std::string());
-	//fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
-	fpsStringstream << "x: " << world.GetPlayer()->zenShape->GetPosition().x << " y: " << world.GetPlayer()->zenShape->GetPosition().y;
+	fpsStringstream << "Frame took: " << frameTme << " ms. FPS: " << fps;
 	fpsText->SetText(fpsStringstream.str());
 }
 
