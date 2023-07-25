@@ -4,10 +4,10 @@
 #include <SFML/Graphics.hpp>
 #include "../Physics2D/ZenPhysics2D.h"
 
-void World::Initialize(string PlayerName, string PlayerTexcurePathR, string PlayerTexcurePathL, float PlayerMoveSpeed)
+void World::Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed)
 {
 	map = new Map();
-	playerCharacter = new Character(PlayerName, PlayerTexcurePathR, PlayerTexcurePathL, PlayerMoveSpeed);
+	playerCharacter = new Character(PlayerName, PlayerTexcurePath, PlayerMoveSpeed);
 	coinCounter = new CoinCounter(1, "coinCounter", sf::Vector2f(0, 0));
 }
 

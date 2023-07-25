@@ -20,7 +20,6 @@ public:
 	}
 	
 	sf::Texture* GetTexture();
-	void SetPath(string Path);
 
 private:
 	string TextureName;

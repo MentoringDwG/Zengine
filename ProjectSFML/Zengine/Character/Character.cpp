@@ -1,14 +1,12 @@
 #include "Character.h"
 #include <functional>
 
-Character::Character(std::string name, string PathR, string PathL, float playerMoveSpeed)
+Character::Character(std::string name, string Path, float playerMoveSpeed)
 {
 	inputHandler.SetName(name);
 	inputHandler.SetOwningCharacter(this);
 
-	SetTextureAsset(PathR, name);
-	this->PathR = PathR;
-	this->PathL = PathL;
+	SetTextureAsset(Path, name);
 
 	moveSpeed = playerMoveSpeed;
 
@@ -20,14 +18,18 @@ Character::Character(std::string name, string PathR, string PathL, float playerM
 //MOVEMENT
 void Character::MoveLeft()
 {
-	SetGraphicsForMovement(PathL);
+	zenShape->SetScale(sf::Vector2f(-1, 1));
+	zenShape->SetOrigin(sf::Vector2f(zenShape->GetGlobalBounds().width, 0));
+	zenShape->SetTexture(texture);
+
 	zenShape->MoveObject(sf::Vector2f(-1.0f * moveSpeed, 0.0f));
 	collider2D->SetPosition(zenShape->GetPosition());
 }
 
 void Character::MoveRight()
 {
-	SetGraphicsForMovement(PathR);
+	zenShape->SetScale(sf::Vector2f(1, 1));
+	zenShape->SetOrigin(sf::Vector2f(0, 0));
 	zenShape->MoveObject(sf::Vector2f(1.0f * moveSpeed, 0.0f));
 	collider2D->SetPosition(zenShape->GetPosition());
 }
@@ -48,13 +50,6 @@ void Character::MoveDown()
 CharacterInputHandler Character::GetInputHandler()
 {
 	return Character::inputHandler;
-}
-
-void  Character::SetGraphicsForMovement(string Path)
-{
-	textureAsset->SetPath(Path);
-	texture = textureAsset->GetTexture();
-	zenShape->SetTexture(texture);
 }
 
 void Character::SetTextureAsset(string Path, string Name)

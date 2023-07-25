@@ -8,9 +8,3 @@ sf::Texture* TextureAsset::GetTexture()
 {
 	return &TextureSFML;
 }
-
-void TextureAsset::SetPath(string Path)
-{
-	TexturePath = Path;
-	TextureSFML.loadFromFile(TexturePath);
-}

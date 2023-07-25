@@ -7,11 +7,11 @@ CircleCollider2D::CircleCollider2D(Vector2* position, float radius, ZenObject* o
 	this->radius = radius;
 	SetOwner(owner);
 
-	circle.setRadius(radius);
-	circle.setOrigin(radius, radius);
-	circle.setFillColor(sf::Color::Transparent);
-	circle.setOutlineColor(sf::Color::Green);
-	circle.setOutlineThickness(1);
+	debugCircle.setRadius(radius);
+	debugCircle.setOrigin(radius, radius);
+	debugCircle.setFillColor(sf::Color::Transparent);
+	debugCircle.setOutlineColor(sf::Color::Green);
+	debugCircle.setOutlineThickness(1);
 
 	SetPosition(sf::Vector2f(position->x, position->y));
 }
@@ -23,7 +23,7 @@ void CircleCollider2D::SetOwner(ZenObject* inOwner)
 
 void CircleCollider2D::SetPosition(sf::Vector2f vector)
 {
-	circle.setPosition(vector.x + owner->size.x / 2, vector.y + owner->size.y / 2);
+	debugCircle.setPosition(vector.x + owner->size.x / 2, vector.y + owner->size.y / 2);
 	position->x = vector.x + owner->size.x / 2;
 	position->y = vector.y + owner->size.y / 2;
 }

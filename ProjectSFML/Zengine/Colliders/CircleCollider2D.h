@@ -17,7 +17,7 @@ public:
 
 	std::function<void(CircleCollider2D*)> OnCollisionStart;
 
-	sf::CircleShape circle;
+	sf::CircleShape debugCircle;
 
 private:
 	Vector2* position;

@@ -22,6 +22,7 @@ public:
 	sf::Vector2f GetSize();
 	sf::Vector2f GetOrigin();
 	sf::Vector2f GetPosition();
+	sf::FloatRect GetGlobalBounds();
 
 private:
 	sf::RectangleShape* rectangleShape = nullptr;

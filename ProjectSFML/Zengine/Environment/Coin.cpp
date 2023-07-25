@@ -30,7 +30,7 @@ void Coin::HandleCollisionStart(CircleCollider2D* other)
 	if (other->GetOwner()->Name == "Mario")
 	{
 		renderStack->RemoveFromRenderLayers(coinRenderObject);
-		zenPhysics2D->RemovingCollider(collider);
+		zenPhysics2D->UnregisterCollider(collider);
 
 		coinCounter->CoinCounterUpdate();
 	}

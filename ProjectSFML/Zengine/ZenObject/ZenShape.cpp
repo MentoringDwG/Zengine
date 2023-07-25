@@ -56,3 +56,8 @@ sf::Vector2f ZenShape::GetPosition()
 {
 	return rectangleShape->getPosition();
 }
+
+sf::FloatRect ZenShape::GetGlobalBounds()
+{
+	return rectangleShape->getGlobalBounds();
+}

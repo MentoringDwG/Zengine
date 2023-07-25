@@ -15,7 +15,7 @@ class Renderer;
 class World
 {
 public:
-	void Initialize(string PlayerName, string PlayerTexcurePathR, string PlayerTexcurePathL, float PlayerMoveSpeed);
+	void Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed);
 	void MapInitialize(string pathToTexturesTxt, string pathToTileTxt);
 	void PhysicalZenObject2DInitialize(ZenPhysics2D *zenPhysics2D, string enemySpritePath);
 	void EnvironmentInitialize(string CoinPath, sf::Vector2f position1, sf::Vector2f position2, ZenPhysics2D* zenPhysics2D);

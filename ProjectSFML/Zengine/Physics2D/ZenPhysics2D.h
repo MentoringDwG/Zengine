@@ -11,7 +11,7 @@ public:
 	void RemovingObjectFromPhysics(PhysicalZenObject2D* physicalObject);
 	void CalculatePhysics();
 	void RegisterCollider(CircleCollider2D* collider);
-	void RemovingCollider(CircleCollider2D* collider);
+	void UnregisterCollider(CircleCollider2D* collider);
 	void CalculateCollision();
 	void Draw(RenderingStack* renderStack);
 	void DrawColliders(sf::RenderWindow* window);
@@ -21,7 +21,7 @@ private:
 	int physicsTimeStep = 30;	//0.03 seconds
 	float globalGravity = 0.0f;
 
-	std::vector<PhysicalZenObject2D*> PhysicalObjects;
+	std::vector<PhysicalZenObject2D*> physicalObjects;
 	std::vector<CircleCollider2D*> colliders;
 };
 

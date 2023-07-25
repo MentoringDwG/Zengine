@@ -17,7 +17,7 @@ public:
 	virtual void MoveUp() override;
 	virtual void MoveDown() override;
 
-	Character(std::string name, string PathR, string PathL, float playerMoveSpeed);
+	Character(std::string name, string Path, float playerMoveSpeed);
 
 	CharacterInputHandler GetInputHandler();
 	void SetTextureAsset(string Path, string Name);
@@ -33,11 +33,8 @@ private:
 	RenderObject* characterRenderObject = nullptr;
 	sf::Texture* texture = nullptr;
 	CircleCollider2D* collider2D = nullptr;
-	string PathR;
-	string PathL;
 	float moveSpeed;
 
 	void HandleCollisionStart(CircleCollider2D* other);
-	void SetGraphicsForMovement(string Path);
 };
 

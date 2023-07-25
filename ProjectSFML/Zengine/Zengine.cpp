@@ -28,7 +28,7 @@ void Zengine::Run()
 	ViewInitialize();
 
 	RenderModule->Initialize(window);
-	world.Initialize("Mario", "Graphics/MarioR.png", "Graphics/MarioL.png", 2.0f);
+	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
 	world.EnvironmentInitialize("Graphics/coin.png", sf::Vector2f(192, 128), sf::Vector2f(608, 192), zenPhysics2D);
 	world.PhysicalZenObject2DInitialize(zenPhysics2D, "Graphics/Enemy1.png");
