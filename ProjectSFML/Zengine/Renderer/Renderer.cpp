@@ -1,7 +1,6 @@
 #include "Renderer.h"
 #include <SFML/Graphics.hpp>
 
-#pragma optimize("", off)
 void Renderer::Initialize(sf::RenderWindow* inWindow)
 {
 	window = inWindow;
@@ -89,5 +88,3 @@ void Renderer::DrawLayer(std::vector<RenderObject*>& layer)
 		window->draw(*rectangleShape);
 	}
 }
-
-#pragma optimize("", on)

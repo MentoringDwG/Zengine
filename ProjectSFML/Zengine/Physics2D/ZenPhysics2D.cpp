@@ -7,7 +7,6 @@ void ZenPhysics2D::RegisterPhysicalObject(PhysicalZenObject2D* physicalObject)
 	physicalObjects.push_back(physicalObject);
 }
 
-
 void ZenPhysics2D::RemovingObjectFromPhysics(PhysicalZenObject2D* physicalObjectToRemove)
 {
 	for (auto itr = physicalObjects.begin(); itr != physicalObjects.end(); itr++)
@@ -59,7 +58,7 @@ void ZenPhysics2D::CalculateCollision()
 	for (int i = 0; i < colliders.size(); i++)
 	{
 		CircleCollider2D* collider = colliders[i];
-		for (int j = i + 1; j < colliders.size(); j++)
+		for (int j = 0; j < colliders.size(); j++)
 		{
 			CircleCollider2D* otherCollider = colliders[j];
 			collider->CheckCollision(otherCollider);

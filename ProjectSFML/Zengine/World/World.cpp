@@ -23,7 +23,7 @@ void World::PhysicalZenObject2DInitialize(string enemySpritePath)
 	ZenPhysics2D::Get()->RegisterPhysicalObject(enemy);
 	enemy->AddForce(1.0f, -3.0f, 3.0f);
 
-	playerCharacter->SetCollider(new Vector2(playerCharacter->zenShape->GetPosition().x, playerCharacter->zenShape->GetPosition().y), 35);
+	//playerCharacter->SetCollider(new Vector2(playerCharacter->zenShape->GetPosition().x, playerCharacter->zenShape->GetPosition().y), 35);
 }
 
 void World::ApplyForceToPhysicsObject()
@@ -43,11 +43,9 @@ void World::ApplyForceToPhysicsObject()
 
 void World::EnvironmentInitialize(string CoinPath, sf::Vector2f position1, sf::Vector2f position2)
 {
-	coin1 = new Coin(4, "Coin", CoinPath, position1, coinCounter);
-	coin1->SetCollider(new Vector2(position1.x, position1.y), 20);
+	coins.push_back(new Coin(4, "Coin", CoinPath, position1, coinCounter));
 
-	coin2 = new Coin(5, "Coin", CoinPath, position2, coinCounter);
-	coin2->SetCollider(new Vector2(position2.x, position2.y), 20);
+	coins.push_back(new Coin(5, "Coin", CoinPath, position2, coinCounter));
 }
 
 void World::Draw(RenderingStack* renderStack)
@@ -55,8 +53,11 @@ void World::Draw(RenderingStack* renderStack)
 	map->Draw(renderStack);
 	playerCharacter->Draw(renderStack);
 	ZenPhysics2D::Get()->Draw(renderStack);
-	coin1->Draw(renderStack);
-	coin2->Draw(renderStack);
+
+	for (int i = 0; i < coins.size(); i++)
+	{
+		coins[i]->Draw(renderStack);
+	}
 }
 
 Character* World::GetPlayer()

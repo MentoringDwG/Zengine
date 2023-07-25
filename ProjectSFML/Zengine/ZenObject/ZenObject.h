@@ -18,7 +18,7 @@ public:
 	sf::Vector2<float> Position;
 	sf::Vector2<int> size;
 
-	ZenObject(int IDIn, string NameIn, sf::Vector2f sizeIn) :ID(IDIn), Name(NameIn), size(sizeIn)
+	ZenObject(int inID, string inName, sf::Vector2f inSize) :ID(inID), Name(inName), size(inSize)
 	{
 
 	}

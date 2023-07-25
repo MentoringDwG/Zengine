@@ -1,6 +1,10 @@
-﻿  ZenPhysics2D.cpp
+﻿  Zengine.cpp
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Structs\Timer.h(22,17): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(127,18): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(136,13): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
   Trwa generowanie kodu
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
-  All 1035 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  0 of 1083 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\ProjectSFML.exe

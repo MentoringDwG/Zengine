@@ -13,6 +13,8 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 	zenShape = new ZenShape(0, name, sf::Vector2f(32, 64));
 	zenShape->SetPosition(sf::Vector2f(200.0f, 416.0f));
 	zenShape->SetSize(sf::Vector2f(32.0f, 64.0f));
+
+	SetCollider(new Vector2(zenShape->GetPosition().x, zenShape->GetPosition().y), 35);
 }
 
 //MOVEMENT

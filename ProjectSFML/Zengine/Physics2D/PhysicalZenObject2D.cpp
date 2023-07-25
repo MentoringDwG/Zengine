@@ -1,6 +1,6 @@
 #include "PhysicalZenObject2D.h"
 
-PhysicalZenObject2D::PhysicalZenObject2D(int IDIn, string NameIn, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f sizeIn) :ZenObject(IDIn, NameIn, sizeIn)
+PhysicalZenObject2D::PhysicalZenObject2D(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize) :ZenObject(inID, inName, inSize)
 {
 	velocity = new Vector2(0, 0);
 	transposition = new Vector2(0.1, 0);
@@ -9,7 +9,7 @@ PhysicalZenObject2D::PhysicalZenObject2D(int IDIn, string NameIn, string enemySp
 	zenShape = new ZenShape(3, "zenShape", sf::Vector2f(32, 32));
 	zenShape->SetTexture(enemySpritePath);
 	zenShape->SetPosition(startPosition);
-	zenShape->SetSize(sizeIn);
+	zenShape->SetSize(inSize);
 }
 
 void PhysicalZenObject2D::CalculatePhysics()

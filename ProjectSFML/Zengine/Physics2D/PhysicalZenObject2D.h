@@ -11,7 +11,7 @@ class PhysicalZenObject2D:public ZenObject
 {
 public:
 	ZenShape* zenShape;
-	PhysicalZenObject2D(int IDIn, string NameIn, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f sizeIn);
+	PhysicalZenObject2D(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize);
 	void CalculatePhysics();
 	void AddForce(float mass, float force, float time);
 	float GetTransposition();

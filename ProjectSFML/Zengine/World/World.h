@@ -28,7 +28,6 @@ private:
 	Map *map;
 	Character* playerCharacter;
 	PhysicalZenObject2D* enemy;
-	Coin* coin1;
-	Coin* coin2;
+	std::vector<Coin*> coins;
 };
 

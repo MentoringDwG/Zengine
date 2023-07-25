@@ -12,7 +12,7 @@ CoinCounter::CoinCounter(int IDIn, string NameIn, sf::Vector2f sizeIn)
 	coinCounter->SetText(coinsStringstream.str());
 }
 
-void CoinCounter::CoinCounterUpdate()
+void CoinCounter::IncrementCounter()
 {
 	coinsStringstream.str(std::string());
 
@@ -21,7 +21,7 @@ void CoinCounter::CoinCounterUpdate()
 	coinCounter->SetText(coinsStringstream.str());
 }
 
-void CoinCounter::DrawCoinCounter(sf::RenderWindow* window)
+void CoinCounter::Draw(sf::RenderWindow* window)
 {
 	window->draw(coinCounter->Draw());
 }

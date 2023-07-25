@@ -8,6 +8,7 @@ Coin::Coin(int IDIn, string NameIn, string CoinPath, sf::Vector2f position, Coin
 	zenShape->SetSize(sf::Vector2f(32, 32));
 
 	this->coinCounter = coinCounter;
+	SetCollider(new Vector2(position.x, position.y), 20);
 }
 
 void Coin::Draw(RenderingStack* renderStack)
@@ -31,6 +32,6 @@ void Coin::HandleCollisionStart(CircleCollider2D* other)
 		renderStack->RemoveFromRenderLayers(coinRenderObject);
 		ZenPhysics2D::Get()->UnregisterCollider(collider);
 
-		coinCounter->CoinCounterUpdate();
+		coinCounter->IncrementCounter();
 	}
 }

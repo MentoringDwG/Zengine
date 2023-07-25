@@ -5,7 +5,7 @@
 class ZenText:public ZenObject
 {
 public:
-	ZenText(int IDIn, string NameIn, sf::Vector2f sizeIn) :ZenObject(IDIn, NameIn, sizeIn)
+	ZenText(int inID, string inName, sf::Vector2f inSize) :ZenObject(inID, inName, inSize)
 	{
 
 	};
