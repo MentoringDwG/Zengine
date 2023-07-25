@@ -120,6 +120,9 @@
     <ClCompile Include="Zengine\Colliders\BoxCollider2D.cpp">
       <Filter>Zengine\Colliders</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\Environment\Ground.cpp">
+      <Filter>Zengine\Environment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -190,6 +193,9 @@
     </ClInclude>
     <ClInclude Include="Zengine\Colliders\BoxCollider2D.h">
       <Filter>Zengine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Environment\Ground.h">
+      <Filter>Zengine\Environment</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

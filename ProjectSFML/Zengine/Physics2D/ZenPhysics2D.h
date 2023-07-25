@@ -3,6 +3,7 @@
 #include <vector>
 #include "PhysicalZenObject2D.h"
 #include "../Colliders/CircleCollider2D.h"
+#include "../Colliders/BoxCollider2D.h"
 
 class ZenPhysics2D
 {
@@ -11,10 +12,17 @@ public:
 
 	void RegisterPhysicalObject(PhysicalZenObject2D* physicalObject);
 	void RemovingObjectFromPhysics(PhysicalZenObject2D* physicalObject);
+
 	void CalculatePhysics();
+
 	void RegisterCollider(CircleCollider2D* collider);
+	void RegisterCollider(BoxCollider2D* collider);
+
 	void UnregisterCollider(CircleCollider2D* collider);
+	void UnregisterCollider(BoxCollider2D* collider);
+
 	void CalculateCollision();
+
 	void Draw(RenderingStack* renderStack);
 	void DrawColliders(sf::RenderWindow* window);
 	int GetPhysicsTimeStep();
@@ -28,6 +36,7 @@ private:
 	float globalGravity = 0.0f;
 
 	std::vector<PhysicalZenObject2D*> physicalObjects;
-	std::vector<CircleCollider2D*> colliders;
+	std::vector<CircleCollider2D*> circleColliders;
+	std::vector<BoxCollider2D*> boxColliders;
 };
 

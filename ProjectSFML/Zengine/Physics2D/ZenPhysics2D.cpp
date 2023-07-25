@@ -38,16 +38,33 @@ void ZenPhysics2D::Draw(RenderingStack* renderStack)
 
 void ZenPhysics2D::RegisterCollider(CircleCollider2D* collider)
 {
-	colliders.push_back(collider);
+	circleColliders.push_back(collider);
+}
+
+void ZenPhysics2D::RegisterCollider(BoxCollider2D* collider)
+{
+	boxColliders.push_back(collider);
 }
 
 void ZenPhysics2D::UnregisterCollider(CircleCollider2D* collider)
 {
-	for (auto itr = colliders.begin(); itr != colliders.end(); itr++)
+	for (auto itr = circleColliders.begin(); itr != circleColliders.end(); itr++)
 	{
 		if (*itr == collider)
 		{
-			colliders.erase(itr);
+			circleColliders.erase(itr);
+			return;
+		}
+	}
+}
+
+void ZenPhysics2D::UnregisterCollider(BoxCollider2D* collider)
+{
+	for (auto itr = boxColliders.begin(); itr != boxColliders.end(); itr++)
+	{
+		if (*itr == collider)
+		{
+			boxColliders.erase(itr);
 			return;
 		}
 	}
@@ -55,22 +72,37 @@ void ZenPhysics2D::UnregisterCollider(CircleCollider2D* collider)
 
 void ZenPhysics2D::CalculateCollision()
 {
-	for (int i = 0; i < colliders.size(); i++)
+	for (int i = 0; i < circleColliders.size(); i++)
 	{
-		CircleCollider2D* collider = colliders[i];
-		for (int j = 0; j < colliders.size(); j++)
+		CircleCollider2D* collider = circleColliders[i];
+		for (int j = 0; j < circleColliders.size(); j++)
 		{
-			CircleCollider2D* otherCollider = colliders[j];
+			CircleCollider2D* otherCollider = circleColliders[j];
 			collider->CheckCollision(otherCollider);
+		}
+	}
+
+	for (int i = 0; i < boxColliders.size(); i++)
+	{
+		BoxCollider2D* collider = boxColliders[i];
+		for (int j = 0; j < boxColliders.size(); j++)
+		{
+			BoxCollider2D* otherCollider = boxColliders[j];
+			collider->CheckBoxCollision(otherCollider);
 		}
 	}
 }
 
 void ZenPhysics2D::DrawColliders(sf::RenderWindow* window)
 {
-	for (CircleCollider2D* collider : colliders)
+	for (CircleCollider2D* collider : circleColliders)
 	{
 		window->draw(collider->debugCircle);
+	}
+
+	for (BoxCollider2D* collider : boxColliders)
+	{
+		window->draw(collider->debugRectangleShape);
 	}
 }
 

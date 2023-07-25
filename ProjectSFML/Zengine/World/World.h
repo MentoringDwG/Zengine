@@ -8,6 +8,7 @@
 #include "../Environment/Coin.h"
 #include "../ZenObject/ZenText.h"
 #include "../Environment/CoinCounter.h"
+#include "../Environment/Ground.h"
 #include <sstream>
 
 class Renderer;
@@ -28,6 +29,7 @@ private:
 	Map *map;
 	Character* playerCharacter;
 	PhysicalZenObject2D* enemy;
+	Ground* ground;
 	std::vector<Coin*> coins;
 };
 

@@ -1,7 +1,5 @@
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\vc142.pdb
-c:\users\admin\documents\github\zengine\projectsfml\x64\release\movableobject.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\zengine.obj
-c:\users\admin\documents\github\zengine\projectsfml\x64\release\world.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\map.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\textureasset.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\assetsmanager.obj
@@ -14,6 +12,7 @@ c:\users\admin\documents\github\zengine\projectsfml\x64\release\ienginemodule.ob
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\inputprocessormodule.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\inputhandler.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\characterinputhandler.obj
+c:\users\admin\documents\github\zengine\projectsfml\x64\release\ground.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\coincounter.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\coin.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\circlecollider2d.obj
@@ -22,6 +21,9 @@ c:\users\admin\documents\github\zengine\projectsfml\x64\release\main.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\zentext.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\zenshape.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\zenobject.obj
+c:\users\admin\documents\github\zengine\projectsfml\x64\release\movableobject.obj
+c:\users\admin\documents\github\zengine\projectsfml\x64\release\world.obj
+c:\users\admin\documents\github\zengine\projectsfml\x64\release\boxcollider2d.obj
 c:\users\admin\documents\github\zengine\x64\release\projectsfml.exe
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\projectsfml.ipdb
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\projectsfml.iobj

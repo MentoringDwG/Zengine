@@ -2,8 +2,8 @@
 
 BoxCollider2D::BoxCollider2D(Vector2* position, Vector2* size, ZenObject* owner)
 {
-	this->position = *position;
-	this->size = *size;
+	this->position = position;
+	this->size = size;
 	SetOwner(owner);
 
 	debugRectangleShape.setSize(sf::Vector2f(size->x, size->y));
@@ -51,9 +51,9 @@ bool BoxCollider2D::HasCollision()
 
 void BoxCollider2D::SetPosition(sf::Vector2f vector)
 {
-	debugRectangleShape.setPosition(vector.x + owner->size.x / 2, vector.y + owner->size.y / 2);
-	position.x = vector.x + owner->size.x / 2;
-	position.y = vector.y + owner->size.y / 2;
+	debugRectangleShape.setPosition(vector);
+	position->x = vector.x;
+	position->y = vector.y;
 }
 
 ZenObject* BoxCollider2D::GetOwner()

@@ -23,8 +23,8 @@ public:
 	sf::RectangleShape debugRectangleShape;
 
 private:
-	Vector2 position;
-	Vector2 size;
+	Vector2* position;
+	Vector2* size;
 	ZenObject* owner;
 	bool bIsColliding = false;
 };
