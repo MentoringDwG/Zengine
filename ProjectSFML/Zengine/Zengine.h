@@ -34,7 +34,6 @@ private:
 	class InputProcessorModule* InputProcessor = nullptr;
 	Renderer* RenderModule = nullptr;
 	RenderingStack* renderStack = nullptr;
-	ZenPhysics2D* zenPhysics2D = nullptr;
 	CharacterInputHandler characterInputHandler;
 	ZenText* fpsText;
 	sf::RenderWindow* window = nullptr;

@@ -1,5 +1,7 @@
 #include "ZenPhysics2D.h"
 
+ZenPhysics2D ZenPhysics2D::instance;
+
 void ZenPhysics2D::RegisterPhysicalObject(PhysicalZenObject2D* physicalObject)
 {
 	physicalObjects.push_back(physicalObject);

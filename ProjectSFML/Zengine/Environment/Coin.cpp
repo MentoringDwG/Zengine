@@ -17,12 +17,11 @@ void Coin::Draw(RenderingStack* renderStack)
 	renderStack->renderQueue.push_back(coinRenderObject);
 }
 
-void Coin::SetCollider(Vector2* position, float radius, ZenPhysics2D* zenPhysics2D)
+void Coin::SetCollider(Vector2* position, float radius)
 {
-	this->zenPhysics2D = zenPhysics2D;
 	collider = new CircleCollider2D(position, radius, zenShape);
 	collider->OnCollisionStart = std::bind(&Coin::HandleCollisionStart, this, std::placeholders::_1);
-	zenPhysics2D->RegisterCollider(collider);
+	ZenPhysics2D::Get()->RegisterCollider(collider);
 }
 
 void Coin::HandleCollisionStart(CircleCollider2D* other)
@@ -30,7 +29,7 @@ void Coin::HandleCollisionStart(CircleCollider2D* other)
 	if (other->GetOwner()->Name == "Mario")
 	{
 		renderStack->RemoveFromRenderLayers(coinRenderObject);
-		zenPhysics2D->UnregisterCollider(collider);
+		ZenPhysics2D::Get()->UnregisterCollider(collider);
 
 		coinCounter->CoinCounterUpdate();
 	}

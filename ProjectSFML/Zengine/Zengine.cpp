@@ -21,7 +21,6 @@ void Zengine::Run()
 	InputProcessor = new InputProcessorModule();
 	RenderModule = new Renderer();
 	renderStack = new RenderingStack();
-	zenPhysics2D = new ZenPhysics2D();
 
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
 	window->setFramerateLimit(60);
@@ -30,8 +29,8 @@ void Zengine::Run()
 	RenderModule->Initialize(window);
 	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
-	world.EnvironmentInitialize("Graphics/coin.png", sf::Vector2f(192, 128), sf::Vector2f(608, 192), zenPhysics2D);
-	world.PhysicalZenObject2DInitialize(zenPhysics2D, "Graphics/Enemy1.png");
+	world.EnvironmentInitialize("Graphics/coin.png", sf::Vector2f(192, 128), sf::Vector2f(608, 192));
+	world.PhysicalZenObject2DInitialize("Graphics/Enemy1.png");
 	RenderingStackInitialize();
 
 	UIInitialize();
@@ -47,7 +46,7 @@ void Zengine::ViewInitialize()
 
 void Zengine::RenderingStackInitialize()
 {
-	world.Draw(renderStack, zenPhysics2D);
+	world.Draw(renderStack);
 	renderStack->DivisionOfObjectsIntoLayersByLayerId();
 	RenderModule->SortRenderLayers(renderStack);
 }
@@ -75,18 +74,18 @@ void Zengine::MainLoop()
 		window->clear();
 
 		timerForPhysics->TimerStop();
-		if (timerForPhysics->timeMs >= zenPhysics2D->GetPhysicsTimeStep())
+		if (timerForPhysics->timeMs >= ZenPhysics2D::Get()->GetPhysicsTimeStep())
 		{
 			world.ApplyForceToPhysicsObject();
-			zenPhysics2D->CalculatePhysics();
+			ZenPhysics2D::Get()->CalculatePhysics();
 			timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
 		}
-		zenPhysics2D->CalculateCollision();
+		ZenPhysics2D::Get()->CalculateCollision();
 
 		//Render game elements
 		window->setView(mainView);
 		RenderModule->ProcessDrawingElements(renderStack);
-		zenPhysics2D->DrawColliders(window);
+		ZenPhysics2D::Get()->DrawColliders(window);
 
 		//Draw UI
 		window->setView(window->getDefaultView());

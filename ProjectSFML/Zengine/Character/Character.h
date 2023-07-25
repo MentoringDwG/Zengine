@@ -23,7 +23,7 @@ public:
 	void SetTextureAsset(string Path, string Name);
 	TextureAsset GetTextureAsset();
 	void Draw(RenderingStack* renderStack);
-	void SetCollider(Vector2* position, float radius, ZenPhysics2D* zenPhysics2D);
+	void SetCollider(Vector2* position, float radius);
 	ZenShape* zenShape = nullptr;
 
 private:

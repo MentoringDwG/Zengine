@@ -71,11 +71,11 @@ void Character::Draw(RenderingStack* renderStack)
 	renderStack->renderQueue.push_back(characterRenderObject);
 }
 
-void Character::SetCollider(Vector2* position, float radius, ZenPhysics2D* zenPhysics2D)
+void Character::SetCollider(Vector2* position, float radius)
 {
 	collider2D = new CircleCollider2D(position, radius, zenShape);
 	collider2D->OnCollisionStart = std::bind(&Character::HandleCollisionStart, this, std::placeholders::_1);
-	zenPhysics2D->RegisterCollider(collider2D);
+	ZenPhysics2D::Get()->RegisterCollider(collider2D);
 }
 	
 void Character::HandleCollisionStart(CircleCollider2D* other)
