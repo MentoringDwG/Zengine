@@ -3,6 +3,7 @@
 struct Vector2
 {
 public:
+	Vector2();
 	Vector2(float x, float y);
 	bool IsThisVector2EqualToOtherVector2(Vector2* otherVector2);
 	void SetVector2(float x, float y);
