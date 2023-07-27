@@ -34,10 +34,9 @@ private:
 	RenderObject* characterRenderObject = nullptr;
 	sf::Texture* texture = nullptr;
 	CircleCollider2D* collider2D = nullptr;
-	BoxCollider2D* boxCollider = nullptr;
 	float moveSpeed;
 
-	void HandleCollisionStart(CircleCollider2D* other);
+	void HandleCircleCollisionStart(CircleCollider2D* other);
 	void HandleBoxCollisionStart(BoxCollider2D* other);
 };
 

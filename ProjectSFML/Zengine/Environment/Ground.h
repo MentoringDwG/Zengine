@@ -10,8 +10,8 @@ public:
 	Ground(sf::Vector2f position)
 	{
 		this->position = position;
-		zenObject = new ZenObject(10, "Ground", sf::Vector2f(960, 64));
-		boxCollider = new BoxCollider2D(new Vector2(position.x, position.y), new Vector2(960, 64), zenObject);
+		zenObject = new ZenObject(10, "Ground", sf::Vector2f(64, 64));
+		boxCollider = new BoxCollider2D(new Vector2(position.x, position.y), new Vector2(64, 64), zenObject);
 		boxCollider->OnBoxCollisionStart = std::bind(&Ground::HandleBoxCollisionStart, this, std::placeholders::_1);
 		ZenPhysics2D::Get()->RegisterCollider(boxCollider);
 	}

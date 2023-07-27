@@ -78,13 +78,23 @@ void ZenPhysics2D::CalculateCollision()
 		for (int j = 0; j < circleColliders.size(); j++)
 		{
 			CircleCollider2D* otherCollider = circleColliders[j];
-			collider->CheckCollision(otherCollider);
+			collider->CheckCircleCollision(otherCollider);
 		}
 	}
 
 	for (int i = 0; i < boxColliders.size(); i++)
 	{
 		BoxCollider2D* collider = boxColliders[i];
+		for (int j = 0; j < boxColliders.size(); j++)
+		{
+			BoxCollider2D* otherCollider = boxColliders[j];
+			collider->CheckBoxCollision(otherCollider);
+		}
+	}
+
+	for (int i = 0; i < circleColliders.size(); i++)
+	{
+		CircleCollider2D* collider = circleColliders[i];
 		for (int j = 0; j < boxColliders.size(); j++)
 		{
 			BoxCollider2D* otherCollider = boxColliders[j];

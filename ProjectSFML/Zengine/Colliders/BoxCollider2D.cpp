@@ -39,11 +39,6 @@ bool BoxCollider2D::CheckBoxCollision(BoxCollider2D* other)
 	return bIsColliding;
 }
 
-bool BoxCollider2D::CheckCircleCollision(CircleCollider2D* other)
-{
-	//to trzeba przemyœleæ 
-}
-
 bool BoxCollider2D::HasCollision()
 {
 	return bIsColliding;
@@ -59,4 +54,14 @@ void BoxCollider2D::SetPosition(sf::Vector2f vector)
 ZenObject* BoxCollider2D::GetOwner()
 {
 	return owner;
+}
+
+Vector2* BoxCollider2D::GetSize()
+{
+	return size;
+}
+
+Vector2* BoxCollider2D::GetPosition()
+{
+	return position;
 }
