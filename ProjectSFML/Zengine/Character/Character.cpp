@@ -41,8 +41,11 @@ void Character::MoveRight()
 
 void Character::MoveUp()
 {
-	physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(0.0f, -1.0f * moveSpeed));
-	collider2D->SetPosition(physicalZenObject2D->zenShape->GetPosition());
+	if (isGrounded)
+	{
+		physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(0.0f, -1.0f * moveSpeed));
+		collider2D->SetPosition(physicalZenObject2D->zenShape->GetPosition());
+	}
 }
 
 void Character::MoveDown()

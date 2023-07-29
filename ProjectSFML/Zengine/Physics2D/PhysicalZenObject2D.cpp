@@ -5,6 +5,7 @@ PhysicalZenObject2D::PhysicalZenObject2D(int inID, string inName, string enemySp
 	velocity = new Vector2(0, 0);
 	transposition = new Vector2(0.1, 0);
 	acceleration = new Vector2(0, 0);
+	force = new Vector2(0, 0);
 
 	zenShape = new ZenShape(3, "zenShape", sf::Vector2f(32, 32));
 	zenShape->SetTexture(enemySpritePath);
@@ -15,8 +16,15 @@ PhysicalZenObject2D::PhysicalZenObject2D(int inID, string inName, string enemySp
 void PhysicalZenObject2D::CalculatePhysics()
 {
 	transposition->x = velocity->x - (fakeDrag * velocity->x / 100);
+	transposition->y = velocity->y - (fakeDrag * velocity->y / 100);
 
 	if (velocity->x<0 && transposition->x > -0.5)
+	{
+		ResettingVariables();
+		return;
+	}
+
+	if (velocity->y<0 && transposition->y > -0.5)
 	{
 		ResettingVariables();
 		return;
@@ -28,8 +36,17 @@ void PhysicalZenObject2D::CalculatePhysics()
 		return;
 	}
 
-	zenShape->MoveObject(sf::Vector2f(transposition->x, 0.0f));
-	velocity->x= velocity->x - (fakeDrag * velocity->x / 100);
+	if (velocity->y > 0 && transposition->y < 0.5)
+	{
+		ResettingVariables();
+		return;
+	}
+
+	zenShape->MoveObject(sf::Vector2f(transposition->x, transposition->y));
+
+	velocity-> x= velocity->x - (fakeDrag * velocity->x / 100);
+	velocity->y = velocity->y - (fakeDrag * velocity->y / 100);
+
 	fakeDrag = fakeDrag + 0.1;
 }
 
@@ -39,26 +56,39 @@ void PhysicalZenObject2D::ResettingVariables()
 	fakeDrag = 1;
 }
 
-void PhysicalZenObject2D::AddForce(float massIn, float forceIN, float time)
+void PhysicalZenObject2D::AddForce(float massIn, Vector2 forceIN, float time)
 {
 	mass = massIn;
-	force = forceIN;
+	force = &forceIN;
 
-	acceleration->x = force / mass;
+	acceleration->x = force->x / mass;
+	acceleration->y = force->y / mass;
 
-	float s = (acceleration->x * time * time) / 2;
+	float sx = (acceleration->x * time * time) / 2;
+	float sy = (acceleration->y * time * time) / 2;
 
-	velocity->x = s / time;
+	velocity->x = sx / time;
+	velocity->y = sy / time;
 }
 
-float PhysicalZenObject2D::GetTransposition()
+float PhysicalZenObject2D::GetTranspositionX()
 {
 	return transposition->x;
+}
+
+float PhysicalZenObject2D::GetTranspositionY()
+{
+	return transposition->y;
 }
 
 float PhysicalZenObject2D::GetVelocityX()
 {
 	return velocity->x;
+}
+
+float PhysicalZenObject2D::GetVelocityY()
+{
+	return velocity->y;
 }
 
 void  PhysicalZenObject2D::SetGravity(float gravity)

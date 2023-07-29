@@ -21,22 +21,22 @@ void World::PhysicalZenObject2DInitialize(string enemySpritePath)
 {
 	enemy = new PhysicalZenObject2D(2, "Enemy", enemySpritePath, sf::Vector2f(512.0f, 288.0f), sf::Vector2f(32, 32));
 	ZenPhysics2D::Get()->RegisterPhysicalObject(enemy);
-	enemy->AddForce(1.0f, -3.0f, 3.0f);
+	enemy->AddForce(1.0f, *new Vector2(-3.0f, 0), 3.0f);
 
 	ground = new Ground(sf::Vector2f(0, 480));
 }
 
 void World::ApplyForceToPhysicsObject()
 {
-	if (enemy->GetTransposition() == 0)
+	if (enemy->GetTranspositionX() == 0)
 	{
 		if (enemy->GetVelocityX()<0)
 		{
-			enemy->AddForce(1.0f, 3.0f, 3.0f);
+			enemy->AddForce(1.0f, *new Vector2(3.0f, 0), 3.0f);
 		}
 		else
 		{
-			enemy->AddForce(1.0f, -3.0f, 3.0f);
+			enemy->AddForce(1.0f, *new Vector2(-3.0f, 0), 3.0f);
 		}
 	}
 }
