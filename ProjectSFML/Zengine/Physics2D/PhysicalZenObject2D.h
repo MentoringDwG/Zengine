@@ -16,6 +16,8 @@ public:
 	void AddForce(float mass, float force, float time);
 	float GetTransposition();
 	float GetVelocityX();
+	void SetGravity(float gravity);
+	float GetGravity();
 
 private:
 	float mass = 1.0f;

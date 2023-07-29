@@ -1,14 +1,7 @@
 ﻿  Character.cpp
-  CharacterInputHandler.cpp
-  World.cpp
-  Zengine.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Structs\Timer.h(22,17): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(128,18): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(137,13): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
-  main.cpp
   Trwa generowanie kodu
-  18 of 1288 functions ( 1.4%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    7 functions had inline decision re-evaluated but remain unchanged
+  1 of 1290 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\ProjectSFML.exe

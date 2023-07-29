@@ -60,3 +60,13 @@ float PhysicalZenObject2D::GetVelocityX()
 {
 	return velocity->x;
 }
+
+void  PhysicalZenObject2D::SetGravity(float gravity)
+{
+	this->gravity = gravity;
+}
+
+float PhysicalZenObject2D::GetGravity()
+{
+	return gravity;
+}

@@ -9,6 +9,7 @@
 #include "../Colliders/CircleCollider2D.h"
 #include "../Colliders/BoxCollider2D.h"
 #include "../Physics2D/ZenPhysics2D.h"
+#include "../Physics2D/PhysicalZenObject2D.h"
 
 class Character : public MovableObject
 {
@@ -25,7 +26,7 @@ public:
 	TextureAsset GetTextureAsset();
 	void Draw(RenderingStack* renderStack);
 	void SetCollider(Vector2* position, float radius);
-	ZenShape* zenShape = nullptr;
+	PhysicalZenObject2D* physicalZenObject2D = nullptr;
 
 private:
 	CharacterInputHandler inputHandler;
