@@ -88,6 +88,10 @@ bool CircleCollider2D::CheckBoxCollision(BoxCollider2D* otherCollider)
 	{
 		OnBoxCollisionStart(otherCollider);
 	}
+	else
+	{
+		OnBoxCollisionEnd(otherCollider);
+	}
 
 	return bIsColliding;
 }

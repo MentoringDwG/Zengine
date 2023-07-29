@@ -19,6 +19,7 @@ public:
 
 	std::function<void(CircleCollider2D*)> OnCircleCollisionStart;
 	std::function<void(BoxCollider2D*)> OnBoxCollisionStart;
+	std::function<void(BoxCollider2D*)> OnBoxCollisionEnd;
 
 	sf::CircleShape debugCircle;
 

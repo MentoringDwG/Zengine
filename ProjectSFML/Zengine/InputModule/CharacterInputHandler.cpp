@@ -10,6 +10,11 @@ enum CharacterInputHandler::MovingStates
 	movingDown = 4
 };
 
+void CharacterInputHandler::Start()
+{
+	AddMovingState(movingDown);
+}
+
 bool CharacterInputHandler::ProcessInput(sf::Event& event)
 {
 	KeyPressed(event);
@@ -39,13 +44,6 @@ void CharacterInputHandler::KeyPressed(sf::Event& event)
 		if (event.key.code == sf::Keyboard::W)
 		{
 			AddMovingState(movingUp);
-			movingStatesList.remove(movingDown);
-		}
-
-		if (event.key.code == sf::Keyboard::S)
-		{
-			AddMovingState(movingDown);
-			movingStatesList.remove(movingUp);
 		}
 	}
 }
@@ -90,11 +88,6 @@ void CharacterInputHandler::KeyReleased(sf::Event& event)
 		{
 			movingStatesList.remove(movingUp);
 		}
-
-		if (event.key.code == sf::Keyboard::S)
-		{
-			movingStatesList.remove(movingDown);
-		}
 	}
 }
 
@@ -115,13 +108,30 @@ void CharacterInputHandler::CallingTheMovementFunction()
 		{
 			owningCharacter->MoveUp();
 		}
-		if (*itr == movingDown)
-		{
-			owningCharacter->MoveDown();
-		}
 	}
 }
 
+void CharacterInputHandler::UseGravity()
+{
+	if (IsMovingUp() == false)
+	{
+		owningCharacter->MoveDown();
+	}
+}
+
+bool CharacterInputHandler::IsMovingUp()
+{
+	itr = movingStatesList.begin();
+	for (itr; itr != movingStatesList.end(); itr++)
+	{
+		if (*itr == movingUp)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
 
 bool CharacterInputHandler::CanConsumeInput()
 {

@@ -5,6 +5,7 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 {
 	inputHandler.SetName(name);
 	inputHandler.SetOwningCharacter(this);
+	inputHandler.Start();
 
 	SetTextureAsset(Path, name);
 
@@ -44,8 +45,11 @@ void Character::MoveUp()
 
 void Character::MoveDown()
 {
-	zenShape->MoveObject(sf::Vector2f(0.0f, 1.0f * moveSpeed));
-	collider2D->SetPosition(zenShape->GetPosition());
+	if (!isGrounded)
+	{
+		zenShape->MoveObject(sf::Vector2f(0.0f, 1.0f * moveSpeed));
+		collider2D->SetPosition(zenShape->GetPosition());
+	}
 }
 
 
@@ -78,6 +82,7 @@ void Character::SetCollider(Vector2* position, float radius)
 	collider2D = new CircleCollider2D(position, radius, zenShape);
 	collider2D->OnCircleCollisionStart = std::bind(&Character::HandleCircleCollisionStart, this, std::placeholders::_1);
 	collider2D->OnBoxCollisionStart = std::bind(&Character::HandleBoxCollisionStart, this, std::placeholders::_1);
+	collider2D->OnBoxCollisionEnd = std::bind(&Character::HandleBoxCollisionEnd, this, std::placeholders::_1);
 	ZenPhysics2D::Get()->RegisterCollider(collider2D);
 }
 	
@@ -90,7 +95,15 @@ void Character::HandleBoxCollisionStart(BoxCollider2D* other)
 {
 	if (other->GetOwner()->Name == "Ground")
 	{
-		cout << "Collision with Ground" << endl;
+		isGrounded = true;
+	}
+}
+
+void Character::HandleBoxCollisionEnd(BoxCollider2D* other)
+{
+	if (other->GetOwner()->Name == "Ground")
+	{
+		isGrounded = false;
 	}
 }
 

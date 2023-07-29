@@ -18,6 +18,8 @@ public:
 	void SetOwningCharacter(Character* character);
 	void SetName(string nameIN);
 	string GetName();
+	void Start();
+	void UseGravity();
 
 private:
 	Character* owningCharacter;
@@ -32,4 +34,5 @@ private:
 	bool CanAddMovingState(MovingStates state);
 	void AddMovingState(MovingStates state);
 	void CallingTheMovementFunction();
+	bool IsMovingUp();
 };

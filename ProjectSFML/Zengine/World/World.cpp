@@ -23,7 +23,7 @@ void World::PhysicalZenObject2DInitialize(string enemySpritePath)
 	ZenPhysics2D::Get()->RegisterPhysicalObject(enemy);
 	enemy->AddForce(1.0f, -3.0f, 3.0f);
 
-	ground = new Ground(sf::Vector2f(100, 400));
+	ground = new Ground(sf::Vector2f(0, 480));
 }
 
 void World::ApplyForceToPhysicsObject()

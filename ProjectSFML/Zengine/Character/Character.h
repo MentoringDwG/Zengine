@@ -35,8 +35,10 @@ private:
 	sf::Texture* texture = nullptr;
 	CircleCollider2D* collider2D = nullptr;
 	float moveSpeed;
+	bool isGrounded = false;
 
 	void HandleCircleCollisionStart(CircleCollider2D* other);
 	void HandleBoxCollisionStart(BoxCollider2D* other);
+	void HandleBoxCollisionEnd(BoxCollider2D* other);
 };
 
