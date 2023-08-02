@@ -71,6 +71,7 @@ void Zengine::MainLoop()
 
 		ProcessInput(window);
 		characterInputHandler.UseGravity();
+		world.GetPlayer()->UpdateCharacter();
 
 		window->clear();
 

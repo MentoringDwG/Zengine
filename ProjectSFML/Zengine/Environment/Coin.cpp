@@ -41,3 +41,4 @@ void Coin::HandleCollisionEnd(BoxCollider2D* other)
 {
 
 }
+

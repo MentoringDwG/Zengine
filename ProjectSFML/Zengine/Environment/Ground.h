@@ -11,14 +11,17 @@ public:
 	{
 		this->position = position;
 		zenObject = new ZenObject(10, "Ground", sf::Vector2f(960, 64));
-		boxCollider = new BoxCollider2D(new Vector2(position.x, position.y), new Vector2(960, 64), zenObject);
-		boxCollider->OnBoxCollisionStart = std::bind(&Ground::HandleBoxCollisionStart, this, std::placeholders::_1);
-		ZenPhysics2D::Get()->RegisterCollider(boxCollider);
+
+		boxCollider0 = new BoxCollider2D(new Vector2(position.x, position.y), new Vector2(960, 64), zenObject);
+		boxCollider0->OnBoxCollisionStart = std::bind(&Ground::HandleBoxCollisionStart, this, std::placeholders::_1);
+		ZenPhysics2D::Get()->RegisterCollider(boxCollider0);
 	}
 
 private:
 	sf::Vector2f position;
-	BoxCollider2D* boxCollider = nullptr;
+	std::vector <BoxCollider2D*> boxColliders2D;
+	BoxCollider2D* boxCollider0 = nullptr;
+
 	ZenObject* zenObject = nullptr;
 
 	void HandleBoxCollisionStart(BoxCollider2D* other)

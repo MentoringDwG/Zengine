@@ -27,6 +27,10 @@ public:
 	void Draw(RenderingStack* renderStack);
 	void SetCollider(Vector2* position, float radius);
 	PhysicalZenObject2D* physicalZenObject2D = nullptr;
+	void UpdateCharacter();
+
+	bool isJump = false;
+	bool isGrounded = false;
 
 private:
 	CharacterInputHandler inputHandler;
@@ -36,7 +40,6 @@ private:
 	sf::Texture* texture = nullptr;
 	CircleCollider2D* collider2D = nullptr;
 	float moveSpeed;
-	bool isGrounded = false;
 
 	void HandleCircleCollisionStart(CircleCollider2D* other);
 	void HandleBoxCollisionStart(BoxCollider2D* other);

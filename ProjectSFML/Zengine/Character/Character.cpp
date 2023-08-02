@@ -18,6 +18,8 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 
 	SetCollider(new Vector2(physicalZenObject2D->zenShape->GetPosition().x, physicalZenObject2D->zenShape->GetPosition().y), 35);
 	physicalZenObject2D->SetGravity(5);
+
+	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject2D);
 }
 
 //MOVEMENT
@@ -28,7 +30,6 @@ void Character::MoveLeft()
 	physicalZenObject2D->zenShape->SetTexture(texture);
 
 	physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(-1.0f * moveSpeed, 0.0f));
-	collider2D->SetPosition(physicalZenObject2D->zenShape->GetPosition());
 }
 
 void Character::MoveRight()
@@ -36,15 +37,14 @@ void Character::MoveRight()
 	physicalZenObject2D->zenShape->SetScale(sf::Vector2f(1, 1));
 	physicalZenObject2D->zenShape->SetOrigin(sf::Vector2f(0, 0));
 	physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(1.0f * moveSpeed, 0.0f));
-	collider2D->SetPosition(physicalZenObject2D->zenShape->GetPosition());
 }
 
 void Character::MoveUp()
 {
 	if (isGrounded)
 	{
-		physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(0.0f, -1.0f * moveSpeed));
-		collider2D->SetPosition(physicalZenObject2D->zenShape->GetPosition());
+		isJump = true;
+		physicalZenObject2D->AddForce(1.0f, *new Vector2(0, -3.0f), 3.0f);
 	}
 }
 
@@ -53,8 +53,12 @@ void Character::MoveDown()
 	if (!isGrounded)
 	{
 		physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(0.0f, 1.0f * physicalZenObject2D->GetGravity()));
-		collider2D->SetPosition(physicalZenObject2D->zenShape->GetPosition());
 	}
+}
+
+void Character::UpdateCharacter()
+{
+	collider2D->SetPosition(physicalZenObject2D->zenShape->GetPosition());
 }
 
 
