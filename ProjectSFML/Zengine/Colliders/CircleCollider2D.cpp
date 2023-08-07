@@ -3,7 +3,7 @@
 
 CircleCollider2D::CircleCollider2D(Vector2* position, float radius, ZenObject* owner)
 {
-	this->position = position;
+	SetPosition(sf::Vector2f(position->x, position->y));
 	this->radius = radius;
 	SetOwner(owner);
 
@@ -18,21 +18,17 @@ CircleCollider2D::CircleCollider2D(Vector2* position, float radius, ZenObject* o
 	testPoint = new Vector2(position->x, position->y);
 }
 
-void CircleCollider2D::SetOwner(ZenObject* inOwner)
-{
-	owner = inOwner;
-}
 
 void CircleCollider2D::SetPosition(sf::Vector2f vector)
 {
-	debugCircle.setPosition(vector.x + owner->size.x / 2, vector.y + owner->size.y / 2);
-	position->x = vector.x + owner->size.x / 2;
-	position->y = vector.y + owner->size.y / 2;
+	debugCircle.setPosition(vector.x + GetOwner()->size.x / 2, vector.y + GetOwner()->size.y / 2);
+	GetPosition()->x = vector.x + GetOwner()->size.x / 2;
+	GetPosition()->y = vector.y + GetOwner()->size.y / 2;
 }
 
 bool CircleCollider2D::CheckCircleCollision(CircleCollider2D* otherCollider)
 {
-	float distance = position->GetDistance(otherCollider->position);
+	float distance = GetPosition()->GetDistance(otherCollider->GetPosition());
 	if (distance < radius + otherCollider->radius)
 	{
 		if (distance >= abs(otherCollider->radius - radius))
@@ -46,7 +42,7 @@ bool CircleCollider2D::CheckCircleCollision(CircleCollider2D* otherCollider)
 
 	if (HasCollision())
 	{
-		OnCircleCollisionStart(otherCollider);
+		OnCollisionStart(otherCollider);
 	}
 
 	return bIsColliding;
@@ -54,28 +50,28 @@ bool CircleCollider2D::CheckCircleCollision(CircleCollider2D* otherCollider)
 
 bool CircleCollider2D::CheckBoxCollision(BoxCollider2D* otherCollider)
 {
-	testPoint->x = this->position->x;
-	testPoint->y = this->position->y;
+	testPoint->x = GetPosition()->x;
+	testPoint->y = GetPosition()->y;
 
-	if (this->position->x < otherCollider->GetPosition()->x)
+	if (GetPosition()->x < otherCollider->GetPosition()->x)
 	{
 		testPoint->x = otherCollider->GetPosition()->x;
 	}
-	else if (this->position->x > otherCollider->GetPosition()->x + otherCollider->GetSize()->x)
+	else if (GetPosition()->x > otherCollider->GetPosition()->x + otherCollider->GetSize()->x)
 	{
 		testPoint->x = otherCollider->GetPosition()->x + otherCollider->GetSize()->x;
 	}
 
-	if (this->position->y < otherCollider->GetPosition()->y)
+	if (GetPosition()->y < otherCollider->GetPosition()->y)
 	{
 		testPoint->y = otherCollider->GetPosition()->y;
 	}
-	else if (this->position->y > otherCollider->GetPosition()->y + otherCollider->GetSize()->y)
+	else if (GetPosition()->y > otherCollider->GetPosition()->y + otherCollider->GetSize()->y)
 	{
 		testPoint->y = otherCollider->GetPosition()->y + otherCollider->GetSize()->y;
 	}
 
-	if (testPoint->GetDistance(position) <= radius)
+	if (testPoint->GetDistance(GetPosition()) <= radius)
 	{
 		bIsColliding = true;
 	}
@@ -86,11 +82,11 @@ bool CircleCollider2D::CheckBoxCollision(BoxCollider2D* otherCollider)
 
 	if (HasCollision())
 	{
-		OnBoxCollisionStart(otherCollider);
+		OnCollisionStart(otherCollider);
 	}
 	else
 	{
-		OnBoxCollisionEnd(otherCollider);
+		OnCollisionEnd(otherCollider);
 	}
 
 	return bIsColliding;
@@ -99,9 +95,4 @@ bool CircleCollider2D::CheckBoxCollision(BoxCollider2D* otherCollider)
 bool CircleCollider2D::HasCollision()
 {
 	return bIsColliding;
-}
-
-ZenObject* CircleCollider2D::GetOwner()
-{
-	return owner;
 }

@@ -15,11 +15,8 @@ public:
 	void CalculatePhysics();
 	void AddForce(float mass, Vector2 force, float time);
 
-	float GetTranspositionX();
-	float GetTranspositionY();
-
-	float GetVelocityX();
-	float GetVelocityY();
+	Vector2* GetTransposition();
+	Vector2* GetVelocity();
 
 	void SetGravity(float gravity);
 	float GetGravity();

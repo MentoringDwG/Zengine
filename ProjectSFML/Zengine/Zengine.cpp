@@ -29,7 +29,7 @@ void Zengine::Run()
 	RenderModule->Initialize(window);
 	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
-	world.EnvironmentInitialize("Graphics/coin.png", sf::Vector2f(192, 128), sf::Vector2f(608, 192));
+	world.EnvironmentInitialize("Graphics/coin.png", sf::Vector2f(288, 352), sf::Vector2f(608, 192));
 	world.PhysicalZenObject2DInitialize("Graphics/Enemy1.png");
 	RenderingStackInitialize();
 
@@ -71,7 +71,7 @@ void Zengine::MainLoop()
 
 		ProcessInput(window);
 		characterInputHandler.UseGravity();
-		world.GetPlayer()->UpdateCharacter();
+		world.UpdateObjects();
 
 		window->clear();
 

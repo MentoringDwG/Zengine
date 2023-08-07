@@ -71,24 +71,14 @@ void PhysicalZenObject2D::AddForce(float massIn, Vector2 forceIN, float time)
 	velocity->y = sy / time;
 }
 
-float PhysicalZenObject2D::GetTranspositionX()
+Vector2* PhysicalZenObject2D::GetTransposition()
 {
-	return transposition->x;
+	return transposition;
 }
 
-float PhysicalZenObject2D::GetTranspositionY()
+Vector2* PhysicalZenObject2D::GetVelocity()
 {
-	return transposition->y;
-}
-
-float PhysicalZenObject2D::GetVelocityX()
-{
-	return velocity->x;
-}
-
-float PhysicalZenObject2D::GetVelocityY()
-{
-	return velocity->y;
+	return velocity;
 }
 
 void  PhysicalZenObject2D::SetGravity(float gravity)

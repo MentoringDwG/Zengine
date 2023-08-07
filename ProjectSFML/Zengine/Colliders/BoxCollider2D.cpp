@@ -2,7 +2,7 @@
 
 BoxCollider2D::BoxCollider2D(Vector2* position, Vector2* size, ZenObject* owner)
 {
-	this->position = position;
+	SetPosition(sf::Vector2f(position->x, position->y));
 	this->size = size;
 	SetOwner(owner);
 
@@ -11,13 +11,6 @@ BoxCollider2D::BoxCollider2D(Vector2* position, Vector2* size, ZenObject* owner)
 	debugRectangleShape.setFillColor(sf::Color::Transparent);
 	debugRectangleShape.setOutlineColor(sf::Color::Green);
 	debugRectangleShape.setOutlineThickness(1);
-
-	SetPosition(sf::Vector2f(position->x, position->y));
-}
-
-void BoxCollider2D::SetOwner(ZenObject* owner)
-{
-	this->owner = owner;
 }
 
 bool BoxCollider2D::CheckBoxCollision(BoxCollider2D* other)
@@ -33,7 +26,7 @@ bool BoxCollider2D::CheckBoxCollision(BoxCollider2D* other)
 
 	if (HasCollision())
 	{
-		OnBoxCollisionStart(other);
+		OnCollisionStart(other);
 	}
 
 	return bIsColliding;
@@ -47,21 +40,11 @@ bool BoxCollider2D::HasCollision()
 void BoxCollider2D::SetPosition(sf::Vector2f vector)
 {
 	debugRectangleShape.setPosition(vector);
-	position->x = vector.x;
-	position->y = vector.y;
-}
-
-ZenObject* BoxCollider2D::GetOwner()
-{
-	return owner;
+	GetPosition()->x = vector.x;
+	GetPosition()->y = vector.y;
 }
 
 Vector2* BoxCollider2D::GetSize()
 {
 	return size;
-}
-
-Vector2* BoxCollider2D::GetPosition()
-{
-	return position;
 }

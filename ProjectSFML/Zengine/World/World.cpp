@@ -3,6 +3,7 @@
 #include "../ZenObject/ZenObject.h"
 #include <SFML/Graphics.hpp>
 #include "../Physics2D/ZenPhysics2D.h"
+#include "../Environment/Ground.h"
 
 void World::Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed)
 {
@@ -21,22 +22,22 @@ void World::PhysicalZenObject2DInitialize(string enemySpritePath)
 {
 	enemy = new PhysicalZenObject2D(2, "Enemy", enemySpritePath, sf::Vector2f(512.0f, 288.0f), sf::Vector2f(32, 32));
 	ZenPhysics2D::Get()->RegisterPhysicalObject(enemy);
-	enemy->AddForce(1.0f, *new Vector2(-3.0f, 0), 3.0f);
+	enemy->AddForce(1.0f, Vector2(-3.0f, 0.0f), 3.0f);
 
 	ground = new Ground(sf::Vector2f(0, 480));
 }
 
 void World::ApplyForceToPhysicsObject()
 {
-	if (enemy->GetTranspositionX() == 0)
+	if (enemy->GetTransposition()->x == 0)
 	{
-		if (enemy->GetVelocityX()<0)
+		if (enemy->GetVelocity()->x<0)
 		{
-			enemy->AddForce(1.0f, *new Vector2(3.0f, 0), 3.0f);
+			enemy->AddForce(1.0f, Vector2(3.0f, 0.0f), 3.0f);
 		}
 		else
 		{
-			enemy->AddForce(1.0f, *new Vector2(-3.0f, 0), 3.0f);
+			enemy->AddForce(1.0f, Vector2(-3.0f, 0.0f), 3.0f);
 		}
 	}
 }
@@ -58,6 +59,11 @@ void World::Draw(RenderingStack* renderStack)
 	{
 		coins[i]->Draw(renderStack);
 	}
+}
+
+void World::UpdateObjects()
+{
+	playerCharacter->UpdateCharacter();
 }
 
 Character* World::GetPlayer()

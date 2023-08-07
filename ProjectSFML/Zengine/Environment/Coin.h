@@ -20,7 +20,7 @@ private:
 	CircleCollider2D* collider = nullptr;
 	CoinCounter* coinCounter = nullptr;
 
-	void HandleCollisionStart(CircleCollider2D* other);
-	void HandleCollisionEnd(BoxCollider2D* other);
+	void HandleCollisionStart(Collider* other);
+	void HandleCollisionEnd(Collider* other);
 };
 

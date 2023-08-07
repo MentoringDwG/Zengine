@@ -1,12 +1,7 @@
-﻿  Ground.cpp
-  World.cpp
-  Zengine.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Structs\Timer.h(22,17): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(129,18): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(138,13): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
+﻿  Collider.cpp
   Trwa generowanie kodu
-  4 of 1291 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  0 of 1204 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    7 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\ProjectSFML.exe

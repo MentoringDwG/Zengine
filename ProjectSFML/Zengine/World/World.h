@@ -1,17 +1,15 @@
 #pragma once
 
-#include "Map.h"
-#include "../ZenObject/ZenObject.h"
 #include "../Character/Character.h"
-#include "../Physics2D/ZenPhysics2D.h"
+#include "../ZenObject/ZenObject.h"
 #include "../Physics2D/PhysicalZenObject2D.h"
 #include "../Environment/Coin.h"
-#include "../ZenObject/ZenText.h"
 #include "../Environment/CoinCounter.h"
-#include "../Environment/Ground.h"
 #include <sstream>
 
 class Renderer;
+class Ground;
+class Map;
 
 class World
 {
@@ -22,6 +20,7 @@ public:
 	void EnvironmentInitialize(string CoinPath, sf::Vector2f position1, sf::Vector2f position2);
 	void Draw(RenderingStack* renderStack);
 	void ApplyForceToPhysicsObject();
+	void UpdateObjects();
 	Character* GetPlayer();
 	CoinCounter* coinCounter;
 

@@ -44,7 +44,7 @@ void Character::MoveUp()
 	if (isGrounded)
 	{
 		isJump = true;
-		physicalZenObject2D->AddForce(1.0f, *new Vector2(0, -3.0f), 3.0f);
+		physicalZenObject2D->AddForce(1.0f, Vector2(0, -3.0f), 3.0f);
 	}
 }
 
@@ -89,18 +89,12 @@ void Character::Draw(RenderingStack* renderStack)
 void Character::SetCollider(Vector2* position, float radius)
 {
 	collider2D = new CircleCollider2D(position, radius, physicalZenObject2D->zenShape);
-	collider2D->OnCircleCollisionStart = std::bind(&Character::HandleCircleCollisionStart, this, std::placeholders::_1);
-	collider2D->OnBoxCollisionStart = std::bind(&Character::HandleBoxCollisionStart, this, std::placeholders::_1);
-	collider2D->OnBoxCollisionEnd = std::bind(&Character::HandleBoxCollisionEnd, this, std::placeholders::_1);
+	collider2D->OnCollisionStart = std::bind(&Character::HandleCollisionStart, this, std::placeholders::_1);
+	collider2D->OnCollisionEnd = std::bind(&Character::HandleCollisionEnd, this, std::placeholders::_1);
 	ZenPhysics2D::Get()->RegisterCollider(collider2D);
 }
 
-void Character::HandleCircleCollisionStart(CircleCollider2D* other)
-{
-
-}
-
-void Character::HandleBoxCollisionStart(BoxCollider2D* other)
+void Character::HandleCollisionStart(Collider* other)
 {
 	if (other->GetOwner()->Name == "Ground")
 	{
@@ -108,7 +102,7 @@ void Character::HandleBoxCollisionStart(BoxCollider2D* other)
 	}
 }
 
-void Character::HandleBoxCollisionEnd(BoxCollider2D* other)
+void Character::HandleCollisionEnd(Collider* other)
 {
 	if (other->GetOwner()->Name == "Ground")
 	{

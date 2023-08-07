@@ -21,12 +21,12 @@ void Coin::Draw(RenderingStack* renderStack)
 void Coin::SetCollider(Vector2* position, float radius)
 {
 	collider = new CircleCollider2D(position, radius, zenShape);
-	collider->OnCircleCollisionStart = std::bind(&Coin::HandleCollisionStart, this, std::placeholders::_1);
-	collider->OnBoxCollisionEnd = std::bind(&Coin::HandleCollisionEnd, this, std::placeholders::_1);
+	collider->OnCollisionStart = std::bind(&Coin::HandleCollisionStart, this, std::placeholders::_1);
+	collider->OnCollisionEnd = std::bind(&Coin::HandleCollisionEnd, this, std::placeholders::_1);
 	ZenPhysics2D::Get()->RegisterCollider(collider);
 }
 
-void Coin::HandleCollisionStart(CircleCollider2D* other)
+void Coin::HandleCollisionStart(Collider* other)
 {
 	if (other->GetOwner()->Name == "Mario")
 	{
@@ -37,7 +37,7 @@ void Coin::HandleCollisionStart(CircleCollider2D* other)
 	}
 }
 
-void Coin::HandleCollisionEnd(BoxCollider2D* other)
+void Coin::HandleCollisionEnd(Collider* other)
 {
 
 }

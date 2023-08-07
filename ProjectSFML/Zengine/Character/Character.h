@@ -41,8 +41,7 @@ private:
 	CircleCollider2D* collider2D = nullptr;
 	float moveSpeed;
 
-	void HandleCircleCollisionStart(CircleCollider2D* other);
-	void HandleBoxCollisionStart(BoxCollider2D* other);
-	void HandleBoxCollisionEnd(BoxCollider2D* other);
+	void HandleCollisionStart(Collider* other);
+	void HandleCollisionEnd(Collider* other);
 };
 
