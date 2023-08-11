@@ -19,7 +19,7 @@ public:
 	void SetName(string nameIN);
 	string GetName();
 	void Start();
-	void UseGravity();
+	void ProcesMovement();
 
 private:
 	Character* owningCharacter;
@@ -33,6 +33,6 @@ private:
 	void KeyReleased(sf::Event& event);
 	bool CanAddMovingState(MovingStates state);
 	void AddMovingState(MovingStates state);
-	void CallingTheMovementFunction();
 	bool IsMovingUp();
+	void UseGravity();
 };

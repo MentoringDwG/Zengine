@@ -20,8 +20,6 @@ bool CharacterInputHandler::ProcessInput(sf::Event& event)
 	KeyPressed(event);
 	KeyReleased(event);
 
-	CallingTheMovementFunction();
-
     return false;
 }
 
@@ -91,7 +89,7 @@ void CharacterInputHandler::KeyReleased(sf::Event& event)
 	}
 }
 
-void CharacterInputHandler::CallingTheMovementFunction()
+void CharacterInputHandler::ProcesMovement()
 {
 	itr = movingStatesList.begin();
 	for (itr; itr != movingStatesList.end(); itr++)
@@ -109,6 +107,8 @@ void CharacterInputHandler::CallingTheMovementFunction()
 			owningCharacter->MoveUp();
 		}
 	}
+
+	UseGravity();
 }
 
 void CharacterInputHandler::UseGravity()

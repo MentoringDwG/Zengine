@@ -70,7 +70,7 @@ void Zengine::MainLoop()
 		Timer* timerForFPSCounter = new Timer();
 
 		ProcessInput(window);
-		characterInputHandler.UseGravity();
+		characterInputHandler.ProcesMovement();
 		world.UpdateObjects();
 
 		window->clear();

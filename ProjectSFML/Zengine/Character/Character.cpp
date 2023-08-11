@@ -11,9 +11,9 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 
 	moveSpeed = playerMoveSpeed;
 
-	physicalZenObject2D = new PhysicalZenObject2D(0, name, Path, sf::Vector2f(200.0f, 384.0f), sf::Vector2f(32, 64));
+	physicalZenObject2D = new PhysicalZenObject2D(0, name, Path, sf::Vector2f(200.0f, 384.0f), sf::Vector2f(32, 64), collider2D);
 	physicalZenObject2D->zenShape = new ZenShape(0, name, sf::Vector2f(32, 64));
-	physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(200.0f, 384.0f));
+	physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(200.0f, 400.0f));
 	physicalZenObject2D->zenShape->SetSize(sf::Vector2f(32, 64));
 
 	SetCollider(new Vector2(physicalZenObject2D->zenShape->GetPosition().x, physicalZenObject2D->zenShape->GetPosition().y), 35);
