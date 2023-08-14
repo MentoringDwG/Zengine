@@ -18,6 +18,8 @@ public:
 	sf::Vector2<float> Position;
 	sf::Vector2<int> size;
 
+	bool isJump = false;
+
 	ZenObject()
 	{
 

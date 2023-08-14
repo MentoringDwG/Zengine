@@ -34,5 +34,4 @@ private:
 	bool CanAddMovingState(MovingStates state);
 	void AddMovingState(MovingStates state);
 	bool IsMovingUp();
-	void UseGravity();
 };

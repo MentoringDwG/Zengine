@@ -11,15 +11,18 @@ class PhysicalZenObject2D:public ZenObject
 {
 public:
 	ZenShape* zenShape;
-	PhysicalZenObject2D(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize, class Collider* inCollider);
+	PhysicalZenObject2D(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize);
 	void CalculatePhysics();
 	void AddForce(float mass, Vector2 force, float time);
 
 	Vector2* GetTransposition();
 	Vector2* GetVelocity();
 
+	void SetCollider(class Collider* collider);
 	void SetGravity(float gravity);
 	float GetGravity();
+
+	bool canUseGravity = false;
 
 private:
 	float mass = 1.0f;
@@ -31,7 +34,9 @@ private:
 	Vector2* transposition;
 	Vector2* acceleration;
 
-	class Collider* collider;
+	class Collider* collider = nullptr;
 	void ResettingVariables();
+	void HandleCollisionStart(Collider* other);
+	void HandleCollisionEnd(Collider* other);
 };
 

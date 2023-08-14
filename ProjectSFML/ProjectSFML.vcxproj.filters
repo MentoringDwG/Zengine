@@ -126,6 +126,12 @@
     <ClCompile Include="Zengine\Colliders\Collider.cpp">
       <Filter>Zengine\Colliders</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\Colliders\CollisionCallback.cpp">
+      <Filter>Zengine\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Colliders\CollisionEventBinder.cpp">
+      <Filter>Zengine\Colliders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -201,6 +207,12 @@
       <Filter>Zengine\Environment</Filter>
     </ClInclude>
     <ClInclude Include="Zengine\Colliders\Collider.h">
+      <Filter>Zengine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Colliders\CollisionCallback.h">
+      <Filter>Zengine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Colliders\CollisionEventBinder.h">
       <Filter>Zengine\Colliders</Filter>
     </ClInclude>
   </ItemGroup>

@@ -21,6 +21,7 @@ public:
 private:
 	float radius;
 	bool bIsColliding = false;
+	bool hasCollisionBefore = false;
 	
 	//check collision
 	Vector2* testPoint = nullptr;

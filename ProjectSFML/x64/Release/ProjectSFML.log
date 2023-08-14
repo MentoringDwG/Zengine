@@ -1,21 +1,11 @@
 ﻿  Character.cpp
-  Coin.cpp
-  Ground.cpp
-  CharacterInputHandler.cpp
   PhysicalZenObject2D.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\PhysicalZenObject2D.cpp(6,37): warning C4305: "argument": obcięcie z "double" do "float"
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\PhysicalZenObject2D.cpp(55,33): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\PhysicalZenObject2D.cpp(56,33): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
-  ZenPhysics2D.cpp
-  World.cpp
-  Zengine.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Structs\Timer.h(22,17): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(129,18): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(138,13): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
-  main.cpp
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\PhysicalZenObject2D.cpp(7,37): warning C4305: "argument": obcięcie z "double" do "float"
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\PhysicalZenObject2D.cpp(78,33): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\PhysicalZenObject2D.cpp(80,47): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
   Trwa generowanie kodu
-  6 of 1204 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    38 functions had inline decision re-evaluated but remain unchanged
+  16 of 1307 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    28 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\ProjectSFML.exe

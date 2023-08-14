@@ -107,16 +107,6 @@ void CharacterInputHandler::ProcesMovement()
 			owningCharacter->MoveUp();
 		}
 	}
-
-	UseGravity();
-}
-
-void CharacterInputHandler::UseGravity()
-{
-	if (owningCharacter->isGrounded==false && owningCharacter->physicalZenObject2D->GetTransposition()->y==0)
-	{
-		owningCharacter->MoveDown();
-	}
 }
 
 bool CharacterInputHandler::IsMovingUp()

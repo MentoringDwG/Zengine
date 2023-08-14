@@ -42,7 +42,7 @@ bool CircleCollider2D::CheckCircleCollision(CircleCollider2D* otherCollider)
 
 	if (HasCollision())
 	{
-		OnCollisionStart(otherCollider);
+		OnCollisionStart.Invoke(otherCollider);
 	}
 
 	return bIsColliding;
@@ -82,11 +82,13 @@ bool CircleCollider2D::CheckBoxCollision(BoxCollider2D* otherCollider)
 
 	if (HasCollision())
 	{
-		OnCollisionStart(otherCollider);
+		OnCollisionStart.Invoke(otherCollider);
 	}
 	else
 	{
-		OnCollisionEnd(otherCollider);
+
+		OnCollisionEnd.Invoke(otherCollider);
+
 	}
 
 	return bIsColliding;

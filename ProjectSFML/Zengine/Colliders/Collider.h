@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "../Structs/Vector2.h"
 #include "../ZenObject/ZenObject.h"
+#include "CollisionEventBinder.h"
 
 class Collider
 {
@@ -19,8 +20,10 @@ public:
 	void SetPosition(sf::Vector2f vector);
 	Vector2* GetPosition();
 
-	std::function<void(Collider*)> OnCollisionStart;
-	std::function<void(Collider*)> OnCollisionEnd;
+	//std::function<void(Collider*)> OnCollisionStart;
+	//std::function<void(Collider*)> OnCollisionEnd;
+	CollisionEventBinder OnCollisionStart;
+	CollisionEventBinder OnCollisionEnd;
 
 private:
 	Vector2* position;

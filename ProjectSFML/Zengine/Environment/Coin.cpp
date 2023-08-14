@@ -21,8 +21,8 @@ void Coin::Draw(RenderingStack* renderStack)
 void Coin::SetCollider(Vector2* position, float radius)
 {
 	collider = new CircleCollider2D(position, radius, zenShape);
-	collider->OnCollisionStart = std::bind(&Coin::HandleCollisionStart, this, std::placeholders::_1);
-	collider->OnCollisionEnd = std::bind(&Coin::HandleCollisionEnd, this, std::placeholders::_1);
+	listenerIndexStart = collider->OnCollisionStart.AddListener(&Coin::HandleCollisionStart, this);
+	listenerIndexStart = collider->OnCollisionEnd.AddListener(&Coin::HandleCollisionEnd, this);
 	ZenPhysics2D::Get()->RegisterCollider(collider);
 }
 

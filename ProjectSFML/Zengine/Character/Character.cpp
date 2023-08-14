@@ -11,14 +11,15 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 
 	moveSpeed = playerMoveSpeed;
 
-	physicalZenObject2D = new PhysicalZenObject2D(0, name, Path, sf::Vector2f(200.0f, 384.0f), sf::Vector2f(32, 64), collider2D);
+	physicalZenObject2D = new PhysicalZenObject2D(0, name, Path, sf::Vector2f(200.0f, 0.0f), sf::Vector2f(32, 64));
 	physicalZenObject2D->zenShape = new ZenShape(0, name, sf::Vector2f(32, 64));
-	physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(200.0f, 400.0f));
+	physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(200.0f, 0.0f));
 	physicalZenObject2D->zenShape->SetSize(sf::Vector2f(32, 64));
 
 	SetCollider(new Vector2(physicalZenObject2D->zenShape->GetPosition().x, physicalZenObject2D->zenShape->GetPosition().y), 35);
-	physicalZenObject2D->SetGravity(5);
+	physicalZenObject2D->SetGravity(0.5);
 
+	physicalZenObject2D->SetCollider(collider2D);
 	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject2D);
 }
 
@@ -27,8 +28,6 @@ void Character::MoveLeft()
 {
 	physicalZenObject2D->zenShape->SetScale(sf::Vector2f(-1, 1));
 	physicalZenObject2D->zenShape->SetOrigin(sf::Vector2f(physicalZenObject2D->zenShape->GetGlobalBounds().width, 0));
-	physicalZenObject2D->zenShape->SetTexture(texture);
-
 	physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(-1.0f * moveSpeed, 0.0f));
 }
 
@@ -44,15 +43,8 @@ void Character::MoveUp()
 	if (isGrounded)
 	{
 		isJump = true;
-		physicalZenObject2D->AddForce(1.0f, Vector2(0, -3.0f), 3.0f);
-	}
-}
-
-void Character::MoveDown()
-{
-	if (!isGrounded)
-	{
-		physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(0.0f, 1.0f * physicalZenObject2D->GetGravity()));
+		physicalZenObject2D->AddForce(1.0f, Vector2(0, -6.0f), 4.0f);
+		collider2D->GetOwner()->isJump = true;
 	}
 }
 
@@ -89,8 +81,8 @@ void Character::Draw(RenderingStack* renderStack)
 void Character::SetCollider(Vector2* position, float radius)
 {
 	collider2D = new CircleCollider2D(position, radius, physicalZenObject2D->zenShape);
-	collider2D->OnCollisionStart = std::bind(&Character::HandleCollisionStart, this, std::placeholders::_1);
-	collider2D->OnCollisionEnd = std::bind(&Character::HandleCollisionEnd, this, std::placeholders::_1);
+	listenerIndexStart = collider2D->OnCollisionStart.AddListener(&Character::HandleCollisionStart, this);
+	listenerIndexEnd = collider2D->OnCollisionEnd.AddListener(&Character::HandleCollisionEnd, this);
 	ZenPhysics2D::Get()->RegisterCollider(collider2D);
 }
 
@@ -99,6 +91,7 @@ void Character::HandleCollisionStart(Collider* other)
 	if (other->GetOwner()->Name == "Ground")
 	{
 		isGrounded = true;
+		collider2D->GetOwner()->isJump = false;
 	}
 }
 

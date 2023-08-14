@@ -26,7 +26,7 @@ bool BoxCollider2D::CheckBoxCollision(BoxCollider2D* other)
 
 	if (HasCollision())
 	{
-		OnCollisionStart(other);
+		OnCollisionStart.Invoke(other);
 	}
 
 	return bIsColliding;

@@ -1,13 +1,12 @@
 #include "PhysicalZenObject2D.h"
+#include "../Colliders/Collider.h"
 
-PhysicalZenObject2D::PhysicalZenObject2D(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize, Collider* inCollider) :ZenObject(inID, inName, inSize)
+PhysicalZenObject2D::PhysicalZenObject2D(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize) :ZenObject(inID, inName, inSize)
 {
 	velocity = new Vector2(0, 0);
 	transposition = new Vector2(0.1, 0);
 	acceleration = new Vector2(0, 0);
 	force = new Vector2(0, 0);
-
-	collider = inCollider;
 
 	zenShape = new ZenShape(3, "zenShape", sf::Vector2f(32, 32));
 	zenShape->SetTexture(enemySpritePath);
@@ -15,11 +14,31 @@ PhysicalZenObject2D::PhysicalZenObject2D(int inID, string inName, string enemySp
 	zenShape->SetSize(inSize);
 }
 
+void PhysicalZenObject2D::SetCollider(class Collider* collider)
+{
+	this->collider = collider;
+	collider->OnCollisionStart.AddListener(&PhysicalZenObject2D::HandleCollisionStart, this);
+	collider->OnCollisionEnd.AddListener(&PhysicalZenObject2D::HandleCollisionEnd, this);
+}
+
+void PhysicalZenObject2D::HandleCollisionStart(Collider* other)
+{
+	if (other->GetOwner()->Name == "Ground")
+	{
+		canUseGravity = false;
+	}
+}
+
+void PhysicalZenObject2D::HandleCollisionEnd(Collider* other)
+{
+	if (other->GetOwner()->Name == "Ground")
+	{
+		canUseGravity = true;
+	}
+}
+
 void PhysicalZenObject2D::CalculatePhysics()
 {
-	//transposition->x = velocity->x - (fakeDrag * velocity->x / 100);
-	//transposition->y = velocity->y - (fakeDrag * velocity->y / 100);
-
 	transposition->x = velocity->x;
 	transposition->y = velocity->y;
 
@@ -47,21 +66,25 @@ void PhysicalZenObject2D::CalculatePhysics()
 		return;
 	}
 
-	zenShape->MoveObject(sf::Vector2f(transposition->x, transposition->y));
+	zenShape->MoveObject(sf::Vector2f(transposition->x, 0));
 
-	//velocity->x= velocity->x - (fakeDrag * velocity->x / 100);
-	//velocity->y = velocity->y - (fakeDrag * velocity->y / 100);
+	if (collider != nullptr)
+	{
+		if (canUseGravity || collider->GetOwner()->isJump)
+		{
+			zenShape->MoveObject(sf::Vector2f(0, transposition->y));
+		}
+	}
 
 	velocity->x = (1.0 - fakeDrag) * velocity->x;
-	velocity->y = (1.0 - fakeDrag) * velocity->y;
 
-	//fakeDrag = fakeDrag + 0.1;
+	velocity->y = (1.0 - fakeDrag) * velocity->y + gravity;
 }
 
 void PhysicalZenObject2D::ResettingVariables()
 {
 	transposition->SetVector2(0, 0);
-	//fakeDrag = 1;
+	velocity->y = 0;
 }
 
 void PhysicalZenObject2D::AddForce(float massIn, Vector2 forceIN, float time)

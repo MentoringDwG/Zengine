@@ -13,7 +13,7 @@ public:
 		zenObject = new ZenObject(10, "Ground", sf::Vector2f(960, 64));
 
 		boxCollider = new BoxCollider2D(new Vector2(position.x, position.y), new Vector2(960, 64), zenObject);
-		boxCollider->OnCollisionStart = std::bind(&Ground::HandleCollisionStart, this, std::placeholders::_1);
+		listenerIndex = boxCollider->OnCollisionStart.AddListener(&Ground::HandleCollisionStart, this);
 		ZenPhysics2D::Get()->RegisterCollider(boxCollider);
 	}
 
@@ -27,5 +27,7 @@ private:
 	{
 
 	}
+
+	int listenerIndex;
 };
 
