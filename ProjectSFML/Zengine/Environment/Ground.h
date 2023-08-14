@@ -7,21 +7,23 @@
 class Ground
 {
 public:
-	Ground(sf::Vector2f position)
+	Ground(string pathToGroundTxt)
 	{
-		this->position = position;
-		zenObject = new ZenObject(10, "Ground", sf::Vector2f(960, 64));
+		SetBoxColliders(pathToGroundTxt);
+		//zenObject = new ZenObject(10, "Ground", sf::Vector2f(960, 64));
 
-		boxCollider = new BoxCollider2D(new Vector2(position.x, position.y), new Vector2(960, 64), zenObject);
-		listenerIndex = boxCollider->OnCollisionStart.AddListener(&Ground::HandleCollisionStart, this);
-		ZenPhysics2D::Get()->RegisterCollider(boxCollider);
+		//boxCollider = new BoxCollider2D(new Vector2(position.x, position.y), new Vector2(960,64), zenObject);
+		//listenerIndex = boxCollider->OnCollisionStart.AddListener(&Ground::HandleCollisionStart, this);
+		//ZenPhysics2D::Get()->RegisterCollider(boxCollider);
 	}
+
+	void SetBoxColliders(string pathToGroundTxt);
 
 private:
 	sf::Vector2f position;
-	BoxCollider2D* boxCollider = nullptr;
+	std::vector<BoxCollider2D*> boxColliders;
 
-	ZenObject* zenObject = nullptr;
+	std::vector<ZenObject*> zenObjects;
 
 	void HandleCollisionStart(Collider* other)
 	{

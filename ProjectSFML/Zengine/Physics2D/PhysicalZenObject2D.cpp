@@ -23,15 +23,30 @@ void PhysicalZenObject2D::SetCollider(class Collider* collider)
 
 void PhysicalZenObject2D::HandleCollisionStart(Collider* other)
 {
-	if (other->GetOwner()->Name == "Ground")
+	for (auto itr = collisionColliders[other->tag].begin(); itr != collisionColliders[other->tag].end(); itr++)
 	{
-		canUseGravity = false;
+		if (*itr == other)
+		{
+			return;
+		}
 	}
+	collisionColliders[other->tag].push_back(other);
+
+	canUseGravity = false;
 }
 
 void PhysicalZenObject2D::HandleCollisionEnd(Collider* other)
 {
-	if (other->GetOwner()->Name == "Ground")
+	for (auto itr = collisionColliders[other->tag].begin(); itr != collisionColliders[other->tag].end(); itr++)
+	{
+		if (*itr == other)
+		{
+			collisionColliders[other->tag].erase(itr);
+			return;
+		}
+	}
+	
+	if (collisionColliders[Collider::GROUND].size() == 0)
 	{
 		canUseGravity = true;
 	}

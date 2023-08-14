@@ -9,7 +9,7 @@
 class BoxCollider2D: public Collider
 {
 public:
-	BoxCollider2D(Vector2* position, Vector2* size, ZenObject* owner);
+	BoxCollider2D(Vector2* position, Vector2* size, ZenObject* owner, Collider::ColliderTags tag);
 	bool CheckBoxCollision(BoxCollider2D* other);
 	bool HasCollision();
 	Vector2* GetSize();

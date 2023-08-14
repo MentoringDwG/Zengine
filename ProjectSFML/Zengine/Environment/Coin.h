@@ -21,7 +21,6 @@ private:
 	CoinCounter* coinCounter = nullptr;
 
 	void HandleCollisionStart(Collider* other);
-	void HandleCollisionEnd(Collider* other);
 	int listenerIndexStart;
 	int listenerIndexEnd;
 };

@@ -18,7 +18,6 @@ public:
 	void SetOwningCharacter(Character* character);
 	void SetName(string nameIN);
 	string GetName();
-	void Start();
 	void ProcesMovement();
 
 private:

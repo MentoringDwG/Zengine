@@ -7,13 +7,7 @@ enum CharacterInputHandler::MovingStates
 	movingLeft = 1,
 	movingRight = 2,
 	movingUp = 3,
-	movingDown = 4
 };
-
-void CharacterInputHandler::Start()
-{
-	AddMovingState(movingDown);
-}
 
 bool CharacterInputHandler::ProcessInput(sf::Event& event)
 {

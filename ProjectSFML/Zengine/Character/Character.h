@@ -28,8 +28,7 @@ public:
 	PhysicalZenObject2D* physicalZenObject2D = nullptr;
 	void UpdateCharacter();
 
-	bool isJump = false;
-	bool isGrounded = false;
+	bool IsCharacterGrounded();
 
 private:
 	CharacterInputHandler inputHandler;
@@ -37,12 +36,15 @@ private:
 	TextureAsset* textureAsset;
 	RenderObject* characterRenderObject = nullptr;
 	sf::Texture* texture = nullptr;
-	CircleCollider2D* collider2D = nullptr;
 	float moveSpeed;
 
+	CircleCollider2D* collider2D = nullptr;
 	void HandleCollisionStart(Collider* other);
 	void HandleCollisionEnd(Collider* other);
 	int listenerIndexStart;
 	int listenerIndexEnd;
+
+	bool isGrounded = false;
+	std::map<Collider::ColliderTags, std::vector<Collider*>> collisionColliders;
 };
 

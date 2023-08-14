@@ -5,7 +5,6 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 {
 	inputHandler.SetName(name);
 	inputHandler.SetOwningCharacter(this);
-	inputHandler.Start();
 
 	SetTextureAsset(Path, name);
 
@@ -42,7 +41,6 @@ void Character::MoveUp()
 {
 	if (isGrounded)
 	{
-		isJump = true;
 		physicalZenObject2D->AddForce(1.0f, Vector2(0, -6.0f), 4.0f);
 		collider2D->GetOwner()->isJump = true;
 	}
@@ -52,7 +50,6 @@ void Character::UpdateCharacter()
 {
 	collider2D->SetPosition(physicalZenObject2D->zenShape->GetPosition());
 }
-
 
 CharacterInputHandler Character::GetInputHandler()
 {
@@ -69,6 +66,11 @@ TextureAsset Character::GetTextureAsset()
 	return *textureAsset;
 }
 
+bool Character::IsCharacterGrounded()
+{
+	return isGrounded;
+}
+
 void Character::Draw(RenderingStack* renderStack)
 {
 	texture = textureAsset->GetTexture();
@@ -80,7 +82,7 @@ void Character::Draw(RenderingStack* renderStack)
 
 void Character::SetCollider(Vector2* position, float radius)
 {
-	collider2D = new CircleCollider2D(position, radius, physicalZenObject2D->zenShape);
+	collider2D = new CircleCollider2D(position, radius, physicalZenObject2D->zenShape, Collider::CHARACTER);
 	listenerIndexStart = collider2D->OnCollisionStart.AddListener(&Character::HandleCollisionStart, this);
 	listenerIndexEnd = collider2D->OnCollisionEnd.AddListener(&Character::HandleCollisionEnd, this);
 	ZenPhysics2D::Get()->RegisterCollider(collider2D);
@@ -88,7 +90,16 @@ void Character::SetCollider(Vector2* position, float radius)
 
 void Character::HandleCollisionStart(Collider* other)
 {
-	if (other->GetOwner()->Name == "Ground")
+	for (auto itr = collisionColliders[other->tag].begin(); itr != collisionColliders[other->tag].end(); itr++)
+	{
+		if (*itr == other)
+		{
+			return;
+		}
+	}
+	collisionColliders[other->tag].push_back(other);
+
+	if (collisionColliders[Collider::GROUND].size() > 0)
 	{
 		isGrounded = true;
 		collider2D->GetOwner()->isJump = false;
@@ -97,7 +108,16 @@ void Character::HandleCollisionStart(Collider* other)
 
 void Character::HandleCollisionEnd(Collider* other)
 {
-	if (other->GetOwner()->Name == "Ground")
+	for (auto itr = collisionColliders[other->tag].begin(); itr != collisionColliders[other->tag].end(); itr++)
+	{
+		if (*itr == other)
+		{
+			collisionColliders[other->tag].erase(itr);
+			return;
+		}
+	}
+
+	if (collisionColliders[Collider::GROUND].size() == 0)
 	{
 		isGrounded = false;
 	}

@@ -1,6 +1,6 @@
 #include "BoxCollider2D.h"
 
-BoxCollider2D::BoxCollider2D(Vector2* position, Vector2* size, ZenObject* owner)
+BoxCollider2D::BoxCollider2D(Vector2* position, Vector2* size, ZenObject* owner, Collider::ColliderTags tag) :Collider(tag)
 {
 	SetPosition(sf::Vector2f(position->x, position->y));
 	this->size = size;

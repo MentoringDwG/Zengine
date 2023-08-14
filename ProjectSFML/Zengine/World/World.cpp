@@ -24,7 +24,7 @@ void World::PhysicalZenObject2DInitialize(string enemySpritePath)
 	ZenPhysics2D::Get()->RegisterPhysicalObject(enemy);
 	enemy->AddForce(1.0f, Vector2(-3.0f, 0.0f), 3.0f);
 
-	ground = new Ground(sf::Vector2f(0, 480));
+	ground = new Ground("Tiles/TxtFiles/Level1Ground.txt");
 }
 
 void World::ApplyForceToPhysicsObject()

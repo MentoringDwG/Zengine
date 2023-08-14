@@ -9,19 +9,28 @@
 class Collider
 {
 public:
-	Collider()
+	enum ColliderTags
+	{
+		DEFAULT = 0,
+		CHARACTER = 1,
+		ENEMY = 2,
+		GROUND = 3,
+		COIN = 4,
+	};
+
+	Collider(ColliderTags tag)
 	{
 		owner = new ZenObject();
 		position = new Vector2(0, 0);
+		this->tag = tag;
 	}
 
 	ZenObject* GetOwner();
 	void SetOwner(ZenObject* inOwner);
 	void SetPosition(sf::Vector2f vector);
 	Vector2* GetPosition();
+	ColliderTags tag;
 
-	//std::function<void(Collider*)> OnCollisionStart;
-	//std::function<void(Collider*)> OnCollisionEnd;
 	CollisionEventBinder OnCollisionStart;
 	CollisionEventBinder OnCollisionEnd;
 

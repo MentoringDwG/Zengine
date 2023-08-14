@@ -6,6 +6,7 @@
 #include <iostream>
 #include "../Structs/Vector2.h"
 #include "../ZenObject/ZenShape.h"
+#include "../Colliders/Collider.h"
 
 class PhysicalZenObject2D:public ZenObject
 {
@@ -22,9 +23,8 @@ public:
 	void SetGravity(float gravity);
 	float GetGravity();
 
-	bool canUseGravity = false;
-
 private:
+
 	float mass = 1.0f;
 	float fakeDrag = 0.05f;
 	float gravity = 0.0f;
@@ -34,7 +34,9 @@ private:
 	Vector2* transposition;
 	Vector2* acceleration;
 
-	class Collider* collider = nullptr;
+	bool canUseGravity = false;
+	Collider* collider = nullptr;
+	std::map<Collider::ColliderTags, std::vector<Collider*>> collisionColliders;
 	void ResettingVariables();
 	void HandleCollisionStart(Collider* other);
 	void HandleCollisionEnd(Collider* other);

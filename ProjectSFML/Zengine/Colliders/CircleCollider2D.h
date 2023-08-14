@@ -10,7 +10,7 @@
 class CircleCollider2D: public Collider
 {
 public:
-	CircleCollider2D(Vector2* position, float radius, ZenObject* owner);
+	CircleCollider2D(Vector2* position, float radius, ZenObject* owner, Collider::ColliderTags tag);
 	bool CheckCircleCollision(CircleCollider2D* otherCollider);
 	bool CheckBoxCollision(BoxCollider2D* otherCollider);
 	bool HasCollision();

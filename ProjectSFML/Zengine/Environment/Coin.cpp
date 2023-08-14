@@ -20,9 +20,8 @@ void Coin::Draw(RenderingStack* renderStack)
 
 void Coin::SetCollider(Vector2* position, float radius)
 {
-	collider = new CircleCollider2D(position, radius, zenShape);
+	collider = new CircleCollider2D(position, radius, zenShape, Collider::COIN);
 	listenerIndexStart = collider->OnCollisionStart.AddListener(&Coin::HandleCollisionStart, this);
-	listenerIndexStart = collider->OnCollisionEnd.AddListener(&Coin::HandleCollisionEnd, this);
 	ZenPhysics2D::Get()->RegisterCollider(collider);
 }
 
@@ -35,10 +34,5 @@ void Coin::HandleCollisionStart(Collider* other)
 
 		coinCounter->IncrementCounter();
 	}
-}
-
-void Coin::HandleCollisionEnd(Collider* other)
-{
-
 }
 
