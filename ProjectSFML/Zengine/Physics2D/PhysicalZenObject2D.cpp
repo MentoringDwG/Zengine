@@ -57,19 +57,19 @@ void PhysicalZenObject2D::CalculatePhysics()
 	transposition->x = velocity->x;
 	transposition->y = velocity->y;
 
-	if (velocity->x<0 && transposition->x > -0.5)
+	if (velocity->x < 0 && transposition->x > -0.5)
 	{
 		ResettingVariables();
 		return;
 	}
 
-	if (velocity->y<0 && transposition->y > -0.5)
+	if (velocity->y < 0 && transposition->y > -0.5)
 	{
 		ResettingVariables();
 		return;
 	}
 
-	if (velocity->x>0 && transposition->x < 0.5)
+	if (velocity->x > 0 && transposition->x < 0.5)
 	{
 		ResettingVariables();
 		return;

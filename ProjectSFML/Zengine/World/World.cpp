@@ -31,7 +31,7 @@ void World::ApplyForceToPhysicsObject()
 {
 	if (enemy->GetTransposition()->x == 0)
 	{
-		if (enemy->GetVelocity()->x<0)
+		if (enemy->GetVelocity()->x < 0)
 		{
 			enemy->AddForce(1.0f, Vector2(3.0f, 0.0f), 3.0f);
 		}

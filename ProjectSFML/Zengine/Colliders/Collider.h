@@ -18,12 +18,7 @@ public:
 		COIN = 4,
 	};
 
-	Collider(ColliderTags tag)
-	{
-		owner = new ZenObject();
-		position = new Vector2(0, 0);
-		this->tag = tag;
-	}
+	Collider(ColliderTags tag);
 
 	ZenObject* GetOwner();
 	void SetOwner(ZenObject* inOwner);

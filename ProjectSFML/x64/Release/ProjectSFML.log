@@ -1,6 +1,21 @@
-﻿  Character.cpp
+﻿  Ground.cpp
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Environment\Ground.cpp(23,103): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Environment\Ground.cpp(23,85): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Environment\Ground.cpp(25,87): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Environment\Ground.cpp(25,65): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Environment\Ground.cpp(25,140): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Environment\Ground.cpp(25,122): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  World.cpp
   Trwa generowanie kodu
-  1 of 1496 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  4 of 1494 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu

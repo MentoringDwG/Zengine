@@ -1,19 +1,24 @@
 #include "Ground.h"
 #include <fstream>
 
-#pragma optimize("", off)
 void Ground::SetBoxColliders(string pathToGroundTxt)
 {
 	ifstream file;
 	file.open(pathToGroundTxt);
-	//string path, name;
-	string numberOfColliders;
-	file >> numberOfColliders;
+
+	string numberOfCollidersFile;
+	file >> numberOfCollidersFile;
+
+	int numberOfColliders = std::stoi(numberOfCollidersFile);
 
 	string id, positionX, positionY, sizeX, sizeY;
-	for (int i = 0; i < std::stoi(numberOfColliders); i++)
+	for (int i = 0; i < numberOfColliders; i++)
 	{
-		file >> id >> positionX >> positionY >> sizeX >> sizeY;
+		file >> id;
+		file >> positionX;
+		file >> positionY;
+		file >> sizeX;
+		file >> sizeY;
 
 		zenObjects.push_back(new ZenObject(std::stoi(id), "Ground", sf::Vector2f(std::stoi(sizeX), std::stoi(sizeY))));
 
@@ -22,10 +27,14 @@ void Ground::SetBoxColliders(string pathToGroundTxt)
 
 	file.close();
 
-	for (int i = 0; i < std::stoi(numberOfColliders); i++)
+	for (int i = 0; i < numberOfColliders; i++)
 	{
 		boxColliders[i]->OnCollisionStart.AddListener(&Ground::HandleCollisionStart, this);
 		ZenPhysics2D::Get()->RegisterCollider(boxColliders[i]);
 	}
 }
-#pragma optimize("", on)
+
+void Ground::HandleCollisionStart(Collider* other)
+{
+
+}

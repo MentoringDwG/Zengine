@@ -8,8 +8,6 @@
 #include <sstream>
 
 class Renderer;
-class Ground;
-class Map;
 
 class World
 {
@@ -25,10 +23,10 @@ public:
 	CoinCounter* coinCounter;
 
 private:
-	Map *map;
+	class Map *map;
 	Character* playerCharacter;
 	PhysicalZenObject2D* enemy;
-	Ground* ground;
+	class Ground* ground;
 	std::vector<Coin*> coins;
 };
 
