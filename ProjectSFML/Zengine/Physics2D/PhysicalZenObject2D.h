@@ -24,7 +24,9 @@ public:
 	float GetGravity();
 
 private:
-
+	void CalculationColliderPush();
+	void CalculateDeltaPositions();
+	Vector2* deltaPositions;
 	float mass = 1.0f;
 	float fakeDrag = 0.05f;
 	float gravity = 0.0f;

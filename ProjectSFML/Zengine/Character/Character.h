@@ -10,6 +10,7 @@
 #include "../Colliders/BoxCollider2D.h"
 #include "../Physics2D/ZenPhysics2D.h"
 #include "../Physics2D/PhysicalZenObject2D.h"
+#include "../Structs/Vector2.h"
 
 class Character : public MovableObject
 {
@@ -29,6 +30,7 @@ public:
 	void UpdateCharacter();
 
 	bool IsCharacterGrounded();
+	Vector2* deltaPositions;
 
 private:
 	CharacterInputHandler inputHandler;

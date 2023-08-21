@@ -1,7 +1,7 @@
 #include "CircleCollider2D.h"
 #include <cmath>
 
-CircleCollider2D::CircleCollider2D(Vector2* position, float radius, ZenObject* owner, Collider::ColliderTags tag) :Collider(tag)
+CircleCollider2D::CircleCollider2D(Vector2* position, float radius, ZenObject* owner, Collider::ColliderTags tag) :Collider(tag, position)
 {
 	this->radius = radius;
 	SetOwner(owner);

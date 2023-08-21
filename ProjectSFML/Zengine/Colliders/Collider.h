@@ -18,13 +18,14 @@ public:
 		COIN = 4,
 	};
 
-	Collider(ColliderTags tag);
+	Collider(ColliderTags tag, Vector2* size);
 
 	ZenObject* GetOwner();
 	void SetOwner(ZenObject* inOwner);
 	void SetPosition(sf::Vector2f vector);
 	Vector2* GetPosition();
 	ColliderTags tag;
+	Vector2* size;
 
 	CollisionEventBinder OnCollisionStart;
 	CollisionEventBinder OnCollisionEnd;

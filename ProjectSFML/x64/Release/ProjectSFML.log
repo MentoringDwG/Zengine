@@ -1,14 +1,10 @@
-﻿  Character.cpp
-  BoxCollider2D.cpp
-  CharacterInputHandler.cpp
-  World.cpp
-  Zengine.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Structs\Timer.h(22,17): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(129,18): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(138,13): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
+﻿  PhysicalZenObject2D.cpp
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\PhysicalZenObject2D.cpp(8,37): warning C4305: "argument": obcięcie z "double" do "float"
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\PhysicalZenObject2D.cpp(99,33): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\PhysicalZenObject2D.cpp(101,47): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
   Trwa generowanie kodu
-  25 of 1494 functions ( 1.7%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    8 functions had inline decision re-evaluated but remain unchanged
+  2 of 1509 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\ProjectSFML.exe

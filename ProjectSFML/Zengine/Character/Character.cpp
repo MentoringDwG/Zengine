@@ -1,5 +1,6 @@
 #include "Character.h"
 #include <functional>
+#include "../Structs/Vector2.h"
 
 Character::Character(std::string name, string Path, float playerMoveSpeed)
 {
@@ -20,6 +21,9 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 
 	physicalZenObject2D->SetCollider(collider2D);
 	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject2D);
+
+	deltaPositions = new Vector2(0, 0);
+
 }
 
 //MOVEMENT

@@ -1,10 +1,11 @@
 
 #include "Collider.h"
 
-Collider::Collider(ColliderTags tag)
+Collider::Collider(ColliderTags tag, Vector2* size)
 {
 	position = new Vector2(0, 0);
 	this->tag = tag;
+	this->size = size;
 }
 
 void Collider::SetOwner(ZenObject* inOwner)

@@ -67,11 +67,11 @@ void Zengine::MainLoop()
 	Timer* timerForPhysics = new Timer();
 	while (window->isOpen())
 	{
+		//world.GetPlayer()->physicalZenObject2D->zenShape->previousPosition = world.GetPlayer()->physicalZenObject2D->zenShape->Position;
 		Timer* timerForFPSCounter = new Timer();
 
 		ProcessInput(window);
 		characterInputHandler.ProcesMovement();
-		world.UpdateObjects();
 
 		window->clear();
 
@@ -80,6 +80,7 @@ void Zengine::MainLoop()
 		{
 			world.ApplyForceToPhysicsObject();
 			ZenPhysics2D::Get()->CalculatePhysics();
+			world.UpdateObjects();
 			timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
 		}
 		ZenPhysics2D::Get()->CalculateCollision();
@@ -102,6 +103,8 @@ void Zengine::MainLoop()
 		timerForFPSCounter->TimerStop();
 		CountFrameTime(timerForFPSCounter->time);
 		delete timerForFPSCounter;
+
+		
 	}
 }
 
