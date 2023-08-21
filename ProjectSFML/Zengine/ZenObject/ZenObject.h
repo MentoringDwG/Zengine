@@ -16,6 +16,7 @@ public:
 	vector<ZenObject*> Children;
 	string Name;
 	sf::Vector2<float> Position;
+	sf::Vector2<float> previousPosition;
 	sf::Vector2<int> size;
 
 	bool isJump = false;

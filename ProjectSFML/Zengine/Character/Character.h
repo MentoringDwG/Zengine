@@ -24,7 +24,7 @@ public:
 	void SetTextureAsset(string Path, string Name);
 	TextureAsset GetTextureAsset();
 	void Draw(RenderingStack* renderStack);
-	void SetCollider(Vector2* position, float radius);
+	void SetCollider(Vector2* position, Vector2* size);
 	PhysicalZenObject2D* physicalZenObject2D = nullptr;
 	void UpdateCharacter();
 
@@ -38,7 +38,7 @@ private:
 	sf::Texture* texture = nullptr;
 	float moveSpeed;
 
-	CircleCollider2D* collider2D = nullptr;
+	BoxCollider2D* collider2D = nullptr;
 	void HandleCollisionStart(Collider* other);
 	void HandleCollisionEnd(Collider* other);
 	int listenerIndexStart;

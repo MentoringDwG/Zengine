@@ -15,7 +15,7 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 	physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(200.0f, 0.0f));
 	physicalZenObject2D->zenShape->SetSize(sf::Vector2f(32, 64));
 
-	SetCollider(new Vector2(physicalZenObject2D->zenShape->GetPosition().x, physicalZenObject2D->zenShape->GetPosition().y), 35);
+	SetCollider(new Vector2(physicalZenObject2D->zenShape->GetPosition().x, physicalZenObject2D->zenShape->GetPosition().y), new Vector2(32, 64));
 	physicalZenObject2D->SetGravity(0.5);
 
 	physicalZenObject2D->SetCollider(collider2D);
@@ -80,9 +80,9 @@ void Character::Draw(RenderingStack* renderStack)
 	renderStack->renderQueue.push_back(characterRenderObject);
 }
 
-void Character::SetCollider(Vector2* position, float radius)
+void Character::SetCollider(Vector2* position, Vector2* size)
 {
-	collider2D = new CircleCollider2D(position, radius, physicalZenObject2D->zenShape, Collider::CHARACTER);
+	collider2D = new BoxCollider2D(position, size, physicalZenObject2D->zenShape, Collider::CHARACTER);
 	listenerIndexStart = collider2D->OnCollisionStart.AddListener(&Character::HandleCollisionStart, this);
 	listenerIndexEnd = collider2D->OnCollisionEnd.AddListener(&Character::HandleCollisionEnd, this);
 	ZenPhysics2D::Get()->RegisterCollider(collider2D);

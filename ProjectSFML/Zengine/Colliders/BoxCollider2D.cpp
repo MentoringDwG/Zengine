@@ -28,6 +28,10 @@ bool BoxCollider2D::CheckBoxCollision(BoxCollider2D* other)
 	{
 		OnCollisionStart.Invoke(other);
 	}
+	else
+	{
+		OnCollisionEnd.Invoke(other);
+	}
 
 	return bIsColliding;
 }
