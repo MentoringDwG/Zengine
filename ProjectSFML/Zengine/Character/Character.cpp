@@ -31,19 +31,33 @@ void Character::MoveLeft()
 {
 	physicalZenObject2D->zenShape->SetScale(sf::Vector2f(-1, 1));
 	physicalZenObject2D->zenShape->SetOrigin(sf::Vector2f(physicalZenObject2D->zenShape->GetGlobalBounds().width, 0));
+
+	if (physicalZenObject2D->collisionPushSide!=PhysicalZenObject2D::LEFT)
 	physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(-1.0f * moveSpeed, 0.0f));
+
+	if (physicalZenObject2D->collisionPushSide == PhysicalZenObject2D::RIGHT)
+	{
+		physicalZenObject2D->collisionPushSide == PhysicalZenObject2D::NONE;
+	}
 }
 
 void Character::MoveRight()
 {
 	physicalZenObject2D->zenShape->SetScale(sf::Vector2f(1, 1));
 	physicalZenObject2D->zenShape->SetOrigin(sf::Vector2f(0, 0));
+
+	if (physicalZenObject2D->collisionPushSide != PhysicalZenObject2D::RIGHT)
 	physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(1.0f * moveSpeed, 0.0f));
+	
+	if (physicalZenObject2D->collisionPushSide == PhysicalZenObject2D::LEFT)
+	{
+		physicalZenObject2D->collisionPushSide == PhysicalZenObject2D::NONE;
+	}
 }
 
 void Character::MoveUp()
 {
-	if (isGrounded)
+	if (isGrounded && collisionColliders[Collider::GROUND].size() == 1)
 	{
 		physicalZenObject2D->AddForce(1.0f, Vector2(0, -6.0f), 4.0f);
 		collider2D->GetOwner()->isJump = true;

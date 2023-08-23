@@ -11,6 +11,17 @@
 class PhysicalZenObject2D:public ZenObject
 {
 public:
+	enum CollisionPushSide
+	{
+		NONE = 0,
+		TOP = 1,
+		BOTTOM = 2,
+		RIGHT = 3,
+		LEFT = 4
+	};
+
+	CollisionPushSide collisionPushSide = NONE;
+
 	ZenShape* zenShape;
 	PhysicalZenObject2D(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize);
 	void CalculatePhysics();
@@ -25,8 +36,8 @@ public:
 
 private:
 	void CalculationColliderPush();
-	void CalculateDeltaPositions();
 	Vector2* deltaPositions;
+
 	float mass = 1.0f;
 	float fakeDrag = 0.05f;
 	float gravity = 0.0f;
