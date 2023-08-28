@@ -5,6 +5,10 @@
 #include "Renderer/Renderer.h"
 #include "Structs/Timer.h"
 
+#include "StateMachine/MainMenuState.h"
+#include "StateMachine/LoadingState.h"
+#include "StateMachine/GameplayState.h"
+
 Zengine* Zengine::Engine = nullptr;
 World world;
 
@@ -25,6 +29,12 @@ void Zengine::Run()
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
 	window->setFramerateLimit(60);
 	ViewInitialize();
+
+	stateMachine = new StateMachine();
+	StateInitialize();
+	stateMachine->TransitionTo(1);
+	stateMachine->TransitionTo(3);
+
 
 	RenderModule->Initialize(window);
 	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
@@ -58,6 +68,24 @@ void Zengine::UIInitialize()
 	fpsText->SetColor(sf::Color::White);
 	fpsText->SetSize(20);
 	fpsText->SetFont("Fonts/Super_Mario_Bros_/SuperMarioBros.ttf");
+}
+
+void Zengine::StateInitialize()
+{
+	MainMenuState* mainMenuState = new MainMenuState(1);
+	LoadingState* loadingState = new LoadingState(2);
+	GameplayState* gameplayState = new GameplayState(3);
+
+	bool canAdd=false;
+
+	canAdd=stateMachine->AddState(mainMenuState);
+	cout << canAdd<<endl;
+
+	canAdd = stateMachine->AddState(loadingState);
+	cout << canAdd<<endl;
+
+	canAdd = stateMachine->AddState(gameplayState);
+	cout << canAdd << endl;
 }
 
 void Zengine::MainLoop()

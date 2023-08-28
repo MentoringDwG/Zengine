@@ -10,6 +10,7 @@
 #include "ZenObject/ZenObject.h"
 #include "Physics2D/ZenPhysics2D.h"
 #include "ZenObject/ZenText.h"
+#include "StateMachine/StateMachine.h"
 
 class Zengine
 {
@@ -29,6 +30,7 @@ private:
 	void CountFrameTime(std::chrono::nanoseconds time);
 	void CountFPS();
 	void SetUI();
+	void StateInitialize();
 
 	static class Zengine* Engine;
 	class InputProcessorModule* InputProcessor = nullptr;
@@ -42,6 +44,8 @@ private:
 	std::vector<IEngineModule*> engineModules;
 	std::stringstream fpsStringstream;
 	bool engineRunning = false;
+
+	StateMachine* stateMachine = nullptr;
 
 	int frameTme = 1;
 	float fps = 60;
