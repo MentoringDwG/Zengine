@@ -46,6 +46,9 @@
     <Filter Include="Zengine\Environment">
       <UniqueIdentifier>{0827fe59-8fd6-4e43-b0e5-21fbc3bfe247}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Zengine\StateMachine">
+      <UniqueIdentifier>{890fd1d0-ca9a-4f8c-a242-3387bc6abe8f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp">
@@ -132,6 +135,18 @@
     <ClCompile Include="Zengine\Colliders\CollisionEventBinder.cpp">
       <Filter>Zengine\Colliders</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\StateMachine\BaseGameState.cpp">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\StateMachine\MainMenuState.cpp">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\StateMachine\LoadingState.cpp">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\StateMachine\GameplayState.cpp">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -214,6 +229,18 @@
     </ClInclude>
     <ClInclude Include="Zengine\Colliders\CollisionEventBinder.h">
       <Filter>Zengine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\StateMachine\BaseGameState.h">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\StateMachine\MainMenuState.h">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\StateMachine\LoadingState.h">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\StateMachine\GameplayState.h">
+      <Filter>Zengine\StateMachine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

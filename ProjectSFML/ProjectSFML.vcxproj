@@ -168,6 +168,10 @@
     <ClCompile Include="Zengine\Physics2D\PhysicalZenObject2D.cpp" />
     <ClCompile Include="Zengine\Physics2D\ZenPhysics2D.cpp" />
     <ClCompile Include="Zengine\Renderer\Renderer.cpp" />
+    <ClCompile Include="Zengine\StateMachine\BaseGameState.cpp" />
+    <ClCompile Include="Zengine\StateMachine\GameplayState.cpp" />
+    <ClCompile Include="Zengine\StateMachine\LoadingState.cpp" />
+    <ClCompile Include="Zengine\StateMachine\MainMenuState.cpp" />
     <ClCompile Include="Zengine\Structs\Timer.cpp" />
     <ClCompile Include="Zengine\Structs\Vector2.cpp" />
     <ClCompile Include="Zengine\World\AssetsManager.cpp" />
@@ -197,6 +201,10 @@
     <ClInclude Include="Zengine\Physics2D\PhysicalZenObject2D.h" />
     <ClInclude Include="Zengine\Physics2D\ZenPhysics2D.h" />
     <ClInclude Include="Zengine\Renderer\Renderer.h" />
+    <ClInclude Include="Zengine\StateMachine\BaseGameState.h" />
+    <ClInclude Include="Zengine\StateMachine\GameplayState.h" />
+    <ClInclude Include="Zengine\StateMachine\LoadingState.h" />
+    <ClInclude Include="Zengine\StateMachine\MainMenuState.h" />
     <ClInclude Include="Zengine\Structs\Timer.h" />
     <ClInclude Include="Zengine\Structs\Vector2.h" />
     <ClInclude Include="Zengine\World\AssetsManager.h" />
