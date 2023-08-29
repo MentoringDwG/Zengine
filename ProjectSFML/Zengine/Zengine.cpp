@@ -29,18 +29,19 @@ void Zengine::Run()
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
 	window->setFramerateLimit(60);
 	ViewInitialize();
+	
+	RenderModule->Initialize(window);
 
 	stateMachine = new StateMachine();
 	StateInitialize();
 	stateMachine->TransitionTo(1);
-	stateMachine->TransitionTo(3);
 
 
-	RenderModule->Initialize(window);
-	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
-	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
-	world.EnvironmentInitialize("Graphics/coin.png", sf::Vector2f(288, 352), sf::Vector2f(608, 192));
-	world.PhysicalZenObject2DInitialize("Graphics/Enemy1.png");
+	//world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
+	//world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
+	//world.EnvironmentInitialize("Graphics/coin.png", sf::Vector2f(288, 352), sf::Vector2f(608, 192));
+	//world.PhysicalZenObject2DInitialize("Graphics/Enemy1.png");
+
 	RenderingStackInitialize();
 
 	UIInitialize();
@@ -56,15 +57,15 @@ void Zengine::ViewInitialize()
 
 void Zengine::RenderingStackInitialize()
 {
-	world.Draw(renderStack);
+	//world.Draw(renderStack);
 	renderStack->DivisionOfObjectsIntoLayersByLayerId();
 	RenderModule->SortRenderLayers(renderStack);
 }
 
 void Zengine::UIInitialize()
 {
-	fpsText = new ZenText(0, "fpsText", sf::Vector2f(0, 0));
-	fpsText->SetPosition(sf::Vector2f(0, 0));
+	fpsText = new ZenText(0, "fpsText", sf::Vector2f(600, 0));
+	fpsText->SetPosition(sf::Vector2f(600, 0));
 	fpsText->SetColor(sf::Color::White);
 	fpsText->SetSize(20);
 	fpsText->SetFont("Fonts/Super_Mario_Bros_/SuperMarioBros.ttf");
@@ -72,7 +73,7 @@ void Zengine::UIInitialize()
 
 void Zengine::StateInitialize()
 {
-	MainMenuState* mainMenuState = new MainMenuState(1);
+	MainMenuState* mainMenuState = new MainMenuState(1, renderStack);
 	LoadingState* loadingState = new LoadingState(2);
 	GameplayState* gameplayState = new GameplayState(3);
 
@@ -90,28 +91,29 @@ void Zengine::StateInitialize()
 
 void Zengine::MainLoop()
 {
-	CharacterInputHandlerInitialize();
+	//CharacterInputHandlerInitialize();
 
 	Timer* timerForPhysics = new Timer();
 	while (window->isOpen())
 	{
-		//world.GetPlayer()->physicalZenObject2D->zenShape->previousPosition = world.GetPlayer()->physicalZenObject2D->zenShape->Position;
 		Timer* timerForFPSCounter = new Timer();
 
 		ProcessInput(window);
-		characterInputHandler.ProcesMovement();
+		//characterInputHandler.ProcesMovement();
 
 		window->clear();
 
 		timerForPhysics->TimerStop();
 		if (timerForPhysics->timeMs >= ZenPhysics2D::Get()->GetPhysicsTimeStep())
 		{
-			world.ApplyForceToPhysicsObject();
+			//world.ApplyForceToPhysicsObject();
 			ZenPhysics2D::Get()->CalculatePhysics();
-			world.UpdateObjects();
+			//world.UpdateObjects();
 			timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
 		}
 		ZenPhysics2D::Get()->CalculateCollision();
+
+		stateMachine->Update();
 
 		//Render game elements
 		window->setView(mainView);
@@ -121,7 +123,7 @@ void Zengine::MainLoop()
 		//Draw UI
 		window->setView(window->getDefaultView());
 		window->draw(fpsText->Draw());
-		world.coinCounter->Draw(window);
+		//world.coinCounter->Draw(window);
 
 		window->display();
 

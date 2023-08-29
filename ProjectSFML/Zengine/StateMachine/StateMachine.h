@@ -12,5 +12,6 @@ private:
 public:
 	bool AddState(BaseGameState* gameState);
 	void TransitionTo(int stateId);
+	void Update();
 };
 

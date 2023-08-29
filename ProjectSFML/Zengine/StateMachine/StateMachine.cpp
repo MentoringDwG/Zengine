@@ -36,3 +36,8 @@ void StateMachine::TransitionTo(int stateId)
 	
 	CurrentGameState = NextState;
 }
+
+void StateMachine::Update()
+{
+	CurrentGameState->OnUpdate();
+}

@@ -11,6 +11,7 @@ public:
 	}
 
 	virtual void OnEnter(int prevStateId) = 0;
+	virtual void OnUpdate() = 0;
 	virtual void OnLeave(int nextStateId) = 0;
 
 	int GetStateId();
