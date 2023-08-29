@@ -11,6 +11,7 @@
 #include "Physics2D/ZenPhysics2D.h"
 #include "ZenObject/ZenText.h"
 #include "StateMachine/StateMachine.h"
+#include "InputModule/UIInputHandler.h"
 
 class Zengine
 {

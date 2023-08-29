@@ -49,6 +49,9 @@
     <Filter Include="Zengine\StateMachine">
       <UniqueIdentifier>{890fd1d0-ca9a-4f8c-a242-3387bc6abe8f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Zengine\UI">
+      <UniqueIdentifier>{b91d5fde-6a47-49fb-8c4b-3c60ea2d30b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp">
@@ -150,6 +153,24 @@
     <ClCompile Include="Zengine\StateMachine\StateMachine.cpp">
       <Filter>Zengine\StateMachine</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\UI\Widget.cpp">
+      <Filter>Zengine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\UI\WidgetEventHandler.cpp">
+      <Filter>Zengine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\UI\WidgetCollback.cpp">
+      <Filter>Zengine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\UI\CompoundWidget.cpp">
+      <Filter>Zengine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\UI\UIButton.cpp">
+      <Filter>Zengine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\InputModule\UIInputHandler.cpp">
+      <Filter>Zengine\InputModule</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -247,6 +268,24 @@
     </ClInclude>
     <ClInclude Include="Zengine\StateMachine\StateMachine.h">
       <Filter>Zengine\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\UI\Widget.h">
+      <Filter>Zengine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\UI\WidgetEventHandler.h">
+      <Filter>Zengine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\UI\WidgetCollback.h">
+      <Filter>Zengine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\UI\CompoundWidget.h">
+      <Filter>Zengine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\UI\UIButton.h">
+      <Filter>Zengine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\InputModule\UIInputHandler.h">
+      <Filter>Zengine\InputModule</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

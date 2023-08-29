@@ -4,6 +4,7 @@
 #include "InputModule/InputProcessorModule.h"
 #include "Renderer/Renderer.h"
 #include "Structs/Timer.h"
+#include "InputModule/UIInputHandler.h"
 
 #include "StateMachine/MainMenuState.h"
 #include "StateMachine/LoadingState.h"
@@ -153,7 +154,8 @@ void Zengine::ProcessInput(sf::RenderWindow* inWindow)
 		{
 			inWindow->close();
 		}
-		InputProcessor->ProcessInput(event);
+		InputProcessor->ProcessInput(event, window);
+		UIInputHandler::Get()->ProcessInput(event, window);
 	}
 }
 

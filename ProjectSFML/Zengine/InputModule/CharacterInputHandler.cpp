@@ -9,7 +9,7 @@ enum CharacterInputHandler::MovingStates
 	movingUp = 3,
 };
 
-bool CharacterInputHandler::ProcessInput(sf::Event& event)
+bool CharacterInputHandler::ProcessInput(sf::Event& event, sf::RenderWindow* inWindow)
 {
 	KeyPressed(event);
 	KeyReleased(event);

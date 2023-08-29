@@ -2,6 +2,7 @@
 
 #include "InputHandler.h"
 #include <SFML/Window/Event.hpp>
+#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <list>
 
@@ -12,7 +13,7 @@ class Character;
 class CharacterInputHandler : public InputHandler
 {
 public:
-	virtual bool ProcessInput(sf::Event& event) override;
+	virtual bool ProcessInput(sf::Event& event, sf::RenderWindow* inWindow) override;
 	virtual bool CanConsumeInput() override;
 
 	void SetOwningCharacter(Character* character);
