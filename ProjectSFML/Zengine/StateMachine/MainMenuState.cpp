@@ -2,10 +2,12 @@
 
 #include <iostream>
 
-MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack, StateMachine* stateMachine) : BaseGameState(stateIdIn)
+MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack, StateMachine* stateMachine, Renderer* renderer) : BaseGameState(stateIdIn)
 {
-	this->renderStack = new  RenderingStack();
+	this->renderStack = new RenderingStack();
 	this->renderStack = renderStack;
+	this->renderer = renderer;
+	this->stateMachine = stateMachine;
 
 	spriteSheets.push_back(new sf::Texture());
 	spriteSheets.push_back(new sf::Texture());
@@ -16,6 +18,11 @@ MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack, StateMa
 	spriteSheets[1]->loadFromFile("Graphics/MainMenu/MainMenuSpriteSheet2.png");
 	spriteSheets[2]->loadFromFile("Graphics/MainMenu/MainMenuSpriteSheet3.png");
 	spriteSheets[3]->loadFromFile("Graphics/MainMenu/MainMenuSpriteSheet4.png");
+}
+
+void MainMenuState::OnEnter(int prevStateId)
+{
+	std::cout << "Main Menu enter" << std::endl;
 
 	zenShape = new ZenShape(10, "MainMenu", sf::Vector2f(960, 544));
 	zenShape->SetSize(sf::Vector2f(960, 544));
@@ -24,11 +31,6 @@ MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack, StateMa
 	zenShape->Draw()->setTextureRect(rectSpriteSheet);
 
 	mainMenuPanel.Initialize(stateMachine);
-}
-
-void MainMenuState::OnEnter(int prevStateId)
-{
-	std::cout << "Main Menu enter" << std::endl;
 
 	renderObject = new RenderObject(zenShape->Draw(), 1, 1);
 	renderStack->renderQueue.push_back(renderObject);
@@ -36,6 +38,8 @@ void MainMenuState::OnEnter(int prevStateId)
 	mainMenuPanel.Draw(renderStack);
 	mainMenuPanel.ButtonsInputInitialize();
 
+	renderStack->DivisionOfObjectsIntoLayersByLayerId();
+	renderer->SortRenderLayers(renderStack);
 	clock.restart();
 }
 
@@ -50,12 +54,7 @@ void MainMenuState::OnLeave(int nextStateId)
 
 	renderStack->Clear();
 	delete zenShape;
-	delete spriteSheets[0];
-	delete spriteSheets[1];
-	delete spriteSheets[2];
-	delete spriteSheets[3];
 	delete texture;
-	delete renderStack;
 }
 
 void MainMenuState::Animation()

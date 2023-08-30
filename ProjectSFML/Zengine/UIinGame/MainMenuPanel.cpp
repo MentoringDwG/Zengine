@@ -96,6 +96,7 @@ void MainMenuPanel::StartPressed(int id)
 	UIInputHandler::Get()->Clear();
 
 	waitingRoonState = new WaitingRoomState(0, stateMachine, 2);
+	stateMachine->DeleteState(0);
 	stateMachine->AddState(waitingRoonState);
 	stateMachine->TransitionTo(0);
 }
@@ -119,6 +120,13 @@ void MainMenuPanel::ControlsUnHover(int id)
 void MainMenuPanel::ControlsPressed(int id)
 {
 	std::cout << "Controls pressed" << std::endl;
+
+	UIInputHandler::Get()->Clear();
+
+	waitingRoonState = new WaitingRoomState(0, stateMachine, 4);
+	stateMachine->DeleteState(0);
+	stateMachine->AddState(waitingRoonState);
+	stateMachine->TransitionTo(0);
 }
 
 void MainMenuPanel::ControlsUnPressed(int id)

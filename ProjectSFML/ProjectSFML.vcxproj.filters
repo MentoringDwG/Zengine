@@ -180,6 +180,9 @@
     <ClCompile Include="Zengine\StateMachine\WaitingRoomState.cpp">
       <Filter>Zengine\StateMachine</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\StateMachine\ControlsPanelState.cpp">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -300,6 +303,9 @@
       <Filter>Zengine\UIinGame</Filter>
     </ClInclude>
     <ClInclude Include="Zengine\StateMachine\WaitingRoomState.h">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\StateMachine\ControlsPanelState.h">
       <Filter>Zengine\StateMachine</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,7 +19,6 @@ c:\users\admin\documents\github\zengine\projectsfml\x64\release\circlecollider2d
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\boxcollider2d.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\character.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\main.obj
-c:\users\admin\documents\github\zengine\projectsfml\x64\release\zentext.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\zenshape.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\zenobject.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\movableobject.obj
@@ -36,14 +35,15 @@ c:\users\admin\documents\github\zengine\projectsfml\x64\release\compoundwidget.o
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\mainmenupanel.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\vector2.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\timer.obj
+c:\users\admin\documents\github\zengine\projectsfml\x64\release\waitingroomstate.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\statemachine.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\mainmenustate.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\loadingstate.obj
-c:\users\admin\documents\github\zengine\projectsfml\x64\release\waitingroomstate.obj
+c:\users\admin\documents\github\zengine\projectsfml\x64\release\zentext.obj
 c:\users\admin\documents\github\zengine\x64\release\projectsfml.exe
-c:\users\admin\documents\github\zengine\projectsfml\x64\release\projectsfml.ipdb
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\projectsfml.iobj
 c:\users\admin\documents\github\zengine\x64\release\projectsfml.pdb
+c:\users\admin\documents\github\zengine\projectsfml\x64\release\projectsfml.ipdb
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\projectsfml.tlog\cl.command.1.tlog
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\projectsfml.tlog\cl.read.1.tlog
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\projectsfml.tlog\cl.write.1.tlog

@@ -16,6 +16,7 @@
 #include "StateMachine/LoadingState.h"
 #include "StateMachine/GameplayState.h"
 #include "StateMachine/WaitingRoomState.h"
+#include "StateMachine/ControlsPanelState.h"
 
 class Zengine
 {
@@ -56,6 +57,7 @@ private:
 	LoadingState* loadingState = nullptr;
 	GameplayState* gameplayState = nullptr;
 	WaitingRoomState* waitingRoomState = nullptr;
+	ControlsPanelState* controlsPanelState = nullptr;
 
 	int frameTme = 1;
 	float fps = 60;

@@ -68,13 +68,15 @@ void Zengine::UIInitialize()
 
 void Zengine::StateInitialize()
 {
-	MainMenuState* mainMenuState = new MainMenuState(1, renderStack, stateMachine);
-	LoadingState* loadingState = new LoadingState(2, stateMachine);
-	GameplayState* gameplayState = new GameplayState(3);
+	mainMenuState = new MainMenuState(1, renderStack, stateMachine, RenderModule);
+	loadingState = new LoadingState(2, stateMachine);
+	gameplayState = new GameplayState(3);
+	controlsPanelState = new ControlsPanelState(4, renderStack, stateMachine);
 
 	stateMachine->AddState(mainMenuState);
 	stateMachine->AddState(loadingState);
 	stateMachine->AddState(gameplayState);
+	stateMachine->AddState(controlsPanelState);
 
 	loadingState->OnEnterEvent = std::bind(&Zengine::OnLoading, this, std::placeholders::_1);
 }

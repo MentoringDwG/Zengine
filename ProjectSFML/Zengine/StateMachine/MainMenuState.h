@@ -17,6 +17,8 @@ private:
 	RenderObject* renderObject = nullptr;
 	RenderingStack* renderStack = nullptr;
 	MainMenuPanel mainMenuPanel;
+	Renderer* renderer = nullptr;
+	StateMachine* stateMachine = nullptr;
 
 	string spriteSheetPath = "Graphics/MainMenu/MainMenuSpriteSheet.png";
 	sf::IntRect rectSpriteSheet = sf::IntRect(0, 0, 960, 544);
@@ -30,6 +32,6 @@ public:
 	virtual void OnUpdate() override;
 	virtual void OnLeave(int nextStateId) override;
 
-	MainMenuState(int stateIdIn, RenderingStack* renderStack, class StateMachine* stateMachine);
+	MainMenuState(int stateIdIn, RenderingStack* renderStack, class StateMachine* stateMachine, Renderer* renderer);
 };
 

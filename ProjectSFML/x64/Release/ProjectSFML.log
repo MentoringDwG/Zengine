@@ -1,36 +1,7 @@
-﻿  UIInputHandler.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\InputModule\UIInputHandler.cpp(11,75): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\InputModule\UIInputHandler.cpp(11,58): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-  MainMenuState.cpp
-  CompoundWidget.cpp
-  UIButton.cpp
-  Widget.cpp
-  WidgetEventHandler.cpp
-  MainMenuPanel.cpp
-  Zengine.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Structs\Timer.h(22,17): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(172,18): warning C4244: "=": konwersja z "__int64" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Zengine.cpp(181,13): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
-  main.cpp
+﻿  ControlsPanelState.cpp
   Trwa generowanie kodu
-  0 of 2022 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  10 of 2070 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+    2 functions were new in current compilation
+    5 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\ProjectSFML.exe
