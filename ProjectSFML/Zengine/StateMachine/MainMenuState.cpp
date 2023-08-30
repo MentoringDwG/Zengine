@@ -23,14 +23,7 @@ MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack) : BaseG
 	zenShape->Draw()->setTexture(spriteSheets[0]);
 	zenShape->Draw()->setTextureRect(rectSpriteSheet);
 
-	logo = new ZenShape(11, "Logo", sf::Vector2f(344, 129));
-	logo->SetSize(sf::Vector2f(344, 129));
-	logoTexture = new sf::Texture();
-	logoTexture->loadFromFile("Graphics/MainMenu/logo.png");
-	logo->SetTexture(logoTexture);
-	logo->SetPosition(sf::Vector2f(566, 50));
-
-	start = new UIButton(Vector2(682, 204), Vector2(228, 46));
+	mainMenuPanel.Initialize();
 }
 
 void MainMenuState::OnEnter(int prevStateId)
@@ -40,20 +33,10 @@ void MainMenuState::OnEnter(int prevStateId)
 	renderObject = new RenderObject(zenShape->Draw(), 1, 1);
 	renderStack->renderQueue.push_back(renderObject);
 
-	logoRenderObject = new RenderObject(logo->Draw(), 1, 2);
-	renderStack->renderQueue.push_back(logoRenderObject);
-
-	start->Draw(renderStack, "Graphics/MainMenu/Start.png", 13, "Start");
-	start->OnMouseHoverEvent.AddListener(&MainMenuState::StartHover, this);
-
-	UIInputHandler::Get()->AddWidget(start);
+	mainMenuPanel.Draw(renderStack);
+	mainMenuPanel.ButtonsInputInitialize();
 
 	clock.restart();
-}
-
-void MainMenuState::StartHover(int id)
-{
-	cout << "Start hover" << endl;
 }
 
 void MainMenuState::OnUpdate()

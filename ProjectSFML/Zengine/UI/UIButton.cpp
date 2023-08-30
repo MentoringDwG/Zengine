@@ -8,12 +8,30 @@ UIButton::UIButton(Vector2 positionIn, Vector2 sizeIn): Widget(positionIn, sizeI
 
 void UIButton::OnMouseHover()
 {
-	OnMouseHoverEvent.Invoke();
+	if (state != Widget::MouseHover)
+	{
+		state = Widget::MouseHover;
+		OnMouseHoverEvent.Invoke();
+
+		if (isHighlightSet)
+		{
+			zenShape->SetTexture(highlight);
+		}
+	}
 }
 
 void UIButton::OnMouseUnHover()
 {
-	OnMouseUnHoverEvent.Invoke();
+	if (state != Widget::UnHover)
+	{
+		state = Widget::UnHover;
+		OnMouseUnHoverEvent.Invoke();
+
+		if (isHighlightSet)
+		{
+			zenShape->SetTexture(background);
+		}
+	}
 }
 
 void UIButton::OnMousePressed()
@@ -43,5 +61,6 @@ void UIButton::Draw(RenderingStack* renderStack, string texturePath, int rendere
 
 void UIButton::SetHighlight(string texturePath)
 {
+	isHighlightSet = true;
 	highlight->loadFromFile(texturePath);
 }

@@ -6,6 +6,7 @@
 #include "../World/TextureAsset.h"
 #include "../UI/UIButton.h"
 #include "../InputModule/UIInputHandler.h"
+#include "../UIinGame/MainMenuPanel.h"
 
 class MainMenuState : public BaseGameState
 {
@@ -15,18 +16,12 @@ private:
 	sf::Texture* texture = nullptr;
 	RenderObject* renderObject = nullptr;
 	RenderingStack* renderStack = nullptr;
-	UIButton* start = nullptr;
+	MainMenuPanel mainMenuPanel;
 
 	string spriteSheetPath = "Graphics/MainMenu/MainMenuSpriteSheet.png";
 	sf::IntRect rectSpriteSheet = sf::IntRect(0, 0, 960, 544);
 
 	sf::Clock clock;
-
-	ZenShape* logo = nullptr;
-	sf::Texture* logoTexture = nullptr;
-	RenderObject* logoRenderObject = nullptr;
-
-	void StartHover(int id);
 
 	void Animation();
 

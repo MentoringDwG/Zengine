@@ -23,5 +23,7 @@ private:
 	sf::Color color;
 	ZenShape* zenShape = nullptr;
 	RenderObject* renderobject = nullptr;
+
+	bool isHighlightSet = false;
 };
 

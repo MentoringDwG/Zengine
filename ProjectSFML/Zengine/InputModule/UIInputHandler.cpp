@@ -7,11 +7,12 @@ bool UIInputHandler::ProcessInput(sf::Event& event, sf::RenderWindow* inWindow)
 {
 	if (widgets.size() == 0) return false;
 
-	if (event.type = sf::Event::MouseMoved)
-	{
-		sf::Vector2i mousePosition = sf::Mouse::getPosition(*inWindow);
-		sf::Vector2f mousePositionF = sf::Vector2f(mousePosition.x, mousePosition.y);
+	sf::Vector2i mousePosition = sf::Mouse::getPosition(*inWindow);
+	sf::Vector2f mousePositionF = sf::Vector2f(mousePosition.x, mousePosition.y);
 
+
+	if (event.type == sf::Event::MouseMoved)
+	{
 		for (auto* widget : widgets)
 		{
 			if (widget->IsMouseOver(&mousePositionF) == true)
@@ -25,6 +26,33 @@ bool UIInputHandler::ProcessInput(sf::Event& event, sf::RenderWindow* inWindow)
 		}
 	}
 
+	if (event.type == sf::Event::MouseButtonPressed)
+	{
+		if (event.key.code == sf::Mouse::Button::Left)
+		{
+			for (auto* widget : widgets)
+			{
+				if (widget->IsMouseOver(&mousePositionF) == true)
+				{
+					widget->OnMousePressed();
+				}
+			}
+		}
+	}
+
+	if (event.type == sf::Event::MouseButtonReleased)
+	{
+		if (event.key.code == sf::Mouse::Button::Left)
+		{
+			for (auto* widget : widgets)
+			{
+				if (widget->IsMouseOver(&mousePositionF) == true)
+				{
+					widget->OnMouseUnPressed();
+				}
+			}
+		}
+	}
 
 	return false;
 }

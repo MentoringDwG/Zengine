@@ -9,12 +9,14 @@ private:
 	std::map<int, Widget*> children;
 
 public:
-	CompoundWidget(Vector2 positionIn, Vector2 sizeIn): Widget(positionIn, sizeIn)
-	{
+	CompoundWidget(Vector2 positionIn, Vector2 sizeIn);
 
-	}
+	virtual void OnMouseHover() override;
+	virtual void OnMouseUnHover() override;
+	virtual void OnMousePressed() override;
+	virtual void OnMouseUnPressed() override;
 
-	void AddWidget(int id, Widget* widget);
+	void AddChild(int id, Widget* widget);
 	Widget* GetChild(int childId);
 };
 
