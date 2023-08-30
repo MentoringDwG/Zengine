@@ -24,26 +24,9 @@ private:
 
 	class StateMachine* stateMachine = nullptr;
 
-	void StartHover(int id);
-	void StartUnHover(int id);
 	void StartPressed(int id);
-	void StartUnPressed(int id);
-
-	void ControlsHover(int id);
-	void ControlsUnHover(int id);
 	void ControlsPressed(int id);
-	void ControlsUnPressed(int id);
-
-	void AuthorsHover(int id);
-	void AuthorsUnHover(int id);
 	void AuthorsPressed(int id);
-	void AuthorsUnPressed(int id);
-
-	void VolumeHover(int id);
-	void VolumeUnHover(int id);
-
-	void ExitHover(int id);
-	void ExitUnHover(int id);
 	void ExitPressed(int id);
 
 	WaitingRoomState* waitingRoonState = nullptr;

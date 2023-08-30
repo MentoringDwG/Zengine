@@ -56,37 +56,10 @@ void MainMenuPanel::ButtonsInputInitialize()
 	UIInputHandler::Get()->AddWidget(volumeIcon);
 	UIInputHandler::Get()->AddWidget(exitIcon);
 
-	start->OnMouseHoverEvent.AddListener(&MainMenuPanel::StartHover, this);
-	start->OnMouseUnHoverEvent.AddListener(&MainMenuPanel::StartUnHover, this);
 	start->OnMouseDownEvent.AddListener(&MainMenuPanel::StartPressed, this);
-	start->OnMouseUpEvent.AddListener(&MainMenuPanel::StartUnPressed, this);
-
-	controls->OnMouseHoverEvent.AddListener(&MainMenuPanel::ControlsHover, this);
-	controls->OnMouseUnHoverEvent.AddListener(&MainMenuPanel::ControlsUnHover, this);
 	controls->OnMouseDownEvent.AddListener(&MainMenuPanel::ControlsPressed, this);
-	controls->OnMouseUpEvent.AddListener(&MainMenuPanel::ControlsUnPressed, this);
-
-	authors->OnMouseHoverEvent.AddListener(&MainMenuPanel::AuthorsHover, this);
-	authors->OnMouseUnHoverEvent.AddListener(&MainMenuPanel::AuthorsUnHover, this);
 	authors->OnMouseDownEvent.AddListener(&MainMenuPanel::AuthorsPressed, this);
-	authors->OnMouseUpEvent.AddListener(&MainMenuPanel::AuthorsUnPressed, this);
-
-	volumeIcon->OnMouseHoverEvent.AddListener(&MainMenuPanel::VolumeHover, this);
-	volumeIcon->OnMouseUnHoverEvent.AddListener(&MainMenuPanel::VolumeUnHover, this);
-
-	exitIcon->OnMouseHoverEvent.AddListener(&MainMenuPanel::ExitHover, this);
-	exitIcon->OnMouseUnHoverEvent.AddListener(&MainMenuPanel::ExitUnHover, this);
 	exitIcon->OnMouseDownEvent.AddListener(&MainMenuPanel::ExitPressed, this);
-}
-
-void MainMenuPanel::StartHover(int id)
-{
-	std::cout << "Start hover" << std::endl;
-}
-
-void MainMenuPanel::StartUnHover(int id)
-{
-	std::cout << "Start unhover" << std::endl;
 }
 
 void MainMenuPanel::StartPressed(int id)
@@ -101,22 +74,6 @@ void MainMenuPanel::StartPressed(int id)
 	stateMachine->TransitionTo(0);
 }
 
-void MainMenuPanel::StartUnPressed(int id)
-{
-	std::cout << "Start unpressed" << std::endl;
-}
-
-
-void MainMenuPanel::ControlsHover(int id)
-{
-	std::cout << "Controls hover" << std::endl;
-}
-
-void MainMenuPanel::ControlsUnHover(int id)
-{
-	std::cout << "Controls unhover" << std::endl;
-}
-
 void MainMenuPanel::ControlsPressed(int id)
 {
 	std::cout << "Controls pressed" << std::endl;
@@ -129,51 +86,16 @@ void MainMenuPanel::ControlsPressed(int id)
 	stateMachine->TransitionTo(0);
 }
 
-void MainMenuPanel::ControlsUnPressed(int id)
-{
-	std::cout << "Controls unpressed" << std::endl;
-}
-
-
-void MainMenuPanel::AuthorsHover(int id)
-{
-	std::cout << "Authors hover" << std::endl;
-}
-
-void MainMenuPanel::AuthorsUnHover(int id)
-{
-	std::cout << "Authors unhover" << std::endl;
-}
 
 void MainMenuPanel::AuthorsPressed(int id)
 {
 	std::cout << "Authors pressed" << std::endl;
-}
+	UIInputHandler::Get()->Clear();
 
-void MainMenuPanel::AuthorsUnPressed(int id)
-{
-	std::cout << "Authors unpressed" << std::endl;
-}
-
-
-void MainMenuPanel::VolumeHover(int id)
-{
-
-}
-
-void MainMenuPanel::VolumeUnHover(int id)
-{
-
-}
-
-void MainMenuPanel::ExitHover(int id)
-{
-
-}
-
-void MainMenuPanel::ExitUnHover(int id)
-{
-
+	waitingRoonState = new WaitingRoomState(0, stateMachine, 5);
+	stateMachine->DeleteState(0);
+	stateMachine->AddState(waitingRoonState);
+	stateMachine->TransitionTo(0);
 }
 
 void MainMenuPanel::ExitPressed(int id)

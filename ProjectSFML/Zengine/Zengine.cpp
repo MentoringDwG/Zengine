@@ -72,11 +72,13 @@ void Zengine::StateInitialize()
 	loadingState = new LoadingState(2, stateMachine);
 	gameplayState = new GameplayState(3);
 	controlsPanelState = new ControlsPanelState(4, renderStack, stateMachine);
+	authorsState = new AuthorsState(5, renderStack, stateMachine);
 
 	stateMachine->AddState(mainMenuState);
 	stateMachine->AddState(loadingState);
 	stateMachine->AddState(gameplayState);
 	stateMachine->AddState(controlsPanelState);
+	stateMachine->AddState(authorsState);
 
 	loadingState->OnEnterEvent = std::bind(&Zengine::OnLoading, this, std::placeholders::_1);
 }

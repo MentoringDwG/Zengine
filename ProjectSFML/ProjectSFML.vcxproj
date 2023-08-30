@@ -169,6 +169,7 @@
     <ClCompile Include="Zengine\Physics2D\PhysicalZenObject2D.cpp" />
     <ClCompile Include="Zengine\Physics2D\ZenPhysics2D.cpp" />
     <ClCompile Include="Zengine\Renderer\Renderer.cpp" />
+    <ClCompile Include="Zengine\StateMachine\AuthorsState.cpp" />
     <ClCompile Include="Zengine\StateMachine\BaseGameState.cpp" />
     <ClCompile Include="Zengine\StateMachine\ControlsPanelState.cpp" />
     <ClCompile Include="Zengine\StateMachine\GameplayState.cpp" />
@@ -212,6 +213,7 @@
     <ClInclude Include="Zengine\Physics2D\PhysicalZenObject2D.h" />
     <ClInclude Include="Zengine\Physics2D\ZenPhysics2D.h" />
     <ClInclude Include="Zengine\Renderer\Renderer.h" />
+    <ClInclude Include="Zengine\StateMachine\AuthorsState.h" />
     <ClInclude Include="Zengine\StateMachine\BaseGameState.h" />
     <ClInclude Include="Zengine\StateMachine\ControlsPanelState.h" />
     <ClInclude Include="Zengine\StateMachine\GameplayState.h" />
