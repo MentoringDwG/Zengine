@@ -1,6 +1,8 @@
 #include "MainMenuPanel.h"
 
-void MainMenuPanel::Initialize()
+#include "../StateMachine/StateMachine.h"
+
+void MainMenuPanel::Initialize(StateMachine* stateMachine)
 {
 	buttons = new CompoundWidget(Vector2(682, 179), Vector2(228, 188));
 
@@ -21,6 +23,8 @@ void MainMenuPanel::Initialize()
 
 	volumeIcon = new UIButton(Vector2(72, 20), Vector2(42, 42));
 	exitIcon = new UIButton(Vector2(20, 20), Vector2(42, 42));
+
+	this->stateMachine = stateMachine;
 }
 
 void  MainMenuPanel::Draw(RenderingStack* renderStack)
@@ -88,6 +92,12 @@ void MainMenuPanel::StartUnHover(int id)
 void MainMenuPanel::StartPressed(int id)
 {
 	std::cout << "Start pressed" << std::endl;
+
+	UIInputHandler::Get()->Clear();
+
+	waitingRoonState = new WaitingRoomState(0, stateMachine, 2);
+	stateMachine->AddState(waitingRoonState);
+	stateMachine->TransitionTo(0);
 }
 
 void MainMenuPanel::StartUnPressed(int id)

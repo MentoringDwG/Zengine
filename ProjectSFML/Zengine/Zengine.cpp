@@ -6,10 +6,6 @@
 #include "Structs/Timer.h"
 #include "InputModule/UIInputHandler.h"
 
-#include "StateMachine/MainMenuState.h"
-#include "StateMachine/LoadingState.h"
-#include "StateMachine/GameplayState.h"
-
 Zengine* Zengine::Engine = nullptr;
 World world;
 
@@ -37,11 +33,10 @@ void Zengine::Run()
 	StateInitialize();
 	stateMachine->TransitionTo(1);
 
-
-	//world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
-	//world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
-	//world.EnvironmentInitialize("Graphics/coin.png", sf::Vector2f(288, 352), sf::Vector2f(608, 192));
-	//world.PhysicalZenObject2DInitialize("Graphics/Enemy1.png");
+	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
+	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
+	world.EnvironmentInitialize("Graphics/coin.png", sf::Vector2f(288, 352), sf::Vector2f(608, 192));
+	world.PhysicalZenObject2DInitialize("Graphics/Enemy1.png");
 
 	RenderingStackInitialize();
 
@@ -58,7 +53,6 @@ void Zengine::ViewInitialize()
 
 void Zengine::RenderingStackInitialize()
 {
-	//world.Draw(renderStack);
 	renderStack->DivisionOfObjectsIntoLayersByLayerId();
 	RenderModule->SortRenderLayers(renderStack);
 }
@@ -74,42 +68,65 @@ void Zengine::UIInitialize()
 
 void Zengine::StateInitialize()
 {
-	MainMenuState* mainMenuState = new MainMenuState(1, renderStack);
-	LoadingState* loadingState = new LoadingState(2);
+	MainMenuState* mainMenuState = new MainMenuState(1, renderStack, stateMachine);
+	LoadingState* loadingState = new LoadingState(2, renderStack, stateMachine);
 	GameplayState* gameplayState = new GameplayState(3);
 
 	bool canAdd=false;
 
-	canAdd=stateMachine->AddState(mainMenuState);
-	cout << canAdd<<endl;
+	canAdd = stateMachine->AddState(mainMenuState);
 
 	canAdd = stateMachine->AddState(loadingState);
-	cout << canAdd<<endl;
 
 	canAdd = stateMachine->AddState(gameplayState);
-	cout << canAdd << endl;
+
+	loadingState->OnEnterEvent = std::bind(&Zengine::OnLoading, this, std::placeholders::_1);
+}
+
+void Zengine::OnLoading(int id)
+{
+	world.Draw(renderStack);
+
+	RenderingStackInitialize();
+	CharacterInputHandlerInitialize();
+
+	waitingRoomState = new WaitingRoomState(0, stateMachine, 3);
+	stateMachine->DeleteState(0);
+	stateMachine->AddState(waitingRoomState);
+	stateMachine->TransitionTo(0);
+}
+
+void Zengine::ReplacementFunction(int id)
+{
+
 }
 
 void Zengine::MainLoop()
 {
-	//CharacterInputHandlerInitialize();
-
 	Timer* timerForPhysics = new Timer();
 	while (window->isOpen())
 	{
+		int i = stateMachine->GetCurrentGameStateId();
 		Timer* timerForFPSCounter = new Timer();
 
 		ProcessInput(window);
-		//characterInputHandler.ProcesMovement();
+
+		if (i==3)
+		{
+			characterInputHandler.ProcesMovement();
+		}
 
 		window->clear();
 
 		timerForPhysics->TimerStop();
 		if (timerForPhysics->timeMs >= ZenPhysics2D::Get()->GetPhysicsTimeStep())
 		{
-			//world.ApplyForceToPhysicsObject();
-			ZenPhysics2D::Get()->CalculatePhysics();
-			//world.UpdateObjects();
+			if (i == 3)
+			{
+				world.ApplyForceToPhysicsObject();
+				ZenPhysics2D::Get()->CalculatePhysics();
+				world.UpdateObjects();
+			}
 			timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
 		}
 		ZenPhysics2D::Get()->CalculateCollision();
@@ -118,13 +135,19 @@ void Zengine::MainLoop()
 
 		//Render game elements
 		window->setView(mainView);
+
 		RenderModule->ProcessDrawingElements(renderStack);
-		ZenPhysics2D::Get()->DrawColliders(window);
+		
+		//ZenPhysics2D::Get()->DrawColliders(window);
 
 		//Draw UI
 		window->setView(window->getDefaultView());
 		window->draw(fpsText->Draw());
-		//world.coinCounter->Draw(window);
+
+		if (i == 3)
+		{
+			world.coinCounter->Draw(window);
+		}
 
 		window->display();
 
@@ -134,8 +157,6 @@ void Zengine::MainLoop()
 		timerForFPSCounter->TimerStop();
 		CountFrameTime(timerForFPSCounter->time);
 		delete timerForFPSCounter;
-
-		
 	}
 }
 

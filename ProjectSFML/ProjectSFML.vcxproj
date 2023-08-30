@@ -174,6 +174,7 @@
     <ClCompile Include="Zengine\StateMachine\LoadingState.cpp" />
     <ClCompile Include="Zengine\StateMachine\MainMenuState.cpp" />
     <ClCompile Include="Zengine\StateMachine\StateMachine.cpp" />
+    <ClCompile Include="Zengine\StateMachine\WaitingRoomState.cpp" />
     <ClCompile Include="Zengine\Structs\Timer.cpp" />
     <ClCompile Include="Zengine\Structs\Vector2.cpp" />
     <ClCompile Include="Zengine\UIinGame\MainMenuPanel.cpp" />
@@ -215,6 +216,7 @@
     <ClInclude Include="Zengine\StateMachine\LoadingState.h" />
     <ClInclude Include="Zengine\StateMachine\MainMenuState.h" />
     <ClInclude Include="Zengine\StateMachine\StateMachine.h" />
+    <ClInclude Include="Zengine\StateMachine\WaitingRoomState.h" />
     <ClInclude Include="Zengine\Structs\Timer.h" />
     <ClInclude Include="Zengine\Structs\Vector2.h" />
     <ClInclude Include="Zengine\UIinGame\MainMenuPanel.h" />

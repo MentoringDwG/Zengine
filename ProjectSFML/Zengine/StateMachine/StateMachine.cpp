@@ -27,17 +27,37 @@ void StateMachine::TransitionTo(int stateId)
 	if (CurrentGameState != nullptr)
 	{
 		CurrentGameState->OnLeave(stateId);
-		NextState->OnEnter(CurrentGameState->GetStateId());
+
+		int currentId = CurrentGameState->GetStateId();
+		CurrentGameState = NextState;
+		currentGameStateId = stateId;
+
+		CurrentGameState->OnEnter(currentId);
 	}
 	else
 	{
-		NextState->OnEnter(0);
+		CurrentGameState = NextState;
+		currentGameStateId = stateId;
+
+		CurrentGameState->OnEnter(0);
 	}
-	
-	CurrentGameState = NextState;
 }
 
 void StateMachine::Update()
 {
 	CurrentGameState->OnUpdate();
+}
+
+BaseGameState* StateMachine::GetCurrentGameState()
+{
+	return CurrentGameState;
+}
+
+int StateMachine::GetCurrentGameStateId()
+{
+	return currentGameStateId;
+}
+void StateMachine::DeleteState(int stateId)
+{
+	GameStates.erase(stateId);
 }

@@ -30,7 +30,7 @@ public:
 	virtual void OnUpdate() override;
 	virtual void OnLeave(int nextStateId) override;
 
-	MainMenuState(int stateIdIn, RenderingStack* renderStack);
+	MainMenuState(int stateIdIn, RenderingStack* renderStack, class StateMachine* stateMachine);
 
 };
 

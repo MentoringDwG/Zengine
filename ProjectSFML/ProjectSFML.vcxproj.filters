@@ -177,6 +177,9 @@
     <ClCompile Include="Zengine\UIinGame\MainMenuPanel.cpp">
       <Filter>Zengine\UIinGame</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\StateMachine\WaitingRoomState.cpp">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -295,6 +298,9 @@
     </ClInclude>
     <ClInclude Include="Zengine\UIinGame\MainMenuPanel.h">
       <Filter>Zengine\UIinGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\StateMachine\WaitingRoomState.h">
+      <Filter>Zengine\StateMachine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

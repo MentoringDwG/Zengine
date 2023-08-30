@@ -4,6 +4,7 @@
 #include "../UI/CompoundWidget.h"
 #include "../UI/UIButton.h"
 #include "../InputModule/UIInputHandler.h"
+#include "../StateMachine/WaitingRoomState.h"
 
 class MainMenuPanel
 {
@@ -20,6 +21,8 @@ private:
 	
 	UIButton* volumeIcon;
 	UIButton* exitIcon;
+
+	class StateMachine* stateMachine = nullptr;
 
 	void StartHover(int id);
 	void StartUnHover(int id);
@@ -43,8 +46,10 @@ private:
 	void ExitUnHover(int id);
 	void ExitPressed(int id);
 
+	WaitingRoomState* waitingRoonState = nullptr;
+
 public:
-	void Initialize();
+	void Initialize(class StateMachine* stateMachine);
 	void Draw(RenderingStack* renderStack);
 	void ButtonsInputInitialize();
 };

@@ -66,3 +66,8 @@ void UIInputHandler::AddWidget(Widget* widget)
 {
 	widgets.push_back(widget);
 }
+
+void UIInputHandler::Clear()
+{
+	widgets.clear();
+}

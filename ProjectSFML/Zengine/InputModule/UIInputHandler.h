@@ -13,6 +13,7 @@ public:
 	virtual bool CanConsumeInput() override;
 
 	void AddWidget(Widget* widget);
+	void Clear();
 
 private:
 	UIInputHandler() {}

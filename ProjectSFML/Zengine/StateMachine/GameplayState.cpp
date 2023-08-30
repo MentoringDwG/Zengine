@@ -14,5 +14,5 @@ void GameplayState::OnUpdate()
 
 void GameplayState::OnLeave(int nextStateId)
 {
-
+	std::cout << "Gameplay State leave" << std::endl;
 }

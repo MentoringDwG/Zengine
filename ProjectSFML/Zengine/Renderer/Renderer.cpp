@@ -1,6 +1,8 @@
 #include "Renderer.h"
 #include <SFML/Graphics.hpp>
 
+#include <iostream>
+
 void Renderer::Initialize(sf::RenderWindow* inWindow)
 {
 	window = inWindow;
@@ -17,6 +19,8 @@ void RenderingStack::Clear()
 {
 	renderQueue.clear();
 	renderLayers.clear();
+
+	std::cout << "CLEAR" << std::endl;
 }
 
 void RenderingStack::DivisionOfObjectsIntoLayersByLayerId()
@@ -41,6 +45,8 @@ void RenderingStack::RemoveFromRenderLayers(RenderObject* renderObjectToRemove)
 
 void Renderer::SortRenderLayers(RenderingStack* renderStack)
 {
+	if (renderStack->renderQueue.size() == 0) return;
+
 	for (auto itr = renderStack->renderLayers.begin(); itr != renderStack->renderLayers.end(); ++itr)
 	{
 		SortLayer(itr->second);
@@ -74,6 +80,8 @@ void Renderer::SortLayer(std::vector<RenderObject*> &layer)
 
 void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
 {
+	if (renderStack->renderQueue.size() == 0) return;
+
 	for (auto itr = renderStack->renderLayers.begin(); itr != renderStack->renderLayers.end(); ++itr)
 	{
 		DrawLayer(itr->second);
@@ -84,7 +92,10 @@ void Renderer::DrawLayer(std::vector<RenderObject*>& layer)
 {
 	for (int i = 0; i < layer.size(); ++i)
 	{
-		sf::RectangleShape* rectangleShape = layer[i]->drawable;
-		window->draw(*rectangleShape);
+		if (layer[i]->drawable != nullptr)
+		{
+			sf::RectangleShape* rectangleShape = layer[i]->drawable;
+			window->draw(*rectangleShape);
+		}
 	}
 }

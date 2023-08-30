@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack) : BaseGameState(stateIdIn)
+MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack, StateMachine* stateMachine) : BaseGameState(stateIdIn)
 {
 	this->renderStack = new  RenderingStack();
 	this->renderStack = renderStack;
@@ -23,7 +23,7 @@ MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack) : BaseG
 	zenShape->Draw()->setTexture(spriteSheets[0]);
 	zenShape->Draw()->setTextureRect(rectSpriteSheet);
 
-	mainMenuPanel.Initialize();
+	mainMenuPanel.Initialize(stateMachine);
 }
 
 void MainMenuState::OnEnter(int prevStateId)
@@ -47,6 +47,15 @@ void MainMenuState::OnUpdate()
 void MainMenuState::OnLeave(int nextStateId)
 {
 	std::cout << "Main Menu leave" << std::endl;
+
+	renderStack->Clear();
+	delete zenShape;
+	delete spriteSheets[0];
+	delete spriteSheets[1];
+	delete spriteSheets[2];
+	delete spriteSheets[3];
+	delete texture;
+	delete renderStack;
 }
 
 void MainMenuState::Animation()
