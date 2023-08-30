@@ -103,8 +103,10 @@ void ZenPhysics2D::CalculateCollision()
 	}
 }
 
-void ZenPhysics2D::DrawColliders(sf::RenderWindow* window)
+void ZenPhysics2D::DrawColliders(sf::RenderWindow* window, int stateId)
 {
+	if (stateId != 3) return;
+
 	for (CircleCollider2D* collider : circleColliders)
 	{
 		window->draw(collider->debugCircle);

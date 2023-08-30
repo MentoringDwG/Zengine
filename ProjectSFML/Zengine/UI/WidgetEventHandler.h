@@ -21,11 +21,6 @@ public:
 	void RemoveAllListeners();
 	void Invoke();
 
-	void Function()
-	{
-
-	}
-
 private:
 	std::vector<struct WidgetCollback> Callbacks;
 	int ListenerIndex = 0;

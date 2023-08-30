@@ -24,7 +24,7 @@ public:
 	void CalculateCollision();
 
 	void Draw(RenderingStack* renderStack);
-	void DrawColliders(sf::RenderWindow* window);
+	void DrawColliders(sf::RenderWindow* window, int stateId);
 	int GetPhysicsTimeStep();
 
 private:

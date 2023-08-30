@@ -37,7 +37,6 @@ private:
 	void SetUI();
 	void StateInitialize();
 	void OnLoading(int id);
-	void ReplacementFunction(int id);
 
 	static class Zengine* Engine;
 	class InputProcessorModule* InputProcessor = nullptr;
@@ -57,7 +56,6 @@ private:
 	LoadingState* loadingState = nullptr;
 	GameplayState* gameplayState = nullptr;
 	WaitingRoomState* waitingRoomState = nullptr;
-
 
 	int frameTme = 1;
 	float fps = 60;

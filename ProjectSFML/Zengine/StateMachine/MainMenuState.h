@@ -31,6 +31,5 @@ public:
 	virtual void OnLeave(int nextStateId) override;
 
 	MainMenuState(int stateIdIn, RenderingStack* renderStack, class StateMachine* stateMachine);
-
 };
 

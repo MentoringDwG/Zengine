@@ -9,7 +9,6 @@
 class LoadingState : public BaseGameState
 {
 private:
-	RenderingStack* renderStack;
 	StateMachine* stateMachine;
 
 public:
@@ -19,6 +18,6 @@ public:
 
 	std::function<void(int)> OnEnterEvent;
 
-	LoadingState(int stateIdIn, RenderingStack* renderStack, StateMachine* stateMachine);
+	LoadingState(int stateIdIn, StateMachine* stateMachine);
 };
 

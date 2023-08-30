@@ -23,7 +23,6 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject2D);
 
 	deltaPositions = new Vector2(0, 0);
-
 }
 
 //MOVEMENT

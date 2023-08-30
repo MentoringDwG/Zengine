@@ -60,7 +60,7 @@ void MainMenuState::OnLeave(int nextStateId)
 
 void MainMenuState::Animation()
 {
-	if (clock.getElapsedTime().asMilliseconds() > 150)
+	if (clock.getElapsedTime().asMilliseconds() > 100)
 	{
 		if (zenShape->Draw()->getTexture() == spriteSheets[0] && rectSpriteSheet.left == 14400)
 		{

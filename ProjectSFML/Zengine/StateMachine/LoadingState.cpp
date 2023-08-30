@@ -2,9 +2,8 @@
 
 #include <iostream>
 
-LoadingState::LoadingState(int stateIdIn, RenderingStack* renderStack, StateMachine* stateMachine) : BaseGameState(stateIdIn)
+LoadingState::LoadingState(int stateIdIn, StateMachine* stateMachine) : BaseGameState(stateIdIn)
 {
-	this->renderStack = renderStack;
 	this->stateMachine = stateMachine;
 }
 

@@ -28,7 +28,6 @@ void Widget::SetPosition(Vector2 positionIn)
 	position = positionIn;
 }
 
-
 void Widget::SetSize(Vector2 sizeIn)
 {
 	size = sizeIn;

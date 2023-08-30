@@ -69,16 +69,12 @@ void Zengine::UIInitialize()
 void Zengine::StateInitialize()
 {
 	MainMenuState* mainMenuState = new MainMenuState(1, renderStack, stateMachine);
-	LoadingState* loadingState = new LoadingState(2, renderStack, stateMachine);
+	LoadingState* loadingState = new LoadingState(2, stateMachine);
 	GameplayState* gameplayState = new GameplayState(3);
 
-	bool canAdd=false;
-
-	canAdd = stateMachine->AddState(mainMenuState);
-
-	canAdd = stateMachine->AddState(loadingState);
-
-	canAdd = stateMachine->AddState(gameplayState);
+	stateMachine->AddState(mainMenuState);
+	stateMachine->AddState(loadingState);
+	stateMachine->AddState(gameplayState);
 
 	loadingState->OnEnterEvent = std::bind(&Zengine::OnLoading, this, std::placeholders::_1);
 }
@@ -96,11 +92,6 @@ void Zengine::OnLoading(int id)
 	stateMachine->TransitionTo(0);
 }
 
-void Zengine::ReplacementFunction(int id)
-{
-
-}
-
 void Zengine::MainLoop()
 {
 	Timer* timerForPhysics = new Timer();
@@ -111,25 +102,21 @@ void Zengine::MainLoop()
 
 		ProcessInput(window);
 
+		window->clear();
+
 		if (i==3)
 		{
 			characterInputHandler.ProcesMovement();
-		}
-
-		window->clear();
-
-		timerForPhysics->TimerStop();
-		if (timerForPhysics->timeMs >= ZenPhysics2D::Get()->GetPhysicsTimeStep())
-		{
-			if (i == 3)
+			timerForPhysics->TimerStop();
+			if (timerForPhysics->timeMs >= ZenPhysics2D::Get()->GetPhysicsTimeStep())
 			{
 				world.ApplyForceToPhysicsObject();
 				ZenPhysics2D::Get()->CalculatePhysics();
 				world.UpdateObjects();
+				timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
 			}
-			timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
+			ZenPhysics2D::Get()->CalculateCollision();
 		}
-		ZenPhysics2D::Get()->CalculateCollision();
 
 		stateMachine->Update();
 
@@ -138,7 +125,7 @@ void Zengine::MainLoop()
 
 		RenderModule->ProcessDrawingElements(renderStack);
 		
-		//ZenPhysics2D::Get()->DrawColliders(window);
+		//ZenPhysics2D::Get()->DrawColliders(window, i);
 
 		//Draw UI
 		window->setView(window->getDefaultView());

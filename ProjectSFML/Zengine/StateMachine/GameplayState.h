@@ -9,9 +9,6 @@ public:
 	virtual void OnUpdate() override;
 	virtual void OnLeave(int nextStateId) override;
 
-	GameplayState(int stateIdIn) : BaseGameState(stateIdIn)
-	{
-
-	}
+	GameplayState(int stateIdIn) : BaseGameState(stateIdIn) {}
 };
 

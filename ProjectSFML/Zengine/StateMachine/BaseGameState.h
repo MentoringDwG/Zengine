@@ -5,10 +5,7 @@ private:
 	int stateId;
 
 public:
-	BaseGameState(int stateIdIn) : stateId(stateIdIn)
-	{
-
-	}
+	BaseGameState(int stateIdIn) : stateId(stateIdIn) {}
 
 	virtual void OnEnter(int prevStateId) = 0;
 	virtual void OnUpdate() = 0;

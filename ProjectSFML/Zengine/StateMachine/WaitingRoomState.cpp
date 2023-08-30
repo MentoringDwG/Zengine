@@ -15,7 +15,7 @@ void WaitingRoomState::OnUpdate()
 
 void WaitingRoomState::OnLeave(int nextStateId)
 {
-
+	
 }
 
 WaitingRoomState::WaitingRoomState(int stateIdIn, StateMachine* stateMachine, int transitionStateId) : BaseGameState(stateIdIn)
