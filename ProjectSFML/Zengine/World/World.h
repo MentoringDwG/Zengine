@@ -7,6 +7,7 @@
 #include "../Environment/CoinCounter.h"
 #include "Enemy.h"
 #include <sstream>
+#include "../UIinGame/HeartsPanel.h"
 
 class Renderer;
 
@@ -26,9 +27,9 @@ public:
 private:
 	class Map *map;
 	Character* playerCharacter;
-	//PhysicalZenObject2D* enemy;
 	Enemy* enemy;
 	class Ground* ground;
 	std::vector<Coin*> coins;
+	HeartsPanel* heartPanel;
 };
 

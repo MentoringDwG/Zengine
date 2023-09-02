@@ -189,6 +189,9 @@
     <ClCompile Include="Zengine\World\Enemy.cpp">
       <Filter>Zengine\World</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\UIinGame\HeartsPanel.cpp">
+      <Filter>Zengine\UIinGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -319,6 +322,9 @@
     </ClInclude>
     <ClInclude Include="Zengine\World\Enemy.h">
       <Filter>Zengine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\UIinGame\HeartsPanel.h">
+      <Filter>Zengine\UIinGame</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

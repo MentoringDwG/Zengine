@@ -1,7 +1,8 @@
 #include "Enemy.h"
 
-Enemy::Enemy(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize)
+Enemy::Enemy(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize, HeartsPanel* heartsPanelIn)
 {
+	heartsPanel = heartsPanelIn;
 	physicalZenObject = new PhysicalZenObject2D(inID, inName, enemySpritePath, startPosition, inSize);
 	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject);
 
@@ -23,8 +24,7 @@ void Enemy::HandleCollisionStart(Collider* other)
 	{
 		if (isCollisionWithCharacter == false)
 		{
-			//cos od serduszek 
-
+			heartsPanel->UpdateHeartsState();
 			isCollisionWithCharacter = true;
 		}
 	}

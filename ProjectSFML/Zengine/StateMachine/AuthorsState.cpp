@@ -15,7 +15,7 @@ void AuthorsState::OnEnter(int prevStateId)
 	renderStack->renderQueue.push_back(authorsPanelRenderObject);
 
 	back = new UIButton(Vector2(30, 230), Vector2(106, 50));
-	back->Draw(renderStack, "Graphics/Sterowanie/back.png", 2, "MenuBack");
+	back->Draw(renderStack, "Graphics/Sterowanie/back.png", sf::IntRect(0, 0, 53, 25), 2, "MenuBack");
 	back->SetHighlight("Graphics/Sterowanie/backH.png");
 
 	UIInputHandler::Get()->AddWidget(back);

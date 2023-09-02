@@ -10,6 +10,7 @@ void World::Initialize(string PlayerName, string PlayerTexcurePath, float Player
 	map = new Map();
 	playerCharacter = new Character(PlayerName, PlayerTexcurePath, PlayerMoveSpeed);
 	coinCounter = new CoinCounter(1, "coinCounter", sf::Vector2f(0, 0));
+	heartPanel = new HeartsPanel();
 }
 
 void World::MapInitialize(string pathToTexturesTxt, string pathToTileTxt)
@@ -20,7 +21,7 @@ void World::MapInitialize(string pathToTexturesTxt, string pathToTileTxt)
 
 void World::PhysicalZenObject2DInitialize(string enemySpritePath)
 {
-	enemy = new Enemy(2, "Enemy", enemySpritePath, sf::Vector2f(512.0f, 288.0f), sf::Vector2f(32, 32));
+	enemy = new Enemy(2, "Enemy", enemySpritePath, sf::Vector2f(512.0f, 288.0f), sf::Vector2f(32, 32), heartPanel);
 	enemy->AddForce(1.0f, Vector2(-3.0f, 0.0f), 3.0f);
 
 	ground = new Ground("Tiles/TxtFiles/Level1Ground.txt");
@@ -58,6 +59,8 @@ void World::Draw(RenderingStack* renderStack)
 	{
 		coins[i]->Draw(renderStack);
 	}
+
+	heartPanel->Draw(renderStack);
 }
 
 void World::UpdateObjects()

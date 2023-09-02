@@ -14,8 +14,10 @@ public:
 	virtual void OnMousePressed() override;
 	virtual void OnMouseUnPressed() override;
 
-	void Draw(RenderingStack* renderStack, string texturePath, int rendererObjectId, string rendererObjectName);
+	void Draw(RenderingStack* renderStack, string texturePath, sf::IntRect TextureRect, int rendererObjectId, string rendererObjectName);
 	void SetHighlight(string texturePath);
+	void SetIntRect(sf::IntRect TextureRect);
+	sf::IntRect GetIntRect();
 
 private:
 	sf::Texture* background;

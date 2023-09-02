@@ -29,9 +29,9 @@ void MainMenuPanel::Initialize(StateMachine* stateMachine)
 
 void  MainMenuPanel::Draw(RenderingStack* renderStack)
 {
-	start->Draw(renderStack, "Graphics/MainMenu/Start.png", 13, "Start");
-	controls->Draw(renderStack, "Graphics/MainMenu/Sterowanie.png", 14, "Controls");
-	authors->Draw(renderStack, "Graphics/MainMenu/Autorzy.png", 15, "Authors");
+	start->Draw(renderStack, "Graphics/MainMenu/Start.png", sf::IntRect(0, 0, 228, 46), 13, "Start");
+	controls->Draw(renderStack, "Graphics/MainMenu/Sterowanie.png", sf::IntRect(0, 0, 228, 46), 14, "Controls");
+	authors->Draw(renderStack, "Graphics/MainMenu/Autorzy.png", sf::IntRect(0, 0, 228, 46), 15, "Authors");
 
 	start->SetHighlight("Graphics/MainMenu/StartH.png");
 	controls->SetHighlight("Graphics/MainMenu/SterowanieH.png");
@@ -40,10 +40,10 @@ void  MainMenuPanel::Draw(RenderingStack* renderStack)
 	logoRenderObject = new RenderObject(logo->Draw(), 1, 2);
 	renderStack->renderQueue.push_back(logoRenderObject);
 
-	volumeIcon->Draw(renderStack, "Graphics/MainMenu/glosnik.png", 15, "Volume");
+	volumeIcon->Draw(renderStack, "Graphics/MainMenu/glosnik.png", sf::IntRect(0, 0, 42, 42), 15, "Volume");
 	volumeIcon->SetHighlight("Graphics/MainMenu/glosnikH.png");
 
-	exitIcon->Draw(renderStack, "Graphics/MainMenu/wyjscie.png", 16, "Exit");
+	exitIcon->Draw(renderStack, "Graphics/MainMenu/wyjscie.png", sf::IntRect(0, 0, 42, 42), 16, "Exit");
 	exitIcon->SetHighlight("Graphics/MainMenu/wyjscieH.png");
 }
 
