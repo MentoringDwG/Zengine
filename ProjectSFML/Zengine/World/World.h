@@ -5,6 +5,7 @@
 #include "../Physics2D/PhysicalZenObject2D.h"
 #include "../Environment/Coin.h"
 #include "../Environment/CoinCounter.h"
+#include "Enemy.h"
 #include <sstream>
 
 class Renderer;
@@ -25,7 +26,8 @@ public:
 private:
 	class Map *map;
 	Character* playerCharacter;
-	PhysicalZenObject2D* enemy;
+	//PhysicalZenObject2D* enemy;
+	Enemy* enemy;
 	class Ground* ground;
 	std::vector<Coin*> coins;
 };

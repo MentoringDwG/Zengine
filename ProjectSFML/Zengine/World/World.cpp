@@ -20,8 +20,7 @@ void World::MapInitialize(string pathToTexturesTxt, string pathToTileTxt)
 
 void World::PhysicalZenObject2DInitialize(string enemySpritePath)
 {
-	enemy = new PhysicalZenObject2D(2, "Enemy", enemySpritePath, sf::Vector2f(512.0f, 288.0f), sf::Vector2f(32, 32));
-	ZenPhysics2D::Get()->RegisterPhysicalObject(enemy);
+	enemy = new Enemy(2, "Enemy", enemySpritePath, sf::Vector2f(512.0f, 288.0f), sf::Vector2f(32, 32));
 	enemy->AddForce(1.0f, Vector2(-3.0f, 0.0f), 3.0f);
 
 	ground = new Ground("Tiles/TxtFiles/Level1Ground.txt");
@@ -64,6 +63,7 @@ void World::Draw(RenderingStack* renderStack)
 void World::UpdateObjects()
 {
 	playerCharacter->UpdateCharacter();
+	enemy->Update();
 }
 
 Character* World::GetPlayer()

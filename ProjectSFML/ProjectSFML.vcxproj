@@ -186,6 +186,7 @@
     <ClCompile Include="Zengine\UI\WidgetCollback.cpp" />
     <ClCompile Include="Zengine\UI\WidgetEventHandler.cpp" />
     <ClCompile Include="Zengine\World\AssetsManager.cpp" />
+    <ClCompile Include="Zengine\World\Enemy.cpp" />
     <ClCompile Include="Zengine\World\TextureAsset.cpp" />
     <ClCompile Include="Zengine\World\Map.cpp" />
     <ClCompile Include="Zengine\World\World.cpp" />
@@ -230,6 +231,7 @@
     <ClInclude Include="Zengine\UI\WidgetCollback.h" />
     <ClInclude Include="Zengine\UI\WidgetEventHandler.h" />
     <ClInclude Include="Zengine\World\AssetsManager.h" />
+    <ClInclude Include="Zengine\World\Enemy.h" />
     <ClInclude Include="Zengine\World\TextureAsset.h" />
     <ClInclude Include="Zengine\World\Map.h" />
     <ClInclude Include="Zengine\World\World.h" />

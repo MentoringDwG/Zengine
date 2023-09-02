@@ -129,7 +129,7 @@ void Zengine::MainLoop()
 
 		RenderModule->ProcessDrawingElements(renderStack);
 		
-		//ZenPhysics2D::Get()->DrawColliders(window, i);
+		ZenPhysics2D::Get()->DrawColliders(window, i);
 
 		//Draw UI
 		window->setView(window->getDefaultView());
