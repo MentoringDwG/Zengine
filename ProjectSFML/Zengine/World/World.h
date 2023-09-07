@@ -1,15 +1,8 @@
 #pragma once
 
-#include "../Character/Character.h"
 #include "../ZenObject/ZenObject.h"
 #include "../Physics2D/PhysicalZenObject2D.h"
-#include "../Environment/Coin.h"
-#include "../Environment/CoinCounter.h"
-#include "Enemy.h"
 #include <sstream>
-#include "../UIinGame/HeartsPanel.h"
-
-class Renderer;
 
 class World
 {
@@ -21,15 +14,15 @@ public:
 	void Draw(RenderingStack* renderStack);
 	void ApplyForceToPhysicsObject();
 	void UpdateObjects();
-	Character* GetPlayer();
-	CoinCounter* coinCounter;
+
+	class Character* GetPlayer();
+	class CoinCounter* coinCounter;
 
 private:
-	class Map *map;
-	Character* playerCharacter;
-	Enemy* enemy;
-	class Ground* ground;
-	std::vector<Coin*> coins;
-	HeartsPanel* heartPanel;
+	class Map *map = nullptr;
+	class Character* playerCharacter = nullptr;
+	class Enemy* enemy = nullptr;
+	class Ground* ground = nullptr;
+	std::vector<class Coin*> coins;
+	class HeartsPanel* heartPanel = nullptr;
 };
-

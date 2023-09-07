@@ -10,6 +10,11 @@ struct Timer
 
 	Timer()
 	{
+		Reset();
+	}
+
+	void Reset()
+	{
 		start_time = std::chrono::high_resolution_clock::now();
 		end_time = std::chrono::high_resolution_clock::now();
 		time = (std::chrono::nanoseconds)0;
@@ -19,7 +24,7 @@ struct Timer
 	{
 		end_time = std::chrono::high_resolution_clock::now();
 		time = end_time - start_time;
-		timeMs = time / std::chrono::milliseconds(1);
+		timeMs = (int)(time / std::chrono::milliseconds(1));
 	}
 };
 

@@ -4,6 +4,11 @@
 #include <SFML/Graphics.hpp>
 #include "../Physics2D/ZenPhysics2D.h"
 #include "../Environment/Ground.h"
+#include "../UIinGame/HeartsPanel.h"
+#include "../Environment/CoinCounter.h"
+#include "../Character/Character.h"
+#include "Enemy.h"
+#include "../Environment/Coin.h"
 
 void World::Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed)
 {
@@ -61,6 +66,7 @@ void World::Draw(RenderingStack* renderStack)
 	}
 
 	heartPanel->Draw(renderStack);
+	coinCounter->Draw(renderStack);
 }
 
 void World::UpdateObjects()

@@ -24,9 +24,10 @@ public:
 	void CalculateCollision();
 
 	void Draw(RenderingStack* renderStack);
-	void DrawColliders(sf::RenderWindow* window, int stateId);
+	void DrawColliders(sf::RenderWindow* window);
 	int GetPhysicsTimeStep();
 
+	void SetShouldShowDebug(bool bInShowDebug);
 private:
 	ZenPhysics2D() {}
 
@@ -34,6 +35,7 @@ private:
 
 	int physicsTimeStep = 30;	//0.03 seconds
 	float globalGravity = 0.0f;
+	bool bShouldDrawDebug = true;
 
 	std::vector<PhysicalZenObject2D*> physicalObjects;
 	std::vector<CircleCollider2D*> circleColliders;

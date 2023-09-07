@@ -10,5 +10,5 @@ public:
 	virtual bool CanConsumeInput() = 0;
 
 private:
-	int ID;
+	int ID = 0;
 };

@@ -11,13 +11,7 @@
 #include "Physics2D/ZenPhysics2D.h"
 #include "ZenObject/ZenText.h"
 #include "StateMachine/StateMachine.h"
-#include "InputModule/UIInputHandler.h"
-#include "StateMachine/MainMenuState.h"
-#include "StateMachine/LoadingState.h"
-#include "StateMachine/GameplayState.h"
-#include "StateMachine/WaitingRoomState.h"
-#include "StateMachine/ControlsPanelState.h"
-#include "StateMachine/AuthorsState.h"
+
 
 class Zengine
 {
@@ -53,13 +47,13 @@ private:
 	std::stringstream fpsStringstream;
 	bool engineRunning = false;
 
-	StateMachine* stateMachine = nullptr;
-	MainMenuState* mainMenuState = nullptr;
-	LoadingState* loadingState = nullptr;
-	GameplayState* gameplayState = nullptr;
-	WaitingRoomState* waitingRoomState = nullptr;
-	ControlsPanelState* controlsPanelState = nullptr;
-	AuthorsState* authorsState = nullptr;
+	class StateMachine* stateMachine = nullptr;
+	class MainMenuState* mainMenuState = nullptr;
+	class LoadingState* loadingState = nullptr;
+	class GameplayState* gameplayState = nullptr;
+	class WaitingRoomState* waitingRoomState = nullptr;
+	class ControlsPanelState* controlsPanelState = nullptr;
+	class AuthorsState* authorsState = nullptr;
 
 	int frameTme = 1;
 	float fps = 60;

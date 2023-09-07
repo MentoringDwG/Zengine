@@ -3,6 +3,21 @@
 #include <iostream>
 #include <map>
 
+namespace State
+{
+	enum EAppState
+	{
+		None = 0,
+		MainMenuState = 1,
+		LoadingState = 2,
+		GameplayState = 3,
+		WaitingRoomState = 4,
+		ControlsPanelState = 5,
+		AuthorsState = 6,
+		Max,
+	};
+}
+
 class StateMachine
 {
 private:

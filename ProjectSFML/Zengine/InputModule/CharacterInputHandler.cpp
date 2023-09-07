@@ -1,14 +1,6 @@
 #include "CharacterInputHandler.h"
 #include "../Character/Character.h"
 
-enum CharacterInputHandler::MovingStates
-{
-	standing = 0,
-	movingLeft = 1,
-	movingRight = 2,
-	movingUp = 3,
-};
-
 bool CharacterInputHandler::ProcessInput(sf::Event& event, sf::RenderWindow* inWindow)
 {
 	KeyPressed(event);

@@ -1,4 +1,5 @@
 #include "CoinCounter.h"
+#include "../Renderer/Renderer.h"
 
 CoinCounter::CoinCounter(int IDIn, string NameIn, sf::Vector2f sizeIn)
 {
@@ -10,6 +11,13 @@ CoinCounter::CoinCounter(int IDIn, string NameIn, sf::Vector2f sizeIn)
 
 	coinsStringstream << "Coins: " << coins;
 	coinCounter->SetText(coinsStringstream.str());
+	renderObject = nullptr;
+}
+
+CoinCounter::~CoinCounter()
+{
+	delete renderObject;
+	delete coinCounter;
 }
 
 void CoinCounter::IncrementCounter()
@@ -21,7 +29,11 @@ void CoinCounter::IncrementCounter()
 	coinCounter->SetText(coinsStringstream.str());
 }
 
-void CoinCounter::Draw(sf::RenderWindow* window)
+void CoinCounter::Draw(RenderingStack* stack)
 {
-	window->draw(coinCounter->Draw());
+	if (renderObject == nullptr)
+	{
+		renderObject = new RenderObject(coinCounter->GetTextRaw(), 1000, 1);
+		stack->renderQueue.push_back(renderObject);
+	}
 }

@@ -2,7 +2,7 @@
 
 #include "ZenObject.h"
 
-class ZenText:public ZenObject
+class ZenText : public ZenObject
 {
 public:
 	ZenText(int inID, string inName, sf::Vector2f inSize) :ZenObject(inID, inName, inSize)
@@ -15,7 +15,9 @@ public:
 	void SetPosition(sf::Vector2f vector2f);
 	void SetColor(sf::Color color);
 	void SetSize(int size);
-	sf::Text Draw();
+	sf::Text GetText();
+	sf::Text* GetTextRaw();
+
 
 private:
 	sf::Text text;

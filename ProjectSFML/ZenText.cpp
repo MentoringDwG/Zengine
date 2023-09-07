@@ -27,7 +27,12 @@ void ZenText::SetSize(int size)
 	text.setCharacterSize(size);
 }
 
-sf::Text ZenText::Draw()
+sf::Text ZenText::GetText()
 {
 	return text;
+}
+
+sf::Text* ZenText::GetTextRaw()
+{
+	return &text;
 }

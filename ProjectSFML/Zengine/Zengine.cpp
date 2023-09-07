@@ -1,10 +1,16 @@
-#include <SFML/Graphics.hpp>
 #include "Zengine.h"
 #include "World/World.h"
 #include "InputModule/InputProcessorModule.h"
-#include "Renderer/Renderer.h"
 #include "Structs/Timer.h"
-#include "InputModule/UIInputHandler.h"
+
+// To musimy przenieœæ do innej klasy.
+#include "StateMachine/MainMenuState.h"
+#include "StateMachine/LoadingState.h"
+#include "StateMachine/GameplayState.h"
+#include "StateMachine/ControlsPanelState.h"
+#include "StateMachine/AuthorsState.h"
+// To w sumie te¿.
+#include "Character/Character.h"
 
 Zengine* Zengine::Engine = nullptr;
 World world;
@@ -68,11 +74,11 @@ void Zengine::UIInitialize()
 
 void Zengine::StateInitialize()
 {
-	mainMenuState = new MainMenuState(1, renderStack, stateMachine, RenderModule);
-	loadingState = new LoadingState(2, stateMachine);
-	gameplayState = new GameplayState(3);
-	controlsPanelState = new ControlsPanelState(4, renderStack, stateMachine);
-	authorsState = new AuthorsState(5, renderStack, stateMachine);
+	mainMenuState = new MainMenuState(State::MainMenuState, renderStack, stateMachine, RenderModule);
+	loadingState = new LoadingState(State::LoadingState, stateMachine);
+	gameplayState = new GameplayState(State::GameplayState);
+	controlsPanelState = new ControlsPanelState(State::ControlsPanelState, renderStack, stateMachine);
+	authorsState = new AuthorsState(State::AuthorsState, renderStack, stateMachine);
 
 	stateMachine->AddState(mainMenuState);
 	stateMachine->AddState(loadingState);
@@ -99,16 +105,18 @@ void Zengine::OnLoading(int id)
 void Zengine::MainLoop()
 {
 	Timer* timerForPhysics = new Timer();
+	Timer* timerForFPSCounter = new Timer();
+
 	while (window->isOpen())
 	{
-		int i = stateMachine->GetCurrentGameStateId();
-		Timer* timerForFPSCounter = new Timer();
-
+		int stateId = stateMachine->GetCurrentGameStateId();
+		
+		timerForFPSCounter->Reset();
 		ProcessInput(window);
 
 		window->clear();
 
-		if (i==3)
+		if (stateId==State::GameplayState)
 		{
 			characterInputHandler.ProcesMovement();
 			timerForPhysics->TimerStop();
@@ -129,15 +137,16 @@ void Zengine::MainLoop()
 
 		RenderModule->ProcessDrawingElements(renderStack);
 		
-		ZenPhysics2D::Get()->DrawColliders(window, i);
+		ZenPhysics2D::Get()->SetShouldShowDebug(stateId == State::GameplayState);
+		ZenPhysics2D::Get()->DrawColliders(window);
 
 		//Draw UI
 		window->setView(window->getDefaultView());
-		window->draw(fpsText->Draw());
+		window->draw(fpsText->GetText());
 
-		if (i == 3)
+		if (stateId == State::GameplayState)
 		{
-			world.coinCounter->Draw(window);
+			//world.coinCounter->Draw(window);
 		}
 
 		window->display();
@@ -147,7 +156,6 @@ void Zengine::MainLoop()
 
 		timerForFPSCounter->TimerStop();
 		CountFrameTime(timerForFPSCounter->time);
-		delete timerForFPSCounter;
 	}
 }
 
@@ -173,7 +181,7 @@ void Zengine::ProcessInput(sf::RenderWindow* inWindow)
 
 void Zengine::CountFrameTime(std::chrono::nanoseconds time)
 {
-	frameTme = time / std::chrono::milliseconds(1);
+	frameTme = (int)(time / std::chrono::milliseconds(1));
 	if (frameTme == 0)
 	{
 		frameTme = 1;
@@ -182,7 +190,7 @@ void Zengine::CountFrameTime(std::chrono::nanoseconds time)
 
 void Zengine::CountFPS()
 {
-	fps = 1000 / frameTme;
+	fps = (float)(1000 / frameTme);
 }
 
 void Zengine::SetUI()

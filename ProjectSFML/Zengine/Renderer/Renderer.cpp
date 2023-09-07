@@ -15,6 +15,13 @@ RenderObject::RenderObject(sf::RectangleShape* drawable, int zOrder, int layerId
 	this->layerId = layerId;
 }
 
+RenderObject::RenderObject(sf::Text* text, int zOrder, int layerId)
+{
+	this->text = text;
+	this->zOrder = zOrder;
+	this->layerId = layerId;
+}
+
 void RenderingStack::Clear()
 {
 	renderQueue.clear();
@@ -96,6 +103,12 @@ void Renderer::DrawLayer(std::vector<RenderObject*>& layer)
 		{
 			sf::RectangleShape* rectangleShape = layer[i]->drawable;
 			window->draw(*rectangleShape);
+		}
+
+		if (layer[i]->text != nullptr)
+		{
+			sf::Text* text = layer[i]->text;
+			window->draw(*text);
 		}
 	}
 }

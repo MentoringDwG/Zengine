@@ -103,9 +103,12 @@ void ZenPhysics2D::CalculateCollision()
 	}
 }
 
-void ZenPhysics2D::DrawColliders(sf::RenderWindow* window, int stateId)
+void ZenPhysics2D::DrawColliders(sf::RenderWindow* window)
 {
-	if (stateId != 3) return;
+	if (!bShouldDrawDebug)
+	{
+		return;
+	}
 
 	for (CircleCollider2D* collider : circleColliders)
 	{
@@ -121,4 +124,9 @@ void ZenPhysics2D::DrawColliders(sf::RenderWindow* window, int stateId)
 int ZenPhysics2D::GetPhysicsTimeStep()
 {
 	return physicsTimeStep;
+}
+
+void ZenPhysics2D::SetShouldShowDebug(bool bInShowDebug)
+{
+	bShouldDrawDebug = bInShowDebug;
 }

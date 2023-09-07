@@ -22,16 +22,23 @@ public:
 	void ProcesMovement();
 
 private:
-	Character* owningCharacter;
-	string name;
+	enum MovingStates
+	{
+		standing = 0,
+		movingLeft = 1,
+		movingRight = 2,
+		movingUp = 3,
+	};
 
-	enum MovingStates;
-	MovingStates movingStates;
-	list<MovingStates> movingStatesList;
-	list <MovingStates>::iterator itr;
 	void KeyPressed(sf::Event& event);
 	void KeyReleased(sf::Event& event);
 	bool CanAddMovingState(MovingStates state);
 	void AddMovingState(MovingStates state);
 	bool IsMovingUp();
+
+	string name;
+	list<MovingStates> movingStatesList;
+	list <MovingStates>::iterator itr;
+	Character* owningCharacter;
+	MovingStates movingStates = CharacterInputHandler::MovingStates::standing;
 };

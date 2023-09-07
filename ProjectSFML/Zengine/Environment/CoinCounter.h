@@ -7,13 +7,14 @@ class CoinCounter
 {
 public:
 	CoinCounter(int IDIn, string NameIn, sf::Vector2f sizeIn);
+	~CoinCounter();
+
 	void IncrementCounter();
-	void Draw(sf::RenderWindow* window);
+	void Draw(class RenderingStack* stack);
 
 private:
-	ZenText* coinCounter;
-	int coins = 0;
 	std::stringstream coinsStringstream;
-
+	int coins = 0;
+	ZenText* coinCounter = nullptr;
+	class RenderObject* renderObject = nullptr;
 };
-
