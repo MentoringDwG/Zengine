@@ -145,7 +145,7 @@ void PhysicalZenObject2D::CalculationColliderPush()
 			return;
 		}
 
-		if (collider->GetPosition()->y + collider->size->y + 2 > zenShape->Position.y && collider->GetPosition()->y + collider->size->y + 8 < zenShape->Position.y + 64)
+		if (collider->GetPosition()->y + collider->size.y + 2 > zenShape->Position.y && collider->GetPosition()->y + collider->size.y + 8 < zenShape->Position.y + 64)
 		{
 			velocity->y = 0;
 			if (collisionColliders[Collider::ColliderTags::GROUND].size() == 1)
@@ -156,8 +156,8 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		}
 
 		if (bounds.left < collider->GetPosition()->x
-			&& bounds.left + bounds.width < collider->GetPosition()->x + collider->size->x
-			&& bounds.top < collider->GetPosition()->y + collider->size->y
+			&& bounds.left + bounds.width < collider->GetPosition()->x + collider->size.x
+			&& bounds.top < collider->GetPosition()->y + collider->size.y
 			&& bounds.top + bounds.height > collider->GetPosition()->y
 			)
 		{
@@ -167,13 +167,13 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		}
 
 		if (bounds.left > collider->GetPosition()->x
-			&& bounds.left + bounds.width > collider->GetPosition()->x + collider->size->x
-			&& bounds.top < collider->GetPosition()->y + collider->size->y
+			&& bounds.left + bounds.width > collider->GetPosition()->x + collider->size.x
+			&& bounds.top < collider->GetPosition()->y + collider->size.y
 			&& bounds.top + bounds.height > collider->GetPosition()->y
 			)
 		{
 			velocity->x = 0.0f;
-			zenShape->SetPosition(sf::Vector2f(collider->GetPosition()->x + collider->size->x + 2, bounds.top));
+			zenShape->SetPosition(sf::Vector2f(collider->GetPosition()->x + collider->size.x + 2, bounds.top));
 			collisionPushSide = CollisionPushSide::LEFT;
 		}
 	}

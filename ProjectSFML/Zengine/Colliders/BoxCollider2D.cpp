@@ -1,9 +1,11 @@
 #include "BoxCollider2D.h"
+#include "../ZenObject/ZenObject.h"
+#include "../Structs/Vector2.h"
 
 BoxCollider2D::BoxCollider2D(Vector2* position, Vector2* size, ZenObject* owner, Collider::ColliderTags tag) :Collider(tag, size)
 {
 	SetPosition(sf::Vector2f(position->x, position->y));
-	this->size = size;
+	this->size = *size;
 	SetOwner(owner);
 
 	debugRectangleShape.setSize(sf::Vector2f(size->x, size->y));
@@ -48,7 +50,7 @@ void BoxCollider2D::SetPosition(sf::Vector2f vector)
 	GetPosition()->y = vector.y;
 }
 
-Vector2* BoxCollider2D::GetSize()
+Vector2 BoxCollider2D::GetSize()
 {
 	return size;
 }

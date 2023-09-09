@@ -3,8 +3,9 @@
 #include <functional>
 #include <SFML/Graphics.hpp>
 #include "../Structs/Vector2.h"
-#include "../ZenObject/ZenObject.h"
 #include "CollisionEventBinder.h"
+
+class ZenObject;
 
 class Collider
 {
@@ -20,18 +21,19 @@ public:
 	};
 
 	Collider(ColliderTags tag, Vector2* size);
+	~Collider();
 
 	ZenObject* GetOwner();
 	void SetOwner(ZenObject* inOwner);
 	void SetPosition(sf::Vector2f vector);
 	Vector2* GetPosition();
-	ColliderTags tag;
-	Vector2* size;
 
+	ColliderTags tag;
+	Vector2 size = Vector2(0, 0);
 	CollisionEventBinder OnCollisionStart;
 	CollisionEventBinder OnCollisionEnd;
 
 private:
-	Vector2* position;
-	ZenObject* owner;
+	Vector2 position = Vector2(0, 0);
+	ZenObject* owner = nullptr;
 };
