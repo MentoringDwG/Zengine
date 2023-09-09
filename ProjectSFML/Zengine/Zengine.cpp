@@ -37,7 +37,7 @@ void Zengine::Run()
 
 	stateMachine = new StateMachine();
 	StateInitialize();
-	stateMachine->TransitionTo(1);
+	stateMachine->TransitionTo(State::MainMenuState);
 
 	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");

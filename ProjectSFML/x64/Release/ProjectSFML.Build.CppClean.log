@@ -1,6 +1,6 @@
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\vc142.pdb
-c:\users\admin\documents\github\zengine\projectsfml\x64\release\controlspanelstate.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\basegamestate.obj
+c:\users\admin\documents\github\zengine\projectsfml\x64\release\authorsstate.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\renderer.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\zenphysics2d.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\physicalzenobject2d.obj
@@ -19,7 +19,6 @@ c:\users\admin\documents\github\zengine\projectsfml\x64\release\circlecollider2d
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\boxcollider2d.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\character.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\main.obj
-c:\users\admin\documents\github\zengine\projectsfml\x64\release\zenobject.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\movableobject.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\zengine.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\world.obj
@@ -39,9 +38,12 @@ c:\users\admin\documents\github\zengine\projectsfml\x64\release\statemachine.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\mainmenustate.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\loadingstate.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\gameplaystate.obj
+c:\users\admin\documents\github\zengine\projectsfml\x64\release\controlspanelstate.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\zentext.obj
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\zenshape.obj
-c:\users\admin\documents\github\zengine\projectsfml\x64\release\authorsstate.obj
+c:\users\admin\documents\github\zengine\projectsfml\x64\release\zenobject.obj
+c:\users\admin\documents\github\zengine\projectsfml\x64\release\enemy.obj
+c:\users\admin\documents\github\zengine\projectsfml\x64\release\heartspanel.obj
 c:\users\admin\documents\github\zengine\x64\release\projectsfml.exe
 c:\users\admin\documents\github\zengine\projectsfml\x64\release\projectsfml.iobj
 c:\users\admin\documents\github\zengine\x64\release\projectsfml.pdb

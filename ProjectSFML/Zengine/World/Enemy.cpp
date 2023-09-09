@@ -7,7 +7,7 @@ Enemy::Enemy(int inID, string inName, string enemySpritePath, sf::Vector2f start
 	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject);
 
 	Vector2 position(startPosition.x, startPosition.y);
-	circleCollider = new CircleCollider2D(&position, 20, physicalZenObject->zenShape, Collider::ENEMY);
+	circleCollider = new CircleCollider2D(&position, 20, physicalZenObject->zenShape, Collider::ColliderTags::ENEMY);
 	circleCollider->OnCollisionStart.AddListener(&Enemy::HandleCollisionStart, this);
 	circleCollider->OnCollisionEnd.AddListener(&Enemy::HandleCollisionEnd, this);
 	ZenPhysics2D::Get()->RegisterCollider(circleCollider);

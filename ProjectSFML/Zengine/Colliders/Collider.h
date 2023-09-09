@@ -9,13 +9,14 @@
 class Collider
 {
 public:
-	enum ColliderTags
+	enum class ColliderTags
 	{
 		DEFAULT = 0,
 		CHARACTER = 1,
 		ENEMY = 2,
 		GROUND = 3,
 		COIN = 4,
+		Max,
 	};
 
 	Collider(ColliderTags tag, Vector2* size);

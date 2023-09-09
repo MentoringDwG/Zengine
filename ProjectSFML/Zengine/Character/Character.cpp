@@ -1,6 +1,11 @@
 #include "Character.h"
 #include <functional>
 #include "../Structs/Vector2.h"
+#include "../World/TextureAsset.h"
+#include "../Renderer/Renderer.h"
+#include "../Colliders/BoxCollider2D.h"
+#include "../Physics2D/ZenPhysics2D.h"
+#include "../Physics2D/PhysicalZenObject2D.h"
 
 Character::Character(std::string name, string Path, float playerMoveSpeed)
 {
@@ -21,8 +26,15 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 
 	physicalZenObject2D->SetCollider(collider2D);
 	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject2D);
+}
 
-	deltaPositions = new Vector2(0, 0);
+Character::~Character()
+{
+	delete textureAsset;
+	delete characterRenderObject;
+	delete texture;
+	delete physicalZenObject2D;
+	collisionColliders.clear();
 }
 
 //MOVEMENT
@@ -31,12 +43,12 @@ void Character::MoveLeft()
 	physicalZenObject2D->zenShape->SetScale(sf::Vector2f(-1, 1));
 	physicalZenObject2D->zenShape->SetOrigin(sf::Vector2f(physicalZenObject2D->zenShape->GetGlobalBounds().width, 0));
 
-	if (physicalZenObject2D->collisionPushSide!=PhysicalZenObject2D::LEFT)
+	if (physicalZenObject2D->collisionPushSide != PhysicalZenObject2D::CollisionPushSide::LEFT)
 	physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(-1.0f * moveSpeed, 0.0f));
 
-	if (physicalZenObject2D->collisionPushSide == PhysicalZenObject2D::RIGHT)
+	if (physicalZenObject2D->collisionPushSide == PhysicalZenObject2D::CollisionPushSide::RIGHT)
 	{
-		physicalZenObject2D->collisionPushSide == PhysicalZenObject2D::NONE;
+		physicalZenObject2D->collisionPushSide = PhysicalZenObject2D::CollisionPushSide::NONE;
 	}
 }
 
@@ -45,18 +57,18 @@ void Character::MoveRight()
 	physicalZenObject2D->zenShape->SetScale(sf::Vector2f(1, 1));
 	physicalZenObject2D->zenShape->SetOrigin(sf::Vector2f(0, 0));
 
-	if (physicalZenObject2D->collisionPushSide != PhysicalZenObject2D::RIGHT)
+	if (physicalZenObject2D->collisionPushSide != PhysicalZenObject2D::CollisionPushSide::RIGHT)
 	physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(1.0f * moveSpeed, 0.0f));
 	
-	if (physicalZenObject2D->collisionPushSide == PhysicalZenObject2D::LEFT)
+	if (physicalZenObject2D->collisionPushSide == PhysicalZenObject2D::CollisionPushSide::LEFT)
 	{
-		physicalZenObject2D->collisionPushSide == PhysicalZenObject2D::NONE;
+		physicalZenObject2D->collisionPushSide = PhysicalZenObject2D::CollisionPushSide::NONE;
 	}
 }
 
 void Character::MoveUp()
 {
-	if (isGrounded && collisionColliders[Collider::GROUND].size() == 1)
+	if (isGrounded && collisionColliders[Collider::ColliderTags::GROUND].size() == 1)
 	{
 		physicalZenObject2D->AddForce(1.0f, Vector2(0, -6.0f), 4.0f);
 		collider2D->GetOwner()->isJump = true;
@@ -99,7 +111,7 @@ void Character::Draw(RenderingStack* renderStack)
 
 void Character::SetCollider(Vector2* position, Vector2* size)
 {
-	collider2D = new BoxCollider2D(position, size, physicalZenObject2D->zenShape, Collider::CHARACTER);
+	collider2D = new BoxCollider2D(position, size, physicalZenObject2D->zenShape, Collider::ColliderTags::CHARACTER);
 	listenerIndexStart = collider2D->OnCollisionStart.AddListener(&Character::HandleCollisionStart, this);
 	listenerIndexEnd = collider2D->OnCollisionEnd.AddListener(&Character::HandleCollisionEnd, this);
 	ZenPhysics2D::Get()->RegisterCollider(collider2D);
@@ -116,7 +128,7 @@ void Character::HandleCollisionStart(Collider* other)
 	}
 	collisionColliders[other->tag].push_back(other);
 
-	if (collisionColliders[Collider::GROUND].size() > 0)
+	if (collisionColliders[Collider::ColliderTags::GROUND].size() > 0)
 	{
 		isGrounded = true;
 		collider2D->GetOwner()->isJump = false;
@@ -134,7 +146,7 @@ void Character::HandleCollisionEnd(Collider* other)
 		}
 	}
 
-	if (collisionColliders[Collider::GROUND].size() == 0)
+	if (collisionColliders[Collider::ColliderTags::GROUND].size() == 0)
 	{
 		isGrounded = false;
 	}

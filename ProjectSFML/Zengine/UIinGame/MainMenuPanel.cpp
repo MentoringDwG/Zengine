@@ -68,10 +68,10 @@ void MainMenuPanel::StartPressed(int id)
 
 	UIInputHandler::Get()->Clear();
 
-	waitingRoonState = new WaitingRoomState(0, stateMachine, 2);
-	stateMachine->DeleteState(0);
+	waitingRoonState = new WaitingRoomState(State::WaitingRoomState, stateMachine, State::LoadingState);
+	stateMachine->DeleteState(State::WaitingRoomState);
 	stateMachine->AddState(waitingRoonState);
-	stateMachine->TransitionTo(0);
+	stateMachine->TransitionTo(State::WaitingRoomState);
 }
 
 void MainMenuPanel::ControlsPressed(int id)
@@ -80,10 +80,10 @@ void MainMenuPanel::ControlsPressed(int id)
 
 	UIInputHandler::Get()->Clear();
 
-	waitingRoonState = new WaitingRoomState(0, stateMachine, 4);
-	stateMachine->DeleteState(0);
+	waitingRoonState = new WaitingRoomState(State::WaitingRoomState, stateMachine, State::ControlsPanelState);
+	stateMachine->DeleteState(State::WaitingRoomState);
 	stateMachine->AddState(waitingRoonState);
-	stateMachine->TransitionTo(0);
+	stateMachine->TransitionTo(State::WaitingRoomState);
 }
 
 
@@ -92,10 +92,10 @@ void MainMenuPanel::AuthorsPressed(int id)
 	std::cout << "Authors pressed" << std::endl;
 	UIInputHandler::Get()->Clear();
 
-	waitingRoonState = new WaitingRoomState(0, stateMachine, 5);
-	stateMachine->DeleteState(0);
+	waitingRoonState = new WaitingRoomState(State::WaitingRoomState, stateMachine, State::AuthorsState);
+	stateMachine->DeleteState(State::WaitingRoomState);
 	stateMachine->AddState(waitingRoonState);
-	stateMachine->TransitionTo(0);
+	stateMachine->TransitionTo(State::WaitingRoomState);
 }
 
 void MainMenuPanel::ExitPressed(int id)

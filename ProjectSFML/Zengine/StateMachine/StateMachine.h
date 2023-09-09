@@ -7,7 +7,7 @@ namespace State
 {
 	enum EAppState
 	{
-		None = 0,
+		//None = 0,
 		MainMenuState = 1,
 		LoadingState = 2,
 		GameplayState = 3,

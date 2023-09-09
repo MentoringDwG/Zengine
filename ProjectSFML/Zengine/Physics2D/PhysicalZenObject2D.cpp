@@ -47,7 +47,7 @@ void PhysicalZenObject2D::HandleCollisionEnd(Collider* other)
 		}
 	}
 	
-	if (collisionColliders[Collider::GROUND].size() == 0)
+	if (collisionColliders[Collider::ColliderTags::GROUND].size() == 0)
 	{
 		canUseGravity = true;
 	}
@@ -122,7 +122,7 @@ void PhysicalZenObject2D::AddForce(float massIn, Vector2 forceIN, float time)
 
 void PhysicalZenObject2D::CalculationColliderPush()
 {
-	std::vector<Collider*> colliders = collisionColliders[Collider::GROUND];
+	std::vector<Collider*> colliders = collisionColliders[Collider::ColliderTags::GROUND];
 
 	Collider* collider = colliders[0];
 	sf::FloatRect bounds = zenShape->GetGlobalBounds();
@@ -136,11 +136,11 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		{
 			float yToMove = abs(collider->GetPosition()->y - (zenShape->Position.y + 64));
 
-			if (collisionColliders[Collider::GROUND].size() == 1)
+			if (collisionColliders[Collider::ColliderTags::GROUND].size() == 1)
 			{
 				zenShape->MoveObject(sf::Vector2f(0, -yToMove));
 			}
-			collisionPushSide = TOP;
+			collisionPushSide = CollisionPushSide::TOP;
 			canUseGravity = false;
 			return;
 		}
@@ -148,11 +148,11 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		if (collider->GetPosition()->y + collider->size->y + 2 > zenShape->Position.y && collider->GetPosition()->y + collider->size->y + 8 < zenShape->Position.y + 64)
 		{
 			velocity->y = 0;
-			if (collisionColliders[Collider::GROUND].size() == 1)
+			if (collisionColliders[Collider::ColliderTags::GROUND].size() == 1)
 			{
 				zenShape->MoveObject(sf::Vector2f(0, 0.5f));
 			}
-			collisionPushSide = BOTTOM;
+			collisionPushSide = CollisionPushSide::BOTTOM;
 		}
 
 		if (bounds.left < collider->GetPosition()->x
@@ -163,7 +163,7 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		{
 			velocity->x = 0.0f;
 			zenShape->SetPosition(sf::Vector2f(collider->GetPosition()->x - bounds.width - 2, bounds.top));
-			collisionPushSide = RIGHT;
+			collisionPushSide = CollisionPushSide::RIGHT;
 		}
 
 		if (bounds.left > collider->GetPosition()->x
@@ -174,7 +174,7 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		{
 			velocity->x = 0.0f;
 			zenShape->SetPosition(sf::Vector2f(collider->GetPosition()->x + collider->size->x + 2, bounds.top));
-			collisionPushSide = LEFT;
+			collisionPushSide = CollisionPushSide::LEFT;
 		}
 	}
 }

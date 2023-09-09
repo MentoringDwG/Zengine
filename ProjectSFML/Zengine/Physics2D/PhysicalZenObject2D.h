@@ -11,16 +11,17 @@
 class PhysicalZenObject2D:public ZenObject
 {
 public:
-	enum CollisionPushSide
+	enum class CollisionPushSide
 	{
 		NONE = 0,
 		TOP = 1,
 		BOTTOM = 2,
 		RIGHT = 3,
-		LEFT = 4
+		LEFT = 4,
+		Max,
 	};
 
-	CollisionPushSide collisionPushSide = NONE;
+	CollisionPushSide collisionPushSide = CollisionPushSide::NONE;
 
 	ZenShape* zenShape;
 	PhysicalZenObject2D(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize);
