@@ -1,6 +1,15 @@
 #include "ZenPhysics2D.h"
+#include "../Colliders/BoxCollider2D.h"
+#include "../Colliders/CircleCollider2D.h"
 
 ZenPhysics2D ZenPhysics2D::instance;
+
+ZenPhysics2D::~ZenPhysics2D()
+{
+	physicalObjects.clear();
+	circleColliders.clear();
+	boxColliders.clear();
+}
 
 void ZenPhysics2D::RegisterPhysicalObject(PhysicalZenObject2D* physicalObject)
 {

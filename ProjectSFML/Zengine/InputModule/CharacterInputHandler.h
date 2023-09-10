@@ -22,7 +22,7 @@ public:
 	void ProcesMovement();
 
 private:
-	enum MovingStates
+	enum class MovingStates
 	{
 		standing = 0,
 		movingLeft = 1,

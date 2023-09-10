@@ -3,6 +3,11 @@
 
 #include <iostream>
 
+Renderer::~Renderer()
+{
+	delete window;
+}
+
 void Renderer::Initialize(sf::RenderWindow* inWindow)
 {
 	window = inWindow;
@@ -26,8 +31,6 @@ void RenderingStack::Clear()
 {
 	renderQueue.clear();
 	renderLayers.clear();
-
-	std::cout << "CLEAR" << std::endl;
 }
 
 void RenderingStack::DivisionOfObjectsIntoLayersByLayerId()

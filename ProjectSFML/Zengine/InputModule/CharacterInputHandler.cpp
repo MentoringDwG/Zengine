@@ -15,19 +15,19 @@ void CharacterInputHandler::KeyPressed(sf::Event& event)
 	{
 		if (event.key.code == sf::Keyboard::A)
 		{
-			AddMovingState(movingLeft);
-			movingStatesList.remove(movingRight);
+			AddMovingState(MovingStates::movingLeft);
+			movingStatesList.remove(MovingStates::movingRight);
 		}
 
 		if (event.key.code == sf::Keyboard::D)
 		{
-			AddMovingState(movingRight);
-			movingStatesList.remove(movingLeft);
+			AddMovingState(MovingStates::movingRight);
+			movingStatesList.remove(MovingStates::movingLeft);
 		}
 
 		if (event.key.code == sf::Keyboard::W)
 		{
-			AddMovingState(movingUp);
+			AddMovingState(MovingStates::movingUp);
 		}
 	}
 }
@@ -60,17 +60,17 @@ void CharacterInputHandler::KeyReleased(sf::Event& event)
 	{
 		if (event.key.code == sf::Keyboard::A)
 		{
-			movingStatesList.remove(movingLeft);
+			movingStatesList.remove(MovingStates::movingLeft);
 		}
 
 		if (event.key.code == sf::Keyboard::D)
 		{
-			movingStatesList.remove(movingRight);
+			movingStatesList.remove(MovingStates::movingRight);
 		}
 
 		if (event.key.code == sf::Keyboard::W)
 		{
-			movingStatesList.remove(movingUp);
+			movingStatesList.remove(MovingStates::movingUp);
 		}
 	}
 }
@@ -80,15 +80,15 @@ void CharacterInputHandler::ProcesMovement()
 	itr = movingStatesList.begin();
 	for (itr; itr != movingStatesList.end(); itr++)
 	{
-		if (*itr == movingLeft)
+		if (*itr == MovingStates::movingLeft)
 		{
 			owningCharacter->MoveLeft();
 		}
-		if (*itr == movingRight)
+		if (*itr == MovingStates::movingRight)
 		{
 			owningCharacter->MoveRight();
 		}
-		if (*itr == movingUp)
+		if (*itr == MovingStates::movingUp)
 		{
 			owningCharacter->MoveUp();
 		}
@@ -100,7 +100,7 @@ bool CharacterInputHandler::IsMovingUp()
 	itr = movingStatesList.begin();
 	for (itr; itr != movingStatesList.end(); itr++)
 	{
-		if (*itr == movingUp)
+		if (*itr == MovingStates::movingUp)
 		{
 			return true;
 		}

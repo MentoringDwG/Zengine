@@ -1,20 +1,18 @@
 #include "PhysicalZenObject2D.h"
-#include "../Colliders/Collider.h"
 #include "../Structs/Vector2.h"
 
 PhysicalZenObject2D::PhysicalZenObject2D(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize) :ZenObject(inID, inName, inSize)
 {
-	velocity = new Vector2(0, 0);
-	transposition = new Vector2(0.1, 0);
-	acceleration = new Vector2(0, 0);
-	force = new Vector2(0, 0);
-
 	zenShape = new ZenShape(3, "zenShape", sf::Vector2f(32, 32));
 	zenShape->SetTexture(enemySpritePath);
 	zenShape->SetPosition(startPosition);
 	zenShape->SetSize(inSize);
+}
 
-	deltaPositions = new Vector2(0, 0);
+PhysicalZenObject2D::~PhysicalZenObject2D()
+{
+	delete zenShape;
+	delete collider;
 }
 
 void PhysicalZenObject2D::SetCollider(class Collider* collider)
@@ -57,67 +55,67 @@ void PhysicalZenObject2D::CalculatePhysics()
 {
 	CalculationColliderPush();
 
-	transposition->x = velocity->x;
-	transposition->y = velocity->y;
+	transposition.x = velocity.x;
+	transposition.y = velocity.y;
 
-	if (velocity->x < 0 && transposition->x > -0.5)
+	if (velocity.x < 0 && transposition.x > -0.5)
 	{
 		ResettingVariables();
 		return;
 	}
 
-	if (velocity->y < 0 && transposition->y > -0.5)
+	if (velocity.y < 0 && transposition.y > -0.5)
 	{
 		ResettingVariables();
 		return;
 	}
 
-	if (velocity->x > 0 && transposition->x < 0.5)
+	if (velocity.x > 0 && transposition.x < 0.5)
 	{
 		ResettingVariables();
 		return;
 	}
 
-	if (velocity->y > 0 && transposition->y < 0.5)
+	if (velocity.y > 0 && transposition.y < 0.5)
 	{
 		ResettingVariables();
 		return;
 	}
 
-	zenShape->MoveObject(sf::Vector2f(transposition->x, 0));
+	zenShape->MoveObject(sf::Vector2f(transposition.x, 0));
 
 	if (collider != nullptr)
 	{
 		if (canUseGravity || collider->GetOwner()->isJump)
 		{
-			zenShape->MoveObject(sf::Vector2f(0, transposition->y));
+			zenShape->MoveObject(sf::Vector2f(0, transposition.y));
 		}
 	}
 
-	velocity->x = (1.0 - fakeDrag) * velocity->x;
+	velocity.x = (1.0 - fakeDrag) * velocity.x;
 
-	velocity->y = (1.0 - fakeDrag) * velocity->y + gravity;
+	velocity.y = (1.0 - fakeDrag) * velocity.y + gravity;
 }
 
 void PhysicalZenObject2D::ResettingVariables()
 {
-	transposition->SetVector2(0, 0);
-	velocity->y = 0;
+	transposition.SetVector2(0, 0);
+	velocity.y = 0;
 }
 
 void PhysicalZenObject2D::AddForce(float massIn, Vector2 forceIN, float time)
 {
 	mass = massIn;
-	force = &forceIN;
+	force = forceIN;
 
-	acceleration->x = force->x / mass;
-	acceleration->y = force->y / mass;
+	acceleration.x = force.x / mass;
+	acceleration.y = force.y / mass;
 
-	float sx = (acceleration->x * time * time) / 2;
-	float sy = (acceleration->y * time * time) / 2;
+	float sx = (acceleration.x * time * time) / 2;
+	float sy = (acceleration.y * time * time) / 2;
 
-	velocity->x = sx / time;
-	velocity->y = sy / time;
+	velocity.x = sx / time;
+	velocity.y = sy / time;
 }
 
 void PhysicalZenObject2D::CalculationColliderPush()
@@ -147,7 +145,7 @@ void PhysicalZenObject2D::CalculationColliderPush()
 
 		if (collider->GetPosition()->y + collider->size.y + 2 > zenShape->Position.y && collider->GetPosition()->y + collider->size.y + 8 < zenShape->Position.y + 64)
 		{
-			velocity->y = 0;
+			velocity.y = 0;
 			if (collisionColliders[Collider::ColliderTags::GROUND].size() == 1)
 			{
 				zenShape->MoveObject(sf::Vector2f(0, 0.5f));
@@ -161,7 +159,7 @@ void PhysicalZenObject2D::CalculationColliderPush()
 			&& bounds.top + bounds.height > collider->GetPosition()->y
 			)
 		{
-			velocity->x = 0.0f;
+			velocity.x = 0.0f;
 			zenShape->SetPosition(sf::Vector2f(collider->GetPosition()->x - bounds.width - 2, bounds.top));
 			collisionPushSide = CollisionPushSide::RIGHT;
 		}
@@ -172,7 +170,7 @@ void PhysicalZenObject2D::CalculationColliderPush()
 			&& bounds.top + bounds.height > collider->GetPosition()->y
 			)
 		{
-			velocity->x = 0.0f;
+			velocity.x = 0.0f;
 			zenShape->SetPosition(sf::Vector2f(collider->GetPosition()->x + collider->size.x + 2, bounds.top));
 			collisionPushSide = CollisionPushSide::LEFT;
 		}
@@ -181,12 +179,12 @@ void PhysicalZenObject2D::CalculationColliderPush()
 
 Vector2* PhysicalZenObject2D::GetTransposition()
 {
-	return transposition;
+	return &transposition;
 }
 
 Vector2* PhysicalZenObject2D::GetVelocity()
 {
-	return velocity;
+	return &velocity;
 }
 
 void  PhysicalZenObject2D::SetGravity(float gravity)

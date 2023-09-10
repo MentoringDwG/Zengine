@@ -2,8 +2,10 @@
 
 #include <vector>
 #include "PhysicalZenObject2D.h"
-#include "../Colliders/CircleCollider2D.h"
-#include "../Colliders/BoxCollider2D.h"
+
+class BoxCollider2D;
+class CircleCollider2D;
+class PhysicalZenObject2D;
 
 class ZenPhysics2D
 {
@@ -25,20 +27,21 @@ public:
 
 	void Draw(RenderingStack* renderStack);
 	void DrawColliders(sf::RenderWindow* window);
-	int GetPhysicsTimeStep();
 
+	int GetPhysicsTimeStep();
 	void SetShouldShowDebug(bool bInShowDebug);
+
 private:
 	ZenPhysics2D() {}
+	~ZenPhysics2D();
 
 	static ZenPhysics2D instance;
-
-	int physicsTimeStep = 30;	//0.03 seconds
-	float globalGravity = 0.0f;
-	bool bShouldDrawDebug = true;
 
 	std::vector<PhysicalZenObject2D*> physicalObjects;
 	std::vector<CircleCollider2D*> circleColliders;
 	std::vector<BoxCollider2D*> boxColliders;
+	int physicsTimeStep = 30;	//0.03 seconds
+	float globalGravity = 0.0f;
+	bool bShouldDrawDebug = true;
 };
 

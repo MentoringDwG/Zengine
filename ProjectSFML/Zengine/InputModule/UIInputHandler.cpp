@@ -1,5 +1,6 @@
 #include "UIInputHandler.h"
 #include <iostream>
+#include "../UI/Widget.h"
 
 UIInputHandler UIInputHandler::instance;
 
@@ -65,6 +66,18 @@ bool UIInputHandler::CanConsumeInput()
 void UIInputHandler::AddWidget(Widget* widget)
 {
 	widgets.push_back(widget);
+}
+
+void UIInputHandler::DeleteWidget(Widget* widget)
+{
+	for (auto itr = widgets.begin(); itr != widgets.end(); ++itr)
+	{
+		if (*itr == widget)
+		{
+			widgets.erase(itr);
+			return;
+		}
+	}
 }
 
 void UIInputHandler::Clear()
