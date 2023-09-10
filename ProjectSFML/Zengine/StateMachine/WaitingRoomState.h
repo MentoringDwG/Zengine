@@ -14,8 +14,8 @@ public:
 	WaitingRoomState(int stateIdIn, StateMachine* stateMachine, int transitionStateId);
 
 private:
-	StateMachine* stateMachine = nullptr;
-	int transitionStateId;
 	sf::Clock clock;
+	int transitionStateId;
+	StateMachine* stateMachine = nullptr;
 };
 

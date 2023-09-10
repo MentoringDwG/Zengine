@@ -7,7 +7,7 @@ namespace State
 {
 	enum EAppState
 	{
-		//None = 0,
+		None = 0,
 		MainMenuState = 1,
 		LoadingState = 2,
 		GameplayState = 3,
@@ -22,8 +22,8 @@ class StateMachine
 {
 private:
 	std::map<int, class BaseGameState*> GameStates;
-	BaseGameState* CurrentGameState;
 	int currentGameStateId = 0;
+	BaseGameState* CurrentGameState;
 
 public:
 	bool AddState(BaseGameState* gameState);

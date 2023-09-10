@@ -2,30 +2,24 @@
 
 #include "BaseGameState.h"
 #include "../Renderer/Renderer.h"
-#include "../ZenObject/ZenShape.h"
-#include "../World/TextureAsset.h"
-#include "../UI/UIButton.h"
-#include "../InputModule/UIInputHandler.h"
 #include "../UIinGame/MainMenuPanel.h"
 
 class MainMenuState : public BaseGameState
 {
 private:
-	ZenShape* zenShape = nullptr;
+	void Animation();
+
+	MainMenuPanel mainMenuPanel;
+	sf::IntRect rectSpriteSheet = sf::IntRect(0, 0, 960, 544);
+	sf::Clock clock;
+	string spriteSheetPath = "Graphics/MainMenu/MainMenuSpriteSheet.png";
+	class ZenShape* zenShape = nullptr;
 	std::vector<sf::Texture*> spriteSheets;
 	sf::Texture* texture = nullptr;
 	RenderObject* renderObject = nullptr;
 	RenderingStack* renderStack = nullptr;
-	MainMenuPanel mainMenuPanel;
 	Renderer* renderer = nullptr;
 	StateMachine* stateMachine = nullptr;
-
-	string spriteSheetPath = "Graphics/MainMenu/MainMenuSpriteSheet.png";
-	sf::IntRect rectSpriteSheet = sf::IntRect(0, 0, 960, 544);
-
-	sf::Clock clock;
-
-	void Animation();
 
 public:
 	virtual void OnEnter(int prevStateId) override;
@@ -33,5 +27,6 @@ public:
 	virtual void OnLeave(int nextStateId) override;
 
 	MainMenuState(int stateIdIn, RenderingStack* renderStack, class StateMachine* stateMachine, Renderer* renderer);
+	~MainMenuState();
 };
 

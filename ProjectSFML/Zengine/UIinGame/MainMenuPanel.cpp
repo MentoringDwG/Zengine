@@ -27,6 +27,19 @@ void MainMenuPanel::Initialize(StateMachine* stateMachine)
 	this->stateMachine = stateMachine;
 }
 
+MainMenuPanel::~MainMenuPanel()
+{
+	delete buttons;
+	delete logo;
+	delete logoTexture;
+	delete logoRenderObject;
+	delete start;
+	delete controls;
+	delete authors;
+	delete volumeIcon;
+	delete exitIcon;
+}
+
 void  MainMenuPanel::Draw(RenderingStack* renderStack)
 {
 	start->Draw(renderStack, "Graphics/MainMenu/Start.png", sf::IntRect(0, 0, 228, 46), 13, "Start");

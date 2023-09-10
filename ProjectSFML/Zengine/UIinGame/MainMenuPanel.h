@@ -9,18 +9,18 @@
 class MainMenuPanel
 {
 private:
-	CompoundWidget* buttons;
+	CompoundWidget* buttons = nullptr;
 
 	ZenShape* logo = nullptr;
 	sf::Texture* logoTexture = nullptr;
 	RenderObject* logoRenderObject = nullptr;
 
-	UIButton* start;
-	UIButton* controls;
-	UIButton* authors;
+	UIButton* start = nullptr;
+	UIButton* controls = nullptr;
+	UIButton* authors = nullptr;
 	
-	UIButton* volumeIcon;
-	UIButton* exitIcon;
+	UIButton* volumeIcon = nullptr;
+	UIButton* exitIcon = nullptr;
 
 	class StateMachine* stateMachine = nullptr;
 
@@ -32,6 +32,8 @@ private:
 	WaitingRoomState* waitingRoonState = nullptr;
 
 public:
+	~MainMenuPanel();
+
 	void Initialize(class StateMachine* stateMachine);
 	void Draw(RenderingStack* renderStack);
 	void ButtonsInputInitialize();

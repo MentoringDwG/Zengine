@@ -2,14 +2,14 @@
 
 #include "BaseGameState.h"
 #include "../Renderer/Renderer.h"
-#include "../StateMachine/StateMachine.h"
 #include <functional>
-#include "WaitingRoomState.h"
+
+class StateMachine;
 
 class LoadingState : public BaseGameState
 {
 private:
-	StateMachine* stateMachine;
+	StateMachine* stateMachine = nullptr;
 
 public:
 	virtual void OnEnter(int prevStateId) override;

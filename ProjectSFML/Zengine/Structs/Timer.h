@@ -3,28 +3,17 @@
 
 struct Timer
 {
-	std::chrono::steady_clock::time_point start_time;
-	std::chrono::steady_clock::time_point end_time;
-	std::chrono::nanoseconds time;
-	int timeMs;
-
 	Timer()
 	{
 		Reset();
 	}
 
-	void Reset()
-	{
-		start_time = std::chrono::high_resolution_clock::now();
-		end_time = std::chrono::high_resolution_clock::now();
-		time = (std::chrono::nanoseconds)0;
-	}
+	void Reset();
+	void TimerStop();
 
-	void TimerStop()
-	{
-		end_time = std::chrono::high_resolution_clock::now();
-		time = end_time - start_time;
-		timeMs = (int)(time / std::chrono::milliseconds(1));
-	}
+	std::chrono::steady_clock::time_point start_time;
+	std::chrono::steady_clock::time_point end_time;
+	std::chrono::nanoseconds time;
+	int timeMs;
 };
 

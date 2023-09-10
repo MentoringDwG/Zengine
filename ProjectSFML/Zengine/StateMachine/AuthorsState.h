@@ -1,11 +1,9 @@
 #pragma once
 
 #include "BaseGameState.h"
-#include "../ZenObject/ZenShape.h"
 #include "../Renderer/Renderer.h"
-#include "../UI/UIButton.h"
-#include "../InputModule/UIInputHandler.h"
-#include "WaitingRoomState.h"
+
+class StateMachine;
 
 class AuthorsState: public BaseGameState
 {
@@ -15,16 +13,17 @@ public:
 	virtual void OnLeave(int nextStateId) override;
 
 	AuthorsState(int stateIdIn, RenderingStack* renderStackIn, StateMachine* stateMachineIn) : BaseGameState(stateIdIn), renderStack(renderStackIn), stateMachine(stateMachineIn) {}
+	~AuthorsState();
 
 private:
-	ZenShape* authorsPanel = nullptr;
+	void BackToMainMenu(int id);
+
+	class ZenShape* authorsPanel = nullptr;
 	sf::Texture* authorsPanelTexture = nullptr;
 	RenderObject* authorsPanelRenderObject = nullptr;
-	RenderingStack* renderStack;
-	UIButton* back = nullptr;
-	WaitingRoomState* waitingRoomState = nullptr;
+	RenderingStack* renderStack = nullptr;
+	class UIButton* back = nullptr;
+	class WaitingRoomState* waitingRoomState = nullptr;
 	StateMachine* stateMachine = nullptr;
-
-	void BackToMainMenu(int id);
 };
 

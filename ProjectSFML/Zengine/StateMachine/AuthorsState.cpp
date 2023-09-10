@@ -1,4 +1,20 @@
 #include "AuthorsState.h"
+#include "WaitingRoomState.h"
+#include "StateMachine.h"
+#include "../InputModule/UIInputHandler.h"
+#include "../UI/UIButton.h"
+#include "../ZenObject/ZenShape.h"
+
+AuthorsState::~AuthorsState()
+{
+	delete authorsPanel;
+	delete authorsPanelTexture;
+	delete authorsPanelRenderObject;
+	delete renderStack;
+	delete back;
+	delete waitingRoomState;
+	delete stateMachine;
+}
 
 void AuthorsState::OnEnter(int prevStateId)
 {

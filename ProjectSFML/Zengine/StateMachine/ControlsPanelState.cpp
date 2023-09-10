@@ -1,4 +1,20 @@
 #include "ControlsPanelState.h"
+#include "WaitingRoomState.h"
+#include "StateMachine.h"
+#include "../InputModule/UIInputHandler.h"
+#include "../UI/UIButton.h"
+#include "../ZenObject/ZenShape.h"
+
+ControlsPanelState::~ControlsPanelState()
+{
+	delete contolsPanel;
+	delete contolsPanelTexture;
+	delete contolsPanelRenderObject;
+	delete renderStack;
+	delete back;
+	delete waitingRoomState;
+	delete stateMachine;
+}
 
 void ControlsPanelState::OnEnter(int prevStateId)
 {

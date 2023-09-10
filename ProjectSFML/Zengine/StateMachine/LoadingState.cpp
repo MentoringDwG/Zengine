@@ -1,6 +1,5 @@
 #include "LoadingState.h"
-
-#include <iostream>
+#include "../StateMachine/StateMachine.h"
 
 LoadingState::LoadingState(int stateIdIn, StateMachine* stateMachine) : BaseGameState(stateIdIn)
 {
@@ -9,8 +8,6 @@ LoadingState::LoadingState(int stateIdIn, StateMachine* stateMachine) : BaseGame
 
 void LoadingState::OnEnter(int prevStateId)
 {
-	std::cout << "Loading state" << std::endl;
-
 	OnEnterEvent(2);
 }
 

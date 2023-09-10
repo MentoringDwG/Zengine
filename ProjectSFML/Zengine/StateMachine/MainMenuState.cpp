@@ -1,6 +1,6 @@
 #include "MainMenuState.h"
-
-#include <iostream>
+#include "../InputModule/UIInputHandler.h"
+#include "../ZenObject/ZenShape.h"
 
 MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack, StateMachine* stateMachine, Renderer* renderer) : BaseGameState(stateIdIn)
 {
@@ -20,10 +20,19 @@ MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack, StateMa
 	spriteSheets[3]->loadFromFile("Graphics/MainMenu/MainMenuSpriteSheet4.png");
 }
 
+MainMenuState::~MainMenuState()
+{
+	delete zenShape;
+	delete texture;
+	delete renderObject;
+	delete renderStack;
+	delete renderer;
+	delete stateMachine;
+	spriteSheets.clear();
+}
+
 void MainMenuState::OnEnter(int prevStateId)
 {
-	std::cout << "Main Menu enter" << std::endl;
-
 	zenShape = new ZenShape(10, "MainMenu", sf::Vector2f(960, 544));
 	zenShape->SetSize(sf::Vector2f(960, 544));
 
@@ -50,11 +59,10 @@ void MainMenuState::OnUpdate()
 
 void MainMenuState::OnLeave(int nextStateId)
 {
-	std::cout << "Main Menu leave" << std::endl;
-
 	renderStack->Clear();
 	delete zenShape;
 	delete texture;
+	mainMenuPanel.~MainMenuPanel();
 }
 
 void MainMenuState::Animation()
