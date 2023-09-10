@@ -10,6 +10,11 @@ void CompoundWidget::AddChild(int id, Widget* widget)
 	children[id] = widget;
 }
 
+void CompoundWidget::DeleteChild(int id)
+{
+	children.erase(id);
+}
+
 Widget* CompoundWidget::GetChild(int childId)
 {
 	return children[childId];

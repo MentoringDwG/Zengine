@@ -1,6 +1,5 @@
 #include "MainMenuState.h"
 #include "../InputModule/UIInputHandler.h"
-#include "../ZenObject/ZenShape.h"
 
 MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack, StateMachine* stateMachine, Renderer* renderer) : BaseGameState(stateIdIn)
 {
@@ -27,7 +26,6 @@ MainMenuState::~MainMenuState()
 	delete renderObject;
 	delete renderStack;
 	delete renderer;
-	delete stateMachine;
 	spriteSheets.clear();
 }
 

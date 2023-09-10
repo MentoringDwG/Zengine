@@ -8,6 +8,11 @@ Widget::Widget(Vector2 positionIn, Vector2 sizeIn): position(positionIn), size(s
 	widgetRect.height = sizeIn.y;
 }
 
+Widget::~Widget()
+{
+	delete parent;
+}
+
 bool Widget::IsMouseOver(sf::Vector2f* InMousePos)
 {
 	return widgetRect.contains(*InMousePos);

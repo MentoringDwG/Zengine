@@ -17,6 +17,7 @@ public:
 	virtual void OnMouseUnPressed() override;
 
 	void AddChild(int id, Widget* widget);
+	void DeleteChild(int id);
 	Widget* GetChild(int childId);
 };
 

@@ -12,7 +12,7 @@ public:
 	virtual void OnMousePressed() = 0;
 	virtual void OnMouseUnPressed() = 0;
 
-	enum State
+	enum class State
 	{
 		MouseHover = 0,
 		UnHover = 1,
@@ -20,9 +20,9 @@ public:
 		UnPressed = 3
 	};
 
-	State state = State::UnHover;
-
 	Widget(Vector2 positionIn, Vector2 sizeIn);
+	~Widget();
+
 	void SetParent(Widget* parent);
 	sf::FloatRect GetWidgetRect();
 	void SetPosition(Vector2 positionIn);
@@ -35,6 +35,7 @@ public:
 	WidgetEventHandler OnMouseUpEvent;
 	WidgetEventHandler OnMouseHoverEvent;
 	WidgetEventHandler OnMouseUnHoverEvent;
+	State state = State::UnHover;
 
 private:
 	Vector2 position;

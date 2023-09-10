@@ -10,6 +10,8 @@ class HeartsPanel
 
 public:
 	HeartsPanel();
+	~HeartsPanel();
+
 	void Draw(class RenderingStack* renderStack);
 	void UpdateHeartsState();
 };

@@ -9,6 +9,7 @@
 #include "StateMachine/GameplayState.h"
 #include "StateMachine/ControlsPanelState.h"
 #include "StateMachine/AuthorsState.h"
+#include "StateMachine/WaitingRoomState.h"
 // To w sumie te¿.
 #include "Character/Character.h"
 

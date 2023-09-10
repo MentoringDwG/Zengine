@@ -3,6 +3,7 @@
 #include "BaseGameState.h"
 #include "../Renderer/Renderer.h"
 #include "../UIinGame/MainMenuPanel.h"
+#include "../ZenObject/ZenShape.h"
 
 class MainMenuState : public BaseGameState
 {

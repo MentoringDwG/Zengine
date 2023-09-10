@@ -7,6 +7,11 @@ HeartsPanel::HeartsPanel()
 	hearts.push_back(make_shared<UIButton>(Vector2(64, 0), Vector2(32, 32)));
 }
 
+HeartsPanel::~HeartsPanel()
+{
+	hearts.clear();
+}
+
 void HeartsPanel::Draw(RenderingStack* renderStack)
 {
 	hearts[0]->Draw(renderStack, "Graphics/Heart.png", sf::IntRect(0, 0, 32, 32), 20, "HeartLeft");

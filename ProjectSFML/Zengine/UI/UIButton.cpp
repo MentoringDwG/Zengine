@@ -6,11 +6,19 @@ UIButton::UIButton(Vector2 positionIn, Vector2 sizeIn): Widget(positionIn, sizeI
 	highlight = new sf::Texture();
 }
 
+UIButton::~UIButton()
+{
+	delete background;
+	delete highlight;
+	delete zenShape;
+	delete renderobject;
+}
+
 void UIButton::OnMouseHover()
 {
-	if (state != Widget::MouseHover)
+	if (state != Widget::State::MouseHover)
 	{
-		state = Widget::MouseHover;
+		state = Widget::State::MouseHover;
 		OnMouseHoverEvent.Invoke();
 
 		if (isHighlightSet)
@@ -22,9 +30,9 @@ void UIButton::OnMouseHover()
 
 void UIButton::OnMouseUnHover()
 {
-	if (state != Widget::UnHover)
+	if (state != Widget::State::UnHover)
 	{
-		state = Widget::UnHover;
+		state = Widget::State::UnHover;
 		OnMouseUnHoverEvent.Invoke();
 
 		if (isHighlightSet)

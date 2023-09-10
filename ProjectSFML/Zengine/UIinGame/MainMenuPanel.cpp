@@ -1,6 +1,9 @@
 #include "MainMenuPanel.h"
-
+#include "../StateMachine/WaitingRoomState.h"
 #include "../StateMachine/StateMachine.h"
+#include "../Structs/Vector2.h"
+#include "../UI/UIButton.h"
+#include "../ZenObject/ZenShape.h"
 
 void MainMenuPanel::Initialize(StateMachine* stateMachine)
 {

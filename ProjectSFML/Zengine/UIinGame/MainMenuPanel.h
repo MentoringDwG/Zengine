@@ -1,17 +1,22 @@
 #pragma once
 
-#include "../Structs/Vector2.h"
 #include "../UI/CompoundWidget.h"
-#include "../UI/UIButton.h"
 #include "../InputModule/UIInputHandler.h"
-#include "../StateMachine/WaitingRoomState.h"
+#include "../Renderer/Renderer.h"
+
+class UIButton;
 
 class MainMenuPanel
 {
 private:
+	void StartPressed(int id);
+	void ControlsPressed(int id);
+	void AuthorsPressed(int id);
+	void ExitPressed(int id);
+
 	CompoundWidget* buttons = nullptr;
 
-	ZenShape* logo = nullptr;
+	class ZenShape* logo = nullptr;
 	sf::Texture* logoTexture = nullptr;
 	RenderObject* logoRenderObject = nullptr;
 
@@ -23,13 +28,7 @@ private:
 	UIButton* exitIcon = nullptr;
 
 	class StateMachine* stateMachine = nullptr;
-
-	void StartPressed(int id);
-	void ControlsPressed(int id);
-	void AuthorsPressed(int id);
-	void ExitPressed(int id);
-
-	WaitingRoomState* waitingRoonState = nullptr;
+	class WaitingRoomState* waitingRoonState = nullptr;
 
 public:
 	~MainMenuPanel();

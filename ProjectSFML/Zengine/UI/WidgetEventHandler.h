@@ -1,7 +1,7 @@
 #pragma once
 
-#include "WidgetCollback.h"
 #include <vector>
+#include "WidgetCollback.h"
 
 class WidgetEventHandler
 {

@@ -8,6 +8,7 @@ class UIButton: public Widget
 {
 public:
 	UIButton(Vector2 positionIn, Vector2 sizeIn);
+	~UIButton();
 
 	virtual void OnMouseHover() override;
 	virtual void OnMouseUnHover() override;
@@ -20,9 +21,8 @@ public:
 	sf::IntRect GetIntRect();
 
 private:
-	sf::Texture* background;
-	sf::Texture* highlight;
-	sf::Color color;
+	sf::Texture* background = nullptr;
+	sf::Texture* highlight = nullptr;
 	ZenShape* zenShape = nullptr;
 	RenderObject* renderobject = nullptr;
 
