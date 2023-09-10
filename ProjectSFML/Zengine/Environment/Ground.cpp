@@ -1,5 +1,8 @@
 #include "Ground.h"
 #include <fstream>
+#include "../Colliders/BoxCollider2D.h"
+#include "../Colliders/Collider.h"
+#include "../Physics2D/ZenPhysics2D.h"
 
 void Ground::SetBoxColliders(string pathToGroundTxt)
 {
@@ -32,6 +35,12 @@ void Ground::SetBoxColliders(string pathToGroundTxt)
 		boxColliders[i]->OnCollisionStart.AddListener(&Ground::HandleCollisionStart, this);
 		ZenPhysics2D::Get()->RegisterCollider(boxColliders[i]);
 	}
+}
+
+Ground::~Ground()
+{
+	boxColliders.clear();
+	zenObjects.clear();
 }
 
 void Ground::HandleCollisionStart(Collider* other)

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "../Physics2D/ZenPhysics2D.h"
-#include "../Colliders/BoxCollider2D.h"
 #include "../ZenObject/ZenObject.h"
 
 class Ground
@@ -12,16 +10,15 @@ public:
 		SetBoxColliders(pathToGroundTxt);
 	}
 
+	~Ground();
+
 	void SetBoxColliders(string pathToGroundTxt);
 
 private:
+	void HandleCollisionStart(class Collider* other);
 	sf::Vector2f position;
-	std::vector<BoxCollider2D*> boxColliders;
-
+	std::vector<class BoxCollider2D*> boxColliders;
 	std::vector<ZenObject*> zenObjects;
-
-	void HandleCollisionStart(Collider* other);
-
-	int listenerIndex;
+	int listenerIndex = 0;
 };
 

@@ -1,27 +1,28 @@
 #pragma once
 
-#include "../ZenObject/ZenShape.h"
 #include "../Renderer/Renderer.h"
-#include "../Colliders/CircleCollider2D.h"
-#include "../Physics2D/ZenPhysics2D.h"
-#include "../Environment/CoinCounter.h"
+#include "../ZenObject/ZenShape.h"
+
+class CoinCounter;
 
 class Coin
 {
 public:
 	Coin(int IDIn, string NameIn, string CoinPath, sf::Vector2f position, CoinCounter* coinCounter);
+	~Coin();
+
 	void Draw(RenderingStack* renderStack);
-	void SetCollider(Vector2* position, float radius);
+	void SetCollider(struct Vector2* position, float radius);
 
 private:
+	void HandleCollisionStart(class Collider* other);
+
+	int listenerIndexStart = 0;
+	int listenerIndexEnd = 0;
 	ZenShape* zenShape = nullptr;
 	RenderObject* coinRenderObject = nullptr;
 	RenderingStack* renderStack = nullptr;
-	CircleCollider2D* collider = nullptr;
+	class CircleCollider2D* collider = nullptr;
 	CoinCounter* coinCounter = nullptr;
-
-	void HandleCollisionStart(Collider* other);
-	int listenerIndexStart;
-	int listenerIndexEnd;
 };
 

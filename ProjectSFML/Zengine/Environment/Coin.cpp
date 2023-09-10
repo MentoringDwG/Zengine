@@ -1,4 +1,9 @@
 #include "Coin.h"
+#include "../Environment/CoinCounter.h"
+#include "../Physics2D/ZenPhysics2D.h"
+#include "../Colliders/CircleCollider2D.h"
+#include "../Colliders/Collider.h"
+#include "../Structs/Vector2.h"
 
 Coin::Coin(int IDIn, string NameIn, string CoinPath, sf::Vector2f position, CoinCounter* coinCounter)
 {
@@ -9,6 +14,15 @@ Coin::Coin(int IDIn, string NameIn, string CoinPath, sf::Vector2f position, Coin
 
 	this->coinCounter = coinCounter;
 	SetCollider(new Vector2(position.x, position.y), 20);
+}
+
+Coin::~Coin()
+{
+	delete zenShape;
+	delete coinRenderObject;
+	delete renderStack;
+	delete collider;
+	delete coinCounter;
 }
 
 void Coin::Draw(RenderingStack* renderStack)
