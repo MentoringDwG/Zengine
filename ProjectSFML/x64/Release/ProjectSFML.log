@@ -1,7 +1,52 @@
-﻿  Zengine.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\ProjectSFML\Zengine\Physics2D\PhysicalZenObject2D.h(51,24): warning C4305: "argument": obcięcie z "double" do "float"
+﻿  main.cpp
+  Character.cpp
+  BoxCollider2D.cpp
+  CircleCollider2D.cpp
+  Collider.cpp
+  CollisionCallback.cpp
+  CollisionEventBinder.cpp
+  Coin.cpp
+  CoinCounter.cpp
+  Ground.cpp
+  CharacterInputHandler.cpp
+  InputHandler.cpp
+  InputProcessorModule.cpp
+  UIInputHandler.cpp
+  IEngineModule.cpp
+  PhysicalZenObject2D.cpp
+  ZenPhysics2D.cpp
+  Renderer.cpp
+  AuthorsState.cpp
+  BaseGameState.cpp
+  Trwa kompilowanie...
+  ControlsPanelState.cpp
+  GameplayState.cpp
+  LoadingState.cpp
+  MainMenuState.cpp
+  StateMachine.cpp
+  WaitingRoomState.cpp
+  Timer.cpp
+  Vector2.cpp
+  HeartsPanel.cpp
+  MainMenuPanel.cpp
+  CompoundWidget.cpp
+  UIButton.cpp
+  Widget.cpp
+  WidgetCollback.cpp
+  WidgetEventHandler.cpp
+  AssetsManager.cpp
+  Enemy.cpp
+  TextureAsset.cpp
+  Map.cpp
+  World.cpp
+  Trwa kompilowanie...
+  Zengine.cpp
+  MovableObject.cpp
+  ZenObject.cpp
+  ZenShape.cpp
+  ZenText.cpp
   Trwa generowanie kodu
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  Previous IPDB not found, fall back to full compilation.
   All 2274 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Zakończono generowanie kodu
   ProjectSFML.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\ProjectSFML.exe

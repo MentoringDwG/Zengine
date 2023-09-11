@@ -48,7 +48,7 @@ private:
 	float gravity = 0.0f;
 	Vector2 force = Vector2(0 ,0);
 	Vector2 velocity = Vector2(0, 0);
-	Vector2 transposition = Vector2(0.1, 0);
+	Vector2 transposition = Vector2(0.1f, 0);
 	Vector2 acceleration = Vector2(0, 0);
 	Collider* collider = nullptr;
 	bool canUseGravity = false;

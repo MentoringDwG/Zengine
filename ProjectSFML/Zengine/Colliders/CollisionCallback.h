@@ -5,7 +5,7 @@
 struct CollisionCallback
 {
 	std::function<void(class Collider*)> Callback;
-	int ListenerID;
+	int ListenerID = 1;
 };
 
 

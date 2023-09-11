@@ -39,7 +39,7 @@ private:
 	Renderer* RenderModule = nullptr;
 	RenderingStack* renderStack = nullptr;
 	CharacterInputHandler characterInputHandler;
-	ZenText* fpsText;
+	ZenText* fpsText = nullptr;
 	sf::RenderWindow* window = nullptr;
 	sf::View mainView;
 	sf::View playerView;

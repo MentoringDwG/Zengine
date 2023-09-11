@@ -92,9 +92,9 @@ void PhysicalZenObject2D::CalculatePhysics()
 		}
 	}
 
-	velocity.x = (1.0 - fakeDrag) * velocity.x;
+	velocity.x = (float)((1.0 - fakeDrag) * velocity.x);
 
-	velocity.y = (1.0 - fakeDrag) * velocity.y + gravity;
+	velocity.y = (float)((1.0 - fakeDrag) * velocity.y + gravity);
 }
 
 void PhysicalZenObject2D::ResettingVariables()

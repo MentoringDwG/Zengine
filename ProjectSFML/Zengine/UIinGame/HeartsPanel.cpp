@@ -21,7 +21,7 @@ void HeartsPanel::Draw(RenderingStack* renderStack)
 
 void HeartsPanel::UpdateHeartsState()
 {
-	for (int i = hearts.size() - 1; i >= 0; i--)
+	for (int i = (int)hearts.size() - 1; i >= 0; i--)
 	{
 		if (hearts[i]->GetIntRect().left == 0)
 		{

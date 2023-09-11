@@ -9,7 +9,7 @@ bool UIInputHandler::ProcessInput(sf::Event& event, sf::RenderWindow* inWindow)
 	if (widgets.size() == 0) return false;
 
 	sf::Vector2i mousePosition = sf::Mouse::getPosition(*inWindow);
-	sf::Vector2f mousePositionF = sf::Vector2f(mousePosition.x, mousePosition.y);
+	sf::Vector2f mousePositionF = sf::Vector2f((float)mousePosition.x, (float)mousePosition.y);
 
 
 	if (event.type == sf::Event::MouseMoved)

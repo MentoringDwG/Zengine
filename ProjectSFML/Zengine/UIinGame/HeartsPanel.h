@@ -12,6 +12,6 @@ public:
 	HeartsPanel();
 	~HeartsPanel();
 
-	void Draw(class RenderingStack* renderStack);
+	void Draw(struct RenderingStack* renderStack);
 	void UpdateHeartsState();
 };
