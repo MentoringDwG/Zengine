@@ -13,7 +13,7 @@ void ZenText::SetFont(string fontPath)
 
 void ZenText::SetPosition(sf::Vector2f vector2f)
 {
-	Position = vector2f;
+	position = vector2f;
 	text.setPosition(vector2f);
 }
 

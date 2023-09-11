@@ -130,9 +130,9 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		collider = colliders[i];
 		bounds = zenShape->GetGlobalBounds();
 
-		if (collider->GetPosition()->y > zenShape->Position.y && collider->GetPosition()->y < zenShape->Position.y + 64)
+		if (collider->GetPosition()->y > zenShape->position.y && collider->GetPosition()->y < zenShape->position.y + 64)
 		{
-			float yToMove = abs(collider->GetPosition()->y - (zenShape->Position.y + 64));
+			float yToMove = abs(collider->GetPosition()->y - (zenShape->position.y + 64));
 
 			if (collisionColliders[Collider::ColliderTags::GROUND].size() == 1)
 			{
@@ -143,7 +143,7 @@ void PhysicalZenObject2D::CalculationColliderPush()
 			return;
 		}
 
-		if (collider->GetPosition()->y + collider->size.y + 2 > zenShape->Position.y && collider->GetPosition()->y + collider->size.y + 8 < zenShape->Position.y + 64)
+		if (collider->GetPosition()->y + collider->size.y + 2 > zenShape->position.y && collider->GetPosition()->y + collider->size.y + 8 < zenShape->position.y + 64)
 		{
 			velocity.y = 0;
 			if (collisionColliders[Collider::ColliderTags::GROUND].size() == 1)

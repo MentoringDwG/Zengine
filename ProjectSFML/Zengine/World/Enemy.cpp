@@ -4,8 +4,6 @@
 #include "../Colliders/Collider.h"
 #include "../Physics2D/ZenPhysics2D.h"
 
-#include <iostream>
-
 Enemy::Enemy(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize, HeartsPanel* heartsPanelIn)
 {
 	heartsPanel = heartsPanelIn;
@@ -21,7 +19,7 @@ Enemy::Enemy(int inID, string inName, string enemySpritePath, sf::Vector2f start
 
 Enemy::~Enemy()
 {
-	//delete heartsPanel;
+	delete heartsPanel;
 	delete physicalZenObject;
 	delete circleCollider;
 }
@@ -35,9 +33,8 @@ void Enemy::Update()
 
 void Enemy::HandleCollisionStart(Collider* other)
 {
-	if (other->GetOwner()->Name == "Mario")
+	if (other->GetOwner()->name == "Mario")
 	{
-		std::cout << "Collision with Mario" << std::endl;
 		if (isCollisionWithCharacter == false)
 		{
 			heartsPanel->UpdateHeartsState();
@@ -48,7 +45,7 @@ void Enemy::HandleCollisionStart(Collider* other)
 
 void Enemy::HandleCollisionEnd(Collider* other)
 {
-	if (other->GetOwner()->Name == "Mario")
+	if (other->GetOwner()->name == "Mario")
 	{
 		isCollisionWithCharacter = false;
 	}

@@ -41,7 +41,7 @@ void Coin::SetCollider(Vector2 position, float radius)
 
 void Coin::HandleCollisionStart(Collider* other)
 {
-	if (other->GetOwner()->Name == "Mario")
+	if (other->GetOwner()->name == "Mario")
 	{
 		renderStack->RemoveFromRenderLayers(coinRenderObject);
 		ZenPhysics2D::Get()->UnregisterCollider(collider);

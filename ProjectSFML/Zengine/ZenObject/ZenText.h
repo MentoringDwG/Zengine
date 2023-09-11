@@ -5,10 +5,7 @@
 class ZenText : public ZenObject
 {
 public:
-	ZenText(int inID, string inName, sf::Vector2f inSize) :ZenObject(inID, inName, inSize)
-	{
-
-	};
+	ZenText(int inID, string inName, sf::Vector2f inSize) :ZenObject(inID, inName, inSize) {};
 
 	void SetText(string text);
 	void SetFont(string fontPath);
@@ -17,7 +14,6 @@ public:
 	void SetSize(int size);
 	sf::Text GetText();
 	sf::Text* GetTextRaw();
-
 
 private:
 	sf::Text text;

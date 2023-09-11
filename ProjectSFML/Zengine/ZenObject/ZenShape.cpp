@@ -1,5 +1,17 @@
 #include "ZenShape.h"
 
+ZenShape::ZenShape(int inID, string inName, sf::Vector2f inSize) :ZenObject(inID, inName, inSize)
+{
+	rectangleShape = new sf::RectangleShape();
+	texture = new sf::Texture();
+};
+
+ZenShape::~ZenShape()
+{
+	delete rectangleShape;
+	delete texture;
+}
+
 void ZenShape::SetTexture(string texcurePath)
 {
 	texture->loadFromFile(texcurePath);
@@ -13,7 +25,7 @@ void ZenShape::SetTexture(sf::Texture* texture)
 
 void ZenShape::SetPosition(sf::Vector2f vector)
 {
-	Position = vector;
+	position = vector;
 	rectangleShape->setPosition(vector);
 }
 
@@ -24,9 +36,9 @@ void ZenShape::SetSize(sf::Vector2f vector)
 
 void ZenShape::MoveObject(sf::Vector2f vector)
 {
-	previousPosition = Position;
+	previousPosition = position;
 	rectangleShape->move(vector);
-	Position = rectangleShape->getPosition();
+	position = rectangleShape->getPosition();
 }
 
 void ZenShape::SetOrigin(sf::Vector2f vector)
