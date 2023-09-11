@@ -18,7 +18,7 @@ public:
 	Character(std::string name, string Path, float playerMoveSpeed);
 	~Character();
 
-	CharacterInputHandler GetInputHandler();
+	CharacterInputHandler* GetInputHandler();
 	void SetTextureAsset(string Path, string Name);
 	TextureAsset GetTextureAsset();
 	void Draw(struct RenderingStack* renderStack);

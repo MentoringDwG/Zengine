@@ -2,16 +2,12 @@
 #include "World/World.h"
 #include "InputModule/InputProcessorModule.h"
 #include "Structs/Timer.h"
-
-// To musimy przenieœæ do innej klasy.
-#include "StateMachine/MainMenuState.h"
-#include "StateMachine/LoadingState.h"
-#include "StateMachine/GameplayState.h"
-#include "StateMachine/ControlsPanelState.h"
-#include "StateMachine/AuthorsState.h"
-#include "StateMachine/WaitingRoomState.h"
-// To w sumie te¿.
+#include "InputModule/UIInputHandler.h"
 #include "Character/Character.h"
+#include "StateMachine/StateMachine.h"
+#include "ZenObject/ZenText.h"
+#include "Physics2D/ZenPhysics2D.h"
+#include "Interfaces/IEngineModule.h"
 
 Zengine* Zengine::Engine = nullptr;
 World world;
@@ -37,8 +33,6 @@ void Zengine::Run()
 	RenderModule->Initialize(window);
 
 	stateMachine = new StateMachine();
-	StateInitialize();
-	stateMachine->TransitionTo(State::MainMenuState);
 
 	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
@@ -48,6 +42,8 @@ void Zengine::Run()
 	RenderingStackInitialize();
 
 	UIInitialize();
+
+	Start(1);
 
 	MainLoop();
 }
@@ -71,36 +67,6 @@ void Zengine::UIInitialize()
 	fpsText->SetColor(sf::Color::White);
 	fpsText->SetSize(20);
 	fpsText->SetFont("Fonts/Super_Mario_Bros_/SuperMarioBros.ttf");
-}
-
-void Zengine::StateInitialize()
-{
-	mainMenuState = new MainMenuState(State::MainMenuState, renderStack, stateMachine, RenderModule);
-	loadingState = new LoadingState(State::LoadingState, stateMachine);
-	gameplayState = new GameplayState(State::GameplayState);
-	controlsPanelState = new ControlsPanelState(State::ControlsPanelState, renderStack, stateMachine);
-	authorsState = new AuthorsState(State::AuthorsState, renderStack, stateMachine);
-
-	stateMachine->AddState(mainMenuState);
-	stateMachine->AddState(loadingState);
-	stateMachine->AddState(gameplayState);
-	stateMachine->AddState(controlsPanelState);
-	stateMachine->AddState(authorsState);
-
-	loadingState->OnEnterEvent = std::bind(&Zengine::OnLoading, this, std::placeholders::_1);
-}
-
-void Zengine::OnLoading(int id)
-{
-	world.Draw(renderStack);
-
-	RenderingStackInitialize();
-	CharacterInputHandlerInitialize();
-
-	waitingRoomState = new WaitingRoomState(0, stateMachine, 3);
-	stateMachine->DeleteState(0);
-	stateMachine->AddState(waitingRoomState);
-	stateMachine->TransitionTo(0);
 }
 
 void Zengine::MainLoop()
@@ -145,11 +111,6 @@ void Zengine::MainLoop()
 		window->setView(window->getDefaultView());
 		window->draw(fpsText->GetText());
 
-		if (stateId == State::GameplayState)
-		{
-			//world.coinCounter->Draw(window);
-		}
-
 		window->display();
 
 		CountFPS();
@@ -162,7 +123,7 @@ void Zengine::MainLoop()
 
 void Zengine::CharacterInputHandlerInitialize()
 {
-	characterInputHandler = world.GetPlayer()->GetInputHandler();
+	characterInputHandler = *world.GetPlayer()->GetInputHandler();
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&characterInputHandler));
 }
 
@@ -204,4 +165,24 @@ void Zengine::SetUI()
 void Zengine::Shutdown()
 {
 
+}
+
+StateMachine* Zengine::GetStateMachine()
+{
+	return stateMachine;
+}
+
+RenderingStack* Zengine::GetRenderingStack()
+{
+	return renderStack;
+}
+
+Renderer* Zengine::GetRenderer()
+{
+	return RenderModule;
+}
+
+class World* Zengine::GetWorld()
+{
+	return &world;
 }

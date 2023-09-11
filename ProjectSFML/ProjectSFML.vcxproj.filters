@@ -55,6 +55,9 @@
     <Filter Include="Zengine\UIinGame">
       <UniqueIdentifier>{b3610384-8cef-4f2f-8c01-37e00037fad5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Zengine\Application">
+      <UniqueIdentifier>{71384337-3865-4fa3-951f-c64040a120b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp">
@@ -192,6 +195,9 @@
     <ClCompile Include="Zengine\UIinGame\HeartsPanel.cpp">
       <Filter>Zengine\UIinGame</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\Application\AppMarioGame.cpp">
+      <Filter>Zengine\Application</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
@@ -325,6 +331,9 @@
     </ClInclude>
     <ClInclude Include="Zengine\UIinGame\HeartsPanel.h">
       <Filter>Zengine\UIinGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Application\AppMarioGame.h">
+      <Filter>Zengine\Application</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Zengine\Application\AppMarioGame.cpp" />
     <ClCompile Include="Zengine\Character\Character.cpp" />
     <ClCompile Include="Zengine\Colliders\BoxCollider2D.cpp" />
     <ClCompile Include="Zengine\Colliders\CircleCollider2D.cpp" />
@@ -198,6 +199,7 @@
     <ClCompile Include="ZenText.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Zengine\Application\AppMarioGame.h" />
     <ClInclude Include="Zengine\Character\Character.h" />
     <ClInclude Include="Zengine\Colliders\BoxCollider2D.h" />
     <ClInclude Include="Zengine\Colliders\CircleCollider2D.h" />

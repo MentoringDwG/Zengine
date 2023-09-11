@@ -85,9 +85,9 @@ void Character::UpdateCharacter()
 	collider2D->SetPosition(physicalZenObject2D->zenShape->GetPosition());
 }
 
-CharacterInputHandler Character::GetInputHandler()
+CharacterInputHandler* Character::GetInputHandler()
 {
-	return Character::inputHandler;
+	return &inputHandler;
 }
 
 void Character::SetTextureAsset(string Path, string Name)

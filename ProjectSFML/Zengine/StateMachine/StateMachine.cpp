@@ -45,6 +45,8 @@ void StateMachine::TransitionTo(int stateId)
 
 void StateMachine::Update()
 {
+	if (CurrentGameState == nullptr) return;
+
 	CurrentGameState->OnUpdate();
 }
 
