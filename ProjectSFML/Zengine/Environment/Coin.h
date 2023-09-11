@@ -12,7 +12,7 @@ public:
 	~Coin();
 
 	void Draw(RenderingStack* renderStack);
-	void SetCollider(struct Vector2* position, float radius);
+	void SetCollider(struct Vector2 position, float radius);
 
 private:
 	void HandleCollisionStart(class Collider* other);

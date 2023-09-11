@@ -1,10 +1,10 @@
 #include "CircleCollider2D.h"
-#include <cmath>
-#include "../Colliders/BoxCollider2D.h"
-#include "../ZenObject/ZenObject.h"
+#include "BoxCollider2D.h"
 #include "../Structs/Vector2.h"
+#include "../ZenObject/ZenObject.h"
+#include <cmath>
 
-CircleCollider2D::CircleCollider2D(Vector2* position, float radius, ZenObject* owner, Collider::ColliderTags tag) :Collider(tag, position)
+CircleCollider2D::CircleCollider2D(Vector2 position, float radius, ZenObject* owner, Collider::ColliderTags tag) :Collider(tag, position)
 {
 	this->radius = radius;
 	SetOwner(owner);
@@ -15,15 +15,9 @@ CircleCollider2D::CircleCollider2D(Vector2* position, float radius, ZenObject* o
 	debugCircle.setOutlineColor(sf::Color::Green);
 	debugCircle.setOutlineThickness(1);
 
-	SetPosition(sf::Vector2f(position->x, position->y));
-
-	testPoint = new Vector2(position->x, position->y);
+	SetPosition(sf::Vector2f(position.x, position.y));
 }
 
-CircleCollider2D::~CircleCollider2D()
-{
-	delete testPoint;
-}
 
 void CircleCollider2D::SetPosition(sf::Vector2f vector)
 {
@@ -56,28 +50,28 @@ bool CircleCollider2D::CheckCircleCollision(CircleCollider2D* otherCollider)
 
 bool CircleCollider2D::CheckBoxCollision(BoxCollider2D* otherCollider)
 {
-	testPoint->x = GetPosition()->x;
-	testPoint->y = GetPosition()->y;
+	testPoint.x = GetPosition()->x;
+	testPoint.y = GetPosition()->y;
 
 	if (GetPosition()->x < otherCollider->GetPosition()->x)
 	{
-		testPoint->x = otherCollider->GetPosition()->x;
+		testPoint.x = otherCollider->GetPosition()->x;
 	}
 	else if (GetPosition()->x > otherCollider->GetPosition()->x + otherCollider->GetSize().x)
 	{
-		testPoint->x = otherCollider->GetPosition()->x + otherCollider->GetSize().x;
+		testPoint.x = otherCollider->GetPosition()->x + otherCollider->GetSize().x;
 	}
 
 	if (GetPosition()->y < otherCollider->GetPosition()->y)
 	{
-		testPoint->y = otherCollider->GetPosition()->y;
+		testPoint.y = otherCollider->GetPosition()->y;
 	}
 	else if (GetPosition()->y > otherCollider->GetPosition()->y + otherCollider->GetSize().y)
 	{
-		testPoint->y = otherCollider->GetPosition()->y + otherCollider->GetSize().y;
+		testPoint.y = otherCollider->GetPosition()->y + otherCollider->GetSize().y;
 	}
 
-	if (testPoint->GetDistance(GetPosition()) <= radius)
+	if (testPoint.GetDistance(GetPosition()) <= radius)
 	{
 		bIsColliding = true;
 	}
@@ -92,7 +86,9 @@ bool CircleCollider2D::CheckBoxCollision(BoxCollider2D* otherCollider)
 	}
 	else
 	{
+
 		OnCollisionEnd.Invoke(otherCollider);
+
 	}
 
 	return bIsColliding;

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <functional>
-#include <iostream>
 #include "Collider.h"
 
 struct Vector2;
@@ -9,7 +8,7 @@ struct Vector2;
 class BoxCollider2D: public Collider
 {
 public:
-	BoxCollider2D(Vector2* position, Vector2* size, class ZenObject* owner, Collider::ColliderTags tag);
+	BoxCollider2D(Vector2 position, Vector2 size, class ZenObject* owner, Collider::ColliderTags tag);
 
 	bool CheckBoxCollision(BoxCollider2D* other);
 	bool HasCollision();

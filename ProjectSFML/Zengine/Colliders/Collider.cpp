@@ -1,10 +1,10 @@
 #include "Collider.h"
 #include "../ZenObject/ZenObject.h"
 
-Collider::Collider(ColliderTags tag, Vector2* size)
+Collider::Collider(ColliderTags tag, Vector2 size)
 {
 	this->tag = tag;
-	this->size = *size;
+	this->size = size;
 }
 
 Collider::~Collider()

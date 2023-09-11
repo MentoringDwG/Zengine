@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include "../InputModule/CharacterInputHandler.h"
 #include "../ZenObject/MovableObject.h"
 #include "../Colliders/Collider.h"
@@ -23,7 +22,7 @@ public:
 	void SetTextureAsset(string Path, string Name);
 	TextureAsset GetTextureAsset();
 	void Draw(struct RenderingStack* renderStack);
-	void SetCollider(Vector2* position, Vector2* size);
+	void SetCollider(Vector2 position, Vector2 size);
 	void UpdateCharacter();
 	bool IsCharacterGrounded();
 

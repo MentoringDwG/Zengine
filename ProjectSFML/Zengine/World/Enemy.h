@@ -1,23 +1,24 @@
 #pragma once
 
 #include "../Physics2D/PhysicalZenObject2D.h"
-#include "../Physics2D/ZenPhysics2D.h"
-#include "../Colliders/CircleCollider2D.h"
-#include "../UIinGame/HeartsPanel.h"
 
 class Enemy
 {
 private:
-	PhysicalZenObject2D* physicalZenObject;
-	CircleCollider2D* circleCollider;
-
 	void HandleCollisionStart(Collider* other);
 	void HandleCollisionEnd(Collider* other);
+
+	class HeartsPanel* heartsPanel = nullptr;
+	PhysicalZenObject2D* physicalZenObject = nullptr;
+	class CircleCollider2D* circleCollider = nullptr;
 	bool isCollisionWithCharacter = false;
-	HeartsPanel* heartsPanel = nullptr;
+
+	sf::Vector2f colliderPosition;
 
 public:
-	Enemy(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize, HeartsPanel* heartsPanelIn);
+	Enemy(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize, class HeartsPanel* heartsPanelIn);
+	~Enemy();
+
 	void AddForce(float mass, Vector2 force, float time);
 	Vector2* GetTransposition();
 	Vector2* GetVelocity();

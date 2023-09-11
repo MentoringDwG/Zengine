@@ -1,12 +1,13 @@
 #pragma once
 
-#include "../ZenObject/ZenObject.h"
 #include "../Physics2D/PhysicalZenObject2D.h"
 #include <sstream>
 
 class World
 {
 public:
+	~World();
+
 	void Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed);
 	void MapInitialize(string pathToTexturesTxt, string pathToTileTxt);
 	void PhysicalZenObject2DInitialize(string enemySpritePath);
@@ -16,7 +17,8 @@ public:
 	void UpdateObjects();
 
 	class Character* GetPlayer();
-	class CoinCounter* coinCounter;
+
+	class CoinCounter* coinCounter = nullptr;
 
 private:
 	class Map *map = nullptr;

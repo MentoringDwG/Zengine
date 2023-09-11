@@ -1,13 +1,13 @@
 #pragma once
 
 #include "../ZenObject/ZenObject.h"
-#include "../Colliders/Collider.h"
 #include "../Renderer/Renderer.h"
 #include "../ZenObject/ZenShape.h"
+#include "../Colliders/Collider.h"
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
 struct Vector2;
+class Collider;
 
 class PhysicalZenObject2D:public ZenObject
 {

@@ -13,7 +13,7 @@ Coin::Coin(int IDIn, string NameIn, string CoinPath, sf::Vector2f position, Coin
 	zenShape->SetSize(sf::Vector2f(32, 32));
 
 	this->coinCounter = coinCounter;
-	SetCollider(new Vector2(position.x, position.y), 20);
+	SetCollider(Vector2(position.x, position.y), 20);
 }
 
 Coin::~Coin()
@@ -32,7 +32,7 @@ void Coin::Draw(RenderingStack* renderStack)
 	renderStack->renderQueue.push_back(coinRenderObject);
 }
 
-void Coin::SetCollider(Vector2* position, float radius)
+void Coin::SetCollider(Vector2 position, float radius)
 {
 	collider = new CircleCollider2D(position, radius, zenShape, Collider::ColliderTags::COIN);
 	listenerIndexStart = collider->OnCollisionStart.AddListener(&Coin::HandleCollisionStart, this);

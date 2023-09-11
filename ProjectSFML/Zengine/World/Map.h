@@ -1,7 +1,6 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include "../Renderer/Renderer.h"
 
 using namespace std; 
@@ -14,14 +13,14 @@ public:
 	void Draw(RenderingStack* renderStack);
 
 private:
-	string** tab;
-	sf::RectangleShape** tileMap;
-	int rows, columns;
-	RenderObject* tileMapRenderObject = nullptr;
-
 	void MemoryReleaseForLoadMap();
 	void CreatingTwoDimensionalDynamicArray();
 	void LoadingTextureNumberIntoDynamicArray(ifstream *file);
 	void CreatingDynamicTileMap();
+
+	string** tab;
+	sf::RectangleShape** tileMap;
+	int rows = 0, columns = 0;
+	RenderObject* tileMapRenderObject = nullptr;
 };
 

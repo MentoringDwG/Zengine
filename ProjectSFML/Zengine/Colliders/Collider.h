@@ -20,7 +20,7 @@ public:
 		Max,
 	};
 
-	Collider(ColliderTags tag, Vector2* size);
+	Collider(ColliderTags tag, Vector2 size);
 	~Collider();
 
 	ZenObject* GetOwner();

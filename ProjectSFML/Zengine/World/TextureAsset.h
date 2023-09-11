@@ -1,28 +1,19 @@
 #pragma once
 
-#include<iostream>
 #include <SFML/Graphics.hpp>
-
-using namespace std; 
 
 class TextureAsset
 {
 public:
-	sf::Texture TextureSFML;
-	TextureAsset()
-	{
+	TextureAsset() {};
+	TextureAsset(std::string Path, std::string Name);
 
-	}
-
-	TextureAsset(string Path, string Name) :TexturePath(Path), TextureName(Name)
-	{
-		TextureSFML.loadFromFile(TexturePath);
-	}
-	
 	sf::Texture* GetTexture();
 
+	sf::Texture TextureSFML;
+
 private:
-	string TextureName;
-	string TexturePath;
+	std::string TextureName;
+	std::string TexturePath;
 };
 

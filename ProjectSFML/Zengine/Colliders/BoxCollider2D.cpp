@@ -2,14 +2,13 @@
 #include "../ZenObject/ZenObject.h"
 #include "../Structs/Vector2.h"
 
-BoxCollider2D::BoxCollider2D(Vector2* position, Vector2* size, ZenObject* owner, Collider::ColliderTags tag) :Collider(tag, size)
+BoxCollider2D::BoxCollider2D(Vector2 position, Vector2 size, ZenObject* owner, Collider::ColliderTags tag) :Collider(tag, size)
 {
-	SetPosition(sf::Vector2f(position->x, position->y));
-	this->size = *size;
+	SetPosition(sf::Vector2f(position.x, position.y));
+	this->size = size;
 	SetOwner(owner);
 
-	debugRectangleShape.setSize(sf::Vector2f(size->x, size->y));
-
+	debugRectangleShape.setSize(sf::Vector2f(size.x, size.y));
 	debugRectangleShape.setFillColor(sf::Color::Transparent);
 	debugRectangleShape.setOutlineColor(sf::Color::Green);
 	debugRectangleShape.setOutlineThickness(1);

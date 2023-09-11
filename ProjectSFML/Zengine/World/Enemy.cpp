@@ -1,4 +1,10 @@
 #include "Enemy.h"
+#include "../UIinGame/HeartsPanel.h"
+#include "../Colliders/CircleCollider2D.h"
+#include "../Colliders/Collider.h"
+#include "../Physics2D/ZenPhysics2D.h"
+
+#include <iostream>
 
 Enemy::Enemy(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize, HeartsPanel* heartsPanelIn)
 {
@@ -7,21 +13,31 @@ Enemy::Enemy(int inID, string inName, string enemySpritePath, sf::Vector2f start
 	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject);
 
 	Vector2 position(startPosition.x, startPosition.y);
-	circleCollider = new CircleCollider2D(&position, 20, physicalZenObject->zenShape, Collider::ColliderTags::ENEMY);
+	circleCollider = new CircleCollider2D(position, 20, physicalZenObject->zenShape, Collider::ColliderTags::ENEMY);
 	circleCollider->OnCollisionStart.AddListener(&Enemy::HandleCollisionStart, this);
 	circleCollider->OnCollisionEnd.AddListener(&Enemy::HandleCollisionEnd, this);
 	ZenPhysics2D::Get()->RegisterCollider(circleCollider);
 }
 
+Enemy::~Enemy()
+{
+	//delete heartsPanel;
+	delete physicalZenObject;
+	delete circleCollider;
+}
+
 void Enemy::Update()
 {
-	circleCollider->SetPosition(physicalZenObject->zenShape->GetPosition());
+	colliderPosition = physicalZenObject->zenShape->GetPosition();
+
+	circleCollider->SetPosition(colliderPosition);
 }
 
 void Enemy::HandleCollisionStart(Collider* other)
 {
 	if (other->GetOwner()->Name == "Mario")
 	{
+		std::cout << "Collision with Mario" << std::endl;
 		if (isCollisionWithCharacter == false)
 		{
 			heartsPanel->UpdateHeartsState();

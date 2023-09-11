@@ -25,7 +25,7 @@ void Ground::SetBoxColliders(string pathToGroundTxt)
 
 		zenObjects.push_back(new ZenObject(std::stoi(id), "Ground", sf::Vector2f(std::stoi(sizeX), std::stoi(sizeY))));
 
-		boxColliders.push_back(new BoxCollider2D(new Vector2(std::stoi(positionX), std::stoi(positionY)), new Vector2(std::stoi(sizeX), std::stoi(sizeY)), zenObjects[i], Collider::ColliderTags::GROUND));
+		boxColliders.push_back(new BoxCollider2D(Vector2(std::stoi(positionX), std::stoi(positionY)), Vector2(std::stoi(sizeX), std::stoi(sizeY)), zenObjects[i], Collider::ColliderTags::GROUND));
 	}
 
 	file.close();

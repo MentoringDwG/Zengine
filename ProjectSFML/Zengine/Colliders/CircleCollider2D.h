@@ -1,7 +1,6 @@
 #pragma once
 
 #include <functional>
-#include <iostream>
 #include "Collider.h"
 
 struct Vector2;
@@ -9,8 +8,7 @@ struct Vector2;
 class CircleCollider2D: public Collider
 {
 public:
-	CircleCollider2D(Vector2* position, float radius, class ZenObject* owner, Collider::ColliderTags tag);
-	~CircleCollider2D();
+	CircleCollider2D(Vector2 position, float radius, class ZenObject* owner, Collider::ColliderTags tag);
 
 	bool CheckCircleCollision(CircleCollider2D* otherCollider);
 	bool CheckBoxCollision(class BoxCollider2D* otherCollider);
@@ -20,11 +18,11 @@ public:
 	sf::CircleShape debugCircle;
 
 private:
+	float radius;
 	bool bIsColliding = false;
 	bool hasCollisionBefore = false;
-	float radius;
 	
 	//check collision
-	Vector2* testPoint = nullptr;
+	Vector2 testPoint = Vector2(0, 0);
 };
 

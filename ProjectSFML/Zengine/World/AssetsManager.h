@@ -2,9 +2,9 @@
 
 #include <iostream>
 #include<map>
-#include "TextureAsset.h"
 
 using namespace std;
+class TextureAsset;
 
 class AssetsManager
 {

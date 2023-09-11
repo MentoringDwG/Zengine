@@ -3,7 +3,6 @@
 #include "InputHandler.h"
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include <list>
 
 using namespace std;

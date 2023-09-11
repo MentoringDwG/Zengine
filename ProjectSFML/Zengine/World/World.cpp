@@ -10,6 +10,18 @@
 #include "Enemy.h"
 #include "../Environment/Coin.h"
 
+World::~World()
+{
+	delete map;
+	delete playerCharacter;
+	delete enemy;
+	delete ground;
+	delete heartPanel;
+	delete coinCounter;
+
+	coins.clear();
+}
+
 void World::Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed)
 {
 	map = new Map();
