@@ -43,12 +43,12 @@ void Character::MoveLeft()
 	physicalZenObject2D->zenShape->SetScale(sf::Vector2f(-1, 1));
 	physicalZenObject2D->zenShape->SetOrigin(sf::Vector2f(physicalZenObject2D->zenShape->GetGlobalBounds().width, 0));
 
-	if (physicalZenObject2D->collisionPushSide != PhysicalZenObject2D::CollisionPushSide::LEFT)
+	if (physicalZenObject2D->clollisionNormalVector.x != -1)
 	physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(-1.0f * moveSpeed, 0.0f));
 
-	if (physicalZenObject2D->collisionPushSide == PhysicalZenObject2D::CollisionPushSide::RIGHT)
+	if (physicalZenObject2D->clollisionNormalVector.x == 1)
 	{
-		physicalZenObject2D->collisionPushSide = PhysicalZenObject2D::CollisionPushSide::NONE;
+		physicalZenObject2D->clollisionNormalVector.x = 0;
 	}
 }
 
@@ -57,22 +57,27 @@ void Character::MoveRight()
 	physicalZenObject2D->zenShape->SetScale(sf::Vector2f(1, 1));
 	physicalZenObject2D->zenShape->SetOrigin(sf::Vector2f(0, 0));
 
-	if (physicalZenObject2D->collisionPushSide != PhysicalZenObject2D::CollisionPushSide::RIGHT)
+	if (physicalZenObject2D->clollisionNormalVector.x != 1)
 	physicalZenObject2D->zenShape->MoveObject(sf::Vector2f(1.0f * moveSpeed, 0.0f));
 	
-	if (physicalZenObject2D->collisionPushSide == PhysicalZenObject2D::CollisionPushSide::LEFT)
+	if (physicalZenObject2D->clollisionNormalVector.x == -1)
 	{
-		physicalZenObject2D->collisionPushSide = PhysicalZenObject2D::CollisionPushSide::NONE;
+		physicalZenObject2D->clollisionNormalVector.x = 0;
 	}
 }
 
 void Character::MoveUp()
 {
-	if (isGrounded && collisionColliders[Collider::ColliderTags::GROUND].size() == 1)
+	if (isGrounded && IsCollisionWithOneGround())
 	{
 		physicalZenObject2D->AddForce(1.0f, Vector2(0, -6.0f), 4.0f);
 		collider2D->GetOwner()->isJump = true;
 	}
+}
+
+bool Character::IsCollisionWithOneGround()
+{
+	return collisionColliders[Collider::ColliderTags::GROUND].size() == 1;
 }
 
 void Character::UpdateCharacter()

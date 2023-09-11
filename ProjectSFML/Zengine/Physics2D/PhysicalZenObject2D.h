@@ -12,16 +12,6 @@ class Collider;
 class PhysicalZenObject2D:public ZenObject
 {
 public:
-	enum class CollisionPushSide
-	{
-		NONE = 0,
-		TOP = 1,
-		BOTTOM = 2,
-		RIGHT = 3,
-		LEFT = 4,
-		Max,
-	};
-
 	PhysicalZenObject2D(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize);
 	~PhysicalZenObject2D();
 
@@ -33,7 +23,7 @@ public:
 	void SetGravity(float gravity);
 	float GetGravity();
 
-	CollisionPushSide collisionPushSide = CollisionPushSide::NONE;
+	Vector2 clollisionNormalVector = Vector2(0, 0);
 	ZenShape* zenShape = nullptr;
 
 private:
@@ -41,6 +31,10 @@ private:
 	void ResettingVariables();
 	void HandleCollisionStart(Collider* other);
 	void HandleCollisionEnd(Collider* other);
+
+	const int COLLIDER_PUSH_Y = 64;
+	const int COLLIDER_PUSH_X = 8;
+	const int COLLIDER_PUSH_2 = 2;
 
 	std::map<Collider::ColliderTags, std::vector<Collider*>> collisionColliders;
 	float mass = 1.0f;

@@ -36,7 +36,6 @@ void ZenShape::SetSize(sf::Vector2f vector)
 
 void ZenShape::MoveObject(sf::Vector2f vector)
 {
-	previousPosition = position;
 	rectangleShape->move(vector);
 	position = rectangleShape->getPosition();
 }

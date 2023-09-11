@@ -15,10 +15,9 @@ public:
 
 	string name;
 	sf::Vector2f position;
-	sf::Vector2f previousPosition;
 	sf::Vector2i size;
 	ZenObject* parent = nullptr;
-	vector<ZenObject*> Children;
+	vector<ZenObject*> children;
 	bool isJump = false;
 };
 

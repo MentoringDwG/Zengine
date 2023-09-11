@@ -31,6 +31,7 @@ public:
 private:
 	void HandleCollisionStart(Collider* other);
 	void HandleCollisionEnd(Collider* other);
+	bool IsCollisionWithOneGround();
 
 	std::map<Collider::ColliderTags, std::vector<Collider*>> collisionColliders;
 	CharacterInputHandler inputHandler;

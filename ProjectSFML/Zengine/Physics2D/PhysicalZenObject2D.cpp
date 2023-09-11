@@ -130,27 +130,27 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		collider = colliders[i];
 		bounds = zenShape->GetGlobalBounds();
 
-		if (collider->GetPosition()->y > zenShape->position.y && collider->GetPosition()->y < zenShape->position.y + 64)
+		if (collider->GetPosition()->y > zenShape->position.y && collider->GetPosition()->y < zenShape->position.y + COLLIDER_PUSH_Y)
 		{
-			float yToMove = abs(collider->GetPosition()->y - (zenShape->position.y + 64));
+			float yToMove = abs(collider->GetPosition()->y - (zenShape->position.y + COLLIDER_PUSH_Y));
 
 			if (collisionColliders[Collider::ColliderTags::GROUND].size() == 1)
 			{
 				zenShape->MoveObject(sf::Vector2f(0, -yToMove));
 			}
-			collisionPushSide = CollisionPushSide::TOP;
+			clollisionNormalVector = Vector2(0, -1);
 			canUseGravity = false;
 			return;
 		}
 
-		if (collider->GetPosition()->y + collider->size.y + 2 > zenShape->position.y && collider->GetPosition()->y + collider->size.y + 8 < zenShape->position.y + 64)
+		if (collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_2 > zenShape->position.y && collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_X < zenShape->position.y + COLLIDER_PUSH_Y)
 		{
 			velocity.y = 0;
 			if (collisionColliders[Collider::ColliderTags::GROUND].size() == 1)
 			{
 				zenShape->MoveObject(sf::Vector2f(0, 0.5f));
 			}
-			collisionPushSide = CollisionPushSide::BOTTOM;
+			clollisionNormalVector = Vector2(0, 1);
 		}
 
 		if (bounds.left < collider->GetPosition()->x
@@ -160,8 +160,8 @@ void PhysicalZenObject2D::CalculationColliderPush()
 			)
 		{
 			velocity.x = 0.0f;
-			zenShape->SetPosition(sf::Vector2f(collider->GetPosition()->x - bounds.width - 2, bounds.top));
-			collisionPushSide = CollisionPushSide::RIGHT;
+			zenShape->SetPosition(sf::Vector2f(collider->GetPosition()->x - bounds.width - COLLIDER_PUSH_2, bounds.top));
+			clollisionNormalVector = Vector2(1, 0);
 		}
 
 		if (bounds.left > collider->GetPosition()->x
@@ -171,8 +171,8 @@ void PhysicalZenObject2D::CalculationColliderPush()
 			)
 		{
 			velocity.x = 0.0f;
-			zenShape->SetPosition(sf::Vector2f(collider->GetPosition()->x + collider->size.x + 2, bounds.top));
-			collisionPushSide = CollisionPushSide::LEFT;
+			zenShape->SetPosition(sf::Vector2f(collider->GetPosition()->x + collider->size.x + COLLIDER_PUSH_2, bounds.top));
+			clollisionNormalVector = Vector2(-1, 0);
 		}
 	}
 }
