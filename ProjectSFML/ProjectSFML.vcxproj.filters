@@ -165,7 +165,7 @@
     <ClCompile Include="Zengine\UI\WidgetEventHandler.cpp">
       <Filter>Zengine\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Zengine\UI\WidgetCollback.cpp">
+    <ClCompile Include="Zengine\UI\WidgetCallback.cpp">
       <Filter>Zengine\UI</Filter>
     </ClCompile>
     <ClCompile Include="Zengine\UI\CompoundWidget.cpp">
@@ -302,7 +302,7 @@
     <ClInclude Include="Zengine\UI\WidgetEventHandler.h">
       <Filter>Zengine\UI</Filter>
     </ClInclude>
-    <ClInclude Include="Zengine\UI\WidgetCollback.h">
+    <ClInclude Include="Zengine\UI\WidgetCallback.h">
       <Filter>Zengine\UI</Filter>
     </ClInclude>
     <ClInclude Include="Zengine\UI\CompoundWidget.h">

@@ -18,11 +18,11 @@ AuthorsState::~AuthorsState()
 
 void AuthorsState::OnEnter(int prevStateId)
 {
-	authorsPanel = new ZenShape(1, "ControlsPanel", sf::Vector2f(960, 544));
+	authorsPanel = new ZenShape(1, "AuthorsPanel", sf::Vector2f(960, 544));
 	authorsPanel->SetSize(sf::Vector2f(960, 544));
 
 	authorsPanelTexture = new sf::Texture();
-	authorsPanelTexture->loadFromFile("Graphics/Autorzy/autorzy.png");
+	authorsPanelTexture->loadFromFile("Graphics/Authors/authors.png");
 
 	authorsPanel->SetTexture(authorsPanelTexture);
 	authorsPanel->SetPosition(sf::Vector2f(0, 0));
@@ -31,8 +31,8 @@ void AuthorsState::OnEnter(int prevStateId)
 	renderStack->renderQueue.push_back(authorsPanelRenderObject);
 
 	back = new UIButton(Vector2(30, 230), Vector2(106, 50));
-	back->Draw(renderStack, "Graphics/Sterowanie/back.png", sf::IntRect(0, 0, 53, 25), 2, "MenuBack");
-	back->SetHighlight("Graphics/Sterowanie/backH.png");
+	back->Draw(renderStack, "Graphics/Control/back.png", sf::IntRect(0, 0, 53, 25), 2, "MenuBack");
+	back->SetHighlight("Graphics/Control/backH.png");
 
 	UIInputHandler::Get()->AddWidget(back);
 	renderStack->DivisionOfObjectsIntoLayersByLayerId();

@@ -22,7 +22,7 @@ void ControlsPanelState::OnEnter(int prevStateId)
 	contolsPanel->SetSize(sf::Vector2f(960, 544));
 
 	contolsPanelTexture = new sf::Texture();
-	contolsPanelTexture->loadFromFile("Graphics/Sterowanie/SterowaniePanel.png");
+	contolsPanelTexture->loadFromFile("Graphics/Control/controlPanel.png");
 
 	contolsPanel->SetTexture(contolsPanelTexture);
 	contolsPanel->SetPosition(sf::Vector2f(0, 0));
@@ -31,8 +31,8 @@ void ControlsPanelState::OnEnter(int prevStateId)
 	renderStack->renderQueue.push_back(contolsPanelRenderObject);
 
 	back = new UIButton(Vector2(30, 230), Vector2(106, 50));
-	back->Draw(renderStack, "Graphics/Sterowanie/back.png", sf::IntRect(0, 0, 53, 25), 2, "MenuBack");
-	back->SetHighlight("Graphics/Sterowanie/backH.png");
+	back->Draw(renderStack, "Graphics/Control/back.png", sf::IntRect(0, 0, 53, 25), 2, "MenuBack");
+	back->SetHighlight("Graphics/Control/backH.png");
 	
 	UIInputHandler::Get()->AddWidget(back);
 	renderStack->DivisionOfObjectsIntoLayersByLayerId();

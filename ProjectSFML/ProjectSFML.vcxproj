@@ -185,7 +185,7 @@
     <ClCompile Include="Zengine\UI\CompoundWidget.cpp" />
     <ClCompile Include="Zengine\UI\UIButton.cpp" />
     <ClCompile Include="Zengine\UI\Widget.cpp" />
-    <ClCompile Include="Zengine\UI\WidgetCollback.cpp" />
+    <ClCompile Include="Zengine\UI\WidgetCallback.cpp" />
     <ClCompile Include="Zengine\UI\WidgetEventHandler.cpp" />
     <ClCompile Include="Zengine\World\AssetsManager.cpp" />
     <ClCompile Include="Zengine\World\Enemy.cpp" />
@@ -232,7 +232,7 @@
     <ClInclude Include="Zengine\UI\CompoundWidget.h" />
     <ClInclude Include="Zengine\UI\UIButton.h" />
     <ClInclude Include="Zengine\UI\Widget.h" />
-    <ClInclude Include="Zengine\UI\WidgetCollback.h" />
+    <ClInclude Include="Zengine\UI\WidgetCallback.h" />
     <ClInclude Include="Zengine\UI\WidgetEventHandler.h" />
     <ClInclude Include="Zengine\World\AssetsManager.h" />
     <ClInclude Include="Zengine\World\Enemy.h" />

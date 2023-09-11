@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "WidgetCollback.h"
+#include "WidgetCallback.h"
 
 class WidgetEventHandler
 {
@@ -10,7 +10,7 @@ public:
 	int AddListener(_Fx&& _Func, _Types&& _Args)
 	{
 		ListenerIndex++;
-		WidgetCollback widgetCallback;
+		WidgetCallback widgetCallback;
 		widgetCallback.Callback = std::bind(_Func, _Args, std::placeholders::_1);
 		widgetCallback.ListenerID = ListenerIndex;
 		Callbacks.push_back(widgetCallback);
@@ -22,7 +22,7 @@ public:
 	void Invoke();
 
 private:
-	std::vector<struct WidgetCollback> Callbacks;
+	std::vector<struct WidgetCallback> Callbacks;
 	int ListenerIndex = 0;
 };
 
