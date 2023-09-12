@@ -1,0 +1,15 @@
+﻿  Mario.cpp
+  AppMarioGame.cpp
+  AuthorsState.cpp
+  ControlsPanelState.cpp
+  GameplayState.cpp
+  LoadingState.cpp
+  MainMenuState.cpp
+  WaitingRoomState.cpp
+  HeartsPanel.cpp
+  MainMenuPanel.cpp
+  Trwa generowanie kodu
+  Previous IPDB not found, fall back to full compilation.
+  All 2306 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Zakończono generowanie kodu
+  Mario.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\Mario.exe

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Pliki źródłowe">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Pliki zasobów">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Mario">
+      <UniqueIdentifier>{60e03e7e-5141-4137-bdfd-132346cfafd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mario\Application">
+      <UniqueIdentifier>{97077f92-7be8-4c28-a6c3-52bc8c0d20f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mario\StateMachine">
+      <UniqueIdentifier>{c5d86af2-78d6-46e2-af1e-e878adb54491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mario\UIinGame">
+      <UniqueIdentifier>{2b911889-b86b-4dcc-a097-d8f170c566b7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Mario.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\Application\AppMarioGame.cpp">
+      <Filter>Mario\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\StateMachine\AuthorsState.cpp">
+      <Filter>Mario\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\StateMachine\ControlsPanelState.cpp">
+      <Filter>Mario\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\StateMachine\GameplayState.cpp">
+      <Filter>Mario\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\StateMachine\LoadingState.cpp">
+      <Filter>Mario\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\StateMachine\MainMenuState.cpp">
+      <Filter>Mario\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\StateMachine\WaitingRoomState.cpp">
+      <Filter>Mario\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\UIinGame\HeartsPanel.cpp">
+      <Filter>Mario\UIinGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\UIinGame\MainMenuPanel.cpp">
+      <Filter>Mario\UIinGame</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Mario\Application\AppMarioGame.h">
+      <Filter>Mario\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\StateMachine\AuthorsState.h">
+      <Filter>Mario\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\StateMachine\ControlsPanelState.h">
+      <Filter>Mario\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\StateMachine\GameplayState.h">
+      <Filter>Mario\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\StateMachine\LoadingState.h">
+      <Filter>Mario\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\StateMachine\MainMenuState.h">
+      <Filter>Mario\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\StateMachine\WaitingRoomState.h">
+      <Filter>Mario\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\UIinGame\HeartsPanel.h">
+      <Filter>Mario\UIinGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\UIinGame\MainMenuPanel.h">
+      <Filter>Mario\UIinGame</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="resource2.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Mario.rc">
+      <Filter>Pliki zasobów</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Graphics\Icon\marioIkon.ico">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

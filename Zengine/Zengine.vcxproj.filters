@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Pliki źródłowe">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Pliki zasobów">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Zengine">
+      <UniqueIdentifier>{3dce2212-5cad-48bd-8874-b86660e70225}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\Character">
+      <UniqueIdentifier>{513880a3-54c9-4952-a4cf-19bd7e28bd33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\Colliders">
+      <UniqueIdentifier>{17c913a6-c4fb-4db9-8f79-634feaec7376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\Environment">
+      <UniqueIdentifier>{6d7ce169-5923-4ba7-a73a-1f188a1de232}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\InputModule">
+      <UniqueIdentifier>{9ae6fdb0-ff36-4fba-bd55-63c2a7b28505}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\Interfaces">
+      <UniqueIdentifier>{2359ca78-18d4-4013-813c-ae44bb28a51e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\Physics2D">
+      <UniqueIdentifier>{3bf57166-2cf7-4c9e-8a33-50903b507df1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\Renderer">
+      <UniqueIdentifier>{ee711cb5-cfdd-4fdb-8a54-d52913d183c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\StateMachine">
+      <UniqueIdentifier>{4d7e6f96-50fb-48c8-9107-7b04e64694e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\Structs">
+      <UniqueIdentifier>{66b8e17c-a454-4df8-8291-2434ad082e9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\UI">
+      <UniqueIdentifier>{25774948-3984-41fa-9e04-6b876063b82f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\World">
+      <UniqueIdentifier>{9f0d8e3e-dbb9-4027-9c08-c4f19c3573fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zengine\ZenObject">
+      <UniqueIdentifier>{6f8d63ab-22eb-4b9b-a407-f3883b6a4984}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Zengine\Character\Character.cpp">
+      <Filter>Zengine\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Colliders\BoxCollider2D.cpp">
+      <Filter>Zengine\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Colliders\CircleCollider2D.cpp">
+      <Filter>Zengine\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Colliders\Collider.cpp">
+      <Filter>Zengine\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Colliders\CollisionCallback.cpp">
+      <Filter>Zengine\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Colliders\CollisionEventBinder.cpp">
+      <Filter>Zengine\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Environment\Coin.cpp">
+      <Filter>Zengine\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Environment\CoinCounter.cpp">
+      <Filter>Zengine\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Environment\Ground.cpp">
+      <Filter>Zengine\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp">
+      <Filter>Zengine\InputModule</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\InputModule\InputHandler.cpp">
+      <Filter>Zengine\InputModule</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\InputModule\InputProcessorModule.cpp">
+      <Filter>Zengine\InputModule</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\InputModule\UIInputHandler.cpp">
+      <Filter>Zengine\InputModule</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Interfaces\IEngineModule.cpp">
+      <Filter>Zengine\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Physics2D\PhysicalZenObject2D.cpp">
+      <Filter>Zengine\Physics2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Physics2D\ZenPhysics2D.cpp">
+      <Filter>Zengine\Physics2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Renderer\Renderer.cpp">
+      <Filter>Zengine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\StateMachine\StateMachine.cpp">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Structs\Timer.cpp">
+      <Filter>Zengine\Structs</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Structs\Vector2.cpp">
+      <Filter>Zengine\Structs</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\UI\CompoundWidget.cpp">
+      <Filter>Zengine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\UI\UIButton.cpp">
+      <Filter>Zengine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\UI\Widget.cpp">
+      <Filter>Zengine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\UI\WidgetCallback.cpp">
+      <Filter>Zengine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\UI\WidgetEventHandler.cpp">
+      <Filter>Zengine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\World\AssetsManager.cpp">
+      <Filter>Zengine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\World\Enemy.cpp">
+      <Filter>Zengine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\World\Map.cpp">
+      <Filter>Zengine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\World\TextureAsset.cpp">
+      <Filter>Zengine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\World\World.cpp">
+      <Filter>Zengine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\ZenObject\MovableObject.cpp">
+      <Filter>Zengine\ZenObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\ZenObject\ZenObject.cpp">
+      <Filter>Zengine\ZenObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\ZenObject\ZenShape.cpp">
+      <Filter>Zengine\ZenObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\ZenObject\ZenText.cpp">
+      <Filter>Zengine\ZenObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Zengine.cpp">
+      <Filter>Zengine</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\StateMachine\BaseGameState.cpp">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Zengine\Character\Character.h">
+      <Filter>Zengine\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Colliders\BoxCollider2D.h">
+      <Filter>Zengine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Colliders\CircleCollider2D.h">
+      <Filter>Zengine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Colliders\Collider.h">
+      <Filter>Zengine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Colliders\CollisionCallback.h">
+      <Filter>Zengine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Colliders\CollisionEventBinder.h">
+      <Filter>Zengine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Environment\Coin.h">
+      <Filter>Zengine\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Environment\CoinCounter.h">
+      <Filter>Zengine\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Environment\Ground.h">
+      <Filter>Zengine\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\InputModule\CharacterInputHandler.h">
+      <Filter>Zengine\InputModule</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\InputModule\InputHandler.h">
+      <Filter>Zengine\InputModule</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\InputModule\InputProcessorModule.h">
+      <Filter>Zengine\InputModule</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\InputModule\UIInputHandler.h">
+      <Filter>Zengine\InputModule</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Interfaces\IEngineModule.h">
+      <Filter>Zengine\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Physics2D\PhysicalZenObject2D.h">
+      <Filter>Zengine\Physics2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Physics2D\ZenPhysics2D.h">
+      <Filter>Zengine\Physics2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Renderer\Renderer.h">
+      <Filter>Zengine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\StateMachine\StateMachine.h">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Structs\Timer.h">
+      <Filter>Zengine\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Structs\Vector2.h">
+      <Filter>Zengine\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\UI\CompoundWidget.h">
+      <Filter>Zengine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\UI\UIButton.h">
+      <Filter>Zengine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\UI\Widget.h">
+      <Filter>Zengine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\UI\WidgetCallback.h">
+      <Filter>Zengine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\UI\WidgetEventHandler.h">
+      <Filter>Zengine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\World\AssetsManager.h">
+      <Filter>Zengine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\World\Enemy.h">
+      <Filter>Zengine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\World\Map.h">
+      <Filter>Zengine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\World\TextureAsset.h">
+      <Filter>Zengine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\World\World.h">
+      <Filter>Zengine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\ZenObject\MovableObject.h">
+      <Filter>Zengine\ZenObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\ZenObject\ZenObject.h">
+      <Filter>Zengine\ZenObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\ZenObject\ZenShape.h">
+      <Filter>Zengine\ZenObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\ZenObject\ZenText.h">
+      <Filter>Zengine\ZenObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Zengine.h">
+      <Filter>Zengine</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\StateMachine\BaseGameState.h">
+      <Filter>Zengine\StateMachine</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
