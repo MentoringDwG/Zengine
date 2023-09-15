@@ -18,8 +18,8 @@ private:
 	void LoadingTextureNumberIntoDynamicArray(ifstream *file);
 	void CreatingDynamicTileMap();
 
-	string** tab;
-	sf::RectangleShape** tileMap;
+	string** tab = nullptr;
+	sf::RectangleShape** tileMap = nullptr;
 	int rows = 0, columns = 0;
 	RenderObject* tileMapRenderObject = nullptr;
 };

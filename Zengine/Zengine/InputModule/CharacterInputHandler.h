@@ -38,6 +38,6 @@ private:
 	string name;
 	list<MovingStates> movingStatesList;
 	list <MovingStates>::iterator itr;
-	Character* owningCharacter;
+	Character* owningCharacter = nullptr;
 	MovingStates movingStates = CharacterInputHandler::MovingStates::standing;
 };

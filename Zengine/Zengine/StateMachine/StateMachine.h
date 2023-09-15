@@ -23,7 +23,7 @@ class StateMachine
 private:
 	std::map<int, class BaseGameState*> GameStates;
 	int currentGameStateId = 0;
-	BaseGameState* CurrentGameState;
+	BaseGameState* CurrentGameState = nullptr;
 
 public:
 	bool AddState(BaseGameState* gameState);

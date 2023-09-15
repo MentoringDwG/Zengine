@@ -8,6 +8,7 @@
 #include "ZenObject/ZenText.h"
 #include "Physics2D/ZenPhysics2D.h"
 #include "Interfaces/IEngineModule.h"
+#include "Animation/AnimationProcesor.h"
 
 Zengine* Zengine::Engine = nullptr;
 World world;
@@ -102,6 +103,7 @@ void Zengine::MainLoop()
 		//Render game elements
 		window->setView(mainView);
 
+		AnimationProcesor::Get()->PlayAnimations();
 		RenderModule->ProcessDrawingElements(renderStack);
 		
 		ZenPhysics2D::Get()->SetShouldShowDebug(stateId == State::GameplayState);

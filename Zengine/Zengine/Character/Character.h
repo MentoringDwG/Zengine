@@ -43,5 +43,13 @@ private:
 	struct RenderObject* characterRenderObject = nullptr;
 	sf::Texture* texture = nullptr;
 	bool isGrounded = false;
+
+	class Animation* animation = nullptr;
+	class Animator* animator = nullptr;
+	sf::Texture* marioWalk = nullptr;
+
+	struct KeyFrame* keyframe1 = nullptr;
+	struct KeyFrame* keyframe2 = nullptr;
+	struct KeyFrame* keyframe3 = nullptr;
 };
 

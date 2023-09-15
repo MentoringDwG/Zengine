@@ -1,8 +1,4 @@
 c:\users\admin\documents\github\zengine\x64\release\zengine.pdb
-c:\users\admin\documents\github\zengine\zengine\x64\release\timer.obj
-c:\users\admin\documents\github\zengine\zengine\x64\release\statemachine.obj
-c:\users\admin\documents\github\zengine\zengine\x64\release\basegamestate.obj
-c:\users\admin\documents\github\zengine\zengine\x64\release\renderer.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zenphysics2d.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\physicalzenobject2d.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\ienginemodule.obj
@@ -19,6 +15,10 @@ c:\users\admin\documents\github\zengine\zengine\x64\release\collider.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\circlecollider2d.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\boxcollider2d.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\character.obj
+c:\users\admin\documents\github\zengine\zengine\x64\release\keyframe.obj
+c:\users\admin\documents\github\zengine\zengine\x64\release\animator.obj
+c:\users\admin\documents\github\zengine\zengine\x64\release\animationprocesor.obj
+c:\users\admin\documents\github\zengine\zengine\x64\release\animation.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zentext.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zenshape.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zenobject.obj
@@ -35,6 +35,10 @@ c:\users\admin\documents\github\zengine\zengine\x64\release\widget.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\uibutton.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\compoundwidget.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\vector2.obj
+c:\users\admin\documents\github\zengine\zengine\x64\release\timer.obj
+c:\users\admin\documents\github\zengine\zengine\x64\release\statemachine.obj
+c:\users\admin\documents\github\zengine\zengine\x64\release\basegamestate.obj
+c:\users\admin\documents\github\zengine\zengine\x64\release\renderer.obj
 c:\users\admin\documents\github\zengine\x64\release\zengine.lib
 c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.tlog\cl.command.1.tlog
 c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.tlog\cl.read.1.tlog

@@ -6,6 +6,10 @@
 #include "../Colliders/BoxCollider2D.h"
 #include "../Physics2D/ZenPhysics2D.h"
 #include "../Physics2D/PhysicalZenObject2D.h"
+#include "../Animation/Animator.h"
+#include "../Animation/Animation.h"
+#include "../Animation/AnimationProcesor.h"
+#include "../Animation/KeyFrame.h"
 
 Character::Character(std::string name, string Path, float playerMoveSpeed)
 {
@@ -26,6 +30,25 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 
 	physicalZenObject2D->SetCollider(collider2D);
 	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject2D);
+
+	animation = new Animation();
+	marioWalk = new sf::Texture();
+	marioWalk->loadFromFile("Graphics/MarioWalkSpriteSheet.png");
+	animation->AddSpriteSheets(marioWalk);
+
+	keyframe1 = new KeyFrame(0, 0, Vector2(0, 0), Vector2(16, 32), 150);
+	keyframe2 = new KeyFrame(1, 0, Vector2(16, 0), Vector2(16, 32), 150);
+	keyframe3 = new KeyFrame(2, 0, Vector2(32, 0), Vector2(16, 32), 150);
+	animation->AddKeyFrame(keyframe1);
+	animation->AddKeyFrame(keyframe2);
+	animation->AddKeyFrame(keyframe3);
+
+	animator = new Animator(physicalZenObject2D->zenShape);
+	animator->AddAnimation(animation);
+
+	animator->SetCurrentAnimation(0);
+
+	AnimationProcesor::Get()->AddAnimator(animator);
 }
 
 Character::~Character()
@@ -107,6 +130,8 @@ bool Character::IsCharacterGrounded()
 
 void Character::Draw(RenderingStack* renderStack)
 {
+	animator->canPlayAnimation = true;
+
 	texture = textureAsset->GetTexture();
 	physicalZenObject2D->zenShape->SetTexture(texture);
 
