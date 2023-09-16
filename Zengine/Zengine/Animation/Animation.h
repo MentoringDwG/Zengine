@@ -6,9 +6,9 @@
 class Animation
 {
 public:
-	void AddKeyFrame(struct KeyFrame* keyFrame);
+	void AddKeyFrame(int keyFrameIdIn, int spriteSheetIdIn, struct Vector2 startPointInSpriteSheetIn, struct Vector2 spriteSizeIn, int TimeStampIn);
 	std::vector<struct KeyFrame*> GetKeyFrames();
-	void AddSpriteSheets(sf::Texture* texture);
+	void AddSpriteSheets(std::string spriteSheetPath);
 	sf::Texture* GetSpriteSheet(int spriteSheetId);
 
 private:

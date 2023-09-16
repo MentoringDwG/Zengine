@@ -44,12 +44,9 @@ private:
 	sf::Texture* texture = nullptr;
 	bool isGrounded = false;
 
-	class Animation* animation = nullptr;
+	class Animation* walkAnimation = nullptr;
+	class Animation* idleAnimation = nullptr;
+	class Animation* jumpAnimation = nullptr;
 	class Animator* animator = nullptr;
-	sf::Texture* marioWalk = nullptr;
-
-	struct KeyFrame* keyframe1 = nullptr;
-	struct KeyFrame* keyframe2 = nullptr;
-	struct KeyFrame* keyframe3 = nullptr;
 };
 

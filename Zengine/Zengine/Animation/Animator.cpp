@@ -1,6 +1,7 @@
 #include "Animator.h"
 #include "Animation.h"
 #include "../ZenObject/ZenShape.h"
+#include "../Animation/AnimationProcesor.h"
 #include "KeyFrame.h"
 
 #include <iostream>
@@ -8,6 +9,7 @@
 Animator::Animator(ZenShape* ownerIn): owner(ownerIn)
 {
 	clock.restart();
+	AnimationProcesor::Get()->AddAnimator(this);
 }
 
 void Animator::Play()
@@ -56,6 +58,15 @@ void Animator::DeleteAnimation(Animation* animation)
 
 void Animator::SetCurrentAnimation(int id)
 {
-	currentAnimation = animations[id];
-	currentKeyFrameId = 0;
+	if (currentAnimationID != id)
+	{
+		currentAnimation = animations[id];
+		currentKeyFrameId = 0;
+		currentAnimationID = id;
+	}
+}
+
+int Animator::GetCurrentAnimation()
+{
+	return currentAnimationID;
 }

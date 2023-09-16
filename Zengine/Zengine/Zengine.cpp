@@ -35,7 +35,7 @@ void Zengine::Run()
 
 	stateMachine = new StateMachine();
 
-	world.Initialize("Mario", "Graphics/Mario.png", 2.0f);
+	world.Initialize("Mario", "Graphics/Mario/Mario.png", 2.0f);
 	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
 	world.EnvironmentInitialize("Graphics/coin.png", sf::Vector2f(288, 352), sf::Vector2f(608, 192));
 	world.PhysicalZenObject2DInitialize("Graphics/Enemy1.png");
