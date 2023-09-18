@@ -177,6 +177,9 @@
     <ClCompile Include="Zengine\Animation\KeyFrame.cpp">
       <Filter>Zengine\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\Animation\AnimationDefinition.cpp">
+      <Filter>Zengine\Animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\Character\Character.h">
@@ -297,6 +300,9 @@
       <Filter>Zengine\Animation</Filter>
     </ClInclude>
     <ClInclude Include="Zengine\Animation\KeyFrame.h">
+      <Filter>Zengine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Animation\AnimationDefinition.h">
       <Filter>Zengine\Animation</Filter>
     </ClInclude>
   </ItemGroup>

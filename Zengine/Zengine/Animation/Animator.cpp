@@ -58,7 +58,7 @@ void Animator::DeleteAnimation(Animation* animation)
 
 void Animator::SetCurrentAnimation(int id)
 {
-	if (currentAnimationID != id)
+	if (currentAnimationID != id || currentAnimationID==0)
 	{
 		currentAnimation = animations[id];
 		currentKeyFrameId = 0;

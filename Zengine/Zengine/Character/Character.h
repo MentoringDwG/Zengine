@@ -45,8 +45,6 @@ private:
 	bool isGrounded = false;
 
 	class Animation* walkAnimation = nullptr;
-	class Animation* idleAnimation = nullptr;
-	class Animation* jumpAnimation = nullptr;
 	class Animator* animator = nullptr;
 };
 

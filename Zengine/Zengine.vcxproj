@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Zengine\Animation\Animation.cpp" />
+    <ClCompile Include="Zengine\Animation\AnimationDefinition.cpp" />
     <ClCompile Include="Zengine\Animation\AnimationProcesor.cpp" />
     <ClCompile Include="Zengine\Animation\Animator.cpp" />
     <ClCompile Include="Zengine\Animation\KeyFrame.cpp" />
@@ -62,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\Animation\Animation.h" />
+    <ClInclude Include="Zengine\Animation\AnimationDefinition.h" />
     <ClInclude Include="Zengine\Animation\AnimationProcesor.h" />
     <ClInclude Include="Zengine\Animation\Animator.h" />
     <ClInclude Include="Zengine\Animation\KeyFrame.h" />

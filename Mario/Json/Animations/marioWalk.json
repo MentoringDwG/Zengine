@@ -1,0 +1,8 @@
+{
+	"SpriteSheets" :
+	[
+		{
+			"Path" : "Graphics/Mario/MarioWalkSpriteSheet.png"
+		}
+	]
+}

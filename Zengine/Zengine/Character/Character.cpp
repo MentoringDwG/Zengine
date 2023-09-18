@@ -29,27 +29,16 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 	physicalZenObject2D->SetCollider(collider2D);
 	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject2D);
 
-	walkAnimation = new Animation();
+	animator = new Animator(physicalZenObject2D->zenShape);
+
+	walkAnimation = new Animation(animator, "Json/Animations/marioWalk.json");
+
 	walkAnimation->AddSpriteSheets("Graphics/Mario/MarioWalkSpriteSheet.png");
 	walkAnimation->AddKeyFrame(0, 0, Vector2(0, 0), Vector2(16, 32), 150);
 	walkAnimation->AddKeyFrame(1, 0, Vector2(16, 0), Vector2(16, 32), 150);
 	walkAnimation->AddKeyFrame(2, 0, Vector2(32, 0), Vector2(16, 32), 150);
 
-	idleAnimation = new Animation();
-	idleAnimation->AddSpriteSheets("Graphics/Mario/Mario.png");
-	idleAnimation->AddKeyFrame(0, 0, Vector2(0, 0), Vector2(16, 32), 1500);
-
-	jumpAnimation = new Animation();
-	jumpAnimation->AddSpriteSheets("Graphics/Mario/MarioJump.png");
-	jumpAnimation->AddKeyFrame(0, 0, Vector2(0, 0), Vector2(16, 32), 1500);
-
-
-	animator = new Animator(physicalZenObject2D->zenShape);
-	animator->AddAnimation(walkAnimation);
-	animator->AddAnimation(idleAnimation);
-	animator->AddAnimation(jumpAnimation);
-
-	animator->SetCurrentAnimation(1);
+	animator->SetCurrentAnimation(0);
 }
 
 Character::~Character()

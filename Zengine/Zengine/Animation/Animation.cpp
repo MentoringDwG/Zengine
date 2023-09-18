@@ -1,6 +1,15 @@
 #include "Animation.h"
 #include "KeyFrame.h"
 #include "../Structs/Vector2.h"
+#include "Animator.h"
+#include "AnimationDefinition.h"
+
+Animation::Animation(Animator* animator, std::string animationDefinitionJsonPathIn)
+{
+	animationDefinition = new AnimationDefinition(animationDefinitionJsonPathIn, this);
+
+	animator->AddAnimation(this);
+}
 
 void Animation::AddKeyFrame(int keyFrameIdIn, int spriteSheetIdIn, Vector2 startPointInSpriteSheetIn, Vector2 spriteSizeIn, int TimeStampIn)
 {
