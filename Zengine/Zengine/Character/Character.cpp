@@ -33,7 +33,6 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 
 	walkAnimation = new Animation(animator, "Json/Animations/marioWalk.json");
 
-	walkAnimation->AddSpriteSheets("Graphics/Mario/MarioWalkSpriteSheet.png");
 	walkAnimation->AddKeyFrame(0, 0, Vector2(0, 0), Vector2(16, 32), 150);
 	walkAnimation->AddKeyFrame(1, 0, Vector2(16, 0), Vector2(16, 32), 150);
 	walkAnimation->AddKeyFrame(2, 0, Vector2(32, 0), Vector2(16, 32), 150);
