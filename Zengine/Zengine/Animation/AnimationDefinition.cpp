@@ -17,10 +17,19 @@ AnimationDefinition::AnimationDefinition(std::string animationDefimitionJsonPath
 		{
 			nlohmann::json pathObj = spriteSheets.at(idx);
 
-			for (auto itr = pathObj.begin(); itr != pathObj.end(); itr++)
-			{
-				AddSpriteSheets(itr.value());
-			}
+			AddSpriteSheets(pathObj["Path"]);
+		}
+	}
+
+	if (jsonData.contains("KeyFrames"))
+	{
+		nlohmann::json keyFrames = jsonData["KeyFrames"];
+
+		for (size_t idx = 0; idx < keyFrames.size(); idx++)
+		{
+			nlohmann::json keyFrame = keyFrames.at(idx);
+
+			AddKeyFrame(keyFrame["KeyFrameId"], keyFrame["SpriteSheetId"], Vector2(keyFrame["StartPointInSpriteSheetX"], keyFrame["StartPointInSpriteSheetY"]), Vector2(keyFrame["SpriteSizeX"], keyFrame["SpriteSizeY"]), keyFrame["TimeStamp"]);
 		}
 	}
 }

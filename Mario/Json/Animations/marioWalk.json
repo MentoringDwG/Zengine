@@ -1,3 +1,8 @@
 {
-	"SpriteSheets":[{"Path" : "Graphics/Mario/MarioWalkSpriteSheet.png"}]
+	"SpriteSheets":[
+	{"Path" : "Graphics/Mario/MarioWalkSpriteSheet.png"}], 
+	"KeyFrames":[
+	{"KeyFrameId":0, "SpriteSheetId":0, "StartPointInSpriteSheetX":0, "StartPointInSpriteSheetY":0, "SpriteSizeX":16, "SpriteSizeY":32, "TimeStamp":150}, 
+	{"KeyFrameId":1, "SpriteSheetId":0, "StartPointInSpriteSheetX":16, "StartPointInSpriteSheetY":0, "SpriteSizeX":16, "SpriteSizeY":32, "TimeStamp":150}, 
+	{"KeyFrameId":2, "SpriteSheetId":0, "StartPointInSpriteSheetX":32, "StartPointInSpriteSheetY":0, "SpriteSizeX":16, "SpriteSizeY":32, "TimeStamp":150}]
 }

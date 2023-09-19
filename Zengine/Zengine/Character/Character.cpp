@@ -30,13 +30,7 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject2D);
 
 	animator = new Animator(physicalZenObject2D->zenShape);
-
 	walkAnimation = new Animation(animator, "Json/Animations/marioWalk.json");
-
-	walkAnimation->AddKeyFrame(0, 0, Vector2(0, 0), Vector2(16, 32), 150);
-	walkAnimation->AddKeyFrame(1, 0, Vector2(16, 0), Vector2(16, 32), 150);
-	walkAnimation->AddKeyFrame(2, 0, Vector2(32, 0), Vector2(16, 32), 150);
-
 	animator->SetCurrentAnimation(0);
 }
 
