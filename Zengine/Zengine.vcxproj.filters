@@ -180,6 +180,9 @@
     <ClCompile Include="Zengine\Animation\AnimationDefinition.cpp">
       <Filter>Zengine\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\Environment\Castle.cpp">
+      <Filter>Zengine\Environment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\Character\Character.h">
@@ -304,6 +307,9 @@
     </ClInclude>
     <ClInclude Include="Zengine\Animation\AnimationDefinition.h">
       <Filter>Zengine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Environment\Castle.h">
+      <Filter>Zengine\Environment</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

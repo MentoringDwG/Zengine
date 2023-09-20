@@ -155,6 +155,7 @@
     <ClCompile Include="Mario\Application\AppMarioGame.cpp" />
     <ClCompile Include="Mario\StateMachine\AuthorsState.cpp" />
     <ClCompile Include="Mario\StateMachine\ControlsPanelState.cpp" />
+    <ClCompile Include="Mario\StateMachine\GameOverState.cpp" />
     <ClCompile Include="Mario\StateMachine\GameplayState.cpp" />
     <ClCompile Include="Mario\StateMachine\LoadingState.cpp" />
     <ClCompile Include="Mario\StateMachine\MainMenuState.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Mario\Application\AppMarioGame.h" />
     <ClInclude Include="Mario\StateMachine\AuthorsState.h" />
     <ClInclude Include="Mario\StateMachine\ControlsPanelState.h" />
+    <ClInclude Include="Mario\StateMachine\GameOverState.h" />
     <ClInclude Include="Mario\StateMachine\GameplayState.h" />
     <ClInclude Include="Mario\StateMachine\LoadingState.h" />
     <ClInclude Include="Mario\StateMachine\MainMenuState.h" />

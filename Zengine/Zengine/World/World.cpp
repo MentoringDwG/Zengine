@@ -9,6 +9,8 @@
 #include "../Character/Character.h"
 #include "Enemy.h"
 #include "../Environment/Coin.h"
+#include "../Environment/Castle.h"
+
 
 World::~World()
 {
@@ -18,6 +20,7 @@ World::~World()
 	delete ground;
 	delete heartPanel;
 	delete coinCounter;
+	delete castle;
 
 	coins.clear();
 }
@@ -28,6 +31,7 @@ void World::Initialize(string PlayerName, string PlayerTexcurePath, float Player
 	playerCharacter = new Character(PlayerName, PlayerTexcurePath, PlayerMoveSpeed);
 	coinCounter = new CoinCounter(1, "coinCounter", sf::Vector2f(0, 0));
 	heartPanel = new HeartsPanel();
+	castle = new Castle(Vector2(160, 160), Vector2(768, 320));
 }
 
 void World::MapInitialize(string pathToTexturesTxt, string pathToTileTxt)
@@ -83,7 +87,11 @@ void World::Draw(RenderingStack* renderStack)
 
 void World::UpdateObjects()
 {
-	playerCharacter->UpdateCharacter();
+	if (playerCharacter != nullptr)
+	{
+		playerCharacter->UpdateCharacter();
+	}
+
 	enemy->Update();
 }
 

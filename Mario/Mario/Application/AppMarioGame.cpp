@@ -7,6 +7,7 @@
 #include "../StateMachine/ControlsPanelState.h"
 #include "../StateMachine/AuthorsState.h"
 #include "../StateMachine/WaitingRoomState.h"
+#include "../StateMachine/GameOverState.h"
 
 #include "../../../Zengine/Zengine/World/World.h"
 #include "../../../Zengine/Zengine/InputModule/CharacterInputHandler.h"
@@ -30,6 +31,7 @@ AppMarioGame::~AppMarioGame()
 	delete gameplayState;
 	delete waitingRoomState;
 	delete controlsPanelState;
+	delete gameOverState;
 	delete authorsState;
 	delete renderStack;
 	delete renderModule;
@@ -51,12 +53,14 @@ void AppMarioGame::StateInitialize()
 	gameplayState = new GameplayState(State::GameplayState);
 	controlsPanelState = new ControlsPanelState(State::ControlsPanelState, renderStack, stateMachine);
 	authorsState = new AuthorsState(State::AuthorsState, renderStack, stateMachine);
+	gameOverState = new GameOverState(State::GameOverState, renderStack, stateMachine);
 
 	stateMachine->AddState(mainMenuState);
 	stateMachine->AddState(loadingState);
 	stateMachine->AddState(gameplayState);
 	stateMachine->AddState(controlsPanelState);
 	stateMachine->AddState(authorsState);
+	stateMachine->AddState(gameOverState);
 
 	loadingState->OnEnterEvent = std::bind(&AppMarioGame::OnLoading, this, std::placeholders::_1);
 }

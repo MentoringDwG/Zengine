@@ -18,8 +18,8 @@ PhysicalZenObject2D::~PhysicalZenObject2D()
 void PhysicalZenObject2D::SetCollider(class Collider* collider)
 {
 	this->collider = collider;
-	collider->OnCollisionStart.AddListener(&PhysicalZenObject2D::HandleCollisionStart, this);
-	collider->OnCollisionEnd.AddListener(&PhysicalZenObject2D::HandleCollisionEnd, this);
+	handleCollisionStartId = collider->OnCollisionStart.AddListener(&PhysicalZenObject2D::HandleCollisionStart, this);
+	handleCollisionEndId = collider->OnCollisionEnd.AddListener(&PhysicalZenObject2D::HandleCollisionEnd, this);
 }
 
 void PhysicalZenObject2D::HandleCollisionStart(Collider* other)

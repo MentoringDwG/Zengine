@@ -39,6 +39,11 @@ void Ground::SetBoxColliders(string pathToGroundTxt)
 
 Ground::~Ground()
 {
+	for (int i = 0; i < boxColliders.size(); i++)
+	{
+		ZenPhysics2D::Get()->UnregisterCollider(boxColliders[i]);
+	}
+
 	boxColliders.clear();
 	zenObjects.clear();
 }

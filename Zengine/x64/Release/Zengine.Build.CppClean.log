@@ -1,5 +1,4 @@
 c:\users\admin\documents\github\zengine\x64\release\zengine.pdb
-c:\users\admin\documents\github\zengine\zengine\x64\release\physicalzenobject2d.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\ienginemodule.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\uiinputhandler.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\inputprocessormodule.obj
@@ -8,6 +7,7 @@ c:\users\admin\documents\github\zengine\zengine\x64\release\characterinputhandle
 c:\users\admin\documents\github\zengine\zengine\x64\release\ground.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\coincounter.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\coin.obj
+c:\users\admin\documents\github\zengine\zengine\x64\release\castle.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\collisioneventbinder.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\collisioncallback.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\collider.obj
@@ -19,7 +19,6 @@ c:\users\admin\documents\github\zengine\zengine\x64\release\animator.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\animationprocesor.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\animationdefinition.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\animation.obj
-c:\users\admin\documents\github\zengine\zengine\x64\release\zenshape.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zenobject.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\movableobject.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.obj
@@ -39,7 +38,9 @@ c:\users\admin\documents\github\zengine\zengine\x64\release\statemachine.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\basegamestate.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\renderer.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zenphysics2d.obj
+c:\users\admin\documents\github\zengine\zengine\x64\release\physicalzenobject2d.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zentext.obj
+c:\users\admin\documents\github\zengine\zengine\x64\release\zenshape.obj
 c:\users\admin\documents\github\zengine\x64\release\zengine.lib
 c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.tlog\cl.command.1.tlog
 c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.tlog\cl.read.1.tlog

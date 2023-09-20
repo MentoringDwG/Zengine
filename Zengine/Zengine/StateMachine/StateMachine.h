@@ -14,6 +14,7 @@ namespace State
 		WaitingRoomState = 4,
 		ControlsPanelState = 5,
 		AuthorsState = 6,
+		GameOverState = 7,
 		Max,
 	};
 }

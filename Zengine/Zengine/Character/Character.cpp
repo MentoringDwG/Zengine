@@ -39,6 +39,7 @@ Character::~Character()
 	delete textureAsset;
 	delete characterRenderObject;
 	delete texture;
+	ZenPhysics2D::Get()->RemovingObjectFromPhysics(physicalZenObject2D);
 	delete physicalZenObject2D;
 	collisionColliders.clear();
 }

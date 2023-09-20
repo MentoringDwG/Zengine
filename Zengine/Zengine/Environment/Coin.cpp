@@ -21,6 +21,7 @@ Coin::~Coin()
 	delete zenShape;
 	delete coinRenderObject;
 	delete renderStack;
+	ZenPhysics2D::Get()->UnregisterCollider(collider);
 	delete collider;
 	delete coinCounter;
 }

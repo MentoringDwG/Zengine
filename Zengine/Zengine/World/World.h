@@ -27,4 +27,5 @@ private:
 	class Ground* ground = nullptr;
 	std::vector<class Coin*> coins;
 	class HeartsPanel* heartPanel = nullptr;
+	class Castle* castle = nullptr;
 };

@@ -40,6 +40,8 @@ private:
 	float mass = 1.0f;
 	float fakeDrag = 0.05f;
 	float gravity = 0.0f;
+	int handleCollisionStartId = 0;
+	int handleCollisionEndId = 0;
 	Vector2 force = Vector2(0 ,0);
 	Vector2 velocity = Vector2(0, 0);
 	Vector2 transposition = Vector2(0.1f, 0);

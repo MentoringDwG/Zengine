@@ -17,6 +17,7 @@ public:
 		ENEMY = 2,
 		GROUND = 3,
 		COIN = 4,
+		CASTLE = 5,
 		Max,
 	};
 

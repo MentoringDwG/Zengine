@@ -22,6 +22,7 @@ private:
 	class WaitingRoomState* waitingRoomState = nullptr;
 	class ControlsPanelState* controlsPanelState = nullptr;
 	class AuthorsState* authorsState = nullptr;
+	class GameOverState* gameOverState = nullptr;
 
 	RenderingStack* renderStack = nullptr;
 	Renderer* renderModule = nullptr;
