@@ -15,6 +15,7 @@ namespace State
 		ControlsPanelState = 5,
 		AuthorsState = 6,
 		GameOverState = 7,
+		WinState = 8,
 		Max,
 	};
 }

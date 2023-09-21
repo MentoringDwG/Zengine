@@ -8,6 +8,7 @@
 #include "../StateMachine/AuthorsState.h"
 #include "../StateMachine/WaitingRoomState.h"
 #include "../StateMachine/GameOverState.h"
+#include "../StateMachine/WinState.h"
 
 #include "../../../Zengine/Zengine/World/World.h"
 #include "../../../Zengine/Zengine/InputModule/CharacterInputHandler.h"
@@ -54,6 +55,7 @@ void AppMarioGame::StateInitialize()
 	controlsPanelState = new ControlsPanelState(State::ControlsPanelState, renderStack, stateMachine);
 	authorsState = new AuthorsState(State::AuthorsState, renderStack, stateMachine);
 	gameOverState = new GameOverState(State::GameOverState, renderStack, stateMachine);
+	winState = new WinState(State::WinState, renderStack, stateMachine);
 
 	stateMachine->AddState(mainMenuState);
 	stateMachine->AddState(loadingState);
@@ -61,6 +63,7 @@ void AppMarioGame::StateInitialize()
 	stateMachine->AddState(controlsPanelState);
 	stateMachine->AddState(authorsState);
 	stateMachine->AddState(gameOverState);
+	stateMachine->AddState(winState);
 
 	loadingState->OnEnterEvent = std::bind(&AppMarioGame::OnLoading, this, std::placeholders::_1);
 }

@@ -23,6 +23,7 @@ private:
 	class ControlsPanelState* controlsPanelState = nullptr;
 	class AuthorsState* authorsState = nullptr;
 	class GameOverState* gameOverState = nullptr;
+	class WinState* winState = nullptr;
 
 	RenderingStack* renderStack = nullptr;
 	Renderer* renderModule = nullptr;

@@ -32,7 +32,7 @@ void World::Initialize(string PlayerName, string PlayerTexcurePath, float Player
 	playerCharacter = new Character(PlayerName, PlayerTexcurePath, PlayerMoveSpeed);
 	coinCounter = new CoinCounter(1, "coinCounter", sf::Vector2f(0, 0));
 	heartPanel = new HeartsPanel(stateMachine);
-	castle = new Castle(Vector2(160, 160), Vector2(768, 320));
+	castle = new Castle(Vector2(160, 160), Vector2(768, 320), stateMachine);
 }
 
 void World::MapInitialize(string pathToTexturesTxt, string pathToTileTxt)

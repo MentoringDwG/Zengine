@@ -160,6 +160,7 @@
     <ClCompile Include="Mario\StateMachine\LoadingState.cpp" />
     <ClCompile Include="Mario\StateMachine\MainMenuState.cpp" />
     <ClCompile Include="Mario\StateMachine\WaitingRoomState.cpp" />
+    <ClCompile Include="Mario\StateMachine\WinState.cpp" />
     <ClCompile Include="Mario\UIinGame\HeartsPanel.cpp" />
     <ClCompile Include="Mario\UIinGame\MainMenuPanel.cpp" />
   </ItemGroup>
@@ -177,6 +178,7 @@
     <ClInclude Include="Mario\StateMachine\LoadingState.h" />
     <ClInclude Include="Mario\StateMachine\MainMenuState.h" />
     <ClInclude Include="Mario\StateMachine\WaitingRoomState.h" />
+    <ClInclude Include="Mario\StateMachine\WinState.h" />
     <ClInclude Include="Mario\UIinGame\HeartsPanel.h" />
     <ClInclude Include="Mario\UIinGame\MainMenuPanel.h" />
     <ClInclude Include="resource.h" />

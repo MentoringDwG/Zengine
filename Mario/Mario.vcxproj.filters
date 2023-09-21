@@ -60,6 +60,9 @@
     <ClCompile Include="Mario\StateMachine\GameOverState.cpp">
       <Filter>Mario\StateMachine</Filter>
     </ClCompile>
+    <ClCompile Include="Mario\StateMachine\WinState.cpp">
+      <Filter>Mario\StateMachine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mario\Application\AppMarioGame.h">
@@ -99,6 +102,9 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="Mario\StateMachine\GameOverState.h">
+      <Filter>Mario\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\StateMachine\WinState.h">
       <Filter>Mario\StateMachine</Filter>
     </ClInclude>
   </ItemGroup>
