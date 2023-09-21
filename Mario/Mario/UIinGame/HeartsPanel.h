@@ -6,10 +6,12 @@
 
 class HeartsPanel
 {
+private:
 	std::vector<shared_ptr<UIButton>> hearts;
+	class StateMachine* stateMachine = nullptr;
 
 public:
-	HeartsPanel();
+	HeartsPanel(class StateMachine* stateMachineIn);
 	~HeartsPanel();
 
 	void Draw(struct RenderingStack* renderStack);

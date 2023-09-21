@@ -22,7 +22,6 @@ c:\users\admin\documents\github\zengine\zengine\x64\release\animation.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zenobject.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\movableobject.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.obj
-c:\users\admin\documents\github\zengine\zengine\x64\release\world.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\textureasset.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\map.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\enemy.obj
@@ -41,10 +40,6 @@ c:\users\admin\documents\github\zengine\zengine\x64\release\zenphysics2d.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\physicalzenobject2d.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zentext.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zenshape.obj
-c:\users\admin\documents\github\zengine\x64\release\zengine.lib
 c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.tlog\cl.command.1.tlog
 c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.tlog\cl.read.1.tlog
 c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.tlog\cl.write.1.tlog
-c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.tlog\lib-link.read.1.tlog
-c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.tlog\lib-link.write.1.tlog
-c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.tlog\lib.command.1.tlog

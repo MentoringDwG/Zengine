@@ -50,7 +50,7 @@ void AppMarioGame::StateInitialize()
 {
 	mainMenuState = new MainMenuState(State::MainMenuState, renderStack, stateMachine, renderModule);
 	loadingState = new LoadingState(State::LoadingState, stateMachine);
-	gameplayState = new GameplayState(State::GameplayState);
+	gameplayState = new GameplayState(State::GameplayState, renderStack);
 	controlsPanelState = new ControlsPanelState(State::ControlsPanelState, renderStack, stateMachine);
 	authorsState = new AuthorsState(State::AuthorsState, renderStack, stateMachine);
 	gameOverState = new GameOverState(State::GameOverState, renderStack, stateMachine);

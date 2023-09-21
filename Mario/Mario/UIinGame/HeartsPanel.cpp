@@ -1,7 +1,10 @@
 #include "HeartsPanel.h"
+#include "../../../Zengine/Zengine/StateMachine/StateMachine.h"
 
-HeartsPanel::HeartsPanel()
+HeartsPanel::HeartsPanel(StateMachine* stateMachineIn)
 {
+	stateMachine = stateMachineIn;
+
 	hearts.push_back(make_shared<UIButton>(Vector2(0, 0), Vector2(32, 32)));
 	hearts.push_back(make_shared<UIButton>(Vector2(32, 0), Vector2(32, 32)));
 	hearts.push_back(make_shared<UIButton>(Vector2(64, 0), Vector2(32, 32)));
@@ -29,7 +32,8 @@ void HeartsPanel::UpdateHeartsState()
 
 			if (i == 0)
 			{
-				exit(0);
+				;
+				stateMachine->TransitionTo(State::EAppState::GameOverState);
 			}
 
 			return;

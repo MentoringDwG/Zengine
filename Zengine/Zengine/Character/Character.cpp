@@ -114,6 +114,7 @@ bool Character::IsCharacterGrounded()
 
 void Character::Draw(RenderingStack* renderStack)
 {
+	physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(200.0f, 0.0f));
 	animator->canPlayAnimation = true;
 
 	texture = textureAsset->GetTexture();

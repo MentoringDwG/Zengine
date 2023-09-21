@@ -10,6 +10,7 @@
 #include "Enemy.h"
 #include "../Environment/Coin.h"
 #include "../Environment/Castle.h"
+#include "../StateMachine/StateMachine.h"
 
 
 World::~World()
@@ -25,12 +26,12 @@ World::~World()
 	coins.clear();
 }
 
-void World::Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed)
+void World::Initialize(string PlayerName, string PlayerTexcurePath, float PlayerMoveSpeed, StateMachine* stateMachine)
 {
 	map = new Map();
 	playerCharacter = new Character(PlayerName, PlayerTexcurePath, PlayerMoveSpeed);
 	coinCounter = new CoinCounter(1, "coinCounter", sf::Vector2f(0, 0));
-	heartPanel = new HeartsPanel();
+	heartPanel = new HeartsPanel(stateMachine);
 	castle = new Castle(Vector2(160, 160), Vector2(768, 320));
 }
 
