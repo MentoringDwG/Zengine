@@ -1,5 +1,6 @@
 ﻿  Animation.cpp
   AnimationDefinition.cpp
+  AnimationDefinitionManager.cpp
   AnimationProcesor.cpp
   Animator.cpp
   KeyFrame.cpp
@@ -17,8 +18,8 @@
   InputHandler.cpp
   InputProcessorModule.cpp
   UIInputHandler.cpp
-  IEngineModule.cpp
   Trwa kompilowanie...
+  IEngineModule.cpp
   PhysicalZenObject2D.cpp
   ZenPhysics2D.cpp
   Renderer.cpp
@@ -38,8 +39,8 @@
   World.cpp
   Zengine.cpp
   MovableObject.cpp
-  ZenObject.cpp
   Trwa kompilowanie...
+  ZenObject.cpp
   ZenShape.cpp
   ZenText.cpp
   Zengine.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\Zengine.lib

@@ -4,7 +4,6 @@
 
 struct KeyFrame
 {
-public:
 	KeyFrame(int keyFrameIdIn, int spriteSheetIdIn, Vector2 startPointInSpriteSheetIn, Vector2 spriteSizeIn, int TimeStampIn) : 
 		keyFrameId(keyFrameIdIn),
 		spriteSheetId(spriteSheetIdIn),

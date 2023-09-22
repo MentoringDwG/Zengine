@@ -24,6 +24,6 @@ void AnimationProcesor::PlayAnimations()
 {
 	for (int i = 0; i < animators.size(); i++)
 	{
-		animators[i]->Play();
+		animators[i]->Update();
 	}
 }

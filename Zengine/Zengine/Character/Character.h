@@ -37,6 +37,7 @@ private:
 	CharacterInputHandler inputHandler;
 	int listenerIndexStart;
 	int listenerIndexEnd;
+	int walkAnimationId = 0;
 	float moveSpeed;
 	class BoxCollider2D* collider2D = nullptr;
 	TextureAsset* textureAsset = nullptr;

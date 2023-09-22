@@ -9,21 +9,24 @@ class Animator
 {
 public:
 	Animator(class ZenShape* ownerIn);
-	void Play();
-	void AddAnimation(Animation* animation);
+	void Update();
+	int AddAnimation(Animation* animation);
 	void DeleteAnimation(Animation* animation);
 	void SetCurrentAnimation(int id);
 	int GetCurrentAnimation();
 
-	bool canPlayAnimation = false;
+	void Play();
+	void Pause();
+	void Stop();
 
 private:
-	class ZenShape* owner = nullptr;
-	std::vector<Animation*> animations;
+	sf::Clock clock;
 	sf::IntRect rectSpriteSheet = sf::IntRect(0, 0, 0, 0);
-	Animation* currentAnimation = nullptr;
+	std::vector<Animation*> animations;
 	int currentKeyFrameId = 0;
 	int currentAnimationID = 0;
-	sf::Clock clock;
+	class ZenShape* owner = nullptr;
+	Animation* currentAnimation = nullptr;
+	bool canPlayAnimation = false;
 };
 

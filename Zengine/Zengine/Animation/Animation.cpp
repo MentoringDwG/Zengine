@@ -4,11 +4,26 @@
 #include "Animator.h"
 #include "AnimationDefinition.h"
 
-Animation::Animation(Animator* animator, std::string animationDefinitionJsonPathIn)
+Animation::Animation(std::string animationDefinitionJsonPathIn)
 {
 	animationDefinition = new AnimationDefinition(animationDefinitionJsonPathIn, this);
+}
 
-	animator->AddAnimation(this);
+Animation::~Animation()
+{
+	delete animationDefinition;
+
+	for (int i = 0; i < keyFrames.size(); i++)
+	{
+		delete keyFrames[i];
+	}
+	keyFrames.clear();
+
+	for (int i = 0; i < spriteSheets.size(); i++)
+	{
+		delete spriteSheets[i];
+	}
+	spriteSheets.clear();
 }
 
 void Animation::AddKeyFrame(int keyFrameIdIn, int spriteSheetIdIn, Vector2 startPointInSpriteSheetIn, Vector2 spriteSizeIn, int TimeStampIn)

@@ -30,8 +30,9 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject2D);
 
 	animator = new Animator(physicalZenObject2D->zenShape);
-	walkAnimation = new Animation(animator, "Json/Animations/marioWalk.json");
-	animator->SetCurrentAnimation(0);
+	walkAnimation = new Animation("Json/Animations/marioWalk.json");
+	walkAnimationId = animator->AddAnimation(walkAnimation);
+	animator->SetCurrentAnimation(walkAnimationId);
 }
 
 Character::~Character()
@@ -115,7 +116,7 @@ bool Character::IsCharacterGrounded()
 void Character::Draw(RenderingStack* renderStack)
 {
 	physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(200.0f, 0.0f));
-	animator->canPlayAnimation = true;
+	animator->Play();
 
 	texture = textureAsset->GetTexture();
 	physicalZenObject2D->zenShape->SetTexture(texture);

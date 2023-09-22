@@ -12,7 +12,7 @@ Animator::Animator(ZenShape* ownerIn): owner(ownerIn)
 	AnimationProcesor::Get()->AddAnimator(this);
 }
 
-void Animator::Play()
+void Animator::Update()
 {
 	if (canPlayAnimation == false) return;
 	if (currentAnimation == nullptr) return;
@@ -39,9 +39,11 @@ void Animator::Play()
 	}
 }
 
-void Animator::AddAnimation(Animation* animation)
+int Animator::AddAnimation(Animation* animation)
 {
 	animations.push_back(animation);
+
+	return (int)animations.size() - 1;
 }
 
 void Animator::DeleteAnimation(Animation* animation)
@@ -69,4 +71,21 @@ void Animator::SetCurrentAnimation(int id)
 int Animator::GetCurrentAnimation()
 {
 	return currentAnimationID;
+}
+
+
+void Animator::Play()
+{
+	canPlayAnimation = true;
+}
+
+void Animator::Pause()
+{
+	canPlayAnimation = false;
+}
+
+void Animator::Stop()
+{
+	canPlayAnimation = false;
+	currentKeyFrameId = 0;
 }
