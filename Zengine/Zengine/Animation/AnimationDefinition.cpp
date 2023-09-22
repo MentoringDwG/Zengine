@@ -1,10 +1,10 @@
 #include "AnimationDefinition.h"
-#include "Animation.h"
 #include "../Structs/Vector2.h"
 #include "../../../nlohmann/json.hpp"
+#include "KeyFrame.h"
 #include <fstream>
 
-AnimationDefinition::AnimationDefinition(std::string animationDefimitionJsonPathIn, Animation* ownerIn) : animationDefimitionJsonPath(animationDefimitionJsonPath), owner(ownerIn)
+AnimationDefinition::AnimationDefinition(std::string animationDefimitionJsonPathIn, std::string nameIn) : animationDefimitionJsonPath(animationDefimitionJsonPath), name(nameIn)
 {
 	std::ifstream jsonFileStream(animationDefimitionJsonPathIn);
 	nlohmann::json jsonData = nlohmann::json::parse(jsonFileStream);
@@ -36,10 +36,14 @@ AnimationDefinition::AnimationDefinition(std::string animationDefimitionJsonPath
 
 void AnimationDefinition::AddKeyFrame(int keyFrameIdIn, int spriteSheetIdIn, Vector2 startPointInSpriteSheetIn, Vector2 spriteSizeIn, int TimeStampIn)
 {
-	owner->AddKeyFrame(keyFrameIdIn, spriteSheetIdIn, startPointInSpriteSheetIn, spriteSizeIn, TimeStampIn);
+	KeyFrame* keyFrame = new KeyFrame(keyFrameIdIn, spriteSheetIdIn, startPointInSpriteSheetIn, spriteSizeIn, TimeStampIn);
+	keyFrames.push_back(keyFrame);
 }
 
 void AnimationDefinition::AddSpriteSheets(std::string spriteSheetPath)
 {
-	owner->AddSpriteSheets(spriteSheetPath);
+	sf::Texture* texture = new sf::Texture();
+	texture->loadFromFile(spriteSheetPath);
+
+	spriteSheets.push_back(texture);
 }

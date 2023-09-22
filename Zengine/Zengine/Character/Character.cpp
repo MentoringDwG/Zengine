@@ -8,6 +8,7 @@
 #include "../Physics2D/PhysicalZenObject2D.h"
 #include "../Animation/Animator.h"
 #include "../Animation/Animation.h"
+#include "../Animation/AnimationDefinitionManager.h"
 
 Character::Character(std::string name, string Path, float playerMoveSpeed)
 {
@@ -30,7 +31,8 @@ Character::Character(std::string name, string Path, float playerMoveSpeed)
 	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject2D);
 
 	animator = new Animator(physicalZenObject2D->zenShape);
-	walkAnimation = new Animation("Json/Animations/marioWalk.json");
+	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/marioWalk.json", "MarioWalk");
+	walkAnimation = new Animation(AnimationDefinitionManager::Get()->GetAnimationDefinition("MarioWalk"));
 	walkAnimationId = animator->AddAnimation(walkAnimation);
 	animator->SetCurrentAnimation(walkAnimationId);
 }

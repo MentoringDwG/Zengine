@@ -1,18 +1,17 @@
 #pragma once
 
 #include <iostream>
-
-class Animation;
+#include <SFML/Graphics.hpp>
 
 struct AnimationDefinition
 {
-	AnimationDefinition(std::string animationDefimitionJsonPathIn, Animation* ownerIn);
-
-	std::string animationDefimitionJsonPath = "";
-	Animation* owner = nullptr;
+	AnimationDefinition(std::string animationDefimitionJsonPathIn, std::string nameIn);
 
 	void AddKeyFrame(int keyFrameIdIn, int spriteSheetIdIn, struct Vector2 startPointInSpriteSheetIn, struct Vector2 spriteSizeIn, int TimeStampIn);
 	void AddSpriteSheets(std::string spriteSheetPath);
+
+	std::string animationDefimitionJsonPath = "";
+	std::string name = "";
 
 	//json
 	const std::string SPRITESHEETS = "SpriteSheets";
@@ -25,5 +24,8 @@ struct AnimationDefinition
 	const std::string SPRITESIZEX = "SpriteSizeX";
 	const std::string SPRITESIZEY = "SpriteSizeY";
 	const std::string TIMESTAMP = "TimeStamp";
+
+	std::vector<struct KeyFrame*> keyFrames;
+	std::vector<sf::Texture*> spriteSheets;
 };
 

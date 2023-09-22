@@ -6,11 +6,9 @@
 class Animation
 {
 public:
-	Animation(std::string animationDefinitionJsonPathIn);
+	Animation(struct AnimationDefinition* animationDefinition);
 	~Animation();
-	void AddKeyFrame(int keyFrameIdIn, int spriteSheetIdIn, struct Vector2 startPointInSpriteSheetIn, struct Vector2 spriteSizeIn, int TimeStampIn);
 	std::vector<struct KeyFrame*> GetKeyFrames();
-	void AddSpriteSheets(std::string spriteSheetPath);
 	sf::Texture* GetSpriteSheet(int spriteSheetId);
 
 private:
