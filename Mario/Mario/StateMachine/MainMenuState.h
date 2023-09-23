@@ -8,19 +8,17 @@
 class MainMenuState : public BaseGameState
 {
 private:
-	void Animation();
-
 	MainMenuPanel mainMenuPanel;
-	sf::IntRect rectSpriteSheet = sf::IntRect(0, 0, 960, 544);
-	sf::Clock clock;
-	string spriteSheetPath = "Graphics/MainMenu/MainMenuSpriteSheet.png";
+	int animationId = 0;
 	class ZenShape* zenShape = nullptr;
-	std::vector<sf::Texture*> spriteSheets;
 	sf::Texture* texture = nullptr;
 	RenderObject* renderObject = nullptr;
 	RenderingStack* renderStack = nullptr;
 	Renderer* renderer = nullptr;
 	StateMachine* stateMachine = nullptr;
+
+	class Animation* animation = nullptr;
+	class Animator* animator = nullptr;
 
 public:
 	virtual void OnEnter(int prevStateId) override;

@@ -1,5 +1,10 @@
 #include "MainMenuState.h"
 #include "../../../Zengine/Zengine/InputModule/UIInputHandler.h"
+#include "../../../Zengine/Zengine/Animation/Animator.h"
+#include "../../../Zengine/Zengine/Animation/Animation.h"
+#include "../../../Zengine/Zengine/Animation/AnimationDefinitionManager.h"
+#include "../../../Zengine/Zengine/Animation/AnimationDefinition.h"
+#include "../../../Zengine/Zengine/Animation/AnimationProcesor.h"
 
 MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack, StateMachine* stateMachine, Renderer* renderer) : BaseGameState(stateIdIn)
 {
@@ -8,15 +13,8 @@ MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack, StateMa
 	this->renderer = renderer;
 	this->stateMachine = stateMachine;
 
-	spriteSheets.push_back(new sf::Texture());
-	spriteSheets.push_back(new sf::Texture());
-	spriteSheets.push_back(new sf::Texture());
-	spriteSheets.push_back(new sf::Texture());
-
-	spriteSheets[0]->loadFromFile("Graphics/MainMenu/MainMenuSpriteSheet1.png");
-	spriteSheets[1]->loadFromFile("Graphics/MainMenu/MainMenuSpriteSheet2.png");
-	spriteSheets[2]->loadFromFile("Graphics/MainMenu/MainMenuSpriteSheet3.png");
-	spriteSheets[3]->loadFromFile("Graphics/MainMenu/MainMenuSpriteSheet4.png");
+	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/mainMenu.json", "MainMenu");
+	animation = new Animation(AnimationDefinitionManager::Get()->GetAnimationDefinition("MainMenu"));
 }
 
 MainMenuState::~MainMenuState()
@@ -26,7 +24,9 @@ MainMenuState::~MainMenuState()
 	delete renderObject;
 	delete renderStack;
 	delete renderer;
-	spriteSheets.clear();
+	AnimationProcesor::Get()->DeleteAnimator(animator);
+	delete animator;
+	delete animation;
 }
 
 void MainMenuState::OnEnter(int prevStateId)
@@ -34,10 +34,13 @@ void MainMenuState::OnEnter(int prevStateId)
 	zenShape = new ZenShape(10, "MainMenu", sf::Vector2f(960, 544));
 	zenShape->SetSize(sf::Vector2f(960, 544));
 
-	zenShape->Draw()->setTexture(spriteSheets[0]);
-	zenShape->Draw()->setTextureRect(rectSpriteSheet);
-
 	mainMenuPanel.Initialize(stateMachine);
+
+	animator = new Animator(zenShape);
+	animation = new Animation(AnimationDefinitionManager::Get()->GetAnimationDefinition("MainMenu"));
+	animationId = animator->AddAnimation(animation);
+	animator->SetCurrentAnimation(animationId);
+	animator->Play();
 
 	renderObject = new RenderObject(zenShape->Draw(), 1, 1);
 	renderStack->renderQueue.push_back(renderObject);
@@ -47,52 +50,18 @@ void MainMenuState::OnEnter(int prevStateId)
 
 	renderStack->DivisionOfObjectsIntoLayersByLayerId();
 	renderer->SortRenderLayers(renderStack);
-	clock.restart();
 }
 
 void MainMenuState::OnUpdate()
 {
-	Animation();
+	
 }
 
 void MainMenuState::OnLeave(int nextStateId)
 {
+	animator->Stop();
 	renderStack->Clear();
 	delete zenShape;
 	delete texture;
 	mainMenuPanel.~MainMenuPanel();
-}
-
-void MainMenuState::Animation()
-{
-	if (clock.getElapsedTime().asMilliseconds() > 100)
-	{
-		if (zenShape->Draw()->getTexture() == spriteSheets[0] && rectSpriteSheet.left == 14400)
-		{
-			zenShape->Draw()->setTexture(spriteSheets[1]);
-			rectSpriteSheet.left = 0;
-		}
-		else if (zenShape->Draw()->getTexture() == spriteSheets[1] && rectSpriteSheet.left == 14400)
-		{
-			zenShape->Draw()->setTexture(spriteSheets[2]);
-			rectSpriteSheet.left = 0;
-		}
-		else if (zenShape->Draw()->getTexture() == spriteSheets[2] && rectSpriteSheet.left == 15360)
-		{
-			zenShape->Draw()->setTexture(spriteSheets[3]);
-			rectSpriteSheet.left = 0;
-		}
-		else if (zenShape->Draw()->getTexture() == spriteSheets[3] && rectSpriteSheet.left == 14400)
-		{
-			zenShape->Draw()->setTexture(spriteSheets[0]);
-			rectSpriteSheet.left = 0;
-		}
-		else
-		{
-			rectSpriteSheet.left += 960;
-		}
-
-		zenShape->Draw()->setTextureRect(rectSpriteSheet);
-		clock.restart();
-	}
 }
