@@ -48,6 +48,7 @@ private:
 	class ZenText* fpsText = nullptr;
 	sf::RenderWindow* window = nullptr;
 	class StateMachine* stateMachine = nullptr;
+	class AnimationProcesor* animationProcesor = nullptr;
 	bool engineRunning = false;
 };
 

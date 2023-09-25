@@ -48,19 +48,19 @@ void Map::MemoryReleaseForLoadMap()
 {
     for (int i = 0; i < rows; i++)
     {
-        delete[] tab[i];
+        delete[] textureNumberTab[i];
         delete[] tileMap[i];
     }
-    delete[] tab;
+    delete[] textureNumberTab;
     delete[] tileMap;
 }
 
 void Map::CreatingTwoDimensionalDynamicArray()
 {
-    tab = new string * [rows];
+    textureNumberTab = new string * [rows];
     for (int i = 0; i < rows; i++)
     {
-        tab[i] = new string[columns];
+        textureNumberTab[i] = new string[columns];
     }
 }
 
@@ -70,7 +70,7 @@ void Map::LoadingTextureNumberIntoDynamicArray(ifstream* file)
     {
         for (int j = 0; j < columns; j++)
         {
-            *file >> tab[i][j];
+            *file >> textureNumberTab[i][j];
         }
     }
 }
@@ -90,7 +90,7 @@ void Map::Draw(RenderingStack* renderStack)
     {
         for (int j = 0; j < columns; j++)
         {
-            TextureAsset* textureAsset = assetsManager.GetTextureAsset(tab[i][j]);
+            TextureAsset* textureAsset = assetsManager.GetTextureAsset(textureNumberTab[i][j]);
             sf::Texture *texture = textureAsset->GetTexture();
 
             tileMap[i][j].setTexture(texture);

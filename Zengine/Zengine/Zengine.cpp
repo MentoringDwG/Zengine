@@ -46,6 +46,8 @@ void Zengine::Run()
 
 	Start(1);
 
+	animationProcesor = AnimationProcesor::Get();
+
 	MainLoop();
 }
 
@@ -103,7 +105,8 @@ void Zengine::MainLoop()
 		//Render game elements
 		window->setView(mainView);
 
-		AnimationProcesor::Get()->PlayAnimations();
+		animationProcesor->PlayAnimations();
+
 		RenderModule->ProcessDrawingElements(renderStack);
 		
 		ZenPhysics2D::Get()->SetShouldShowDebug(stateId == State::GameplayState);
