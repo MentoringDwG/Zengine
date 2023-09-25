@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../../Zengine/Zengine/UI/CompoundWidget.h"
-#include "../../../Zengine/Zengine/InputModule/UIInputHandler.h"
-#include "../../../Zengine/Zengine/Renderer/Renderer.h"
+#include "Zengine/UI/CompoundWidget.h"
+#include "Zengine/InputModule/UIInputHandler.h"
+#include "Zengine/Renderer/Renderer.h"
 
 class UIButton;
 

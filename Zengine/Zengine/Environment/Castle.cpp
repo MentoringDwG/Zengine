@@ -4,15 +4,11 @@
 #include "../Physics2D/ZenPhysics2D.h"
 #include "../StateMachine/StateMachine.h"
 
-#include <iostream>
-
-Castle::Castle(Vector2 size, Vector2 position, StateMachine* stateMachineIn)
+Castle::Castle(Vector2 size, Vector2 position, StateMachine* stateMachineIn) :ZenObject(20, "Castle", sf::Vector2f(size.x, size.y))
 {
 	stateMachine = stateMachineIn;
 
-	zenObject = new ZenObject(20, "Castle", sf::Vector2f(size.x, size.y));
-
-	boxCollider = new BoxCollider2D(position, size, zenObject, Collider::ColliderTags::CASTLE);
+	boxCollider = new BoxCollider2D(position, size, this, Collider::ColliderTags::CASTLE);
 	boxCollider->OnCollisionStart.AddListener(&Castle::HandleCollisionStart, this);
 	boxCollider->OnCollisionEnd.AddListener(&Castle::HandleCollisionEnd, this);
 	ZenPhysics2D::Get()->RegisterCollider(boxCollider);
@@ -20,7 +16,7 @@ Castle::Castle(Vector2 size, Vector2 position, StateMachine* stateMachineIn)
 
 void Castle::HandleCollisionStart(Collider* other)
 {
-	if (other->GetOwner()->name == "Mario" && !isCollisionWithMario)
+	if (other->GetOwner()->name == MARIO && !isCollisionWithMario)
 	{
 		isCollisionWithMario = true;
 		
@@ -30,7 +26,7 @@ void Castle::HandleCollisionStart(Collider* other)
 
 void Castle::HandleCollisionEnd(Collider* other)
 {
-	if (other->GetOwner()->name == "Mario")
+	if (other->GetOwner()->name == MARIO)
 	{
 		isCollisionWithMario = false;
 	}

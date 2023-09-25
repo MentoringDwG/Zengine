@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../Zengine/Zengine/Renderer/Renderer.h"
+#include "Zengine/Renderer/Renderer.h"
 
 class AppMarioGame
 {

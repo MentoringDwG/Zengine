@@ -9,9 +9,9 @@ AnimationDefinition::AnimationDefinition(std::string animationDefimitionJsonPath
 	std::ifstream jsonFileStream(animationDefimitionJsonPathIn);
 	nlohmann::json jsonData = nlohmann::json::parse(jsonFileStream);
 
-	if (jsonData.contains(SPRITESHEETS))
+	if (jsonData.contains(SPRITE_SHEETS))
 	{
-		nlohmann::json spriteSheets = jsonData[SPRITESHEETS];
+		nlohmann::json spriteSheets = jsonData[SPRITE_SHEETS];
 
 		for (size_t idx = 0; idx < spriteSheets.size(); idx++)
 		{
@@ -21,15 +21,15 @@ AnimationDefinition::AnimationDefinition(std::string animationDefimitionJsonPath
 		}
 	}
 
-	if (jsonData.contains(KEYFRAMES))
+	if (jsonData.contains(KEY_FRAMES))
 	{
-		nlohmann::json keyFrames = jsonData[KEYFRAMES];
+		nlohmann::json keyFrames = jsonData[KEY_FRAMES];
 
 		for (size_t idx = 0; idx < keyFrames.size(); idx++)
 		{
 			nlohmann::json keyFrame = keyFrames.at(idx);
 
-			AddKeyFrame(keyFrame[KEYFRAMEID], keyFrame[SPRITESHEETID], Vector2(keyFrame[STARTPOINTINSPRITESHEETX], keyFrame[STARTPOINTINSPRITESHEETY]), Vector2(keyFrame[SPRITESIZEX], keyFrame[SPRITESIZEY]), keyFrame[TIMESTAMP]);
+			AddKeyFrame(keyFrame[KEY_FRAME_ID], keyFrame[SPRITE_SHEET_ID], Vector2(keyFrame[START_POINT_IN_SPRITE_SHEET_X], keyFrame[START_POINT_IN_SPRITE_SHEET_Y]), Vector2(keyFrame[SPRITE_SIZE_X], keyFrame[SPRITE_SIZE_Y]), keyFrame[TIME_STAMP]);
 		}
 	}
 }

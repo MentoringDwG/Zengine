@@ -1,11 +1,11 @@
-﻿#include "../Zengine/Zengine/Zengine.h"
+﻿#include "Zengine/Zengine.h"
 #include "../Mario/Mario/Application/AppMarioGame.h"
 #include <functional>
-#include "../Zengine/Zengine/StateMachine/StateMachine.h"
-#include "../Zengine/Zengine/Renderer/Renderer.h"
-#include "../Zengine/Zengine/World/World.h"
-#include "../Zengine/Zengine/InputModule/CharacterInputHandler.h"
-#include "../Zengine/Zengine/InputModule/InputProcessorModule.h"
+#include "Zengine/StateMachine/StateMachine.h"
+#include "Zengine/Renderer/Renderer.h"
+#include "Zengine/World/World.h"
+#include "Zengine/InputModule/CharacterInputHandler.h"
+#include "Zengine/InputModule/InputProcessorModule.h"
 
 Zengine* engine = nullptr;
 

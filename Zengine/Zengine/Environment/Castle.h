@@ -1,8 +1,11 @@
 #pragma once
 
+#include <iostream>
+#include "../ZenObject/ZenObject.h"
+
 struct Vector2;
 
-class Castle
+class Castle : public ZenObject
 {
 public:
 	Castle(Vector2 size, Vector2 position, class StateMachine* stateMachineIn);
@@ -11,8 +14,9 @@ private:
 	void HandleCollisionEnd(Collider* other);
 
 	class BoxCollider2D* boxCollider = nullptr;
-	class ZenObject* zenObject = nullptr;
 	class StateMachine* stateMachine = nullptr;
 	bool isCollisionWithMario = false;
+
+	const std::string MARIO = "Mario";
 };
 

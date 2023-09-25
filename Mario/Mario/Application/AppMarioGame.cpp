@@ -1,6 +1,6 @@
 #include "AppMarioGame.h"
 
-#include "../../../Zengine/Zengine/StateMachine/StateMachine.h"
+#include "Zengine/StateMachine/StateMachine.h"
 #include "../StateMachine/MainMenuState.h"
 #include "../StateMachine/LoadingState.h"
 #include "../StateMachine/GameplayState.h"
@@ -10,11 +10,11 @@
 #include "../StateMachine/GameOverState.h"
 #include "../StateMachine/WinState.h"
 
-#include "../../../Zengine/Zengine/World/World.h"
-#include "../../../Zengine/Zengine/InputModule/CharacterInputHandler.h"
-#include "../../../Zengine/Zengine/InputModule/InputProcessorModule.h"
-#include "../../../Zengine/Zengine/Character/Character.h"
-#include "../../../Zengine/Zengine/Zengine.h"
+#include "Zengine/World/World.h"
+#include "Zengine/InputModule/CharacterInputHandler.h"
+#include "Zengine/InputModule/InputProcessorModule.h"
+#include "Zengine/Character/Character.h"
+#include "Zengine/Zengine.h"
 
 AppMarioGame::AppMarioGame(StateMachine* stateMachine, RenderingStack* renderStack, Renderer* renderModule, World* world)
 {

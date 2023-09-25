@@ -1,9 +1,9 @@
 #include "ControlsPanelState.h"
 #include "WaitingRoomState.h"
-#include "../../../Zengine/Zengine/StateMachine/StateMachine.h"
-#include "../../../Zengine/Zengine/InputModule/UIInputHandler.h"
-#include "../../../Zengine/Zengine/UI/UIButton.h"
-#include "../../../Zengine/Zengine/ZenObject/ZenShape.h"
+#include "Zengine/StateMachine/StateMachine.h"
+#include "Zengine/InputModule/UIInputHandler.h"
+#include "Zengine/UI/UIButton.h"
+#include "Zengine/ZenObject/ZenShape.h"
 
 ControlsPanelState::~ControlsPanelState()
 {
@@ -44,10 +44,10 @@ void ControlsPanelState::BackToMainMenu(int id)
 {
 	UIInputHandler::Get()->Clear();
 
-	waitingRoomState = new WaitingRoomState(0, stateMachine, 1);
-	stateMachine->DeleteState(0);
+	waitingRoomState = new WaitingRoomState(State::WaitingRoomState, stateMachine, 1);
+	stateMachine->DeleteState(State::WaitingRoomState);
 	stateMachine->AddState(waitingRoomState);
-	stateMachine->TransitionTo(0);
+	stateMachine->TransitionTo(State::WaitingRoomState);
 }
 
 void ControlsPanelState::OnUpdate()

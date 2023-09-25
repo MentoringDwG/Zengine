@@ -1,5 +1,5 @@
 #include "HeartsPanel.h"
-#include "../../../Zengine/Zengine/StateMachine/StateMachine.h"
+#include "Zengine/StateMachine/StateMachine.h"
 
 HeartsPanel::HeartsPanel(StateMachine* stateMachineIn)
 {
@@ -32,7 +32,6 @@ void HeartsPanel::UpdateHeartsState()
 
 			if (i == 0)
 			{
-				;
 				stateMachine->TransitionTo(State::EAppState::GameOverState);
 			}
 
