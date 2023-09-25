@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 
 class AnimationDefinitionManager
 {
@@ -9,15 +10,14 @@ public:
 	static AnimationDefinitionManager* Get() { return &instance; }
 
 	void AddAnimationDefinition(std::string animationDefimitionJsonPathIn, std::string nameIn);
-	struct AnimationDefinition* GetAnimationDefinition(std::string name);
-	void DeleteAnimationDefinition(struct AnimationDefinition* animationDefinition);
-
+	std::shared_ptr<struct AnimationDefinition> GetAnimationDefinition(std::string name);
+	void DeleteAnimationDefinition(std::shared_ptr<struct AnimationDefinition> animationDefinition);
 
 private:
 	AnimationDefinitionManager() {}
 	~AnimationDefinitionManager() {};
 
 	static AnimationDefinitionManager instance;
-	std::vector<struct AnimationDefinition*> animationDefinitions;
+	std::vector<std::shared_ptr<struct AnimationDefinition>> animationDefinitions;
 };
 

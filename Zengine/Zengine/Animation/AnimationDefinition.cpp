@@ -47,3 +47,18 @@ void AnimationDefinition::AddSpriteSheets(std::string spriteSheetPath)
 
 	spriteSheets.push_back(texture);
 }
+
+AnimationDefinition::~AnimationDefinition()
+{
+	for (int i = 0; i < keyFrames.size(); i++)
+	{
+		delete keyFrames[i];
+	}
+	keyFrames.clear();
+
+	for (int i = 0; i < spriteSheets.size(); i++)
+	{
+		delete spriteSheets[i];
+	}
+	spriteSheets.clear();
+}

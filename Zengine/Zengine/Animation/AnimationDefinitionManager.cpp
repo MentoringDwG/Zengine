@@ -5,11 +5,11 @@ AnimationDefinitionManager AnimationDefinitionManager::instance;
 
 void AnimationDefinitionManager::AddAnimationDefinition(std::string animationDefimitionJsonPathIn, std::string nameIn)
 {
-	AnimationDefinition* animationDefinition = new AnimationDefinition(animationDefimitionJsonPathIn, nameIn);
+	std::shared_ptr<AnimationDefinition> animationDefinition = std::make_shared<AnimationDefinition>(animationDefimitionJsonPathIn, nameIn);
 	animationDefinitions.push_back(animationDefinition);
 }
 
-AnimationDefinition* AnimationDefinitionManager::GetAnimationDefinition(std::string name)
+std::shared_ptr<struct AnimationDefinition> AnimationDefinitionManager::GetAnimationDefinition(std::string name)
 {
 	for (int i = 0; i < animationDefinitions.size(); i++)
 	{
@@ -22,7 +22,7 @@ AnimationDefinition* AnimationDefinitionManager::GetAnimationDefinition(std::str
 	return nullptr;
 }
 
-void AnimationDefinitionManager::DeleteAnimationDefinition(struct AnimationDefinition* animationDefinition)
+void AnimationDefinitionManager::DeleteAnimationDefinition(std::shared_ptr<struct AnimationDefinition> animationDefinition)
 {
 	for (auto itr = animationDefinitions.begin(); itr <= animationDefinitions.end(); itr++)
 	{

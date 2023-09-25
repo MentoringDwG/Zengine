@@ -3,7 +3,7 @@
 #include "../Structs/Vector2.h"
 #include "AnimationDefinition.h"
 
-Animation::Animation(AnimationDefinition* animationDefinition)
+Animation::Animation(std::shared_ptr<AnimationDefinition> animationDefinition)
 {
 	this->animationDefinition = animationDefinition;
 
@@ -13,7 +13,7 @@ Animation::Animation(AnimationDefinition* animationDefinition)
 
 Animation::~Animation()
 {
-	delete animationDefinition;
+	animationDefinition = nullptr;
 
 	for (int i = 0; i < keyFrames.size(); i++)
 	{

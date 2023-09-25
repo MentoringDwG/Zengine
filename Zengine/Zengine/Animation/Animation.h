@@ -1,18 +1,19 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 #include <SFML/Graphics.hpp>
 
 class Animation
 {
 public:
-	Animation(struct AnimationDefinition* animationDefinition);
+	Animation(std::shared_ptr<struct AnimationDefinition> animationDefinition);
 	~Animation();
 	std::vector<struct KeyFrame*> GetKeyFrames();
 	sf::Texture* GetSpriteSheet(int spriteSheetId);
 
 private:
-	struct AnimationDefinition* animationDefinition = nullptr;
+	std::shared_ptr<struct AnimationDefinition> animationDefinition = nullptr;
 	std::vector<struct KeyFrame*> keyFrames;
 	std::vector<sf::Texture*> spriteSheets;
 };
