@@ -78,6 +78,7 @@ void Level1::EnvironmentInitialize()
 
 void Level1::Draw(RenderingStack* renderStack)
 {
+	confiner->SetPositionLeft(Vector2(0, 0));
 	map->Draw(renderStack);
 	playerCharacter->Draw(renderStack);
 	ZenPhysics2D::Get()->Draw(renderStack);
@@ -108,8 +109,9 @@ CharacterInputHandler* Level1::GetCharacterInputHandler()
 
 void Level1::SetCamera(sf::View* mainCamera)
 {
-	if (playerCharacter->physicalZenObject2D->zenShape->GetPosition().x > 480)
+	if (playerCharacter->physicalZenObject2D->zenShape->GetPosition().x > 480 && playerCharacter->physicalZenObject2D->zenShape->GetPosition().x> mainCamera->getCenter().x)
 	{
 		mainCamera->setCenter(sf::Vector2f(playerCharacter->physicalZenObject2D->zenShape->GetPosition().x, mainCamera->getCenter().y));
+		confiner->SetPositionLeft(Vector2(playerCharacter->physicalZenObject2D->zenShape->GetPosition().x - 480, 0));
 	}
 }

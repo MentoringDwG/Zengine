@@ -14,3 +14,8 @@ Confiner::Confiner(Vector2 size, Vector2 positionLeftCollider, Vector2 positionR
 	boxColliderRight = new BoxCollider2D(positionRightCollider, size, rightConfiner, Collider::ColliderTags::CONFINER);
 	ZenPhysics2D::Get()->RegisterCollider(boxColliderRight);
 }
+
+void Confiner::SetPositionLeft(Vector2 positionLeftCollider)
+{
+	boxColliderLeft->SetPosition(sf::Vector2f(positionLeftCollider.x, positionLeftCollider.y));
+}
