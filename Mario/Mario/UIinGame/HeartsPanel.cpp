@@ -1,5 +1,5 @@
 #include "HeartsPanel.h"
-#include "Zengine/StateMachine/StateMachine.h"
+#include <Zengine/StateMachine/StateMachine.h>
 
 HeartsPanel::HeartsPanel(StateMachine* stateMachineIn)
 {

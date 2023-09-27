@@ -1,10 +1,10 @@
 #include "MainMenuState.h"
-#include "Zengine/InputModule/UIInputHandler.h"
-#include "Zengine/Animation/Animator.h"
-#include "Zengine/Animation/Animation.h"
-#include "Zengine/Animation/AnimationDefinitionManager.h"
-#include "Zengine/Animation/AnimationDefinition.h"
-#include "Zengine/Animation/AnimationProcesor.h"
+#include <Zengine/InputModule/UIInputHandler.h>
+#include <Zengine/Animation/Animator.h>
+#include <Zengine/Animation/Animation.h>
+#include <Zengine/Animation/AnimationDefinitionManager.h>
+#include <Zengine/Animation/AnimationDefinition.h>
+#include <Zengine/Animation/AnimationProcesor.h>
 
 MainMenuState::MainMenuState(int stateIdIn, RenderingStack* renderStack, StateMachine* stateMachine, Renderer* renderer) : BaseGameState(stateIdIn)
 {

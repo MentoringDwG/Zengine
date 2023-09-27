@@ -1,9 +1,9 @@
 #include "MainMenuPanel.h"
 #include "../StateMachine/WaitingRoomState.h"
-#include "Zengine/StateMachine/StateMachine.h"
-#include "Zengine/Structs/Vector2.h"
-#include "Zengine/UI/UIButton.h"
-#include "Zengine/ZenObject/ZenShape.h"
+#include <Zengine/StateMachine/StateMachine.h>
+#include <Zengine/Structs/Vector2.h>
+#include <Zengine/UI/UIButton.h>
+#include <Zengine/ZenObject/ZenShape.h>
 
 void MainMenuPanel::Initialize(StateMachine* stateMachine)
 {

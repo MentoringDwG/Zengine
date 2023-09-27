@@ -1,8 +1,8 @@
 #include "Castle.h"
-#include "Zengine/Colliders/BoxCollider2D.h"
-#include "Zengine/ZenObject/ZenObject.h"
-#include "Zengine/Physics2D/ZenPhysics2D.h"
-#include "Zengine/StateMachine/StateMachine.h"
+#include <Zengine/Colliders/BoxCollider2D.h>
+#include <Zengine/ZenObject/ZenObject.h>
+#include <Zengine/Physics2D/ZenPhysics2D.h>
+#include <Zengine/StateMachine/StateMachine.h>
 
 Castle::Castle(Vector2 size, Vector2 position, StateMachine* stateMachineIn) :ZenObject(20, "Castle", sf::Vector2f(size.x, size.y))
 {

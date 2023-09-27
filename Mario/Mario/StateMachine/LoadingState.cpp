@@ -1,5 +1,5 @@
 #include "LoadingState.h"
-#include "Zengine/StateMachine/StateMachine.h"
+#include <Zengine/StateMachine/StateMachine.h>
 
 LoadingState::LoadingState(int stateIdIn, StateMachine* stateMachine) : BaseGameState(stateIdIn)
 {

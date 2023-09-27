@@ -1,9 +1,9 @@
 #include "Coin.h"
 #include "../Environment/CoinCounter.h"
-#include "Zengine/Physics2D/ZenPhysics2D.h"
-#include "Zengine/Colliders/CircleCollider2D.h"
-#include "Zengine/Colliders/Collider.h"
-#include "Zengine/Structs/Vector2.h"
+#include <Zengine/Physics2D/ZenPhysics2D.h>
+#include <Zengine/Colliders/CircleCollider2D.h>
+#include <Zengine/Colliders/Collider.h>
+#include <Zengine/Structs/Vector2.h>
 
 Coin::Coin(int IDIn, string NameIn, string CoinPath, sf::Vector2f position, CoinCounter* coinCounter)
 {

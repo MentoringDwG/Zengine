@@ -1,7 +1,7 @@
 #include "GameOverState.h"
-#include "Zengine/ZenObject/ZenShape.h"
-#include "Zengine/InputModule/UIInputHandler.h"
-#include "Zengine/UI/UIButton.h"
+#include <Zengine/InputModule/UIInputHandler.h>
+#include <Zengine/UI/UIButton.h>
+#include <Zengine/ZenObject/ZenShape.h>
 #include "WaitingRoomState.h"
 
 void GameOverState::OnEnter(int prevStateId)

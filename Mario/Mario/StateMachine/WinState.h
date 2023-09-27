@@ -1,6 +1,7 @@
 #pragma once
-#include "Zengine/StateMachine/BaseGameState.h"
-#include "Zengine/Renderer/Renderer.h"
+
+#include <Zengine/StateMachine/BaseGameState.h>
+#include <Zengine/Renderer/Renderer.h>
 
 class StateMachine;
 

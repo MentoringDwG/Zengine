@@ -1,7 +1,7 @@
-﻿#include "Zengine/Zengine.h"
-#include "../Mario/Mario/Application/AppMarioGame.h"
+﻿#include <Zengine/Zengine.h>
+#include "Mario/Application/AppMarioGame.h"
 #include <functional>
-#include "Zengine/World/World.h"
+#include <Zengine/World/World.h>
 
 Zengine* engine = nullptr;
 

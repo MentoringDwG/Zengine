@@ -1,9 +1,9 @@
 #include "AuthorsState.h"
 #include "WaitingRoomState.h"
-#include "Zengine/StateMachine/StateMachine.h"
-#include "Zengine/InputModule/UIInputHandler.h"
-#include "Zengine/UI/UIButton.h"
-#include "Zengine/ZenObject/ZenShape.h"
+#include <Zengine/StateMachine/StateMachine.h>
+#include <Zengine/InputModule/UIInputHandler.h>
+#include <Zengine/UI/UIButton.h>
+#include <Zengine/ZenObject/ZenShape.h>
 
 AuthorsState::~AuthorsState()
 {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "Zengine/ZenObject/ZenObject.h"
+#include <Zengine/ZenObject/ZenObject.h>
 
 struct Vector2;
 

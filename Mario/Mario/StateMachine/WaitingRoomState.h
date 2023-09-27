@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Zengine/StateMachine/BaseGameState.h"
-#include "Zengine/StateMachine/StateMachine.h"
+#include <Zengine/StateMachine/BaseGameState.h>
+#include <Zengine/StateMachine/StateMachine.h>
 #include <SFML/Graphics.hpp>
 
 class WaitingRoomState : public BaseGameState

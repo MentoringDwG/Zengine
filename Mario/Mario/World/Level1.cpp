@@ -1,8 +1,8 @@
 #include "Level1.h"
-#include "Zengine/World/Map.h"
-#include "Zengine/ZenObject/ZenObject.h"
+#include <Zengine/World/Map.h>
+#include <Zengine/ZenObject/ZenObject.h>
 #include <SFML/Graphics.hpp>
-#include "Zengine/Physics2D/ZenPhysics2D.h"
+#include <Zengine/Physics2D/ZenPhysics2D.h>
 #include "../Environment/Ground.h"
 #include "../UIinGame/HeartsPanel.h"
 #include "../Environment/CoinCounter.h"
@@ -10,7 +10,7 @@
 #include "../Environment/Enemy.h"
 #include "../Environment/Coin.h"
 #include "../Environment/Castle.h"
-#include "Zengine/StateMachine/StateMachine.h"
+#include <Zengine/StateMachine/StateMachine.h>
 
 Level1::~Level1()
 {

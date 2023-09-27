@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../Zengine/Zengine/UI/UIButton.h"
+#include <Zengine/UI/UIButton.h>
 #include <memory>
 #include <vector>
 
