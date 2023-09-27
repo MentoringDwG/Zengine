@@ -25,6 +25,9 @@
     <Filter Include="Mario\UIinGame">
       <UniqueIdentifier>{2b911889-b86b-4dcc-a097-d8f170c566b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mario\World">
+      <UniqueIdentifier>{3b11f755-d6be-4200-94c0-29d334a4dc14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Mario.cpp">
@@ -62,6 +65,9 @@
     </ClCompile>
     <ClCompile Include="Mario\StateMachine\WinState.cpp">
       <Filter>Mario\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\World\Level1.cpp">
+      <Filter>Mario\World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="Mario\StateMachine\WinState.h">
       <Filter>Mario\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\World\Level1.h">
+      <Filter>Mario\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

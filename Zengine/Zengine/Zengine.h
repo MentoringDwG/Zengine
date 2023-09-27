@@ -13,7 +13,7 @@ class Zengine
 public:
 	static Zengine* CreateInstance();
 
-	void Run();
+	void Run(class World* world);
 	void MainLoop();
 	void Shutdown();
 
@@ -21,7 +21,6 @@ public:
 	class StateMachine* GetStateMachine();
 	RenderingStack* GetRenderingStack();
 	Renderer* GetRenderer();
-	class World* GetWorld();
 
 	std::function<void(int)> Start;
 
@@ -42,6 +41,7 @@ private:
 	float fps = 60;
 	int frameTme = 1;
 	static class Zengine* Engine;
+	class World* world = nullptr;
 	class InputProcessorModule* InputProcessor = nullptr;
 	Renderer* RenderModule = nullptr;
 	RenderingStack* renderStack = nullptr;

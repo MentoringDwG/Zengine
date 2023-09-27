@@ -16,6 +16,7 @@ c:\users\admin\documents\github\zengine\zengine\x64\release\character.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\keyframe.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\animator.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\animationprocesor.obj
+c:\users\admin\documents\github\zengine\zengine\x64\release\animationdefinitionmanager.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\animationdefinition.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\animation.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\movableobject.obj
@@ -41,7 +42,6 @@ c:\users\admin\documents\github\zengine\zengine\x64\release\ienginemodule.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zentext.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zenshape.obj
 c:\users\admin\documents\github\zengine\zengine\x64\release\zenobject.obj
-c:\users\admin\documents\github\zengine\zengine\x64\release\animationdefinitionmanager.obj
 c:\users\admin\documents\github\zengine\x64\release\zengine.lib
 c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.tlog\cl.command.1.tlog
 c:\users\admin\documents\github\zengine\zengine\x64\release\zengine.tlog\cl.read.1.tlog

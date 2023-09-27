@@ -5,10 +5,11 @@
 class AppMarioGame
 {
 public:
-	AppMarioGame(class StateMachine* stateMachine, RenderingStack* renderStack, Renderer* renderModule, class World* world);
+	AppMarioGame();
 	~AppMarioGame();
 
 	void Initialize(class Zengine* zengine);
+	class World* GetWorld();
 
 private:
 	void StateInitialize();
@@ -27,7 +28,7 @@ private:
 
 	RenderingStack* renderStack = nullptr;
 	Renderer* renderModule = nullptr;
-	class World* world = nullptr;
+	class Level1* level1 = nullptr;
 	class Zengine* zengine = nullptr;
 };
 

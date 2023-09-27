@@ -11,7 +11,6 @@
 #include "Animation/AnimationProcesor.h"
 
 Zengine* Zengine::Engine = nullptr;
-World world;
 
 Zengine* Zengine::CreateInstance()
 {
@@ -19,7 +18,7 @@ Zengine* Zengine::CreateInstance()
 	return Engine;
 }
 
-void Zengine::Run()
+void Zengine::Run(class World* world)
 {
 	engineRunning = true;
 
@@ -35,16 +34,17 @@ void Zengine::Run()
 
 	stateMachine = new StateMachine();
 
-	world.Initialize("Mario", "Graphics/Mario/Mario.png", 2.0f, stateMachine);
-	world.MapInitialize("Textures/TexturesLevel1.txt", "Tiles/TxtFiles/Level1.txt");
-	world.EnvironmentInitialize("Graphics/coin.png", sf::Vector2f(288, 352), sf::Vector2f(608, 192));
-	world.PhysicalZenObject2DInitialize("Graphics/Enemy1.png");
+	Start(1);
+
+	this->world = world;
+	world->Initialize(stateMachine);
+	world->MapInitialize();
+	world->EnvironmentInitialize();
+	world->PhysicalZenObject2DInitialize();
 
 	RenderingStackInitialize();
 
 	UIInitialize();
-
-	Start(1);
 
 	animationProcesor = AnimationProcesor::Get();
 
@@ -92,9 +92,9 @@ void Zengine::MainLoop()
 			timerForPhysics->TimerStop();
 			if (timerForPhysics->timeMs >= ZenPhysics2D::Get()->GetPhysicsTimeStep())
 			{
-				world.ApplyForceToPhysicsObject();
+				world->ApplyForceToPhysicsObject();
 				ZenPhysics2D::Get()->CalculatePhysics();
-				world.UpdateObjects();
+				world->UpdateObjects();
 				timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
 			}
 			ZenPhysics2D::Get()->CalculateCollision();
@@ -128,7 +128,7 @@ void Zengine::MainLoop()
 
 void Zengine::CharacterInputHandlerInitialize()
 {
-	characterInputHandler = *world.GetPlayer()->GetInputHandler();
+	characterInputHandler = *world->GetPlayer()->GetInputHandler();
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&characterInputHandler));
 }
 
@@ -185,9 +185,4 @@ RenderingStack* Zengine::GetRenderingStack()
 Renderer* Zengine::GetRenderer()
 {
 	return RenderModule;
-}
-
-class World* Zengine::GetWorld()
-{
-	return &world;
 }

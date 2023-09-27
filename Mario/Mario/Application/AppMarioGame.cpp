@@ -9,6 +9,7 @@
 #include "../StateMachine/WaitingRoomState.h"
 #include "../StateMachine/GameOverState.h"
 #include "../StateMachine/WinState.h"
+#include "../World/Level1.h"
 
 #include "Zengine/World/World.h"
 #include "Zengine/InputModule/CharacterInputHandler.h"
@@ -16,12 +17,9 @@
 #include "Zengine/Character/Character.h"
 #include "Zengine/Zengine.h"
 
-AppMarioGame::AppMarioGame(StateMachine* stateMachine, RenderingStack* renderStack, Renderer* renderModule, World* world)
+AppMarioGame::AppMarioGame()
 {
-	this->stateMachine = stateMachine;
-	this->renderStack = renderStack;
-	this->renderModule = renderModule;
-	this->world = world;
+	level1 = new Level1();
 }
 
 AppMarioGame::~AppMarioGame()
@@ -36,13 +34,17 @@ AppMarioGame::~AppMarioGame()
 	delete authorsState;
 	delete renderStack;
 	delete renderModule;
-	delete world;
+	delete level1;
 	delete zengine;
 }
 
 void AppMarioGame::Initialize(Zengine* zengine)
 {
 	this->zengine = zengine;
+	this->stateMachine = zengine->GetStateMachine();
+	this->renderStack = zengine->GetRenderingStack();
+	this->renderModule = zengine->GetRenderer();
+
 	StateInitialize();
 	stateMachine->TransitionTo(State::MainMenuState);
 }
@@ -70,7 +72,7 @@ void AppMarioGame::StateInitialize()
 
 void AppMarioGame::OnLoading(int id)
 {
-	world->Draw(renderStack);
+	level1->Draw(renderStack);
 
 	renderStack->DivisionOfObjectsIntoLayersByLayerId();
 	renderModule->SortRenderLayers(renderStack);
@@ -81,4 +83,9 @@ void AppMarioGame::OnLoading(int id)
 	stateMachine->DeleteState(0);
 	stateMachine->AddState(waitingRoomState);
 	stateMachine->TransitionTo(0);
+}
+
+World* AppMarioGame::GetWorld()
+{
+	return level1;
 }
