@@ -1,8 +1,8 @@
 #include "Enemy.h"
-#include "../../../Mario/Mario/UIinGame/HeartsPanel.h"
-#include "../Colliders/CircleCollider2D.h"
-#include "../Colliders/Collider.h"
-#include "../Physics2D/ZenPhysics2D.h"
+#include "../UIinGame/HeartsPanel.h"
+#include "Zengine/Colliders/CircleCollider2D.h"
+#include "Zengine/Colliders/Collider.h"
+#include "Zengine/Physics2D/ZenPhysics2D.h"
 
 Enemy::Enemy(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize, HeartsPanel* heartsPanelIn)
 {

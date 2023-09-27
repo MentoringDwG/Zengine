@@ -1,5 +1,5 @@
 #include "CoinCounter.h"
-#include "../Renderer/Renderer.h"
+#include "Zengine/Renderer/Renderer.h"
 
 CoinCounter::CoinCounter(int IDIn, string NameIn, sf::Vector2f sizeIn)
 {

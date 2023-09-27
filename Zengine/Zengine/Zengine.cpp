@@ -3,7 +3,6 @@
 #include "InputModule/InputProcessorModule.h"
 #include "Structs/Timer.h"
 #include "InputModule/UIInputHandler.h"
-#include "Character/Character.h"
 #include "StateMachine/StateMachine.h"
 #include "ZenObject/ZenText.h"
 #include "Physics2D/ZenPhysics2D.h"
@@ -128,7 +127,7 @@ void Zengine::MainLoop()
 
 void Zengine::CharacterInputHandlerInitialize()
 {
-	characterInputHandler = *world->GetPlayer()->GetInputHandler();
+	characterInputHandler = *world->GetCharacterInputHandler();
 	InputProcessor->RegisterInputHandler(reinterpret_cast<InputHandler*>(&characterInputHandler));
 }
 

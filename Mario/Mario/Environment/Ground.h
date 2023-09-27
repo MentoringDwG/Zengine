@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../ZenObject/ZenObject.h"
+#include "Zengine/ZenObject/ZenObject.h"
 
 class Ground
 {

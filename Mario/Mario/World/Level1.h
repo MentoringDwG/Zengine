@@ -16,7 +16,7 @@ public:
 	virtual void EnvironmentInitialize() override;
 	virtual void ApplyForceToPhysicsObject() override;
 	virtual void UpdateObjects() override;
-	virtual class Character* GetPlayer() override;
+	virtual class CharacterInputHandler* GetCharacterInputHandler() override;
 
 	void Draw(RenderingStack* renderStack);
 	class CoinCounter* coinCounter = nullptr;

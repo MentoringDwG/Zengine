@@ -14,7 +14,7 @@
 #include "Zengine/World/World.h"
 #include "Zengine/InputModule/CharacterInputHandler.h"
 #include "Zengine/InputModule/InputProcessorModule.h"
-#include "Zengine/Character/Character.h"
+#include "../Character/Character.h"
 #include "Zengine/Zengine.h"
 
 AppMarioGame::AppMarioGame()

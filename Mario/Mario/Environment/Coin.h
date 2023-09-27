@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Renderer/Renderer.h"
-#include "../ZenObject/ZenShape.h"
+#include "Zengine/Renderer/Renderer.h"
+#include "Zengine/ZenObject/ZenShape.h"
 
 class CoinCounter;
 

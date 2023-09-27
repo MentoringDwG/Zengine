@@ -1,7 +1,7 @@
 #pragma once
 
 #include<sstream>
-#include"../ZenObject/ZenText.h"
+#include"Zengine/ZenObject/ZenText.h"
 
 class CoinCounter
 {

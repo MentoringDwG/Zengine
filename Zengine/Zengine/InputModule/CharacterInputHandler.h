@@ -15,7 +15,7 @@ public:
 	virtual bool ProcessInput(sf::Event& event, sf::RenderWindow* inWindow) override;
 	virtual bool CanConsumeInput() override;
 
-	void SetOwningCharacter(Character* character);
+	void SetOwningCharacter(class MovableObject* character);
 	void SetName(string nameIN);
 	string GetName();
 	void ProcesMovement();
@@ -38,6 +38,6 @@ private:
 	string name;
 	list<MovingStates> movingStatesList;
 	list <MovingStates>::iterator itr;
-	Character* owningCharacter = nullptr;
+	class MovableObject* owningCharacter = nullptr;
 	MovingStates movingStates = CharacterInputHandler::MovingStates::standing;
 };

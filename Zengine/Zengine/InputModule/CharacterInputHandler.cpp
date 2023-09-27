@@ -1,5 +1,5 @@
 #include "CharacterInputHandler.h"
-#include "../Character/Character.h"
+#include "../ZenObject/MovableObject.h"
 
 bool CharacterInputHandler::ProcessInput(sf::Event& event, sf::RenderWindow* inWindow)
 {
@@ -114,7 +114,7 @@ bool CharacterInputHandler::CanConsumeInput()
     return false;
 }
 
-void CharacterInputHandler::SetOwningCharacter(Character* character)
+void CharacterInputHandler::SetOwningCharacter(MovableObject* character)
 {
     owningCharacter = character;
 }

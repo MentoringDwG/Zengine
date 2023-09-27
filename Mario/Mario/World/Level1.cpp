@@ -3,13 +3,13 @@
 #include "Zengine/ZenObject/ZenObject.h"
 #include <SFML/Graphics.hpp>
 #include "Zengine/Physics2D/ZenPhysics2D.h"
-#include "Zengine/Environment/Ground.h"
+#include "../Environment/Ground.h"
 #include "../UIinGame/HeartsPanel.h"
-#include "Zengine/Environment/CoinCounter.h"
-#include "Zengine/Character/Character.h"
-#include "Zengine/World/Enemy.h"
-#include "Zengine/Environment/Coin.h"
-#include "Zengine/Environment/Castle.h"
+#include "../Environment/CoinCounter.h"
+#include "../Character/Character.h"
+#include "../Environment/Enemy.h"
+#include "../Environment/Coin.h"
+#include "../Environment/Castle.h"
 #include "Zengine/StateMachine/StateMachine.h"
 
 Level1::~Level1()
@@ -67,9 +67,9 @@ void Level1::ApplyForceToPhysicsObject()
 
 void Level1::EnvironmentInitialize()
 {
-	coins.push_back(new Coin(4, "Coin", "Graphics/coin.png", sf::Vector2f(0,0), coinCounter));
+	coins.push_back(new Coin(4, "Coin", "Graphics/coin.png", sf::Vector2f(288, 192), coinCounter));
 
-	coins.push_back(new Coin(5, "Coin", "Graphics/coin.png", sf::Vector2f(0, 0), coinCounter));
+	coins.push_back(new Coin(5, "Coin", "Graphics/coin.png", sf::Vector2f(608, 192), coinCounter));
 }
 
 void Level1::Draw(RenderingStack* renderStack)
@@ -97,7 +97,7 @@ void Level1::UpdateObjects()
 	enemy->Update();
 }
 
-Character* Level1::GetPlayer()
+CharacterInputHandler* Level1::GetCharacterInputHandler()
 {
-	return playerCharacter;
+	return playerCharacter->GetInputHandler();
 }

@@ -1,14 +1,14 @@
 #include "Character.h"
 #include <functional>
-#include "../Structs/Vector2.h"
-#include "../World/TextureAsset.h"
-#include "../Renderer/Renderer.h"
-#include "../Colliders/BoxCollider2D.h"
-#include "../Physics2D/ZenPhysics2D.h"
-#include "../Physics2D/PhysicalZenObject2D.h"
-#include "../Animation/Animator.h"
-#include "../Animation/Animation.h"
-#include "../Animation/AnimationDefinitionManager.h"
+#include "Zengine/Structs/Vector2.h"
+#include "Zengine/World/TextureAsset.h"
+#include "Zengine/Renderer/Renderer.h"
+#include "Zengine/Colliders/BoxCollider2D.h"
+#include "Zengine/Physics2D/ZenPhysics2D.h"
+#include "Zengine/Physics2D/PhysicalZenObject2D.h"
+#include "Zengine/Animation/Animator.h"
+#include "Zengine/Animation/Animation.h"
+#include "Zengine/Animation/AnimationDefinitionManager.h"
 
 Character::Character(std::string name, string Path, float playerMoveSpeed)
 {

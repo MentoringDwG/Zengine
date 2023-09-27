@@ -1,8 +1,8 @@
 #include "Ground.h"
 #include <fstream>
-#include "../Colliders/BoxCollider2D.h"
-#include "../Colliders/Collider.h"
-#include "../Physics2D/ZenPhysics2D.h"
+#include "Zengine/Colliders/BoxCollider2D.h"
+#include "Zengine/Colliders/Collider.h"
+#include "Zengine/Physics2D/ZenPhysics2D.h"
 
 void Ground::SetBoxColliders(string pathToGroundTxt)
 {

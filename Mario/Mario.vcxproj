@@ -153,6 +153,12 @@
   <ItemGroup>
     <ClCompile Include="Mario.cpp" />
     <ClCompile Include="Mario\Application\AppMarioGame.cpp" />
+    <ClCompile Include="Mario\Character\Character.cpp" />
+    <ClCompile Include="Mario\Environment\Castle.cpp" />
+    <ClCompile Include="Mario\Environment\Coin.cpp" />
+    <ClCompile Include="Mario\Environment\CoinCounter.cpp" />
+    <ClCompile Include="Mario\Environment\Enemy.cpp" />
+    <ClCompile Include="Mario\Environment\Ground.cpp" />
     <ClCompile Include="Mario\StateMachine\AuthorsState.cpp" />
     <ClCompile Include="Mario\StateMachine\ControlsPanelState.cpp" />
     <ClCompile Include="Mario\StateMachine\GameOverState.cpp" />
@@ -172,6 +178,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mario\Application\AppMarioGame.h" />
+    <ClInclude Include="Mario\Character\Character.h" />
+    <ClInclude Include="Mario\Environment\Castle.h" />
+    <ClInclude Include="Mario\Environment\Coin.h" />
+    <ClInclude Include="Mario\Environment\CoinCounter.h" />
+    <ClInclude Include="Mario\Environment\Enemy.h" />
+    <ClInclude Include="Mario\Environment\Ground.h" />
     <ClInclude Include="Mario\StateMachine\AuthorsState.h" />
     <ClInclude Include="Mario\StateMachine\ControlsPanelState.h" />
     <ClInclude Include="Mario\StateMachine\GameOverState.h" />

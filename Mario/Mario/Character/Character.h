@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../InputModule/CharacterInputHandler.h"
-#include "../ZenObject/MovableObject.h"
-#include "../Colliders/Collider.h"
+#include "Zengine/InputModule/CharacterInputHandler.h"
+#include "Zengine/ZenObject/MovableObject.h"
+#include "Zengine/Colliders/Collider.h"
 
 class TextureAsset;
 class PhysicalZenObject2D;

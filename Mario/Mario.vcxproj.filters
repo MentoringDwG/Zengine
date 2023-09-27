@@ -28,6 +28,12 @@
     <Filter Include="Mario\World">
       <UniqueIdentifier>{3b11f755-d6be-4200-94c0-29d334a4dc14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mario\Character">
+      <UniqueIdentifier>{87705a65-24f4-44ef-84b6-beccca8191ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mario\Environment">
+      <UniqueIdentifier>{103b5787-9c63-48a8-8846-3bcadb136b96}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Mario.cpp">
@@ -68,6 +74,24 @@
     </ClCompile>
     <ClCompile Include="Mario\World\Level1.cpp">
       <Filter>Mario\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\Character\Character.cpp">
+      <Filter>Mario\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\Environment\Castle.cpp">
+      <Filter>Mario\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\Environment\Coin.cpp">
+      <Filter>Mario\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\Environment\CoinCounter.cpp">
+      <Filter>Mario\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\Environment\Ground.cpp">
+      <Filter>Mario\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\Environment\Enemy.cpp">
+      <Filter>Mario\Environment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +139,24 @@
     </ClInclude>
     <ClInclude Include="Mario\World\Level1.h">
       <Filter>Mario\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\Character\Character.h">
+      <Filter>Mario\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\Environment\Castle.h">
+      <Filter>Mario\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\Environment\Coin.h">
+      <Filter>Mario\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\Environment\CoinCounter.h">
+      <Filter>Mario\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\Environment\Ground.h">
+      <Filter>Mario\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\Environment\Enemy.h">
+      <Filter>Mario\Environment</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
