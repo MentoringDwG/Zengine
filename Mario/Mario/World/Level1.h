@@ -17,6 +17,7 @@ public:
 	virtual void ApplyForceToPhysicsObject() override;
 	virtual void UpdateObjects() override;
 	virtual class CharacterInputHandler* GetCharacterInputHandler() override;
+	virtual void SetCamera(sf::View* mainCamera) override;
 
 	void Draw(RenderingStack* renderStack);
 	class CoinCounter* coinCounter = nullptr;

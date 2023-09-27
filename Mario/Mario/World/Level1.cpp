@@ -105,3 +105,11 @@ CharacterInputHandler* Level1::GetCharacterInputHandler()
 {
 	return playerCharacter->GetInputHandler();
 }
+
+void Level1::SetCamera(sf::View* mainCamera)
+{
+	if (playerCharacter->physicalZenObject2D->zenShape->GetPosition().x > 480)
+	{
+		mainCamera->setCenter(sf::Vector2f(playerCharacter->physicalZenObject2D->zenShape->GetPosition().x, mainCamera->getCenter().y));
+	}
+}

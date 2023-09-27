@@ -65,7 +65,7 @@ void UIButton::Draw(RenderingStack* renderStack, string texturePath, sf::IntRect
 
 	renderobject = new RenderObject(zenShape->Draw(), 1, 2);
 	
-	renderStack->renderQueue.push_back(renderobject);
+	renderStack->renderQueueUI.push_back(renderobject);
 }
 
 void UIButton::SetHighlight(string texturePath)

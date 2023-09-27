@@ -97,6 +97,12 @@ void Zengine::MainLoop()
 				timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
 			}
 			ZenPhysics2D::Get()->CalculateCollision();
+
+			world->SetCamera(&mainView);
+		}
+		else
+		{
+			mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
 		}
 
 		stateMachine->Update();
@@ -114,6 +120,7 @@ void Zengine::MainLoop()
 		//Draw UI
 		window->setView(window->getDefaultView());
 		window->draw(fpsText->GetText());
+		RenderModule->ProcessDrawingUI(renderStack);
 
 		window->display();
 

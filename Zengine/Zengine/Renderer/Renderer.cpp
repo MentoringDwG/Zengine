@@ -30,6 +30,7 @@ RenderObject::RenderObject(sf::Text* text, int zOrder, int layerId)
 void RenderingStack::Clear()
 {
 	renderQueue.clear();
+	renderQueueUI.clear();
 	renderLayers.clear();
 }
 
@@ -95,6 +96,24 @@ void Renderer::ProcessDrawingElements(RenderingStack *renderStack)
 	for (auto itr = renderStack->renderLayers.begin(); itr != renderStack->renderLayers.end(); ++itr)
 	{
 		DrawLayer(itr->second);
+	}
+}
+
+void Renderer::ProcessDrawingUI(RenderingStack* renderStack)
+{
+	for (int i = 0; i < renderStack->renderQueueUI.size(); i++)
+	{
+		if (renderStack->renderQueueUI[i]->drawable != nullptr)
+		{
+			sf::RectangleShape* rectangleShape = renderStack->renderQueueUI[i]->drawable;
+			window->draw(*rectangleShape);
+		}
+		
+		if (renderStack->renderQueueUI[i]->text != nullptr)
+		{
+			sf::Text* text = renderStack->renderQueueUI[i]->text;
+			window->draw(*text);
+		}
 	}
 }
 

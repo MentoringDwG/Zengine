@@ -23,6 +23,7 @@ struct RenderingStack
 	void RemoveFromRenderLayers(RenderObject* renderObjectToRemove);
 
 	std::vector<RenderObject*> renderQueue;
+	std::vector<RenderObject*> renderQueueUI;
 	std::map <int, std::vector<RenderObject*>> renderLayers;
 };
 
@@ -33,6 +34,7 @@ public:
 
 	void Initialize(sf::RenderWindow* inWindow);
 	void ProcessDrawingElements(RenderingStack* renderStack);
+	void ProcessDrawingUI(RenderingStack* renderStack);
 	void SortRenderLayers(RenderingStack* renderStack);
 
 	virtual void Initialize() override {}

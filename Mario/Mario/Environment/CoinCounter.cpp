@@ -34,6 +34,6 @@ void CoinCounter::Draw(RenderingStack* stack)
 	if (renderObject == nullptr)
 	{
 		renderObject = new RenderObject(coinCounter->GetTextRaw(), 1000, 1);
-		stack->renderQueue.push_back(renderObject);
+		stack->renderQueueUI.push_back(renderObject);
 	}
 }
