@@ -93,6 +93,9 @@
     <ClCompile Include="Mario\Environment\Enemy.cpp">
       <Filter>Mario\Environment</Filter>
     </ClCompile>
+    <ClCompile Include="Mario\World\Confiner.cpp">
+      <Filter>Mario\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mario\Application\AppMarioGame.h">
@@ -157,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="Mario\Environment\Enemy.h">
       <Filter>Mario\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\World\Confiner.h">
+      <Filter>Mario\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

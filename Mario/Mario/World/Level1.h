@@ -30,5 +30,6 @@ private:
 	std::vector<class Coin*> coins;
 	class HeartsPanel* heartPanel = nullptr;
 	class Castle* castle = nullptr;
+	class Confiner* confiner = nullptr;
 };
 

@@ -1,8 +1,11 @@
 #include "Level1.h"
+#include <SFML/Graphics.hpp>
+
 #include <Zengine/World/Map.h>
 #include <Zengine/ZenObject/ZenObject.h>
-#include <SFML/Graphics.hpp>
 #include <Zengine/Physics2D/ZenPhysics2D.h>
+#include <Zengine/StateMachine/StateMachine.h>
+
 #include "../Environment/Ground.h"
 #include "../UIinGame/HeartsPanel.h"
 #include "../Environment/CoinCounter.h"
@@ -10,7 +13,7 @@
 #include "../Environment/Enemy.h"
 #include "../Environment/Coin.h"
 #include "../Environment/Castle.h"
-#include <Zengine/StateMachine/StateMachine.h>
+#include "Confiner.h"
 
 Level1::~Level1()
 {
@@ -34,6 +37,7 @@ void Level1::Initialize(StateMachine* stateMachine)
 	coinCounter = new CoinCounter(1, "coinCounter", sf::Vector2f(0, 0));
 	heartPanel = new HeartsPanel(stateMachine);
 	castle = new Castle(Vector2(160, 160), Vector2(768, 320), stateMachine);
+	confiner = new Confiner(Vector2(32, 544), Vector2(0, 0), Vector2(928, 0));
 }
 
 void Level1::MapInitialize()

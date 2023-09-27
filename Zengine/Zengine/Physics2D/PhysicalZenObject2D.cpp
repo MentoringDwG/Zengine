@@ -121,8 +121,10 @@ void PhysicalZenObject2D::AddForce(float massIn, Vector2 forceIN, float time)
 void PhysicalZenObject2D::CalculationColliderPush()
 {
 	std::vector<Collider*> colliders = collisionColliders[Collider::ColliderTags::GROUND];
+	std::vector<Collider*> confiners = collisionColliders[Collider::ColliderTags::CONFINER];
 
 	Collider* collider = colliders[0];
+	Collider* confiner = confiners[0];
 	sf::FloatRect bounds = zenShape->GetGlobalBounds();
 
 	for (int i = 0; i < colliders.size(); i++)
@@ -172,6 +174,34 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		{
 			velocity.x = 0.0f;
 			zenShape->SetPosition(sf::Vector2f(collider->GetPosition()->x + collider->size.x + COLLIDER_PUSH_2, bounds.top));
+			clollisionNormalVector = Vector2(-1, 0);
+		}
+	}
+
+	for (int i = 0; i < confiners.size(); i++)
+	{
+		confiner = confiners[i];
+		bounds = zenShape->GetGlobalBounds();
+
+		if (bounds.left < confiner->GetPosition()->x
+			&& bounds.left + bounds.width < confiner->GetPosition()->x + confiner->size.x
+			&& bounds.top < confiner->GetPosition()->y + confiner->size.y
+			&& bounds.top + bounds.height > confiner->GetPosition()->y
+			)
+		{
+			velocity.x = 0.0f;
+			zenShape->SetPosition(sf::Vector2f(confiner->GetPosition()->x - bounds.width - COLLIDER_PUSH_2, bounds.top));
+			clollisionNormalVector = Vector2(1, 0);
+		}
+
+		if (bounds.left > confiner->GetPosition()->x
+			&& bounds.left + bounds.width > confiner->GetPosition()->x + confiner->size.x
+			&& bounds.top < confiner->GetPosition()->y + confiner->size.y
+			&& bounds.top + bounds.height > confiner->GetPosition()->y
+			)
+		{
+			velocity.x = 0.0f;
+			zenShape->SetPosition(sf::Vector2f(confiner->GetPosition()->x + confiner->size.x + COLLIDER_PUSH_2, bounds.top));
 			clollisionNormalVector = Vector2(-1, 0);
 		}
 	}

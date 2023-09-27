@@ -18,6 +18,7 @@ public:
 		GROUND = 3,
 		COIN = 4,
 		CASTLE = 5,
+		CONFINER = 6,
 		Max,
 	};
 
