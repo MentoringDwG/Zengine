@@ -26,7 +26,7 @@ private:
 	class StateMachine* stateMachine = nullptr;
 	class Map* map = nullptr;
 	class Character* playerCharacter = nullptr;
-	class Enemy* enemy = nullptr;
+	std::vector<class Enemy*> enemys;
 	class Ground* ground = nullptr;
 	std::vector<class Coin*> coins;
 	class HeartsPanel* heartPanel = nullptr;

@@ -80,7 +80,7 @@ void Character::MoveUp()
 {
 	if (isGrounded && IsCollisionWithOneGround())
 	{
-		physicalZenObject2D->AddForce(1.0f, Vector2(0, -6.0f), 4.0f);
+		physicalZenObject2D->AddForce(1.0f, Vector2(0, -8.0f), 4.0f);
 		collider2D->GetOwner()->isJump = true;
 	}
 }
