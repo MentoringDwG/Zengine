@@ -20,28 +20,24 @@ void Map::TextureInitialization(string pathToTexturesTxt)
 		file >> path >> name;
 
         TextureAsset* textureAsset = new TextureAsset(path, name);
-        assetsManager.Textures[name] = textureAsset;
+        assetsManager.Textures[std::stoi(name)] = textureAsset;
 	}
 
     file.close();
 }
 
-void Map::LoadMap(string pathToTileTxt)
+void Map::LoadMap(int rows, int columns, nlohmann::json tileMapData)
 {
     MemoryReleaseForLoadMap();
 
-    ifstream file;
-    file.open(pathToTileTxt);
-    file >> rows;
-    file >> columns;
+    this->rows = rows;
+    this->columns = columns;
 
     CreatingTwoDimensionalDynamicArray();
 
-    LoadingTextureNumberIntoDynamicArray(&file);
+    LoadingTextureNumberIntoDynamicArray(tileMapData);
 
     CreatingDynamicTileMap();
-
-    file.close();
 }
 
 void Map::MemoryReleaseForLoadMap()
@@ -57,20 +53,23 @@ void Map::MemoryReleaseForLoadMap()
 
 void Map::CreatingTwoDimensionalDynamicArray()
 {
-    textureNumberTab = new string * [rows];
+    textureNumberTab = new int * [rows];
     for (int i = 0; i < rows; i++)
     {
-        textureNumberTab[i] = new string[columns];
+        textureNumberTab[i] = new int[columns];
     }
 }
 
-void Map::LoadingTextureNumberIntoDynamicArray(ifstream* file)
+void Map::LoadingTextureNumberIntoDynamicArray(nlohmann::json tileMapData)
 {
+    size_t idxTileMapData = 0;
+
     for (int i = 0; i < rows; i++)
     {
         for (int j = 0; j < columns; j++)
         {
-            *file >> textureNumberTab[i][j];
+            textureNumberTab[i][j] = tileMapData[idxTileMapData];
+            idxTileMapData++;
         }
     }
 }

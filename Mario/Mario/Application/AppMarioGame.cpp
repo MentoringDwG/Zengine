@@ -19,7 +19,7 @@
 
 AppMarioGame::AppMarioGame()
 {
-	level1 = new Level1();
+	level1 = new Level1("Tiles/JsonFiles/Level_1.json");
 }
 
 AppMarioGame::~AppMarioGame()

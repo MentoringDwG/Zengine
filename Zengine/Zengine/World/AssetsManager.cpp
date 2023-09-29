@@ -3,7 +3,7 @@
 
 AssetsManager* AssetsManager::assets = nullptr;
 
-TextureAsset* AssetsManager::GetTextureAsset(string Name)
+TextureAsset* AssetsManager::GetTextureAsset(int Name)
 {
 	return Textures[Name];
 }
