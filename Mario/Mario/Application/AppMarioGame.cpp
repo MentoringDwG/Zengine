@@ -19,7 +19,7 @@
 
 AppMarioGame::AppMarioGame()
 {
-	level1 = new Level1("Tiles/JsonFiles/Level_1.json");
+	levelManager.AddLevel(0, new Level1("Tiles/JsonFiles/Level_1.json"));
 }
 
 AppMarioGame::~AppMarioGame()
@@ -34,7 +34,6 @@ AppMarioGame::~AppMarioGame()
 	delete authorsState;
 	delete renderStack;
 	delete renderModule;
-	delete level1;
 	delete zengine;
 }
 
@@ -72,7 +71,7 @@ void AppMarioGame::StateInitialize()
 
 void AppMarioGame::OnLoading(int id)
 {
-	level1->Draw(renderStack);
+	levelManager.GetLevel(0)->Draw(renderStack);
 
 	renderStack->DivisionOfObjectsIntoLayersByLayerId();
 	renderModule->SortRenderLayers(renderStack);
@@ -87,5 +86,5 @@ void AppMarioGame::OnLoading(int id)
 
 World* AppMarioGame::GetWorld()
 {
-	return level1;
+	return levelManager.GetLevel(0);
 }

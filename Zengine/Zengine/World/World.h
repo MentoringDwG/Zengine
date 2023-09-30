@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../InputModule/CharacterInputHandler.h"
+#include "../Renderer/Renderer.h"
 
 class World
 {
@@ -13,5 +14,6 @@ public:
 	virtual void UpdateObjects() = 0;
 	virtual void SetCamera(sf::View* mainCamera, struct Vector2 windowSize) = 0;
 	virtual CharacterInputHandler* GetCharacterInputHandler() = 0;
+	virtual void Draw(RenderingStack* renderStack) = 0;
 };
 

@@ -171,6 +171,7 @@
     <ClCompile Include="Mario\UIinGame\MainMenuPanel.cpp" />
     <ClCompile Include="Mario\World\Confiner.cpp" />
     <ClCompile Include="Mario\World\Level1.cpp" />
+    <ClCompile Include="Mario\World\LevelManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zengine\Zengine.vcxproj">
@@ -197,6 +198,7 @@
     <ClInclude Include="Mario\UIinGame\MainMenuPanel.h" />
     <ClInclude Include="Mario\World\Confiner.h" />
     <ClInclude Include="Mario\World\Level1.h" />
+    <ClInclude Include="Mario\World\LevelManager.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="resource1.h" />
     <ClInclude Include="resource2.h" />

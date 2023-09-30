@@ -96,6 +96,9 @@
     <ClCompile Include="Mario\World\Confiner.cpp">
       <Filter>Mario\World</Filter>
     </ClCompile>
+    <ClCompile Include="Mario\World\LevelManager.cpp">
+      <Filter>Mario\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mario\Application\AppMarioGame.h">
@@ -162,6 +165,9 @@
       <Filter>Mario\Environment</Filter>
     </ClInclude>
     <ClInclude Include="Mario\World\Confiner.h">
+      <Filter>Mario\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\World\LevelManager.h">
       <Filter>Mario\World</Filter>
     </ClInclude>
   </ItemGroup>

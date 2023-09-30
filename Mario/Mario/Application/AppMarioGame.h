@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Zengine/Renderer/Renderer.h>
+#include "../World/LevelManager.h"
 
 class AppMarioGame
 {
@@ -15,6 +16,8 @@ private:
 	void StateInitialize();
 	void OnLoading(int id);
 
+	LevelManager levelManager;
+
 	class StateMachine* stateMachine = nullptr;
 
 	class MainMenuState* mainMenuState = nullptr;
@@ -28,7 +31,6 @@ private:
 
 	RenderingStack* renderStack = nullptr;
 	Renderer* renderModule = nullptr;
-	class Level1* level1 = nullptr;
 	class Zengine* zengine = nullptr;
 };
 
