@@ -4,33 +4,18 @@
 #include <Zengine/Colliders/Collider.h>
 #include <Zengine/Physics2D/ZenPhysics2D.h>
 
-void Ground::SetBoxColliders(string pathToGroundTxt)
+void Ground::SetBoxColliders(nlohmann::json groundData)
 {
-	ifstream file;
-	file.open(pathToGroundTxt);
-
-	string numberOfCollidersFile;
-	file >> numberOfCollidersFile;
-
-	int numberOfColliders = std::stoi(numberOfCollidersFile);
-
-	string id, positionX, positionY, sizeX, sizeY;
-	for (int i = 0; i < numberOfColliders; i++)
+	for (size_t i = 0; i < groundData.size(); i++)
 	{
-		file >> id;
-		file >> positionX;
-		file >> positionY;
-		file >> sizeX;
-		file >> sizeY;
+		nlohmann::json ground = groundData.at(i);
 
-		zenObjects.push_back(new ZenObject(std::stoi(id), "Ground", sf::Vector2f((float)(std::stoi(sizeX)), (float)(std::stoi(sizeY)))));
+		zenObjects.push_back(new ZenObject(ground["id"], "Ground", sf::Vector2f(ground["width"]*TILE_SCALE, ground["height"] * TILE_SCALE)));
 
-		boxColliders.push_back(new BoxCollider2D(Vector2((float)(std::stoi(positionX)), (float)(std::stoi(positionY))), Vector2((float)(std::stoi(sizeX)), (float)(std::stoi(sizeY))), zenObjects[i], Collider::ColliderTags::GROUND));
+		boxColliders.push_back(new BoxCollider2D(Vector2(ground["x"] * TILE_SCALE, ground["y"] * TILE_SCALE), Vector2(ground["width"] * TILE_SCALE, ground["height"] * TILE_SCALE), zenObjects[i], Collider::ColliderTags::GROUND));
 	}
 
-	file.close();
-
-	for (int i = 0; i < numberOfColliders; i++)
+	for (int i = 0; i < boxColliders.size(); i++)
 	{
 		boxColliders[i]->OnCollisionStart.AddListener(&Ground::HandleCollisionStart, this);
 		ZenPhysics2D::Get()->RegisterCollider(boxColliders[i]);

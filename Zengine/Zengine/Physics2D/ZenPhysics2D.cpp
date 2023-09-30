@@ -47,11 +47,25 @@ void ZenPhysics2D::Draw(RenderingStack* renderStack)
 
 void ZenPhysics2D::RegisterCollider(CircleCollider2D* collider)
 {
+	for (int i = 0; i < circleColliders.size(); i++)
+	{
+		if (circleColliders[i] == collider)
+		{
+			return;
+		}
+	}
 	circleColliders.push_back(collider);
 }
 
 void ZenPhysics2D::RegisterCollider(BoxCollider2D* collider)
 {
+	for (int i = 0; i < boxColliders.size(); i++)
+	{
+		if (boxColliders[i] == collider)
+		{
+			return;
+		}
+	}
 	boxColliders.push_back(collider);
 }
 

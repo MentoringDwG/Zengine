@@ -75,7 +75,7 @@ void Level1::PhysicalZenObject2DInitialize()
 		enemys[i]->AddForce(1.0f, Vector2(-4.0f, 0.0f), 3.0f);
 	}
 	
-	ground = new Ground("Tiles/TxtFiles/Level1Ground.txt");
+	ground = new Ground(jsonData["Ground"]);
 }
 
 void Level1::ApplyForceToPhysicsObject()

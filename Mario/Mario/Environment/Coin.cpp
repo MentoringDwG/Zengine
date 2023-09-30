@@ -28,6 +28,7 @@ Coin::~Coin()
 
 void Coin::Draw(RenderingStack* renderStack)
 {
+	ZenPhysics2D::Get()->RegisterCollider(collider);
 	this->renderStack = renderStack;
 	coinRenderObject = new RenderObject(zenShape->Draw(), 100, 1);
 	renderStack->renderQueue.push_back(coinRenderObject);

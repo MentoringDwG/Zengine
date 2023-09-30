@@ -1,18 +1,19 @@
 #pragma once
 
 #include <Zengine/ZenObject/ZenObject.h>
+#include "../../../nlohmann\json.hpp"
 
 class Ground
 {
 public:
-	Ground(string pathToGroundTxt)
+	Ground(nlohmann::json groundData)
 	{
-		SetBoxColliders(pathToGroundTxt);
+		SetBoxColliders(groundData);
 	}
 
 	~Ground();
 
-	void SetBoxColliders(string pathToGroundTxt);
+	void SetBoxColliders(nlohmann::json groundData);
 
 private:
 	void HandleCollisionStart(class Collider* other);
@@ -20,5 +21,7 @@ private:
 	std::vector<class BoxCollider2D*> boxColliders;
 	std::vector<ZenObject*> zenObjects;
 	int listenerIndex = 0;
+
+	const int TILE_SCALE = 2;
 };
 
