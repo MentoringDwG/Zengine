@@ -169,3 +169,8 @@ void Character::HandleCollisionEnd(Collider* other)
 		isGrounded = false;
 	}
 }
+
+void Character::Respawn()
+{
+	physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(200.0f, 0.0f));
+}

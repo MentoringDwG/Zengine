@@ -132,6 +132,11 @@ void Level1::UpdateObjects()
 	if (playerCharacter != nullptr)
 	{
 		playerCharacter->UpdateCharacter();
+
+		if (playerCharacter->physicalZenObject2D->zenShape->GetPosition().y > windowSize.y)
+		{
+			PlayerRespawn();
+		}
 	}
 
 	for (int i = 0; i < enemys.size(); i++)
@@ -140,18 +145,29 @@ void Level1::UpdateObjects()
 	}
 }
 
+void Level1::PlayerRespawn()
+{
+	playerCharacter->Respawn();
+	heartPanel->UpdateHeartsState();
+	mainCamera->setCenter(sf::Vector2f(windowSize.x / 2, mainCamera->getCenter().y));
+	confiner->SetPositionLeft(Vector2(0, 0));
+}
+
 CharacterInputHandler* Level1::GetCharacterInputHandler()
 {
 	return playerCharacter->GetInputHandler();
 }
 
-void Level1::SetCamera(sf::View* mainCamera, int windowSizeX)
+void Level1::SetCamera(sf::View* mainCamera, Vector2 windowSize)
 {
+	this->mainCamera = mainCamera;
+	this->windowSize = windowSize;
+
 	float playerPositionX = playerCharacter->physicalZenObject2D->zenShape->GetPosition().x;
 
-	if (playerPositionX > windowSizeX / 2 && playerPositionX > mainCamera->getCenter().x && playerPositionX < jsonData["width"]*TILE_SIZE - windowSizeX / 2)
+	if (playerPositionX > windowSize.x / 2 && playerPositionX > mainCamera->getCenter().x && playerPositionX < jsonData["width"]*TILE_SIZE - windowSize.x / 2)
 	{
 		mainCamera->setCenter(sf::Vector2f(playerPositionX, mainCamera->getCenter().y));
-		confiner->SetPositionLeft(Vector2(playerPositionX - windowSizeX / 2, 0));
+		confiner->SetPositionLeft(Vector2(playerPositionX - windowSize.x / 2, 0));
 	}
 }

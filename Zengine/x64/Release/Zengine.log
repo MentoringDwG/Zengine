@@ -1,3 +1,13 @@
 ﻿  World.cpp
   Zengine.cpp
+C:\Users\Admin\Documents\GitHub\Zengine\Zengine\Zengine\Zengine.cpp(101,78): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Admin\Documents\GitHub\Zengine\Zengine\Zengine\Zengine.cpp(101,57): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
+          with
+          [
+              T=unsigned int
+          ]
   Zengine.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\Zengine.lib

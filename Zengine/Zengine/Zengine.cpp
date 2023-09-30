@@ -98,7 +98,7 @@ void Zengine::MainLoop()
 			}
 			ZenPhysics2D::Get()->CalculateCollision();
 
-			world->SetCamera(&mainView, window->getSize().x);
+			world->SetCamera(&mainView, Vector2(window->getSize().x, window->getSize().y));
 		}
 		else
 		{

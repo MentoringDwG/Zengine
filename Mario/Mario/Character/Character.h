@@ -25,6 +25,7 @@ public:
 	void SetCollider(Vector2 position, Vector2 size);
 	void UpdateCharacter();
 	bool IsCharacterGrounded();
+	void Respawn();
 
 	PhysicalZenObject2D* physicalZenObject2D = nullptr;
 

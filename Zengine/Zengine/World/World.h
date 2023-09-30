@@ -11,7 +11,7 @@ public:
 	virtual void EnvironmentInitialize() = 0;
 	virtual void ApplyForceToPhysicsObject() = 0;
 	virtual void UpdateObjects() = 0;
-	virtual void SetCamera(sf::View* mainCamera, int windowSizeX) = 0;
+	virtual void SetCamera(sf::View* mainCamera, struct Vector2 windowSize) = 0;
 	virtual CharacterInputHandler* GetCharacterInputHandler() = 0;
 };
 

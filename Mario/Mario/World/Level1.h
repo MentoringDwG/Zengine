@@ -3,6 +3,7 @@
 #include <vector>
 #include <Zengine/World/World.h>
 #include <Zengine/Renderer/Renderer.h>
+#include <Zengine/Structs/Vector2.h>
 #include "../../../nlohmann/json.hpp"
 
 class Level1: public World
@@ -18,12 +19,14 @@ public:
 	virtual void ApplyForceToPhysicsObject() override;
 	virtual void UpdateObjects() override;
 	virtual class CharacterInputHandler* GetCharacterInputHandler() override;
-	virtual void SetCamera(sf::View* mainCamera, int windowSizeX) override;
+	virtual void SetCamera(sf::View* mainCamera, struct Vector2 windowSize) override;
 
 	void Draw(RenderingStack* renderStack);
 	class CoinCounter* coinCounter = nullptr;
 
 private:
+	void PlayerRespawn();
+
 	nlohmann::json jsonData;
 	class StateMachine* stateMachine = nullptr;
 	class Map* map = nullptr;
@@ -34,6 +37,7 @@ private:
 	class HeartsPanel* heartPanel = nullptr;
 	class Castle* castle = nullptr;
 	class Confiner* confiner = nullptr;
+	sf::View* mainCamera = nullptr;
 
 	//graphics
 	const std::string COIN_GRAPHIC_PATH = "Graphics/coin.png";
@@ -46,5 +50,6 @@ private:
 
 	//camera
 	const int TILE_SIZE = 32;
+	struct Vector2 windowSize = Vector2(0, 0);
 };
 
