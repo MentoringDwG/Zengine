@@ -5,6 +5,7 @@
 #include <Zengine/Renderer/Renderer.h>
 #include <Zengine/Structs/Vector2.h>
 #include "../../../nlohmann/json.hpp"
+#include "MapManager.h"
 
 class Level1: public World
 {
@@ -14,13 +15,14 @@ public:
 
 	virtual void Initialize(StateMachine* stateMachine) override;
 	virtual void MapInitialize() override;
-	virtual void PhysicalZenObject2DInitialize() override;
+	virtual void EnvironmentClear() override;
 	virtual void EnvironmentInitialize() override;
 	virtual void ApplyForceToPhysicsObject() override;
 	virtual void UpdateObjects() override;
 	virtual class CharacterInputHandler* GetCharacterInputHandler() override;
 	virtual void SetCamera(sf::View* mainCamera, struct Vector2 windowSize) override;
 	virtual void Draw(RenderingStack* renderStack) override;
+	virtual void LoadMap(int id, RenderingStack* renderStack, World* world) override;
 
 	void SetPlayer(class Character* playerCharacter);
 	void SetUIScene(class UIScene* uiScene);
@@ -30,7 +32,8 @@ private:
 
 	nlohmann::json jsonData;
 	class StateMachine* stateMachine = nullptr;
-	class Map* map = nullptr;
+	class Map* currentMap = nullptr;
+	MapManager mapManager;
 	class Character* playerCharacter = nullptr;
 	std::vector<class Enemy*> enemys;
 	class Ground* ground = nullptr;

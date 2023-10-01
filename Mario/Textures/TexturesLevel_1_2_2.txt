@@ -1,0 +1,16 @@
+Graphics/Map/200.png 1
+Graphics/Map/201.png 3
+Graphics/Map/202.png 9
+Graphics/Map/203.png 15
+Graphics/Map/204.png 33
+Graphics/Map/205.png 34
+Graphics/Map/206.png 35
+Graphics/Map/207.png 36
+Graphics/Map/208.png 37
+Graphics/Map/209.png 38
+Graphics/Map/210.png 39
+Graphics/Map/211.png 40
+Graphics/Map/212.png 41
+Graphics/Map/213.png 42
+Graphics/Map/214.png 43
+Graphics/Map/215.png 44

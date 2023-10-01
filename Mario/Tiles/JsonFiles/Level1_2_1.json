@@ -23,5 +23,5 @@
 "Ground":[
             {"id":5, "name":"Ground1", "width":32, "height":32, "x":304, "y":208}, 
 			{"id":6, "name":"Ground2", "width":32, "height":80, "x":336, "y":160}, 
-			{"id":8, "name":"Ground3", "width":480, "height":32, "x":0, "y":240} ],
+			{"id":8, "name":"Ground3", "width":480, "height":32, "x":0, "y":240} ]
 }

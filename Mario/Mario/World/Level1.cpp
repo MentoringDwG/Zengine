@@ -26,7 +26,7 @@ Level1::Level1(std::string levelJsonPath)
 
 Level1::~Level1()
 {
-	delete map;
+	delete currentMap;
 	delete playerCharacter;
 	delete ground;
 	delete uiScene;
@@ -40,9 +40,8 @@ void Level1::Initialize(StateMachine* stateMachine)
 {
 	this->stateMachine = stateMachine;
 
-	map = new Map();
 	castle = new Castle(Vector2(160, 160), Vector2(6432, 320), stateMachine);
-	confiner = new Confiner(Vector2(32, 544), Vector2(0, 0), Vector2(6720, 0));
+	confiner = new Confiner(Vector2(32, 544), Vector2(0, 0), Vector2(jsonData["width"]*32-32, 0));
 }
 
 void Level1::SetPlayer(class Character* playerCharacter)
@@ -52,32 +51,9 @@ void Level1::SetPlayer(class Character* playerCharacter)
 
 void Level1::MapInitialize()
 {
-	map->TextureInitialization("Textures/TexturesLevel_1.txt");
-
+	currentMap = new Map();
 	nlohmann::json tileMapData = jsonData["data"];
-	map->LoadMap(jsonData["height"], jsonData["width"], tileMapData);
-}
-
-void Level1::PhysicalZenObject2DInitialize()
-{
-	if (jsonData.contains(ENEMYS))
-	{
-		nlohmann::json enemysJson = jsonData[ENEMYS];
-
-		for (size_t idx = 0; idx < enemysJson.size(); idx++)
-		{
-			nlohmann::json enemy = enemysJson.at(idx);
-
-			enemys.push_back(new Enemy(enemy["id"], enemy["name"], ENEMY_GRAPHIC_PATH, sf::Vector2f(enemy["x"]*TILE_SCALE, enemy["y"]*TILE_SCALE), sf::Vector2f(32, 32), uiScene->GetHeartPanel()));
-		}
-	}
-
-	for (int i = 0; i < enemys.size(); i++)
-	{
-		enemys[i]->AddForce(1.0f, Vector2(-4.0f, 0.0f), 3.0f);
-	}
-	
-	ground = new Ground(jsonData["Ground"]);
+	mapManager.AddMap(0, currentMap, "Textures/TexturesLevel_1.txt", jsonData["height"], jsonData["width"], tileMapData);
 }
 
 void Level1::ApplyForceToPhysicsObject()
@@ -98,8 +74,33 @@ void Level1::ApplyForceToPhysicsObject()
 	}
 }
 
+void Level1::EnvironmentClear()
+{
+	coins.clear();
+	enemys.clear();
+}
+
 void Level1::EnvironmentInitialize()
 {
+	if (jsonData.contains(ENEMYS))
+	{
+		nlohmann::json enemysJson = jsonData[ENEMYS];
+
+		for (size_t idx = 0; idx < enemysJson.size(); idx++)
+		{
+			nlohmann::json enemy = enemysJson.at(idx);
+
+			enemys.push_back(new Enemy(enemy["id"], enemy["name"], ENEMY_GRAPHIC_PATH, sf::Vector2f(enemy["x"] * TILE_SCALE, enemy["y"] * TILE_SCALE), sf::Vector2f(32, 32), uiScene->GetHeartPanel()));
+		}
+	}
+
+	for (int i = 0; i < enemys.size(); i++)
+	{
+		enemys[i]->AddForce(1.0f, Vector2(-4.0f, 0.0f), 3.0f);
+	}
+
+	ground = new Ground(jsonData["Ground"]);
+
 	if (jsonData.contains(COINS))
 	{
 		nlohmann::json coinsJson = jsonData[COINS];
@@ -116,7 +117,6 @@ void Level1::EnvironmentInitialize()
 void Level1::Draw(RenderingStack* renderStack)
 {
 	confiner->SetPositionLeft(Vector2(0, 0));
-	map->Draw(renderStack);
 	playerCharacter->Draw(renderStack);
 	ZenPhysics2D::Get()->Draw(renderStack);
 
@@ -176,4 +176,9 @@ void Level1::SetCamera(sf::View* mainCamera, Vector2 windowSize)
 void Level1::SetUIScene(UIScene* uiScene)
 {
 	this->uiScene = uiScene;
+}
+
+void Level1::LoadMap(int id, RenderingStack* renderStack, World* world)
+{
+	currentMap = mapManager.LoadMap(0, renderStack, world);
 }

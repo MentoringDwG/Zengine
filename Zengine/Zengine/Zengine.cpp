@@ -38,8 +38,7 @@ void Zengine::Run(class World* world)
 	this->world = world;
 	world->Initialize(stateMachine);
 	world->MapInitialize();
-	world->EnvironmentInitialize();
-	world->PhysicalZenObject2DInitialize();
+	//world->EnvironmentInitialize();
 
 	RenderingStackInitialize();
 

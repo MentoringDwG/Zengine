@@ -102,6 +102,9 @@
     <ClCompile Include="Mario\UIinGame\UIScene.cpp">
       <Filter>Mario\UIinGame</Filter>
     </ClCompile>
+    <ClCompile Include="Mario\World\MapManager.cpp">
+      <Filter>Mario\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mario\Application\AppMarioGame.h">
@@ -175,6 +178,9 @@
     </ClInclude>
     <ClInclude Include="Mario\UIinGame\UIScene.h">
       <Filter>Mario\UIinGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\World\MapManager.h">
+      <Filter>Mario\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

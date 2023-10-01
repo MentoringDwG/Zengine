@@ -23,6 +23,11 @@ AppMarioGame::AppMarioGame()
 	playerCharacter = new Character("Mario", "Graphics/Mario/Mario.png", 3);
 
 	level1 = new Level1("Tiles/JsonFiles/Level_1.json");
+	//level1 = new Level1("Tiles/JsonFiles/Level1_2_1.json");
+	//level1 = new Level1("Tiles/JsonFiles/Level1_2_2.json");
+	//level1 = new Level1("Tiles/JsonFiles/Level1_2_3.json");
+	//level1 = new Level1("Tiles/JsonFiles/Level1_2_4.json");
+	//level1 = new Level1("Tiles/JsonFiles/Level1_3.json");
 	level1->SetPlayer(playerCharacter);
 
 	levelManager.AddLevel(0, level1);
@@ -82,7 +87,7 @@ void AppMarioGame::StateInitialize()
 
 void AppMarioGame::OnLoading(int id)
 {
-	levelManager.GetLevel(0)->Draw(renderStack);
+	levelManager.GetLevel(0)->LoadMap(0, renderStack, levelManager.GetLevel(0));
 
 	renderStack->DivisionOfObjectsIntoLayersByLayerId();
 	renderModule->SortRenderLayers(renderStack);
