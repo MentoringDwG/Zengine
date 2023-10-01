@@ -58,6 +58,7 @@ void ControlsPanelState::OnUpdate()
 void ControlsPanelState::OnLeave(int nextStateId)
 {
 	renderStack->Clear();
+	renderStack->ClearUI();
 	delete contolsPanel;
 	delete contolsPanelTexture;
 	delete contolsPanelRenderObject;

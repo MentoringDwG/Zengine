@@ -13,6 +13,7 @@
 #include "../Environment/Enemy.h"
 #include "../Environment/Coin.h"
 #include "../Environment/Castle.h"
+#include "../UIinGame/UIScene.h"
 #include "Confiner.h"
 
 #include <fstream>
@@ -28,8 +29,7 @@ Level1::~Level1()
 	delete map;
 	delete playerCharacter;
 	delete ground;
-	delete heartPanel;
-	delete coinCounter;
+	delete uiScene;
 	delete castle;
 
 	coins.clear();
@@ -41,11 +41,13 @@ void Level1::Initialize(StateMachine* stateMachine)
 	this->stateMachine = stateMachine;
 
 	map = new Map();
-	playerCharacter = new Character("Mario", "Graphics/Mario/Mario.png", 3);
-	coinCounter = new CoinCounter(1, "coinCounter", sf::Vector2f(0, 0));
-	heartPanel = new HeartsPanel(stateMachine);
 	castle = new Castle(Vector2(160, 160), Vector2(6432, 320), stateMachine);
 	confiner = new Confiner(Vector2(32, 544), Vector2(0, 0), Vector2(6720, 0));
+}
+
+void Level1::SetPlayer(class Character* playerCharacter)
+{
+	this->playerCharacter = playerCharacter;
 }
 
 void Level1::MapInitialize()
@@ -66,7 +68,7 @@ void Level1::PhysicalZenObject2DInitialize()
 		{
 			nlohmann::json enemy = enemysJson.at(idx);
 
-			enemys.push_back(new Enemy(enemy["id"], enemy["name"], ENEMY_GRAPHIC_PATH, sf::Vector2f(enemy["x"]*TILE_SCALE, enemy["y"]*TILE_SCALE), sf::Vector2f(32, 32), heartPanel));
+			enemys.push_back(new Enemy(enemy["id"], enemy["name"], ENEMY_GRAPHIC_PATH, sf::Vector2f(enemy["x"]*TILE_SCALE, enemy["y"]*TILE_SCALE), sf::Vector2f(32, 32), uiScene->GetHeartPanel()));
 		}
 	}
 
@@ -106,7 +108,7 @@ void Level1::EnvironmentInitialize()
 		{
 			nlohmann::json coin = coinsJson.at(idx);
 
-			coins.push_back(new Coin(coin["id"], coin["name"], COIN_GRAPHIC_PATH, sf::Vector2f(coin["x"]*TILE_SCALE, coin["y"]*TILE_SCALE), coinCounter));
+			coins.push_back(new Coin(coin["id"], coin["name"], COIN_GRAPHIC_PATH, sf::Vector2f(coin["x"]*TILE_SCALE, coin["y"]*TILE_SCALE), uiScene->GetCoinCounter()));
 		}
 	}
 }
@@ -123,8 +125,7 @@ void Level1::Draw(RenderingStack* renderStack)
 		coins[i]->Draw(renderStack);
 	}
 
-	heartPanel->Draw(renderStack);
-	coinCounter->Draw(renderStack);
+	uiScene->Draw(renderStack);
 }
 
 void Level1::UpdateObjects()
@@ -148,7 +149,7 @@ void Level1::UpdateObjects()
 void Level1::PlayerRespawn()
 {
 	playerCharacter->Respawn();
-	heartPanel->UpdateHeartsState();
+	uiScene->GetHeartPanel()->UpdateHeartsState();
 	mainCamera->setCenter(sf::Vector2f(windowSize.x / 2, mainCamera->getCenter().y));
 	confiner->SetPositionLeft(Vector2(0, 0));
 }
@@ -170,4 +171,9 @@ void Level1::SetCamera(sf::View* mainCamera, Vector2 windowSize)
 		mainCamera->setCenter(sf::Vector2f(playerPositionX, mainCamera->getCenter().y));
 		confiner->SetPositionLeft(Vector2(playerPositionX - windowSize.x / 2, 0));
 	}
+}
+
+void Level1::SetUIScene(UIScene* uiScene)
+{
+	this->uiScene = uiScene;
 }

@@ -19,6 +19,7 @@ struct RenderObject
 struct RenderingStack
 {
 	void Clear();
+	void ClearUI();
 	void DivisionOfObjectsIntoLayersByLayerId();
 	void RemoveFromRenderLayers(RenderObject* renderObjectToRemove);
 

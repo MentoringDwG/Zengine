@@ -20,9 +20,10 @@ public:
 	virtual void UpdateObjects() override;
 	virtual class CharacterInputHandler* GetCharacterInputHandler() override;
 	virtual void SetCamera(sf::View* mainCamera, struct Vector2 windowSize) override;
+	virtual void Draw(RenderingStack* renderStack) override;
 
-	void Draw(RenderingStack* renderStack);
-	class CoinCounter* coinCounter = nullptr;
+	void SetPlayer(class Character* playerCharacter);
+	void SetUIScene(class UIScene* uiScene);
 
 private:
 	void PlayerRespawn();
@@ -34,10 +35,10 @@ private:
 	std::vector<class Enemy*> enemys;
 	class Ground* ground = nullptr;
 	std::vector<class Coin*> coins;
-	class HeartsPanel* heartPanel = nullptr;
 	class Castle* castle = nullptr;
 	class Confiner* confiner = nullptr;
 	sf::View* mainCamera = nullptr;
+	class UIScene* uiScene = nullptr;
 
 	//graphics
 	const std::string COIN_GRAPHIC_PATH = "Graphics/coin.png";

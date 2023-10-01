@@ -36,6 +36,7 @@ void GameOverState::OnUpdate()
 void GameOverState::OnLeave(int nextStateId)
 {
 	renderStack->Clear();
+	renderStack->ClearUI();
 	delete gameOverPanel;
 	delete panelTexture;
 	delete panelRenderObject;

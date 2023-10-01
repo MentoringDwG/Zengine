@@ -30,8 +30,13 @@ RenderObject::RenderObject(sf::Text* text, int zOrder, int layerId)
 void RenderingStack::Clear()
 {
 	renderQueue.clear();
-	renderQueueUI.clear();
+	
 	renderLayers.clear();
+}
+
+void  RenderingStack::ClearUI()
+{
+	renderQueueUI.clear();
 }
 
 void RenderingStack::DivisionOfObjectsIntoLayersByLayerId()

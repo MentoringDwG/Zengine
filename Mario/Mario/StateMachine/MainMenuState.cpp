@@ -61,6 +61,7 @@ void MainMenuState::OnLeave(int nextStateId)
 {
 	animator->Stop();
 	renderStack->Clear();
+	renderStack->ClearUI();
 	delete zenShape;
 	delete texture;
 	mainMenuPanel.~MainMenuPanel();

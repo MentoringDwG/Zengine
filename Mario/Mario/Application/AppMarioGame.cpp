@@ -16,10 +16,16 @@
 #include "../StateMachine/WinState.h"
 #include "../World/Level1.h"
 #include "../Character/Character.h"
+#include "../UIinGame/UIScene.h"
 
 AppMarioGame::AppMarioGame()
 {
-	levelManager.AddLevel(0, new Level1("Tiles/JsonFiles/Level_1.json"));
+	playerCharacter = new Character("Mario", "Graphics/Mario/Mario.png", 3);
+
+	level1 = new Level1("Tiles/JsonFiles/Level_1.json");
+	level1->SetPlayer(playerCharacter);
+
+	levelManager.AddLevel(0, level1);
 }
 
 AppMarioGame::~AppMarioGame()
@@ -35,6 +41,8 @@ AppMarioGame::~AppMarioGame()
 	delete renderStack;
 	delete renderModule;
 	delete zengine;
+
+	delete level1;
 }
 
 void AppMarioGame::Initialize(Zengine* zengine)
@@ -43,6 +51,9 @@ void AppMarioGame::Initialize(Zengine* zengine)
 	this->stateMachine = zengine->GetStateMachine();
 	this->renderStack = zengine->GetRenderingStack();
 	this->renderModule = zengine->GetRenderer();
+
+	uiScene = new UIScene(stateMachine);
+	level1->SetUIScene(uiScene);
 
 	StateInitialize();
 	stateMachine->TransitionTo(State::MainMenuState);

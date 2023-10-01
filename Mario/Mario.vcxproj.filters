@@ -99,6 +99,9 @@
     <ClCompile Include="Mario\World\LevelManager.cpp">
       <Filter>Mario\World</Filter>
     </ClCompile>
+    <ClCompile Include="Mario\UIinGame\UIScene.cpp">
+      <Filter>Mario\UIinGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mario\Application\AppMarioGame.h">
@@ -169,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="Mario\World\LevelManager.h">
       <Filter>Mario\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\UIinGame\UIScene.h">
+      <Filter>Mario\UIinGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

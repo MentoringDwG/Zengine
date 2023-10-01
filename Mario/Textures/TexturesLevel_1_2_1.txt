@@ -1,0 +1,14 @@
+Graphics/Map/1.png 1
+Graphics/Map/3.png 3
+Graphics/Map/5.png 5
+Graphics/Map/6.png 6
+Graphics/Map/85.png 10
+Graphics/Map/92.png 14
+Graphics/Map/3.png 15
+Graphics/Map/94.png 16
+Graphics/Map/141.png 17
+Graphics/Map/70.png 20
+Graphics/Map/86.png 30
+Graphics/Map/68.png 39
+Graphics/Map/84.png 49
+Graphics/Map/1.png 51

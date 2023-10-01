@@ -36,6 +36,7 @@ void WinState::OnUpdate()
 void WinState::OnLeave(int nextStateId)
 {
 	renderStack->Clear();
+	renderStack->ClearUI();
 	delete winPanel;
 	delete panelTexture;
 	delete panelRenderObject;

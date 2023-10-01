@@ -32,5 +32,9 @@ private:
 	RenderingStack* renderStack = nullptr;
 	Renderer* renderModule = nullptr;
 	class Zengine* zengine = nullptr;
+	class Character* playerCharacter = nullptr;
+
+	class UIScene* uiScene = nullptr;
+	class Level1* level1 = nullptr;
 };
 

@@ -48,6 +48,7 @@ void AuthorsState::OnUpdate()
 void AuthorsState::OnLeave(int nextStateId)
 {
 	renderStack->Clear();
+	renderStack->ClearUI();
 	delete authorsPanel;
 	delete authorsPanelTexture;
 	delete authorsPanelRenderObject;
