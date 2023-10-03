@@ -173,7 +173,7 @@
     <ClCompile Include="Mario\World\Confiner.cpp" />
     <ClCompile Include="Mario\World\Level1.cpp" />
     <ClCompile Include="Mario\World\LevelManager.cpp" />
-    <ClCompile Include="Mario\World\MapManager.cpp" />
+    <ClCompile Include="Mario\World\MapLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zengine\Zengine.vcxproj">
@@ -202,7 +202,7 @@
     <ClInclude Include="Mario\World\Confiner.h" />
     <ClInclude Include="Mario\World\Level1.h" />
     <ClInclude Include="Mario\World\LevelManager.h" />
-    <ClInclude Include="Mario\World\MapManager.h" />
+    <ClInclude Include="Mario\World\MapLoader.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="resource1.h" />
     <ClInclude Include="resource2.h" />

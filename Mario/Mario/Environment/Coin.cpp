@@ -18,12 +18,10 @@ Coin::Coin(int IDIn, string NameIn, string CoinPath, sf::Vector2f position, Coin
 
 Coin::~Coin()
 {
-	delete zenShape;
+	renderStack->RemoveFromRenderLayers(coinRenderObject);
 	delete coinRenderObject;
-	delete renderStack;
 	ZenPhysics2D::Get()->UnregisterCollider(collider);
 	delete collider;
-	delete coinCounter;
 }
 
 void Coin::Draw(RenderingStack* renderStack)

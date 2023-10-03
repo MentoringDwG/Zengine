@@ -22,6 +22,7 @@ public:
 	void SetCollider(Collider* collider);
 	void SetGravity(float gravity);
 	float GetGravity();
+	void ClearCollisionColliders();
 
 	Vector2 clollisionNormalVector = Vector2(0, 0);
 	ZenShape* zenShape = nullptr;

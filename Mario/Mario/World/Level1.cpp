@@ -15,6 +15,7 @@
 #include "../Environment/Castle.h"
 #include "../UIinGame/UIScene.h"
 #include "Confiner.h"
+#include "MapLoader.h"
 
 #include <fstream>
 
@@ -40,8 +41,8 @@ void Level1::Initialize(StateMachine* stateMachine)
 {
 	this->stateMachine = stateMachine;
 
-	castle = new Castle(Vector2(160, 160), Vector2(6432, 320), stateMachine);
 	confiner = new Confiner(Vector2(32, 544), Vector2(0, 0), Vector2(jsonData["width"]*32-32, 0));
+	ground = new Ground();
 }
 
 void Level1::SetPlayer(class Character* playerCharacter)
@@ -51,9 +52,9 @@ void Level1::SetPlayer(class Character* playerCharacter)
 
 void Level1::MapInitialize()
 {
-	currentMap = new Map();
 	nlohmann::json tileMapData = jsonData["data"];
-	mapManager.AddMap(0, currentMap, "Textures/TexturesLevel_1.txt", jsonData["height"], jsonData["width"], tileMapData);
+	
+	currentMap = new Map();
 }
 
 void Level1::ApplyForceToPhysicsObject()
@@ -76,41 +77,90 @@ void Level1::ApplyForceToPhysicsObject()
 
 void Level1::EnvironmentClear()
 {
+	for (int i = 0; i < coins.size(); i++)
+	{
+		coins[i]->~Coin();
+	}
 	coins.clear();
+
+	for (int i = 0; i < enemys.size(); i++)
+	{
+		enemys[i]->~Enemy();
+	}
 	enemys.clear();
+
+	if (playerCharacter != nullptr)
+	{
+		playerCharacter->ClearCollisionColliders();
+	}
+
+	if (ground != nullptr)
+	{
+		ground->~Ground();
+	}
+
+	for (int i = 0; i < mapLoaders.size(); i++)
+	{
+		mapLoaders[i]->~MapLoader();
+	}
+	mapLoaders.clear();
 }
 
 void Level1::EnvironmentInitialize()
 {
-	if (jsonData.contains(ENEMYS))
+	if (enemys.size() == 0)
 	{
-		nlohmann::json enemysJson = jsonData[ENEMYS];
-
-		for (size_t idx = 0; idx < enemysJson.size(); idx++)
+		if (jsonData.contains(ENEMYS))
 		{
-			nlohmann::json enemy = enemysJson.at(idx);
+			nlohmann::json enemysJson = jsonData[ENEMYS];
 
-			enemys.push_back(new Enemy(enemy["id"], enemy["name"], ENEMY_GRAPHIC_PATH, sf::Vector2f(enemy["x"] * TILE_SCALE, enemy["y"] * TILE_SCALE), sf::Vector2f(32, 32), uiScene->GetHeartPanel()));
+			for (size_t idx = 0; idx < enemysJson.size(); idx++)
+			{
+				nlohmann::json enemy = enemysJson.at(idx);
+
+				enemys.push_back(new Enemy(enemy["id"], enemy["name"], ENEMY_GRAPHIC_PATH, sf::Vector2f(enemy["x"] * TILE_SCALE, enemy["y"] * TILE_SCALE), sf::Vector2f(32, 32), uiScene->GetHeartPanel()));
+			}
+		}
+
+		for (int i = 0; i < enemys.size(); i++)
+		{
+			enemys[i]->AddForce(1.0f, Vector2(-4.0f, 0.0f), 3.0f);
 		}
 	}
 
-	for (int i = 0; i < enemys.size(); i++)
+	if (coins.size() == 0)
 	{
-		enemys[i]->AddForce(1.0f, Vector2(-4.0f, 0.0f), 3.0f);
+		if (jsonData.contains(COINS))
+		{
+			nlohmann::json coinsJson = jsonData[COINS];
+
+			for (size_t idx = 0; idx < coinsJson.size(); idx++)
+			{
+				nlohmann::json coin = coinsJson.at(idx);
+
+				coins.push_back(new Coin(coin["id"], coin["name"], COIN_GRAPHIC_PATH, sf::Vector2f(coin["x"]*TILE_SCALE, coin["y"]*TILE_SCALE), uiScene->GetCoinCounter()));
+			}
+		}
 	}
 
-	ground = new Ground(jsonData["Ground"]);
-
-	if (jsonData.contains(COINS))
+	if (mapLoaders.size() == 0)
 	{
-		nlohmann::json coinsJson = jsonData[COINS];
-
-		for (size_t idx = 0; idx < coinsJson.size(); idx++)
+		if (jsonData.contains(MAP_LOADER))
 		{
-			nlohmann::json coin = coinsJson.at(idx);
+			nlohmann::json mapLoadersJson = jsonData[MAP_LOADER];
 
-			coins.push_back(new Coin(coin["id"], coin["name"], COIN_GRAPHIC_PATH, sf::Vector2f(coin["x"]*TILE_SCALE, coin["y"]*TILE_SCALE), uiScene->GetCoinCounter()));
+			for (size_t idx = 0; idx < mapLoadersJson.size(); idx++)
+			{
+				nlohmann::json mapLoader = mapLoadersJson.at(idx);
+				mapLoaders.push_back(new MapLoader(mapLoader["id"], mapLoader["name"], Vector2(mapLoader["width"]*TILE_SCALE, mapLoader["height"]*TILE_SCALE), Vector2(mapLoader["x"]*TILE_SCALE, mapLoader["y"]*TILE_SCALE)));
+				mapLoaders[mapLoaders.size() - 1]->SetMapToLoad(mapLoader["textureFilePath"], mapLoader["mapJsonPath"], this);
+			}
 		}
+	}
+
+	if (ground->CollidersVectorSize() == 0)
+	{
+		ground->SetBoxColliders(jsonData["Ground"]);
 	}
 }
 
@@ -178,7 +228,37 @@ void Level1::SetUIScene(UIScene* uiScene)
 	this->uiScene = uiScene;
 }
 
-void Level1::LoadMap(int id, RenderingStack* renderStack, World* world)
+void Level1::SetRendering(RenderingStack* renderStack, Renderer* renderModule)
 {
-	currentMap = mapManager.LoadMap(0, renderStack, world);
+	this->renderStack = renderStack;
+	this->renderModule = renderModule;
+}
+
+void Level1::LoadMap(std::string textureFilePath, std::string levelJsonPath)
+{
+	renderStack->Clear();
+
+	std::ifstream jsonFileStream(levelJsonPath);
+	jsonData = nlohmann::json::parse(jsonFileStream);
+
+	nlohmann::json tileMapData = jsonData["data"];
+
+	renderStack->Clear();
+	EnvironmentClear();
+	currentMap->TextureInitialization(textureFilePath);
+	currentMap->LoadMap(jsonData["height"], jsonData["width"], tileMapData);
+	currentMap->Draw(renderStack);
+	EnvironmentInitialize();
+
+	playerCharacter->physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(200.0f, 0.0f));
+
+	if (mainCamera != nullptr && confiner != nullptr)
+	{
+		mainCamera->setCenter(sf::Vector2f(windowSize.x / 2, mainCamera->getCenter().y));
+	}
+
+	Draw(renderStack);
+
+	renderStack->DivisionOfObjectsIntoLayersByLayerId();
+	renderModule->SortRenderLayers(renderStack);
 }

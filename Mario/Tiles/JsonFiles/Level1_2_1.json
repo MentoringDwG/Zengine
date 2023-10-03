@@ -18,8 +18,8 @@
 		3, 62, 17, 3, 3, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 52, 54, 19, 58, 64, 64, 64, 64, 64, 64, 64,
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-"LevelLoaders":[
-                {"id":4, "name":"LevelLoader1","width":16, "height":32, "x":304, "y":208}],
+"MapLoader":[
+                {"id":4, "name":"MapLoader1","width":16, "height":32, "x":304, "y":208, "textureFilePath":"Textures/TexturesLevel_1_2_2.txt", "mapJsonPath":"Tiles//JsonFiles/Level1_2_2.json"}],
 "Ground":[
             {"id":5, "name":"Ground1", "width":32, "height":32, "x":304, "y":208}, 
 			{"id":6, "name":"Ground2", "width":32, "height":80, "x":336, "y":160}, 

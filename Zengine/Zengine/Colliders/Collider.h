@@ -19,6 +19,7 @@ public:
 		COIN = 4,
 		CASTLE = 5,
 		CONFINER = 6,
+		MAP_LOADER = 7,
 		Max,
 	};
 

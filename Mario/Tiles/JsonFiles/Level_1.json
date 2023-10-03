@@ -37,6 +37,8 @@
 			{"id":12, "name":"Coin10", "x":2064, "y":160}, 
 			{"id":13, "name":"Coin11", "x":2688, "y":144}, 
 			{"id":14, "name":"Coin12", "x":3008, "y":96}],
+"MapLoader":[
+                {"id":61, "name":"MapLoader1","width":80, "height":80, "x":3216, "y":160, "textureFilePath":"Textures/TexturesLevel_1_2_1.txt", "mapJsonPath":"Tiles/JsonFiles/Level1_2_1.json"}],
 "Ground":[
 			{"id":15, "name":"Ground1", "width":1088, "height":32, "x":0, "y":240},
 			{"id":16, "name":"Ground2", "width":240, "height":32, "x":1120, "y":240},

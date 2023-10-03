@@ -135,6 +135,13 @@ void Character::SetCollider(Vector2 position, Vector2 size)
 	ZenPhysics2D::Get()->RegisterCollider(collider2D);
 }
 
+void  Character::ClearCollisionColliders()
+{
+	collisionColliders.clear();
+	isGrounded = false;
+	physicalZenObject2D->ClearCollisionColliders();
+}
+
 void Character::HandleCollisionStart(Collider* other)
 {
 	for (auto itr = collisionColliders[other->tag].begin(); itr != collisionColliders[other->tag].end(); itr++)
@@ -173,4 +180,5 @@ void Character::HandleCollisionEnd(Collider* other)
 void Character::Respawn()
 {
 	physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(200.0f, 0.0f));
+	collider2D->SetPosition(physicalZenObject2D->zenShape->GetPosition());
 }

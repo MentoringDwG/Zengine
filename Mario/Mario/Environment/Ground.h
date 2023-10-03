@@ -6,14 +6,12 @@
 class Ground
 {
 public:
-	Ground(nlohmann::json groundData)
-	{
-		SetBoxColliders(groundData);
-	}
+	Ground() {};
 
 	~Ground();
 
 	void SetBoxColliders(nlohmann::json groundData);
+	int CollidersVectorSize();
 
 private:
 	void HandleCollisionStart(class Collider* other);

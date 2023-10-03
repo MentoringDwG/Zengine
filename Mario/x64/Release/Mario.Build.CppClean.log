@@ -1,6 +1,6 @@
 c:\users\admin\documents\github\zengine\mario\x64\release\vc142.pdb
-c:\users\admin\documents\github\zengine\mario\x64\release\level1.obj
 c:\users\admin\documents\github\zengine\mario\x64\release\confiner.obj
+c:\users\admin\documents\github\zengine\mario\x64\release\uiscene.obj
 c:\users\admin\documents\github\zengine\mario\x64\release\mainmenupanel.obj
 c:\users\admin\documents\github\zengine\mario\x64\release\heartspanel.obj
 c:\users\admin\documents\github\zengine\mario\x64\release\winstate.obj
@@ -19,8 +19,10 @@ c:\users\admin\documents\github\zengine\mario\x64\release\castle.obj
 c:\users\admin\documents\github\zengine\mario\x64\release\character.obj
 c:\users\admin\documents\github\zengine\mario\x64\release\appmariogame.obj
 c:\users\admin\documents\github\zengine\mario\x64\release\mario.obj
+c:\users\admin\documents\github\zengine\mario\x64\release\mapmanager.obj
+c:\users\admin\documents\github\zengine\mario\x64\release\maploader.obj
 c:\users\admin\documents\github\zengine\mario\x64\release\levelmanager.obj
-c:\users\admin\documents\github\zengine\mario\x64\release\uiscene.obj
+c:\users\admin\documents\github\zengine\mario\x64\release\level1.obj
 c:\users\admin\documents\github\zengine\x64\release\mario.exe
 c:\users\admin\documents\github\zengine\mario\x64\release\mario.ipdb
 c:\users\admin\documents\github\zengine\mario\x64\release\mario.iobj

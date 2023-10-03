@@ -59,6 +59,7 @@ void AppMarioGame::Initialize(Zengine* zengine)
 
 	uiScene = new UIScene(stateMachine);
 	level1->SetUIScene(uiScene);
+	level1->SetRendering(renderStack, renderModule);
 
 	StateInitialize();
 	stateMachine->TransitionTo(State::MainMenuState);
@@ -87,10 +88,10 @@ void AppMarioGame::StateInitialize()
 
 void AppMarioGame::OnLoading(int id)
 {
-	levelManager.GetLevel(0)->LoadMap(0, renderStack, levelManager.GetLevel(0));
+	levelManager.GetLevel(0)->LoadMap("Textures/TexturesLevel_1.txt", "Tiles/JsonFiles/Level_1.json");
 
-	renderStack->DivisionOfObjectsIntoLayersByLayerId();
-	renderModule->SortRenderLayers(renderStack);
+	//renderStack->DivisionOfObjectsIntoLayersByLayerId();
+	//renderModule->SortRenderLayers(renderStack);
 
 	zengine->CharacterInputHandlerInitialize();
 

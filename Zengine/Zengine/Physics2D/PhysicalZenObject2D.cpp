@@ -226,3 +226,9 @@ float PhysicalZenObject2D::GetGravity()
 {
 	return gravity;
 }
+
+void PhysicalZenObject2D::ClearCollisionColliders()
+{
+	collisionColliders.clear();
+	canUseGravity = true;
+}

@@ -15,6 +15,8 @@ public:
 	virtual void SetCamera(sf::View* mainCamera, struct Vector2 windowSize) = 0;
 	virtual CharacterInputHandler* GetCharacterInputHandler() = 0;
 	virtual void Draw(RenderingStack* renderStack) = 0;
-	virtual void LoadMap(int id, RenderingStack* renderStack, World* world) = 0;
+	virtual void SetRendering(RenderingStack* renderStack, Renderer* renderModule) = 0;
+	virtual void LoadMap(std::string textureFilePath, std::string levelJsonPath) = 0;
 };
+
 

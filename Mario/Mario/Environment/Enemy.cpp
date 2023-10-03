@@ -19,8 +19,9 @@ Enemy::Enemy(int inID, string inName, string enemySpritePath, sf::Vector2f start
 
 Enemy::~Enemy()
 {
-	delete heartsPanel;
-	delete physicalZenObject;
+	ZenPhysics2D::Get()->RemovingObjectFromPhysics(physicalZenObject);
+
+	ZenPhysics2D::Get()->UnregisterCollider(circleCollider);
 	delete circleCollider;
 }
 

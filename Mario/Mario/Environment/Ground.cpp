@@ -37,3 +37,8 @@ void Ground::HandleCollisionStart(Collider* other)
 {
 
 }
+
+int Ground::CollidersVectorSize()
+{
+	return boxColliders.size();
+}

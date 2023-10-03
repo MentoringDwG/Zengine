@@ -22,26 +22,28 @@ public:
 	virtual class CharacterInputHandler* GetCharacterInputHandler() override;
 	virtual void SetCamera(sf::View* mainCamera, struct Vector2 windowSize) override;
 	virtual void Draw(RenderingStack* renderStack) override;
-	virtual void LoadMap(int id, RenderingStack* renderStack, World* world) override;
+	virtual void SetRendering(RenderingStack* renderStack, Renderer* renderModule) override;
+	virtual void LoadMap(std::string textureFilePath, std::string levelJsonPath) override;
 
 	void SetPlayer(class Character* playerCharacter);
 	void SetUIScene(class UIScene* uiScene);
-
-private:
 	void PlayerRespawn();
 
+private:
 	nlohmann::json jsonData;
 	class StateMachine* stateMachine = nullptr;
 	class Map* currentMap = nullptr;
-	MapManager mapManager;
 	class Character* playerCharacter = nullptr;
 	std::vector<class Enemy*> enemys;
 	class Ground* ground = nullptr;
 	std::vector<class Coin*> coins;
+	std::vector<class MapLoader*> mapLoaders;
 	class Castle* castle = nullptr;
 	class Confiner* confiner = nullptr;
 	sf::View* mainCamera = nullptr;
 	class UIScene* uiScene = nullptr;
+	RenderingStack* renderStack = nullptr;
+	Renderer* renderModule = nullptr;
 
 	//graphics
 	const std::string COIN_GRAPHIC_PATH = "Graphics/coin.png";
@@ -51,6 +53,7 @@ private:
 	const float TILE_SCALE = 2;
 	const std::string COINS = "Coins";
 	const std::string ENEMYS = "Enemys";
+	const std::string MAP_LOADER = "MapLoader";
 
 	//camera
 	const int TILE_SIZE = 32;
