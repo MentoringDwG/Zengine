@@ -1,11 +1,13 @@
 #pragma once
 
 #include <vector>
+#include <map>
 #include <Zengine/World/World.h>
 #include <Zengine/Renderer/Renderer.h>
 #include <Zengine/Structs/Vector2.h>
 #include "../../../nlohmann/json.hpp"
 #include "MapManager.h"
+
 
 class Level1: public World
 {
@@ -23,7 +25,7 @@ public:
 	virtual void SetCamera(sf::View* mainCamera, struct Vector2 windowSize) override;
 	virtual void Draw(RenderingStack* renderStack) override;
 	virtual void SetRendering(RenderingStack* renderStack, Renderer* renderModule) override;
-	virtual void LoadMap(std::string textureFilePath, std::string levelJsonPath) override;
+	virtual void LoadMap(std::string textureFilePath, std::string levelJsonPath, int playerPositionId) override;
 
 	void SetPlayer(class Character* playerCharacter);
 	void SetUIScene(class UIScene* uiScene);
@@ -38,6 +40,7 @@ private:
 	class Ground* ground = nullptr;
 	std::vector<class Coin*> coins;
 	std::vector<class MapLoader*> mapLoaders;
+	std::map<int, struct Vector2*> playerPositions;
 	class Castle* castle = nullptr;
 	class Confiner* confiner = nullptr;
 	sf::View* mainCamera = nullptr;
@@ -54,6 +57,7 @@ private:
 	const std::string COINS = "Coins";
 	const std::string ENEMYS = "Enemys";
 	const std::string MAP_LOADER = "MapLoader";
+	const std::string PLAYER_POSITIONS = "PlayerPositions";
 
 	//camera
 	const int TILE_SIZE = 32;

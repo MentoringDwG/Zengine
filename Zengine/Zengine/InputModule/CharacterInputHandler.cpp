@@ -29,6 +29,11 @@ void CharacterInputHandler::KeyPressed(sf::Event& event)
 		{
 			AddMovingState(MovingStates::movingUp);
 		}
+
+		if (event.key.code == sf::Keyboard::S)
+		{
+			AddMovingState(MovingStates::movingDown);
+		}
 	}
 }
 
@@ -72,6 +77,11 @@ void CharacterInputHandler::KeyReleased(sf::Event& event)
 		{
 			movingStatesList.remove(MovingStates::movingUp);
 		}
+
+		if (event.key.code == sf::Keyboard::S)
+		{
+			movingStatesList.remove(MovingStates::movingDown);
+		}
 	}
 }
 
@@ -91,6 +101,10 @@ void CharacterInputHandler::ProcesMovement()
 		if (*itr == MovingStates::movingUp)
 		{
 			owningCharacter->MoveUp();
+		}
+		if (*itr == MovingStates::movingDown)
+		{
+			owningCharacter->MoveDown();
 		}
 	}
 }

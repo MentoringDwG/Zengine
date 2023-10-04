@@ -23,11 +23,6 @@ AppMarioGame::AppMarioGame()
 	playerCharacter = new Character("Mario", "Graphics/Mario/Mario.png", 3);
 
 	level1 = new Level1("Tiles/JsonFiles/Level_1.json");
-	//level1 = new Level1("Tiles/JsonFiles/Level1_2_1.json");
-	//level1 = new Level1("Tiles/JsonFiles/Level1_2_2.json");
-	//level1 = new Level1("Tiles/JsonFiles/Level1_2_3.json");
-	//level1 = new Level1("Tiles/JsonFiles/Level1_2_4.json");
-	//level1 = new Level1("Tiles/JsonFiles/Level1_3.json");
 	level1->SetPlayer(playerCharacter);
 
 	levelManager.AddLevel(0, level1);
@@ -88,10 +83,7 @@ void AppMarioGame::StateInitialize()
 
 void AppMarioGame::OnLoading(int id)
 {
-	levelManager.GetLevel(0)->LoadMap("Textures/TexturesLevel_1.txt", "Tiles/JsonFiles/Level_1.json");
-
-	//renderStack->DivisionOfObjectsIntoLayersByLayerId();
-	//renderModule->SortRenderLayers(renderStack);
+	levelManager.GetLevel(0)->LoadMap("Textures/TexturesLevel_1.txt", "Tiles/JsonFiles/Level_1.json", 0);
 
 	zengine->CharacterInputHandlerInitialize();
 

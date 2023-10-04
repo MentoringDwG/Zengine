@@ -4,9 +4,13 @@
 #include <Zengine/StateMachine/StateMachine.h>
 #include <Zengine/World/World.h>
 
-MapLoader::MapLoader(int id, std::string name, Vector2 size, Vector2 position): ZenObject(id, name, sf::Vector2f(size.x, size.y))
+#include "../Character/Character.h"
+
+MapLoader::MapLoader(int id, std::string name, Vector2 size, Vector2 position, std::string tag, Character* playerCharacter): ZenObject(id, name, sf::Vector2f(size.x, size.y))
 {
 	this->position = sf::Vector2f(position.x, position.y);
+	this->tag = tag;
+	this->playerCharacter = playerCharacter;
 
 	boxCollider = new BoxCollider2D(position, size, this, Collider::ColliderTags::MAP_LOADER);
 	boxCollider->OnCollisionStart.AddListener(&MapLoader::HandleCollisionStart, this);
@@ -24,21 +28,28 @@ MapLoader::~MapLoader()
 	delete boxCollider;
 }
 
-void MapLoader::SetMapToLoad(std::string textureFilePath, std::string mapJsonPath, class World* owner)
+void MapLoader::SetMapToLoad(std::string textureFilePath, std::string mapJsonPath, class World* owner, int playerPositionId)
 {
 	this->textureFilePath = textureFilePath;
 	this->mapJsonPath = mapJsonPath;
 	this->owner = owner;
+	this->playerPositionId = playerPositionId;
 }
 
 void MapLoader::HandleCollisionStart(Collider* other)
 {
 	if (other->GetOwner()->name == MARIO && !isCollisionWithMario)
 	{
-		isCollisionWithMario = true;
-
-		owner->LoadMap(textureFilePath, mapJsonPath);
-		ZenPhysics2D::Get()->UnregisterCollider(boxCollider);
+		if (tag == "castle")
+		{
+			isCollisionWithMario = true;
+			owner->LoadMap(textureFilePath, mapJsonPath, playerPositionId);
+		}
+		if (tag == "tube" && playerCharacter->GetInputHandler()->movingStates==CharacterInputHandler::MovingStates::movingDown)
+		{
+			isCollisionWithMario = true;
+			owner->LoadMap(textureFilePath, mapJsonPath, playerPositionId);
+		}
 	}
 }
 

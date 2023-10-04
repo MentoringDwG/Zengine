@@ -16,7 +16,7 @@ public:
 	virtual CharacterInputHandler* GetCharacterInputHandler() = 0;
 	virtual void Draw(RenderingStack* renderStack) = 0;
 	virtual void SetRendering(RenderingStack* renderStack, Renderer* renderModule) = 0;
-	virtual void LoadMap(std::string textureFilePath, std::string levelJsonPath) = 0;
+	virtual void LoadMap(std::string textureFilePath, std::string levelJsonPath, int playerPositionId) = 0;
 };
 
 

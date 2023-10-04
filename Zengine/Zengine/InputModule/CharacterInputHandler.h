@@ -20,14 +20,17 @@ public:
 	string GetName();
 	void ProcesMovement();
 
-private:
 	enum class MovingStates
 	{
 		standing = 0,
 		movingLeft = 1,
 		movingRight = 2,
 		movingUp = 3,
+		movingDown = 4,
 	};
+	MovingStates movingStates = CharacterInputHandler::MovingStates::standing;
+
+private:
 
 	void KeyPressed(sf::Event& event);
 	void KeyReleased(sf::Event& event);
@@ -39,5 +42,4 @@ private:
 	list<MovingStates> movingStatesList;
 	list <MovingStates>::iterator itr;
 	class MovableObject* owningCharacter = nullptr;
-	MovingStates movingStates = CharacterInputHandler::MovingStates::standing;
 };

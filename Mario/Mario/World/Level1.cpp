@@ -41,7 +41,7 @@ void Level1::Initialize(StateMachine* stateMachine)
 {
 	this->stateMachine = stateMachine;
 
-	confiner = new Confiner(Vector2(32, 544), Vector2(0, 0), Vector2(jsonData["width"]*32-32, 0));
+	confiner = new Confiner(Vector2(32, 544), Vector2(0, 0), Vector2((float)jsonData["width"]*32-32, 0));
 	ground = new Ground();
 }
 
@@ -104,6 +104,8 @@ void Level1::EnvironmentClear()
 		mapLoaders[i]->~MapLoader();
 	}
 	mapLoaders.clear();
+
+	playerPositions.clear();
 }
 
 void Level1::EnvironmentInitialize()
@@ -152,8 +154,8 @@ void Level1::EnvironmentInitialize()
 			for (size_t idx = 0; idx < mapLoadersJson.size(); idx++)
 			{
 				nlohmann::json mapLoader = mapLoadersJson.at(idx);
-				mapLoaders.push_back(new MapLoader(mapLoader["id"], mapLoader["name"], Vector2(mapLoader["width"]*TILE_SCALE, mapLoader["height"]*TILE_SCALE), Vector2(mapLoader["x"]*TILE_SCALE, mapLoader["y"]*TILE_SCALE)));
-				mapLoaders[mapLoaders.size() - 1]->SetMapToLoad(mapLoader["textureFilePath"], mapLoader["mapJsonPath"], this);
+				mapLoaders.push_back(new MapLoader(mapLoader["id"], mapLoader["name"], Vector2(mapLoader["width"]*TILE_SCALE, mapLoader["height"]*TILE_SCALE), Vector2(mapLoader["x"]*TILE_SCALE, mapLoader["y"]*TILE_SCALE), mapLoader["tag"], playerCharacter));
+				mapLoaders[mapLoaders.size() - 1]->SetMapToLoad(mapLoader["textureFilePath"], mapLoader["mapJsonPath"], this, mapLoader["playerPositionId"]);
 			}
 		}
 	}
@@ -161,6 +163,19 @@ void Level1::EnvironmentInitialize()
 	if (ground->CollidersVectorSize() == 0)
 	{
 		ground->SetBoxColliders(jsonData["Ground"]);
+	}
+
+
+	if (jsonData.contains(PLAYER_POSITIONS))
+	{
+		nlohmann::json playerPositionsJson = jsonData[PLAYER_POSITIONS];
+
+		for (size_t idx = 0; idx < playerPositionsJson.size(); idx++)
+		{
+			nlohmann::json playerPosition = playerPositionsJson.at(idx);
+
+			playerPositions[playerPosition["id"]] = new Vector2(playerPosition["x"], playerPosition["y"]);
+		}
 	}
 }
 
@@ -198,7 +213,7 @@ void Level1::UpdateObjects()
 
 void Level1::PlayerRespawn()
 {
-	playerCharacter->Respawn();
+	playerCharacter->physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(playerPositions[0]->x * TILE_SCALE, playerPositions[0]->y * TILE_SCALE));
 	uiScene->GetHeartPanel()->UpdateHeartsState();
 	mainCamera->setCenter(sf::Vector2f(windowSize.x / 2, mainCamera->getCenter().y));
 	confiner->SetPositionLeft(Vector2(0, 0));
@@ -234,7 +249,7 @@ void Level1::SetRendering(RenderingStack* renderStack, Renderer* renderModule)
 	this->renderModule = renderModule;
 }
 
-void Level1::LoadMap(std::string textureFilePath, std::string levelJsonPath)
+void Level1::LoadMap(std::string textureFilePath, std::string levelJsonPath, int playerPositionId)
 {
 	renderStack->Clear();
 
@@ -250,7 +265,7 @@ void Level1::LoadMap(std::string textureFilePath, std::string levelJsonPath)
 	currentMap->Draw(renderStack);
 	EnvironmentInitialize();
 
-	playerCharacter->physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(200.0f, 0.0f));
+	playerCharacter->physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(playerPositions[playerPositionId]->x*TILE_SCALE, playerPositions[playerPositionId]->y * TILE_SCALE));
 
 	if (mainCamera != nullptr && confiner != nullptr)
 	{

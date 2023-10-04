@@ -14,6 +14,7 @@ public:
 	virtual void MoveLeft() override;
 	virtual void MoveRight() override;
 	virtual void MoveUp() override;
+	virtual void MoveDown() override;
 
 	Character(std::string name, string Path, float playerMoveSpeed);
 	~Character();
@@ -25,7 +26,6 @@ public:
 	void SetCollider(Vector2 position, Vector2 size);
 	void UpdateCharacter();
 	bool IsCharacterGrounded();
-	void Respawn();
 	void ClearCollisionColliders();
 
 	PhysicalZenObject2D* physicalZenObject2D = nullptr;

@@ -50,6 +50,8 @@ Character::~Character()
 //MOVEMENT
 void Character::MoveLeft()
 {
+	inputHandler.movingStates = CharacterInputHandler::MovingStates::movingLeft;
+
 	physicalZenObject2D->zenShape->SetScale(sf::Vector2f(-1, 1));
 	physicalZenObject2D->zenShape->SetOrigin(sf::Vector2f(physicalZenObject2D->zenShape->GetGlobalBounds().width, 0));
 
@@ -64,6 +66,8 @@ void Character::MoveLeft()
 
 void Character::MoveRight()
 {
+	inputHandler.movingStates = CharacterInputHandler::MovingStates::movingRight;
+
 	physicalZenObject2D->zenShape->SetScale(sf::Vector2f(1, 1));
 	physicalZenObject2D->zenShape->SetOrigin(sf::Vector2f(0, 0));
 
@@ -80,9 +84,16 @@ void Character::MoveUp()
 {
 	if (isGrounded && IsCollisionWithOneGround())
 	{
+		inputHandler.movingStates = CharacterInputHandler::MovingStates::movingUp;
+
 		physicalZenObject2D->AddForce(1.0f, Vector2(0, -8.0f), 4.0f);
 		collider2D->GetOwner()->isJump = true;
 	}
+}
+
+void Character::MoveDown()
+{
+	inputHandler.movingStates = CharacterInputHandler::MovingStates::movingDown;
 }
 
 bool Character::IsCollisionWithOneGround()
@@ -117,7 +128,6 @@ bool Character::IsCharacterGrounded()
 
 void Character::Draw(RenderingStack* renderStack)
 {
-	physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(200.0f, 0.0f));
 	animator->Play();
 
 	texture = textureAsset->GetTexture();
@@ -175,10 +185,4 @@ void Character::HandleCollisionEnd(Collider* other)
 	{
 		isGrounded = false;
 	}
-}
-
-void Character::Respawn()
-{
-	physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(200.0f, 0.0f));
-	collider2D->SetPosition(physicalZenObject2D->zenShape->GetPosition());
 }

@@ -1,6 +1,8 @@
 {
 "height":17,
 "width":30,
+"PlayerPositions":[
+					{"id":0, "x":32, "y":208}],
 "data":[64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64,
         64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64,
         64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 39, 59, 59, 20, 64, 64, 64,
@@ -19,7 +21,7 @@
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 "MapLoader":[
-                {"id":4, "name":"MapLoader1","width":16, "height":32, "x":304, "y":208, "textureFilePath":"Textures/TexturesLevel_1_2_2.txt", "mapJsonPath":"Tiles//JsonFiles/Level1_2_2.json"}],
+                {"id":4, "name":"MapLoader1","width":16, "height":32, "x":304, "y":208, "textureFilePath":"Textures/TexturesLevel_1_2_2.txt", "mapJsonPath":"Tiles//JsonFiles/Level1_2_2.json", "playerPositionId":0, "tag":"castle"}],
 "Ground":[
             {"id":5, "name":"Ground1", "width":32, "height":32, "x":304, "y":208}, 
 			{"id":6, "name":"Ground2", "width":32, "height":80, "x":336, "y":160}, 
