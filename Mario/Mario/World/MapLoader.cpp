@@ -6,6 +6,10 @@
 
 #include "../Character/Character.h"
 
+const static std::string CASTLE = "castle";
+const static std::string TUBE = "tube";
+const static std::string MARIO = "Mario";
+
 MapLoader::MapLoader(int id, std::string name, Vector2 size, Vector2 position, std::string tag, Character* playerCharacter): ZenObject(id, name, sf::Vector2f(size.x, size.y))
 {
 	this->position = sf::Vector2f(position.x, position.y);
@@ -40,12 +44,15 @@ void MapLoader::HandleCollisionStart(Collider* other)
 {
 	if (other->GetOwner()->name == MARIO && !isCollisionWithMario)
 	{
-		if (tag == "castle")
+		if (tag == CASTLE)
 		{
 			isCollisionWithMario = true;
 			owner->LoadMap(textureFilePath, mapJsonPath, playerPositionId);
 		}
-		if (tag == "tube" && playerCharacter->GetInputHandler()->movingStates==CharacterInputHandler::MovingStates::movingDown)
+
+		//TO DO wyliczenie punktu kolizji
+
+		if (tag == TUBE && playerCharacter->GetInputHandler()->movingStates==CharacterInputHandler::MovingStates::movingDown)
 		{
 			isCollisionWithMario = true;
 			owner->LoadMap(textureFilePath, mapJsonPath, playerPositionId);

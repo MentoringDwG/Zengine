@@ -11,7 +11,7 @@ public:
 	void SetMapToLoad(std::string textureFilePath, std::string mapJsonPath, class World* owner, int playerPositionId);
 private:
 	void HandleCollisionStart(class Collider* other);
-	void HandleCollisionEnd(Collider* other);
+	void HandleCollisionEnd(class Collider* other);
 
 	std::string tag = "";
 	std::string textureFilePath = "";
@@ -21,7 +21,5 @@ private:
 	class BoxCollider2D* boxCollider = nullptr;
 	class Character* playerCharacter = nullptr;
 	bool isCollisionWithMario = false;
-
-	const std::string MARIO = "Mario";
 };
 

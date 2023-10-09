@@ -258,7 +258,6 @@ void Level1::LoadMap(std::string textureFilePath, std::string levelJsonPath, int
 
 	nlohmann::json tileMapData = jsonData["data"];
 
-	renderStack->Clear();
 	EnvironmentClear();
 	currentMap->TextureInitialization(textureFilePath);
 	currentMap->LoadMap(jsonData["height"], jsonData["width"], tileMapData);

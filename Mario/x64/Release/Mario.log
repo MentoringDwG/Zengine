@@ -1,8 +1,8 @@
-﻿  Character.cpp
+﻿  Level1.cpp
   MapLoader.cpp
   Trwa generowanie kodu
-  9 of 4118 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  3 of 4116 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
+    17 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   Mario.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\Mario.exe
