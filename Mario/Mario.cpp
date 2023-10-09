@@ -24,6 +24,7 @@ int main(int argc, char** argv)
 
 	engine->Start = std::bind(&StartApp::Start, startApp, std::placeholders::_1);
 	engine->Run(startApp.appMarioGame->GetWorld());
+	engine->Shutdown();
 
 	return 0;
 }

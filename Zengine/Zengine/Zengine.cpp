@@ -8,6 +8,7 @@
 #include "Physics2D/ZenPhysics2D.h"
 #include "Interfaces/IEngineModule.h"
 #include "Animation/AnimationProcesor.h"
+#include "Audio/AudioSystem.h"
 
 Zengine* Zengine::Engine = nullptr;
 
@@ -24,6 +25,7 @@ void Zengine::Run(class World* world)
 	InputProcessor = new InputProcessorModule();
 	RenderModule = new Renderer();
 	renderStack = new RenderingStack();
+	audioSystem = new AudioSystem();
 
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
 	window->setFramerateLimit(60);
@@ -40,6 +42,8 @@ void Zengine::Run(class World* world)
 	world->MapInitialize();
 
 	RenderingStackInitialize();
+
+	audioSystem->Initialize();
 
 	UIInitialize();
 
@@ -73,7 +77,7 @@ void Zengine::MainLoop()
 {
 	Timer* timerForPhysics = new Timer();
 	Timer* timerForFPSCounter = new Timer();
-
+	
 	while (window->isOpen())
 	{
 		int stateId = stateMachine->GetCurrentGameStateId();
@@ -173,7 +177,12 @@ void Zengine::SetUI()
 
 void Zengine::Shutdown()
 {
-
+	// #TODO: ¯aneta sprawdzi czy wszystko tu sprz¹tamy jak nale¿y.
+	delete audioSystem;
+	delete fpsText;	 
+	delete InputProcessor;
+	delete RenderModule;
+	delete renderStack;
 }
 
 StateMachine* Zengine::GetStateMachine()
