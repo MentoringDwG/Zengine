@@ -23,6 +23,7 @@ public:
 	class StateMachine* GetStateMachine();
 	RenderingStack* GetRenderingStack();
 	Renderer* GetRenderer();
+	class AudioSystem* GetAudioSystem();
 
 	std::function<void(int)> Start;
 

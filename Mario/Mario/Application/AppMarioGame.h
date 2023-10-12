@@ -31,6 +31,7 @@ private:
 
 	RenderingStack* renderStack = nullptr;
 	Renderer* renderModule = nullptr;
+	class AudioSystem* audioSystem = nullptr;
 	class Zengine* zengine = nullptr;
 	class Character* playerCharacter = nullptr;
 

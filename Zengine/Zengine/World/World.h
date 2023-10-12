@@ -8,7 +8,7 @@
 class World
 {
 public:
-	virtual void Initialize(class StateMachine* stateMachine) = 0;
+	virtual void Initialize(class StateMachine* stateMachine, class AudioSystem* audioSystem) = 0;
 	virtual void MapInitialize() = 0;
 	virtual void EnvironmentClear() = 0;
 	virtual void EnvironmentInitialize() = 0;

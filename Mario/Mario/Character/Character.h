@@ -16,7 +16,7 @@ public:
 	virtual void MoveUp() override;
 	virtual void MoveDown() override;
 
-	Character(std::string name, string Path, float playerMoveSpeed);
+	Character(std::string name, string Path, float playerMoveSpeed, class AudioSystem* audioSystem);
 	~Character();
 
 	CharacterInputHandler* GetInputHandler();
@@ -49,5 +49,6 @@ private:
 
 	class Animation* walkAnimation = nullptr;
 	class Animator* animator = nullptr;
+	class AudioSystem* audioSystem = nullptr;
 };
 

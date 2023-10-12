@@ -5,6 +5,7 @@
 #include <Zengine/ZenObject/ZenObject.h>
 #include <Zengine/Physics2D/ZenPhysics2D.h>
 #include <Zengine/StateMachine/StateMachine.h>
+#include <Zengine/Audio/AudioSystem.h>
 
 #include "../Environment/Ground.h"
 #include "../UIinGame/HeartsPanel.h"
@@ -37,9 +38,10 @@ Level1::~Level1()
 	enemys.clear();
 }
 
-void Level1::Initialize(StateMachine* stateMachine)
+void Level1::Initialize(StateMachine* stateMachine, AudioSystem* audioSystem)
 {
 	this->stateMachine = stateMachine;
+	this->audioSystem = audioSystem;
 
 	confiner = new Confiner(Vector2(32, 544), Vector2(0, 0), Vector2((float)jsonData["width"]*32-32, 0));
 	ground = new Ground();
@@ -213,6 +215,7 @@ void Level1::UpdateObjects()
 
 void Level1::PlayerRespawn()
 {
+	audioSystem->PlaySingleShot("die");
 	playerCharacter->physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(playerPositions[0]->x * TILE_SCALE, playerPositions[0]->y * TILE_SCALE));
 	uiScene->GetHeartPanel()->UpdateHeartsState();
 	mainCamera->setCenter(sf::Vector2f(windowSize.x / 2, mainCamera->getCenter().y));
@@ -251,6 +254,11 @@ void Level1::SetRendering(RenderingStack* renderStack, Renderer* renderModule)
 
 void Level1::LoadMap(std::string textureFilePath, std::string levelJsonPath, int playerPositionId)
 {
+	if (isFirstMap == false)
+	{
+		audioSystem->PlaySingleShot("stageclear");
+	}
+
 	renderStack->Clear();
 
 	std::ifstream jsonFileStream(levelJsonPath);
@@ -275,4 +283,6 @@ void Level1::LoadMap(std::string textureFilePath, std::string levelJsonPath, int
 
 	renderStack->DivisionOfObjectsIntoLayersByLayerId();
 	renderModule->SortRenderLayers(renderStack);
+
+	isFirstMap = false;
 }

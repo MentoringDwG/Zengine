@@ -15,7 +15,7 @@ public:
 	Level1(std::string levelJsonPath);
 	~Level1();
 
-	virtual void Initialize(StateMachine* stateMachine) override;
+	virtual void Initialize(StateMachine* stateMachine, class AudioSystem* audioSystem) override;
 	virtual void MapInitialize() override;
 	virtual void EnvironmentClear() override;
 	virtual void EnvironmentInitialize() override;
@@ -34,6 +34,7 @@ public:
 private:
 	nlohmann::json jsonData;
 	class StateMachine* stateMachine = nullptr;
+	class AudioSystem* audioSystem = nullptr;
 	class Map* currentMap = nullptr;
 	class Character* playerCharacter = nullptr;
 	std::vector<class Enemy*> enemys;
@@ -47,6 +48,8 @@ private:
 	class UIScene* uiScene = nullptr;
 	RenderingStack* renderStack = nullptr;
 	Renderer* renderModule = nullptr;
+
+	bool isFirstMap = true;
 
 	//graphics
 	const std::string COIN_GRAPHIC_PATH = "Graphics/coin.png";

@@ -35,10 +35,7 @@ sf::Sound* AudioSystem::GetSoundFromPool()
 }
 
 void AudioSystem::Initialize()
-{
-	sounds.SoundBankPath = "../Mario/Audio/Sounds";
-	musics.SoundBankPath = "../Mario/Audio/Music";
-	
+{	
 	LoadSoundbanks();
 }
 
@@ -122,6 +119,7 @@ void AudioSystem::PlayMusic(std::string SoundKey)
 			sf::Sound* sound = GetSoundFromPool();
 			sound->setBuffer(zenSound[i].GetSoundBuffer());
 			sound->setLoop(true);
+			sound->setVolume(80);
 			sound->play();
 
 			return;

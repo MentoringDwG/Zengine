@@ -9,9 +9,12 @@
 #include <Zengine/Animation/Animator.h>
 #include <Zengine/Animation/Animation.h>
 #include <Zengine/Animation/AnimationDefinitionManager.h>
+#include <Zengine/Audio/AudioSystem.h>
 
-Character::Character(std::string name, string Path, float playerMoveSpeed)
+Character::Character(std::string name, string Path, float playerMoveSpeed, class AudioSystem* audioSystem)
 {
+	this->audioSystem = audioSystem;
+
 	inputHandler.SetName(name);
 	inputHandler.SetOwningCharacter(this);
 
@@ -86,6 +89,7 @@ void Character::MoveUp()
 	{
 		inputHandler.movingStates = CharacterInputHandler::MovingStates::movingUp;
 
+		audioSystem->PlaySingleShot("jump");
 		physicalZenObject2D->AddForce(1.0f, Vector2(0, -8.0f), 4.0f);
 		collider2D->GetOwner()->isJump = true;
 	}

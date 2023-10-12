@@ -40,12 +40,10 @@ void Zengine::Run(class World* world)
 	Start(1);
 
 	this->world = world;
-	world->Initialize(stateMachine);
+	world->Initialize(stateMachine, audioSystem);
 	world->MapInitialize();
 
 	RenderingStackInitialize();
-
-	audioSystem->Initialize();
 
 	UIInitialize();
 
@@ -79,9 +77,6 @@ void Zengine::MainLoop()
 {
 	Timer* timerForPhysics = new Timer();
 	Timer* timerForFPSCounter = new Timer();
-	
-	//audioSystem->PlaySingleShot("cricket");
-	audioSystem->PlayMusic("cricket");
 
 	while (window->isOpen())
 	{
@@ -203,4 +198,9 @@ RenderingStack* Zengine::GetRenderingStack()
 Renderer* Zengine::GetRenderer()
 {
 	return RenderModule;
+}
+
+AudioSystem* Zengine::GetAudioSystem()
+{
+	return audioSystem;
 }

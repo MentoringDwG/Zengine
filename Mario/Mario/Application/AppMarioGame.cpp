@@ -5,6 +5,7 @@
 #include <Zengine/World/World.h>
 #include <Zengine/InputModule/CharacterInputHandler.h>
 #include <Zengine/InputModule/InputProcessorModule.h>
+#include <Zengine/Audio/AudioSystem.h>
 
 #include "../StateMachine/MainMenuState.h"
 #include "../StateMachine/LoadingState.h"
@@ -20,10 +21,7 @@
 
 AppMarioGame::AppMarioGame()
 {
-	playerCharacter = new Character("Mario", "Graphics/Mario/Mario.png", 3);
-
 	level1 = new Level1("Tiles/JsonFiles/Level_1.json");
-	level1->SetPlayer(playerCharacter);
 
 	levelManager.AddLevel(0, level1);
 }
@@ -51,6 +49,14 @@ void AppMarioGame::Initialize(Zengine* zengine)
 	this->stateMachine = zengine->GetStateMachine();
 	this->renderStack = zengine->GetRenderingStack();
 	this->renderModule = zengine->GetRenderer();
+	this->audioSystem = zengine->GetAudioSystem();
+
+	audioSystem->sounds.SoundBankPath = "../Mario/Audio/Sounds";
+	audioSystem->musics.SoundBankPath = "../Mario/Audio/Music";
+	audioSystem->Initialize();
+
+	playerCharacter = new Character("Mario", "Graphics/Mario/Mario.png", 3, audioSystem);
+	level1->SetPlayer(playerCharacter);
 
 	uiScene = new UIScene(stateMachine);
 	level1->SetUIScene(uiScene);
@@ -58,6 +64,7 @@ void AppMarioGame::Initialize(Zengine* zengine)
 
 	StateInitialize();
 	stateMachine->TransitionTo(State::MainMenuState);
+	audioSystem->PlayMusic("soundtrack");
 }
 
 void AppMarioGame::StateInitialize()
