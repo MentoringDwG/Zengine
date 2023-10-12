@@ -5,13 +5,13 @@
 
 struct SoundDefinition
 {
-	std::string SoundKey;
-	std::string SoundName;
+	std::string SoundKey = "";
+	std::string SoundName = "";
 };
 
 struct Soundbank
 {
-	std::string SoundBankPath;
+	std::string SoundBankPath = "";
 	std::vector<SoundDefinition> Sounds;
 
 	void LoadSoundDefinitionsFromPath();

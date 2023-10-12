@@ -11,8 +11,8 @@ sf::Sound& AudioSystem::GetSoundFromPool()
 
 void AudioSystem::Initialize()
 {
-	sounds.SoundBankPath = "Z:/KnowHow/Mentoring/Zengine/Zengine/Mario/Audio/Sounds";
-	musics.SoundBankPath = "Z:/KnowHow/Mentoring/Zengine/Zengine/Mario/Audio/Music";
+	sounds.SoundBankPath = "../Mario/Audio/Sounds";
+	musics.SoundBankPath = "../Mario/Audio/Music";
 	
 	LoadSoundbanks();
 }
@@ -26,7 +26,7 @@ void AudioSystem::LoadSoundbanks()
 
 void AudioSystem::PlaySingleShot()
 {	
-	std::string path = "Z:/KnowHow/Mentoring/Zengine/Zengine/Mario/Audio/Sounds/cricket.wav";
+	std::string path = "../Mario/Audio/Sounds/cricket.wav";
 	if (!soundBuffer.loadFromFile(path))
 	{
 		std::cout<<"Failed to load audio file: "<< path << std::endl;
@@ -35,6 +35,7 @@ void AudioSystem::PlaySingleShot()
 
 	cricket.setBuffer(soundBuffer);
 
+	cricket.setLoop(true);
 	cricket.play();
 }
 

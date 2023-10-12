@@ -49,6 +49,9 @@
     <Filter Include="Zengine\Animation">
       <UniqueIdentifier>{7c9ec818-03f3-41d4-bde4-034e51266d53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Zengine\Audio">
+      <UniqueIdentifier>{b15b3858-e4e8-4971-8ec5-3ac7ebc92d99}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Zengine\Colliders\BoxCollider2D.cpp">
@@ -162,6 +165,15 @@
     <ClCompile Include="Zengine\World\World.cpp">
       <Filter>Zengine\World</Filter>
     </ClCompile>
+    <ClCompile Include="Zengine\Audio\AudioData.cpp">
+      <Filter>Zengine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Audio\AudioSystem.cpp">
+      <Filter>Zengine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Zengine\Audio\ZenSound.cpp">
+      <Filter>Zengine\Audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Zengine\Colliders\BoxCollider2D.h">
@@ -274,6 +286,15 @@
     </ClInclude>
     <ClInclude Include="Zengine\World\World.h">
       <Filter>Zengine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Audio\AudioData.h">
+      <Filter>Zengine\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Audio\AudioSystem.h">
+      <Filter>Zengine\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Zengine\Audio\ZenSound.h">
+      <Filter>Zengine\Audio</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

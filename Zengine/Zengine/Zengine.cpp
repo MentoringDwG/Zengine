@@ -78,6 +78,8 @@ void Zengine::MainLoop()
 	Timer* timerForPhysics = new Timer();
 	Timer* timerForFPSCounter = new Timer();
 	
+	audioSystem->PlaySingleShot();
+
 	while (window->isOpen())
 	{
 		int stateId = stateMachine->GetCurrentGameStateId();
