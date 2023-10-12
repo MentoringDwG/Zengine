@@ -8,6 +8,7 @@
 class AudioSystem
 {	
 	sf::Sound* GetSoundFromPool();
+	void AddZenSounds(Soundbank soundBank);
 
 public:
 

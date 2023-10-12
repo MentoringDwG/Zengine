@@ -5,14 +5,37 @@
 
 sf::Sound* AudioSystem::GetSoundFromPool()
 {
-	// ¯aneta znajdzie pierwszy wolny dŸwiêk z puli.
-	return soundPool[0];
+	if (soundPool.size() == 0)
+	{
+		soundPool.push_back(new sf::Sound());
+
+		return soundPool[0];
+	}
+	else
+	{
+		for (int i = 0; i < soundPool.size(); i++)
+		{
+			if (soundPool[i]->getStatus() != sf::SoundSource::Playing)
+			{
+				return soundPool[i];
+			}
+		}
+
+		if (soundPool.size() < 250)
+		{
+			soundPool.push_back(new sf::Sound());
+
+			return soundPool[soundPool.size()-1];
+		}
+		else
+		{
+			return soundPool[0];
+		}
+	}
 }
 
 void AudioSystem::Initialize()
 {
-	soundPool.push_back(new sf::Sound());
-
 	sounds.SoundBankPath = "../Mario/Audio/Sounds";
 	musics.SoundBankPath = "../Mario/Audio/Music";
 	
@@ -28,10 +51,7 @@ void AudioSystem::LoadSoundbanks()
 	}
 	else
 	{
-		for (int i = 0; i < sounds.Sounds.size(); i++)
-		{
-			zenSound.push_back(ZenSound(sounds.Sounds[i].SoundKey));
-		}
+		AddZenSounds(sounds);
 	}
 
 	musics.LoadSoundDefinitionsFromPath();
@@ -41,9 +61,21 @@ void AudioSystem::LoadSoundbanks()
 	}
 	else
 	{
-		for (int i = 0; i < musics.Sounds.size(); i++)
+		AddZenSounds(musics);
+	}
+}
+
+void AudioSystem::AddZenSounds(Soundbank soundBank)
+{
+	for (int i = 0; i < soundBank.Sounds.size(); i++)
+	{
+		if (zenSound.size() < 250)
 		{
-			zenSound.push_back(ZenSound(musics.Sounds[i].SoundKey));
+			zenSound.push_back(ZenSound(soundBank.Sounds[i].SoundKey));
+		}
+		else
+		{
+			std::cout << std::endl << "Too many ZenSounds";
 		}
 	}
 }
