@@ -15,6 +15,7 @@ public:
 	void Initialize();
 	void LoadSoundbanks();
 	void PlaySingleShot(std::string SoundKey);
+	void PlayMusic(std::string SoundKey);
 
 	std::vector<ZenSound> zenSound;
 

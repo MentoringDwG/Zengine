@@ -105,3 +105,29 @@ void AudioSystem::PlaySingleShot(std::string SoundKey)
 	std::cout << std::endl << "There is no ZenSound with the given key in the pool";
 }
 
+void AudioSystem::PlayMusic(std::string SoundKey)
+{
+	std::string path = musics.GetSoundDefinition(SoundKey).SoundName;
+
+	for (int i = 0; i < zenSound.size(); i++)
+	{
+		if (zenSound[i].soundKey == SoundKey)
+		{
+			if (!zenSound[i].GetSoundBuffer().loadFromFile(path))
+			{
+				std::cout << std::endl << "Failed to load audio file: " << path << std::endl;
+				return;
+			}
+
+			sf::Sound* sound = GetSoundFromPool();
+			sound->setBuffer(zenSound[i].GetSoundBuffer());
+			sound->setLoop(true);
+			sound->play();
+
+			return;
+		}
+	}
+
+	std::cout << std::endl << "There is no ZenSound with the given key in the pool";
+}
+
