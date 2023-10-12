@@ -1,18 +1,4 @@
-﻿  Animator.cpp
-  BoxCollider2D.cpp
-  CircleCollider2D.cpp
-  Collider.cpp
-  CharacterInputHandler.cpp
-  PhysicalZenObject2D.cpp
-  ZenPhysics2D.cpp
-  UIButton.cpp
-  AssetsManager.cpp
-  Map.cpp
-  TextureAsset.cpp
-  World.cpp
-  MovableObject.cpp
-  ZenObject.cpp
-  ZenShape.cpp
-  ZenText.cpp
+﻿  AudioSystem.cpp
+  ZenSound.cpp
   Zengine.cpp
   Zengine.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\Zengine.lib

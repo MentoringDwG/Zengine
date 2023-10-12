@@ -15,4 +15,5 @@ struct Soundbank
 	std::vector<SoundDefinition> Sounds;
 
 	void LoadSoundDefinitionsFromPath();
+	SoundDefinition GetSoundDefinition(std::string SoundKey);
 };

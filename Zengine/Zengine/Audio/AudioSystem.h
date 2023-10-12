@@ -7,13 +7,13 @@
 
 class AudioSystem
 {	
-	sf::Sound& GetSoundFromPool();
+	sf::Sound* GetSoundFromPool();
 
 public:
 
 	void Initialize();
 	void LoadSoundbanks();
-	void PlaySingleShot();
+	void PlaySingleShot(std::string SoundKey);
 
 	std::vector<ZenSound> zenSound;
 
@@ -22,8 +22,8 @@ public:
 
 	sf::SoundBuffer soundBuffer;
 
-	std::vector<sf::Sound> soundPool;
-	std::vector<sf::Sound> musicPool;
+	std::vector<sf::Sound *> soundPool;
+	std::vector<sf::Sound *> musicPool;
 
 	sf::Sound cricket;
 };

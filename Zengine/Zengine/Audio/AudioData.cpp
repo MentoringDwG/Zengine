@@ -53,3 +53,17 @@ void Soundbank::LoadSoundDefinitionsFromPath()
 			<< "code().category(): " << ex.code().category().name() << '\n';
 	}
 }
+
+SoundDefinition Soundbank::GetSoundDefinition(std::string SoundKey)
+{
+	for (int i = 0; i < Sounds.size(); i++)
+	{
+		if (Sounds[i].SoundKey == SoundKey)
+		{
+			return Sounds[i];
+		}
+	}
+
+	SoundDefinition soundDefinition;
+	return soundDefinition;
+}

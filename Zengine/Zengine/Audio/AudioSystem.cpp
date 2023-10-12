@@ -3,9 +3,7 @@
 #include "AudioSystem.h"
 #include <iostream>
 
-#pragma optimize("", off)
-
-sf::Sound& AudioSystem::GetSoundFromPool()
+sf::Sound* AudioSystem::GetSoundFromPool()
 {
 	// ¯aneta znajdzie pierwszy wolny dŸwiêk z puli.
 	return soundPool[0];
@@ -13,6 +11,8 @@ sf::Sound& AudioSystem::GetSoundFromPool()
 
 void AudioSystem::Initialize()
 {
+	soundPool.push_back(new sf::Sound());
+
 	sounds.SoundBankPath = "../Mario/Audio/Sounds";
 	musics.SoundBankPath = "../Mario/Audio/Music";
 	
@@ -22,23 +22,54 @@ void AudioSystem::Initialize()
 void AudioSystem::LoadSoundbanks()
 {
 	sounds.LoadSoundDefinitionsFromPath();
-	// #TODO: ¯aneta zrobi ³adowanie muzyki i obs³u¿y przypadek gdy œcie¿ka bêdzie pusta.
-	// musics.LoadSoundDefinitionsFromPath();
-}
-
-void AudioSystem::PlaySingleShot()
-{	
-	std::string path = "../Mario/Audio/Sounds/cricket.wav";
-	if (!soundBuffer.loadFromFile(path))
+	if (sounds.Sounds.size() == 0)
 	{
-		std::cout<<"Failed to load audio file: "<< path << std::endl;
-		return;
+		std::cout << std::endl << "The sounds folder is empty";
+	}
+	else
+	{
+		for (int i = 0; i < sounds.Sounds.size(); i++)
+		{
+			zenSound.push_back(ZenSound(sounds.Sounds[i].SoundKey));
+		}
 	}
 
-	cricket.setBuffer(soundBuffer);
-
-	cricket.setLoop(true);
-	cricket.play();
+	musics.LoadSoundDefinitionsFromPath();
+	if (musics.Sounds.size() == 0)
+	{
+		std::cout<< std::endl << "The music folder is empty";
+	}
+	else
+	{
+		for (int i = 0; i < musics.Sounds.size(); i++)
+		{
+			zenSound.push_back(ZenSound(musics.Sounds[i].SoundKey));
+		}
+	}
 }
 
-#pragma optimize("", on)
+void AudioSystem::PlaySingleShot(std::string SoundKey)
+{	
+	std::string path = sounds.GetSoundDefinition(SoundKey).SoundName;
+	
+	for (int i = 0; i < zenSound.size(); i++)
+	{
+		if (zenSound[i].soundKey == SoundKey)
+		{
+			if (!zenSound[i].GetSoundBuffer().loadFromFile(path))
+			{
+				std::cout << std::endl << "Failed to load audio file: " << path << std::endl;
+				return;
+			}
+
+			sf::Sound* sound = GetSoundFromPool();
+			sound->setBuffer(zenSound[i].GetSoundBuffer());
+			sound->play();
+
+			return;
+		}
+	}
+
+	std::cout << std::endl << "There is no ZenSound with the given key in the pool";
+}
+

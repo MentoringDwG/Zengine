@@ -80,7 +80,7 @@ void Zengine::MainLoop()
 	Timer* timerForPhysics = new Timer();
 	Timer* timerForFPSCounter = new Timer();
 	
-	audioSystem->PlaySingleShot();
+	audioSystem->PlaySingleShot("cricket");
 
 	while (window->isOpen())
 	{

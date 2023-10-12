@@ -6,7 +6,13 @@
 // Instancja dŸwiêku
 class ZenSound
 {
+public:
+	ZenSound(std::string soundKeyIn);
+	sf::SoundBuffer& GetSoundBuffer();
+	
+	std::string soundKey = "";
+
+private:
 	sf::SoundBuffer soundBuffer;
-	std::string soundKey;
-	int soundId;
+	int soundId = 0;
 };
