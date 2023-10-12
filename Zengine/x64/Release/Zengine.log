@@ -1,3 +1,18 @@
-﻿  AudioData.cpp
-C:\Users\Admin\Documents\GitHub\Zengine\Zengine\Zengine\Audio\AudioData.cpp(32,18): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
+﻿  Animator.cpp
+  BoxCollider2D.cpp
+  CircleCollider2D.cpp
+  Collider.cpp
+  CharacterInputHandler.cpp
+  PhysicalZenObject2D.cpp
+  ZenPhysics2D.cpp
+  UIButton.cpp
+  AssetsManager.cpp
+  Map.cpp
+  TextureAsset.cpp
+  World.cpp
+  MovableObject.cpp
+  ZenObject.cpp
+  ZenShape.cpp
+  ZenText.cpp
+  Zengine.cpp
   Zengine.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\Zengine.lib

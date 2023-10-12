@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "Animation.h"
 #include "KeyFrame.h"
 #include "../Structs/Vector2.h"

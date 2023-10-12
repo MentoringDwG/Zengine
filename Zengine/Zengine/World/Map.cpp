@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "Map.h"
 #include "TextureAsset.h"
 #include "AssetsManager.h"

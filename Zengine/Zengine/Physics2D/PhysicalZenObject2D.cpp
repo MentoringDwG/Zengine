@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "PhysicalZenObject2D.h"
 #include "../Structs/Vector2.h"
 

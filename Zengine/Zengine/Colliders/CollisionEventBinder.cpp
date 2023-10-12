@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "CollisionEventBinder.h"
 
 void CollisionEventBinder::RemoveListener(int listenerIndex)

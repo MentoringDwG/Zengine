@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "InputProcessorModule.h"
 
 void InputProcessorModule::Initialize()

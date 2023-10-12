@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "ZenShape.h"
 
 ZenShape::ZenShape(int inID, string inName, sf::Vector2f inSize) :ZenObject(inID, inName, inSize)

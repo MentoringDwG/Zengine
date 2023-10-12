@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "AnimationProcesor.h"
 #include "Animator.h"
 

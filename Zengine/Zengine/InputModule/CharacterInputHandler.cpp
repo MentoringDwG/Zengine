@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "CharacterInputHandler.h"
 #include "../ZenObject/MovableObject.h"
 

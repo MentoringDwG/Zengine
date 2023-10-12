@@ -1,4 +1,7 @@
+// Copyright Z.Z. Zengine (c)
+
 #pragma once
+
 class BaseGameState
 {
 private:

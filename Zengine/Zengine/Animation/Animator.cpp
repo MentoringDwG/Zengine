@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "Animator.h"
 #include "Animation.h"
 #include "../ZenObject/ZenShape.h"

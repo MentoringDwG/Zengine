@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "CompoundWidget.h"
 
 CompoundWidget::CompoundWidget(Vector2 positionIn, Vector2 sizeIn) : Widget(positionIn, sizeIn)

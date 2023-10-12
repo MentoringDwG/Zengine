@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "Widget.h"
 
 Widget::Widget(Vector2 positionIn, Vector2 sizeIn): position(positionIn), size(sizeIn)

@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "CircleCollider2D.h"
 #include "BoxCollider2D.h"
 #include "../Structs/Vector2.h"

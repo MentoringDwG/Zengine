@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "AudioData.h"
 
 #include <filesystem>

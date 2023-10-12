@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "Zengine.h"
 #include "World/World.h"
 #include "InputModule/InputProcessorModule.h"

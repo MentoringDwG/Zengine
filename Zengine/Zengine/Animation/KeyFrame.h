@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #pragma once
 
 #include "../Structs/Vector2.h"

@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "BoxCollider2D.h"
 #include "../ZenObject/ZenObject.h"
 #include "../Structs/Vector2.h"

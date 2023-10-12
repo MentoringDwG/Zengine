@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "Vector2.h"
 #include<cmath>
 

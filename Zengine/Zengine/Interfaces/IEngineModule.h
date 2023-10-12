@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #pragma once
 
 class IEngineModule

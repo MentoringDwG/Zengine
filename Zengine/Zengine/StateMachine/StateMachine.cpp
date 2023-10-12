@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "StateMachine.h"
 #include "BaseGameState.h"
 

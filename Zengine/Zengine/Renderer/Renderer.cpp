@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "Renderer.h"
 #include <SFML/Graphics.hpp>
 

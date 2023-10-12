@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "ZenText.h"
 
 void ZenText::SetText(string text)

@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "Collider.h"
 #include "../ZenObject/ZenObject.h"
 

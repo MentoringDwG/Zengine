@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "AnimationDefinition.h"
 #include "../Structs/Vector2.h"
 #include "../../../nlohmann/json.hpp"

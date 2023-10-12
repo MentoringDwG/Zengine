@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "WidgetEventHandler.h"
 
 void WidgetEventHandler::RemoveListener(int listenerIndex)

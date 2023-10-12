@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "UIInputHandler.h"
 #include <iostream>
 #include "../UI/Widget.h"

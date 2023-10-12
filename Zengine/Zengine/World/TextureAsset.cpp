@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "TextureAsset.h"
 
 TextureAsset::TextureAsset(std::string Path, std::string Name) :TexturePath(Path), TextureName(Name)

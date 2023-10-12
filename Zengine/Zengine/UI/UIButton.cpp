@@ -1,3 +1,5 @@
+// Copyright Z.Z. Zengine (c)
+
 #include "UIButton.h"
 
 UIButton::UIButton(Vector2 positionIn, Vector2 sizeIn): Widget(positionIn, sizeIn)
