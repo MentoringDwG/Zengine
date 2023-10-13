@@ -11,6 +11,7 @@ class Animator
 {
 public:
 	Animator(class ZenShape* ownerIn);
+	~Animator();
 	void Update();
 	int AddAnimation(Animation* animation);
 	void DeleteAnimation(Animation* animation);

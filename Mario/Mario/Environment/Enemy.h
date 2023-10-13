@@ -8,9 +8,12 @@ private:
 	void HandleCollisionStart(Collider* other);
 	void HandleCollisionEnd(Collider* other);
 
+	int walkAnimationId = 0;
 	class HeartsPanel* heartsPanel = nullptr;
 	PhysicalZenObject2D* physicalZenObject = nullptr;
 	class CircleCollider2D* circleCollider = nullptr;
+	class Animation* walkAnimation = nullptr;
+	class Animator* animator = nullptr;
 	bool isCollisionWithCharacter = false;
 
 	sf::Vector2f colliderPosition;

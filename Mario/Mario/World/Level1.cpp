@@ -6,6 +6,7 @@
 #include <Zengine/Physics2D/ZenPhysics2D.h>
 #include <Zengine/StateMachine/StateMachine.h>
 #include <Zengine/Audio/AudioSystem.h>
+#include <Zengine/Animation/AnimationDefinitionManager.h>
 
 #include "../Environment/Ground.h"
 #include "../UIinGame/HeartsPanel.h"
@@ -24,6 +25,8 @@ Level1::Level1(std::string levelJsonPath)
 {
 	std::ifstream jsonFileStream(levelJsonPath);
 	jsonData = nlohmann::json::parse(jsonFileStream);
+
+	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/enemyWalk.json", "EnemyWalk");
 }
 
 Level1::~Level1()

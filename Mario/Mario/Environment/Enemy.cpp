@@ -3,6 +3,10 @@
 #include <Zengine/Colliders/CircleCollider2D.h>
 #include <Zengine/Colliders/Collider.h>
 #include <Zengine/Physics2D/ZenPhysics2D.h>
+#include <Zengine/Animation/Animator.h>
+#include <Zengine/Animation/Animation.h>
+#include <Zengine/Audio/AudioSystem.h>
+#include <Zengine/Animation/AnimationDefinitionManager.h>
 
 Enemy::Enemy(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize, HeartsPanel* heartsPanelIn)
 {
@@ -15,6 +19,12 @@ Enemy::Enemy(int inID, string inName, string enemySpritePath, sf::Vector2f start
 	circleCollider->OnCollisionStart.AddListener(&Enemy::HandleCollisionStart, this);
 	circleCollider->OnCollisionEnd.AddListener(&Enemy::HandleCollisionEnd, this);
 	ZenPhysics2D::Get()->RegisterCollider(circleCollider);
+
+	animator = new Animator(physicalZenObject->zenShape);
+	walkAnimation = new Animation(AnimationDefinitionManager::Get()->GetAnimationDefinition("EnemyWalk"));
+	walkAnimationId = animator->AddAnimation(walkAnimation);
+	animator->SetCurrentAnimation(walkAnimationId);
+	animator->Play();
 }
 
 Enemy::~Enemy()
@@ -22,7 +32,8 @@ Enemy::~Enemy()
 	ZenPhysics2D::Get()->RemovingObjectFromPhysics(physicalZenObject);
 
 	ZenPhysics2D::Get()->UnregisterCollider(circleCollider);
-	delete circleCollider;
+
+	animator->~Animator();
 }
 
 void Enemy::Update()
@@ -38,7 +49,19 @@ void Enemy::HandleCollisionStart(Collider* other)
 	{
 		if (isCollisionWithCharacter == false)
 		{
-			heartsPanel->UpdateHeartsState();
+			if (other->GetOwner()->position.y + other->GetOwner()->size.y <= physicalZenObject->zenShape->GetPosition().y)
+			{
+				animator->Pause();
+				
+				sf::Texture* texture = new sf::Texture;
+				texture->loadFromFile("Graphics/Enemy2.png");
+				physicalZenObject->zenShape->SetTexture(texture);
+				Enemy::~Enemy();
+			}
+			else
+			{
+				heartsPanel->UpdateHeartsState();
+			}
 			isCollisionWithCharacter = true;
 		}
 	}

@@ -14,6 +14,11 @@ Animator::Animator(ZenShape* ownerIn): owner(ownerIn)
 	AnimationProcesor::Get()->AddAnimator(this);
 }
 
+Animator::~Animator()
+{
+	AnimationProcesor::Get()->DeleteAnimator(this);
+}
+
 void Animator::Update()
 {
 	if (canPlayAnimation == false) return;
