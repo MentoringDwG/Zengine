@@ -20,7 +20,7 @@ private:
 
 	class ZenShape* gameOverPanel = nullptr;
 	sf::Texture* panelTexture = nullptr;
-	RenderObject*panelRenderObject = nullptr;
+	RenderObject* gameOverPanelRenderObject = nullptr;
 	RenderingStack* renderStack = nullptr;
 	class UIButton* back = nullptr;
 	class WaitingRoomState* waitingRoomState = nullptr;

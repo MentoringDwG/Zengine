@@ -21,6 +21,8 @@
 
 #include <fstream>
 
+#pragma optimize("", off)
+
 Level1::Level1(std::string levelJsonPath)
 {
 	std::ifstream jsonFileStream(levelJsonPath);
@@ -41,13 +43,13 @@ Level1::~Level1()
 	enemys.clear();
 }
 
-void Level1::Initialize(StateMachine* stateMachine, AudioSystem* audioSystem)
+void Level1::Initialize(AudioSystem* audioSystem)
 {
-	this->stateMachine = stateMachine;
 	this->audioSystem = audioSystem;
 
 	confiner = new Confiner(Vector2(32, 544), Vector2(0, 0), Vector2((float)jsonData["width"]*32-32, 0));
 	ground = new Ground();
+	isMapLoaded = false;
 }
 
 void Level1::SetPlayer(class Character* playerCharacter)
@@ -200,6 +202,10 @@ void Level1::Draw(RenderingStack* renderStack)
 
 void Level1::UpdateObjects()
 {
+	if (!IsWorldLoaded())
+	{
+		return;
+	}
 	if (playerCharacter != nullptr)
 	{
 		playerCharacter->UpdateCharacter();
@@ -257,6 +263,7 @@ void Level1::SetRendering(RenderingStack* renderStack, Renderer* renderModule)
 
 void Level1::LoadMap(std::string textureFilePath, std::string levelJsonPath, int playerPositionId)
 {
+	// TODO: Zamienmy te stringi na sta³e.
 	if (isFirstMap == false)
 	{
 		audioSystem->PlaySingleShot("stageclear");
@@ -288,4 +295,12 @@ void Level1::LoadMap(std::string textureFilePath, std::string levelJsonPath, int
 	renderModule->SortRenderLayers(renderStack);
 
 	isFirstMap = false;
+	isMapLoaded = true;
 }
+
+bool Level1::IsWorldLoaded()
+{
+	return isMapLoaded;
+}
+
+#pragma optimize("", on)

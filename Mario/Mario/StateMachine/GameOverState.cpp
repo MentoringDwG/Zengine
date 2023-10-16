@@ -15,8 +15,8 @@ void GameOverState::OnEnter(int prevStateId)
 	gameOverPanel->SetTexture(panelTexture);
 	gameOverPanel->SetPosition(sf::Vector2f(0, 0));
 
-	panelRenderObject = new RenderObject(gameOverPanel->Draw(), 1, 1);
-	renderStack->renderQueue.push_back(panelRenderObject);
+	gameOverPanelRenderObject = new RenderObject(gameOverPanel->Draw(), 1, 1);
+	renderStack->renderQueue.push_back(gameOverPanelRenderObject);
 
 	back = new UIButton(Vector2(30, 230), Vector2(106, 50));
 	back->Draw(renderStack, "Graphics/Control/back.png", sf::IntRect(0, 0, 53, 25), 2, "MenuBack");
@@ -39,7 +39,7 @@ void GameOverState::OnLeave(int nextStateId)
 	renderStack->ClearUI();
 	delete gameOverPanel;
 	delete panelTexture;
-	delete panelRenderObject;
+	delete gameOverPanelRenderObject;
 	delete back;
 }
 
@@ -53,7 +53,7 @@ GameOverState::~GameOverState()
 {
 	delete gameOverPanel;
 	delete panelTexture;
-	delete panelRenderObject;
+	delete gameOverPanelRenderObject;
 	delete renderStack;
 	delete back;
 	delete waitingRoomState;

@@ -45,8 +45,9 @@ AppMarioGame::~AppMarioGame()
 
 void AppMarioGame::Initialize(Zengine* zengine)
 {
+	stateMachine = new StateMachine();
 	this->zengine = zengine;
-	this->stateMachine = zengine->GetStateMachine();
+	//this->stateMachine = zengine->GetStateMachine();
 	this->renderStack = zengine->GetRenderingStack();
 	this->renderModule = zengine->GetRenderer();
 	this->audioSystem = zengine->GetAudioSystem();
@@ -94,13 +95,28 @@ void AppMarioGame::OnLoading(int id)
 
 	zengine->CharacterInputHandlerInitialize();
 
-	waitingRoomState = new WaitingRoomState(0, stateMachine, 3);
-	stateMachine->DeleteState(0);
+	waitingRoomState = new WaitingRoomState(0, stateMachine, (int)State::EAppState::GameplayState);
+	stateMachine->DeleteState((int)State::EAppState::None);
 	stateMachine->AddState(waitingRoomState);
-	stateMachine->TransitionTo(0);
+	stateMachine->TransitionTo((int)State::EAppState::None);
+
+	// To jest brzydki hack i nie powinno tego byæ. 
+	// Ale na szczêœcie ¯aneta naprawi.
+	zengine->gameMode = true;
 }
 
 World* AppMarioGame::GetWorld()
 {
 	return levelManager.GetLevel(0);
+}
+
+void AppMarioGame::Tick(float DeltaTime)
+{
+	// Tutaj updatujemy state maszyne.
+	stateMachine->Update();
+}
+
+void AppMarioGame::Uninitialize()
+{
+	
 }

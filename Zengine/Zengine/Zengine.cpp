@@ -11,6 +11,7 @@
 #include "Interfaces/IEngineModule.h"
 #include "Animation/AnimationProcesor.h"
 #include "Audio/AudioSystem.h"
+#include "Core/App.h"
 
 Zengine* Zengine::Engine = nullptr;
 
@@ -20,7 +21,7 @@ Zengine* Zengine::CreateInstance()
 	return Engine;
 }
 
-void Zengine::Run(class World* world)
+void Zengine::Run(class App* inApp, class World* world)
 {
 	engineRunning = true;
 
@@ -28,6 +29,7 @@ void Zengine::Run(class World* world)
 	RenderModule = new Renderer();
 	renderStack = new RenderingStack();
 	audioSystem = new AudioSystem();
+	app = inApp;
 
 	window = new sf::RenderWindow(sf::VideoMode(960, 544), "Zengine");
 	window->setFramerateLimit(60);
@@ -35,12 +37,9 @@ void Zengine::Run(class World* world)
 	
 	RenderModule->Initialize(window);
 
-	stateMachine = new StateMachine();
-
-	Start(1);
-
+	Start();
 	this->world = world;
-	world->Initialize(stateMachine, audioSystem);
+	world->Initialize(audioSystem);
 	world->MapInitialize();
 
 	RenderingStackInitialize();
@@ -80,14 +79,13 @@ void Zengine::MainLoop()
 
 	while (window->isOpen())
 	{
-		int stateId = stateMachine->GetCurrentGameStateId();
-		
 		timerForFPSCounter->Reset();
 		ProcessInput(window);
 
 		window->clear();
 
-		if (stateId==State::GameplayState)
+		// Musimy to uzale¿niæ od czegoœ? Ale od czego? ¯aneta odpowie na to pytanie.
+		//if (gameMode)
 		{
 			characterInputHandler.ProcesMovement();
 			timerForPhysics->TimerStop();
@@ -102,13 +100,12 @@ void Zengine::MainLoop()
 
 			world->SetCamera(&mainView, Vector2((float)window->getSize().x, (float)window->getSize().y));
 		}
-		else
-		{
-			mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
-		}
+		//else
+		//{
+		//	mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
+		//}
 
-		stateMachine->Update();
-
+		app->Tick(-1);
 		//Render game elements
 		window->setView(mainView);
 
@@ -116,7 +113,7 @@ void Zengine::MainLoop()
 
 		RenderModule->ProcessDrawingElements(renderStack);
 		
-		ZenPhysics2D::Get()->SetShouldShowDebug(stateId == State::GameplayState);
+		ZenPhysics2D::Get()->SetShouldShowDebug(gameMode);
 		ZenPhysics2D::Get()->DrawColliders(window);
 
 		//Draw UI
@@ -130,7 +127,7 @@ void Zengine::MainLoop()
 		SetUI();
 
 		timerForFPSCounter->TimerStop();
-		CountFrameTime(timerForFPSCounter->time);
+		CountFrameTime(timerForFPSCounter->time);		
 	}
 }
 
@@ -183,11 +180,6 @@ void Zengine::Shutdown()
 	delete InputProcessor;
 	delete RenderModule;
 	delete renderStack;
-}
-
-StateMachine* Zengine::GetStateMachine()
-{
-	return stateMachine;
 }
 
 RenderingStack* Zengine::GetRenderingStack()

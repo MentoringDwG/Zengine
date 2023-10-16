@@ -8,7 +8,7 @@
 class World
 {
 public:
-	virtual void Initialize(class StateMachine* stateMachine, class AudioSystem* audioSystem) = 0;
+	virtual void Initialize(class AudioSystem* audioSystem) = 0;
 	virtual void MapInitialize() = 0;
 	virtual void EnvironmentClear() = 0;
 	virtual void EnvironmentInitialize() = 0;
@@ -19,6 +19,5 @@ public:
 	virtual void Draw(RenderingStack* renderStack) = 0;
 	virtual void SetRendering(RenderingStack* renderStack, Renderer* renderModule) = 0;
 	virtual void LoadMap(std::string textureFilePath, std::string levelJsonPath, int playerPositionId) = 0;
+	virtual bool IsWorldLoaded() = 0;
 };
-
-

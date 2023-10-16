@@ -14,6 +14,11 @@ public:
 	{
 		appMarioGame->Initialize(engine);
 	}
+
+	void StartOne()
+	{
+		appMarioGame->Initialize(engine);
+	}
 };
 
 int main(int argc, char** argv)
@@ -21,9 +26,8 @@ int main(int argc, char** argv)
 	engine = Zengine::CreateInstance();
 
 	StartApp startApp;
-
-	engine->Start = std::bind(&StartApp::Start, startApp, std::placeholders::_1);
-	engine->Run(startApp.appMarioGame->GetWorld());
+	engine->Start = std::bind(&StartApp::StartOne, startApp);
+	engine->Run(startApp.appMarioGame, startApp.appMarioGame->GetWorld());
 	engine->Shutdown();
 
 	return 0;

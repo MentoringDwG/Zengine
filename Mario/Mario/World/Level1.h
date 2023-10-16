@@ -8,14 +8,14 @@
 #include "../../../nlohmann/json.hpp"
 #include "MapManager.h"
 
-
+// PLZ FIX ME. I don't want to be one anymore.
 class Level1: public World
 {
 public:
 	Level1(std::string levelJsonPath);
 	~Level1();
 
-	virtual void Initialize(StateMachine* stateMachine, class AudioSystem* audioSystem) override;
+	virtual void Initialize(class AudioSystem* audioSystem) override;
 	virtual void MapInitialize() override;
 	virtual void EnvironmentClear() override;
 	virtual void EnvironmentInitialize() override;
@@ -26,6 +26,7 @@ public:
 	virtual void Draw(RenderingStack* renderStack) override;
 	virtual void SetRendering(RenderingStack* renderStack, Renderer* renderModule) override;
 	virtual void LoadMap(std::string textureFilePath, std::string levelJsonPath, int playerPositionId) override;
+	virtual bool IsWorldLoaded() override;
 
 	void SetPlayer(class Character* playerCharacter);
 	void SetUIScene(class UIScene* uiScene);
@@ -33,7 +34,6 @@ public:
 
 private:
 	nlohmann::json jsonData;
-	class StateMachine* stateMachine = nullptr;
 	class AudioSystem* audioSystem = nullptr;
 	class Map* currentMap = nullptr;
 	class Character* playerCharacter = nullptr;
@@ -65,5 +65,7 @@ private:
 	//camera
 	const int TILE_SIZE = 32;
 	struct Vector2 windowSize = Vector2(0, 0);
+
+	bool isMapLoaded = false;
 };
 

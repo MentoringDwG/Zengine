@@ -2,8 +2,9 @@
 
 #include <Zengine/Renderer/Renderer.h>
 #include "../World/LevelManager.h"
+#include <Zengine/Core/App.h>
 
-class AppMarioGame
+class AppMarioGame : public App
 {
 public:
 	AppMarioGame();
@@ -11,6 +12,8 @@ public:
 
 	void Initialize(class Zengine* zengine);
 	class World* GetWorld();
+	void Tick(float DeltaTime) override;
+	void Uninitialize() override;
 
 private:
 	void StateInitialize();
@@ -18,6 +21,7 @@ private:
 
 	LevelManager levelManager;
 
+	// Tu znajduje siê g³ówna instancja state machine. A nie w ZenEngine.
 	class StateMachine* stateMachine = nullptr;
 
 	class MainMenuState* mainMenuState = nullptr;
