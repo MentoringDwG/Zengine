@@ -243,10 +243,17 @@ void Level1::SetCamera(sf::View* mainCamera, Vector2 windowSize)
 
 	float playerPositionX = playerCharacter->physicalZenObject2D->zenShape->GetPosition().x;
 
-	if (playerPositionX > windowSize.x / 2 && playerPositionX > mainCamera->getCenter().x && playerPositionX < jsonData["width"]*TILE_SIZE - windowSize.x / 2)
+	if (gameStateId == 3)
 	{
-		mainCamera->setCenter(sf::Vector2f(playerPositionX, mainCamera->getCenter().y));
-		confiner->SetPositionLeft(Vector2(playerPositionX - windowSize.x / 2, 0));
+		if (playerPositionX > windowSize.x / 2 && playerPositionX > mainCamera->getCenter().x && playerPositionX < jsonData["width"]*TILE_SIZE - windowSize.x / 2)
+		{
+			mainCamera->setCenter(sf::Vector2f(playerPositionX, mainCamera->getCenter().y));
+			confiner->SetPositionLeft(Vector2(playerPositionX - windowSize.x / 2, 0));
+		}
+	}
+	else
+	{
+		mainCamera->setCenter(windowSize.x / 2.f, windowSize.y / 2.f);
 	}
 }
 

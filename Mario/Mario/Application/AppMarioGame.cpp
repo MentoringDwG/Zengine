@@ -114,9 +114,15 @@ void AppMarioGame::Tick(float DeltaTime)
 {
 	// Tutaj updatujemy state maszyne.
 	stateMachine->Update();
+	level1->gameStateId = GetGameState();
 }
 
 void AppMarioGame::Uninitialize()
 {
 	
+}
+
+int AppMarioGame::GetGameState()
+{
+	return stateMachine->GetCurrentGameStateId();
 }

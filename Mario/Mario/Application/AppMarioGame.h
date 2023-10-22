@@ -14,6 +14,7 @@ public:
 	class World* GetWorld();
 	void Tick(float DeltaTime) override;
 	void Uninitialize() override;
+	int GetGameState();
 
 private:
 	void StateInitialize();

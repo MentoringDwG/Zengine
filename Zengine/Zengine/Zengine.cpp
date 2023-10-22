@@ -84,28 +84,21 @@ void Zengine::MainLoop()
 
 		window->clear();
 
-		// Musimy to uzale¿niæ od czegoœ? Ale od czego? ¯aneta odpowie na to pytanie.
-		//if (gameMode)
+		characterInputHandler.ProcesMovement();
+		timerForPhysics->TimerStop();
+		if (timerForPhysics->timeMs >= ZenPhysics2D::Get()->GetPhysicsTimeStep())
 		{
-			characterInputHandler.ProcesMovement();
-			timerForPhysics->TimerStop();
-			if (timerForPhysics->timeMs >= ZenPhysics2D::Get()->GetPhysicsTimeStep())
-			{
-				world->ApplyForceToPhysicsObject();
-				ZenPhysics2D::Get()->CalculatePhysics();
-				world->UpdateObjects();
-				timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
-			}
-			ZenPhysics2D::Get()->CalculateCollision();
-
-			world->SetCamera(&mainView, Vector2((float)window->getSize().x, (float)window->getSize().y));
+			world->ApplyForceToPhysicsObject();
+			ZenPhysics2D::Get()->CalculatePhysics();
+			world->UpdateObjects();
+			timerForPhysics->start_time = std::chrono::high_resolution_clock::now();
 		}
-		//else
-		//{
-		//	mainView.setCenter(window->getSize().x / 2.f, window->getSize().y / 2.f);
-		//}
+		ZenPhysics2D::Get()->CalculateCollision();
+
+		world->SetCamera(&mainView, Vector2((float)window->getSize().x, (float)window->getSize().y));
 
 		app->Tick(-1);
+
 		//Render game elements
 		window->setView(mainView);
 
@@ -174,10 +167,13 @@ void Zengine::SetUI()
 
 void Zengine::Shutdown()
 {
-	// #TODO: ¯aneta sprawdzi czy wszystko tu sprz¹tamy jak nale¿y.
 	delete audioSystem;
 	delete fpsText;	 
 	delete InputProcessor;
+	delete audioSystem;
+	delete app;
+	delete world;
+	delete window;
 	delete RenderModule;
 	delete renderStack;
 }

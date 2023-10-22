@@ -33,6 +33,7 @@
     <ClCompile Include="Zengine\Colliders\Collider.cpp" />
     <ClCompile Include="Zengine\Colliders\CollisionCallback.cpp" />
     <ClCompile Include="Zengine\Colliders\CollisionEventBinder.cpp" />
+    <ClCompile Include="Zengine\Core\App.cpp" />
     <ClCompile Include="Zengine\InputModule\CharacterInputHandler.cpp" />
     <ClCompile Include="Zengine\InputModule\InputHandler.cpp" />
     <ClCompile Include="Zengine\InputModule\InputProcessorModule.cpp" />
@@ -75,6 +76,7 @@
     <ClInclude Include="Zengine\Colliders\Collider.h" />
     <ClInclude Include="Zengine\Colliders\CollisionCallback.h" />
     <ClInclude Include="Zengine\Colliders\CollisionEventBinder.h" />
+    <ClInclude Include="Zengine\Core\App.h" />
     <ClInclude Include="Zengine\InputModule\CharacterInputHandler.h" />
     <ClInclude Include="Zengine\InputModule\InputHandler.h" />
     <ClInclude Include="Zengine\InputModule\InputProcessorModule.h" />

@@ -1,5 +1,5 @@
 #include "GameplayState.h"
-#include <Zengine.h>
+#include <Zengine/Zengine.h>
 
 void GameplayState::OnEnter(int prevStateId)
 {

@@ -32,6 +32,8 @@ public:
 	void SetUIScene(class UIScene* uiScene);
 	void PlayerRespawn();
 
+	int gameStateId = 0;
+
 private:
 	nlohmann::json jsonData;
 	class AudioSystem* audioSystem = nullptr;
