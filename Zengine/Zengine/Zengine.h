@@ -24,6 +24,7 @@ public:
 	RenderingStack* GetRenderingStack();
 	Renderer* GetRenderer();
 	class AudioSystem* GetAudioSystem();
+	void ChangeWorld(class World* world);
 
 	std::function<void()> Start;
 	bool gameMode = false;

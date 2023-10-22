@@ -1,4 +1,4 @@
-#include "Level1.h"
+#include "Level.h"
 #include <SFML/Graphics.hpp>
 
 #include <Zengine/World/Map.h>
@@ -21,9 +21,7 @@
 
 #include <fstream>
 
-#pragma optimize("", off)
-
-Level1::Level1(std::string levelJsonPath)
+Level::Level(std::string levelJsonPath)
 {
 	std::ifstream jsonFileStream(levelJsonPath);
 	jsonData = nlohmann::json::parse(jsonFileStream);
@@ -31,7 +29,7 @@ Level1::Level1(std::string levelJsonPath)
 	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/enemyWalk.json", "EnemyWalk");
 }
 
-Level1::~Level1()
+Level::~Level()
 {
 	delete currentMap;
 	delete playerCharacter;
@@ -43,7 +41,7 @@ Level1::~Level1()
 	enemys.clear();
 }
 
-void Level1::Initialize(AudioSystem* audioSystem)
+void Level::Initialize(AudioSystem* audioSystem)
 {
 	this->audioSystem = audioSystem;
 
@@ -52,19 +50,19 @@ void Level1::Initialize(AudioSystem* audioSystem)
 	isMapLoaded = false;
 }
 
-void Level1::SetPlayer(class Character* playerCharacter)
+void Level::SetPlayer(class Character* playerCharacter)
 {
 	this->playerCharacter = playerCharacter;
 }
 
-void Level1::MapInitialize()
+void Level::MapInitialize()
 {
 	nlohmann::json tileMapData = jsonData["data"];
 	
 	currentMap = new Map();
 }
 
-void Level1::ApplyForceToPhysicsObject()
+void Level::ApplyForceToPhysicsObject()
 {
 	for (int i = 0; i < enemys.size(); i++)
 	{
@@ -82,7 +80,7 @@ void Level1::ApplyForceToPhysicsObject()
 	}
 }
 
-void Level1::EnvironmentClear()
+void Level::EnvironmentClear()
 {
 	for (int i = 0; i < coins.size(); i++)
 	{
@@ -115,7 +113,7 @@ void Level1::EnvironmentClear()
 	playerPositions.clear();
 }
 
-void Level1::EnvironmentInitialize()
+void Level::EnvironmentInitialize()
 {
 	if (enemys.size() == 0)
 	{
@@ -186,7 +184,7 @@ void Level1::EnvironmentInitialize()
 	}
 }
 
-void Level1::Draw(RenderingStack* renderStack)
+void Level::Draw(RenderingStack* renderStack)
 {
 	confiner->SetPositionLeft(Vector2(0, 0));
 	playerCharacter->Draw(renderStack);
@@ -200,7 +198,7 @@ void Level1::Draw(RenderingStack* renderStack)
 	uiScene->Draw(renderStack);
 }
 
-void Level1::UpdateObjects()
+void Level::UpdateObjects()
 {
 	if (!IsWorldLoaded())
 	{
@@ -222,7 +220,7 @@ void Level1::UpdateObjects()
 	}
 }
 
-void Level1::PlayerRespawn()
+void Level::PlayerRespawn()
 {
 	audioSystem->PlaySingleShot("die");
 	playerCharacter->physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(playerPositions[0]->x * TILE_SCALE, playerPositions[0]->y * TILE_SCALE));
@@ -231,12 +229,12 @@ void Level1::PlayerRespawn()
 	confiner->SetPositionLeft(Vector2(0, 0));
 }
 
-CharacterInputHandler* Level1::GetCharacterInputHandler()
+CharacterInputHandler* Level::GetCharacterInputHandler()
 {
 	return playerCharacter->GetInputHandler();
 }
 
-void Level1::SetCamera(sf::View* mainCamera, Vector2 windowSize)
+void Level::SetCamera(sf::View* mainCamera, Vector2 windowSize)
 {
 	this->mainCamera = mainCamera;
 	this->windowSize = windowSize;
@@ -257,18 +255,18 @@ void Level1::SetCamera(sf::View* mainCamera, Vector2 windowSize)
 	}
 }
 
-void Level1::SetUIScene(UIScene* uiScene)
+void Level::SetUIScene(UIScene* uiScene)
 {
 	this->uiScene = uiScene;
 }
 
-void Level1::SetRendering(RenderingStack* renderStack, Renderer* renderModule)
+void Level::SetRendering(RenderingStack* renderStack, Renderer* renderModule)
 {
 	this->renderStack = renderStack;
 	this->renderModule = renderModule;
 }
 
-void Level1::LoadMap(std::string textureFilePath, std::string levelJsonPath, int playerPositionId)
+void Level::LoadMap(std::string textureFilePath, std::string levelJsonPath, int playerPositionId)
 {
 	// TODO: Zamienmy te stringi na sta³e.
 	if (isFirstMap == false)
@@ -305,9 +303,7 @@ void Level1::LoadMap(std::string textureFilePath, std::string levelJsonPath, int
 	isMapLoaded = true;
 }
 
-bool Level1::IsWorldLoaded()
+bool Level::IsWorldLoaded()
 {
 	return isMapLoaded;
 }
-
-#pragma optimize("", on)

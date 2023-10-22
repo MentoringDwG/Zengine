@@ -175,7 +175,7 @@
     <ClCompile Include="Mario\UIinGame\MainMenuPanel.cpp" />
     <ClCompile Include="Mario\UIinGame\UIScene.cpp" />
     <ClCompile Include="Mario\World\Confiner.cpp" />
-    <ClCompile Include="Mario\World\Level1.cpp" />
+    <ClCompile Include="Mario\World\Level.cpp" />
     <ClCompile Include="Mario\World\LevelManager.cpp" />
     <ClCompile Include="Mario\World\MapLoader.cpp" />
   </ItemGroup>
@@ -204,7 +204,7 @@
     <ClInclude Include="Mario\UIinGame\MainMenuPanel.h" />
     <ClInclude Include="Mario\UIinGame\UIScene.h" />
     <ClInclude Include="Mario\World\Confiner.h" />
-    <ClInclude Include="Mario\World\Level1.h" />
+    <ClInclude Include="Mario\World\Level.h" />
     <ClInclude Include="Mario\World\LevelManager.h" />
     <ClInclude Include="Mario\World\MapLoader.h" />
     <ClInclude Include="resource.h" />

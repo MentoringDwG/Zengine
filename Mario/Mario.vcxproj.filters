@@ -72,9 +72,6 @@
     <ClCompile Include="Mario\StateMachine\WinState.cpp">
       <Filter>Mario\StateMachine</Filter>
     </ClCompile>
-    <ClCompile Include="Mario\World\Level1.cpp">
-      <Filter>Mario\World</Filter>
-    </ClCompile>
     <ClCompile Include="Mario\Character\Character.cpp">
       <Filter>Mario\Character</Filter>
     </ClCompile>
@@ -103,6 +100,9 @@
       <Filter>Mario\UIinGame</Filter>
     </ClCompile>
     <ClCompile Include="Mario\World\MapLoader.cpp">
+      <Filter>Mario\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario\World\Level.cpp">
       <Filter>Mario\World</Filter>
     </ClCompile>
   </ItemGroup>
@@ -149,9 +149,6 @@
     <ClInclude Include="Mario\StateMachine\WinState.h">
       <Filter>Mario\StateMachine</Filter>
     </ClInclude>
-    <ClInclude Include="Mario\World\Level1.h">
-      <Filter>Mario\World</Filter>
-    </ClInclude>
     <ClInclude Include="Mario\Character\Character.h">
       <Filter>Mario\Character</Filter>
     </ClInclude>
@@ -180,6 +177,9 @@
       <Filter>Mario\UIinGame</Filter>
     </ClInclude>
     <ClInclude Include="Mario\World\MapLoader.h">
+      <Filter>Mario\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\World\Level.h">
       <Filter>Mario\World</Filter>
     </ClInclude>
   </ItemGroup>

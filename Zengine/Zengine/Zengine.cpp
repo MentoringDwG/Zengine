@@ -192,3 +192,8 @@ AudioSystem* Zengine::GetAudioSystem()
 {
 	return audioSystem;
 }
+
+void Zengine::ChangeWorld(class World* world)
+{
+	this->world = world;
+}

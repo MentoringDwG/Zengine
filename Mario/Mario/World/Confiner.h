@@ -4,6 +4,7 @@
 
 struct Vector2;
 
+//Collider for Mario can't go outside the screen
 class Confiner
 {
 public:

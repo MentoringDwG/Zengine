@@ -9,11 +9,11 @@
 #include "MapManager.h"
 
 // PLZ FIX ME. I don't want to be one anymore.
-class Level1: public World
+class Level: public World
 {
 public:
-	Level1(std::string levelJsonPath);
-	~Level1();
+	Level(std::string levelJsonPath);
+	~Level();
 
 	virtual void Initialize(class AudioSystem* audioSystem) override;
 	virtual void MapInitialize() override;

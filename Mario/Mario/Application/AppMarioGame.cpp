@@ -15,15 +15,15 @@
 #include "../StateMachine/WaitingRoomState.h"
 #include "../StateMachine/GameOverState.h"
 #include "../StateMachine/WinState.h"
-#include "../World/Level1.h"
+#include "../World/Level.h"
 #include "../Character/Character.h"
 #include "../UIinGame/UIScene.h"
 
 AppMarioGame::AppMarioGame()
 {
-	level1 = new Level1("Tiles/JsonFiles/Level_1.json");
+	level = new Level("Tiles/JsonFiles/Level_1.json");
 
-	levelManager.AddLevel(0, level1);
+	levelManager.AddLevel(0, level);
 }
 
 AppMarioGame::~AppMarioGame()
@@ -40,14 +40,13 @@ AppMarioGame::~AppMarioGame()
 	delete renderModule;
 	delete zengine;
 
-	delete level1;
+	delete level;
 }
 
 void AppMarioGame::Initialize(Zengine* zengine)
 {
 	stateMachine = new StateMachine();
 	this->zengine = zengine;
-	//this->stateMachine = zengine->GetStateMachine();
 	this->renderStack = zengine->GetRenderingStack();
 	this->renderModule = zengine->GetRenderer();
 	this->audioSystem = zengine->GetAudioSystem();
@@ -57,11 +56,11 @@ void AppMarioGame::Initialize(Zengine* zengine)
 	audioSystem->Initialize();
 
 	playerCharacter = new Character("Mario", "Graphics/Mario/Mario.png", 3, audioSystem);
-	level1->SetPlayer(playerCharacter);
+	level->SetPlayer(playerCharacter);
 
 	uiScene = new UIScene(stateMachine);
-	level1->SetUIScene(uiScene);
-	level1->SetRendering(renderStack, renderModule);
+	level->SetUIScene(uiScene);
+	level->SetRendering(renderStack, renderModule);
 
 	StateInitialize();
 	stateMachine->TransitionTo(State::MainMenuState);
@@ -95,10 +94,10 @@ void AppMarioGame::OnLoading(int id)
 
 	zengine->CharacterInputHandlerInitialize();
 
-	waitingRoomState = new WaitingRoomState(0, stateMachine, (int)State::EAppState::GameplayState);
-	stateMachine->DeleteState((int)State::EAppState::None);
+	waitingRoomState = new WaitingRoomState((int)State::EAppState::WaitingRoomState, stateMachine, (int)State::EAppState::GameplayState);
+	stateMachine->DeleteState((int)State::EAppState::WaitingRoomState);
 	stateMachine->AddState(waitingRoomState);
-	stateMachine->TransitionTo((int)State::EAppState::None);
+	stateMachine->TransitionTo((int)State::EAppState::WaitingRoomState);
 
 	// To jest brzydki hack i nie powinno tego byæ. 
 	// Ale na szczêœcie ¯aneta naprawi.
@@ -114,7 +113,7 @@ void AppMarioGame::Tick(float DeltaTime)
 {
 	// Tutaj updatujemy state maszyne.
 	stateMachine->Update();
-	level1->gameStateId = GetGameState();
+	level->gameStateId = GetGameState();
 }
 
 void AppMarioGame::Uninitialize()

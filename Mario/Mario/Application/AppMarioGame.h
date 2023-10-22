@@ -41,6 +41,6 @@ private:
 	class Character* playerCharacter = nullptr;
 
 	class UIScene* uiScene = nullptr;
-	class Level1* level1 = nullptr;
+	class Level* level = nullptr;
 };
 
