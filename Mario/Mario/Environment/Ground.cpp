@@ -10,9 +10,14 @@ void Ground::SetBoxColliders(nlohmann::json groundData)
 	{
 		nlohmann::json ground = groundData.at(i);
 
-		zenObjects.push_back(new ZenObject(ground["id"], "Ground", sf::Vector2f((float)ground["width"]*TILE_SCALE, (float)ground["height"] * TILE_SCALE)));
+		sf::Vector2f zenObjVector = sf::Vector2f((float)ground["width"] * TILE_SCALE, (float)ground["height"] * TILE_SCALE);
+		zenObjects.push_back(new ZenObject(ground["id"], "Ground", zenObjVector));
+		
+		Vector2 boxColliderPosition = Vector2((float)ground["x"] * TILE_SCALE, (float)ground["y"] * TILE_SCALE);
+		Vector2 boxColliderSize = Vector2((float)ground["width"] * TILE_SCALE, (float)ground["height"] * TILE_SCALE);
 
-		boxColliders.push_back(new BoxCollider2D(Vector2((float)ground["x"] * TILE_SCALE, (float)ground["y"] * TILE_SCALE), Vector2((float)ground["width"] * TILE_SCALE, (float)ground["height"] * TILE_SCALE), zenObjects[i], Collider::ColliderTags::GROUND));
+		if(zenObjects[i]!=nullptr)
+		boxColliders.push_back(new BoxCollider2D(boxColliderPosition, boxColliderSize, zenObjects[i], Collider::ColliderTags::GROUND));
 	}
 
 	for (int i = 0; i < boxColliders.size(); i++)
