@@ -137,11 +137,7 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		if (collider->GetPosition()->y > zenShape->position.y && collider->GetPosition()->y < zenShape->position.y + COLLIDER_PUSH_Y)
 		{
 			float yToMove = abs(collider->GetPosition()->y - (zenShape->position.y + COLLIDER_PUSH_Y));
-
-			if (collisionColliders[Collider::ColliderTags::GROUND].size() == 1)
-			{
-				zenShape->MoveObject(sf::Vector2f(0, -yToMove));
-			}
+			zenShape->MoveObject(sf::Vector2f(0, -yToMove));
 			clollisionNormalVector = Vector2(0, -1);
 			canUseGravity = false;
 			return;
@@ -150,10 +146,7 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		if (collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_2 > zenShape->position.y && collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_X < zenShape->position.y + COLLIDER_PUSH_Y)
 		{
 			velocity.y = 0;
-			if (collisionColliders[Collider::ColliderTags::GROUND].size() == 1)
-			{
-				zenShape->MoveObject(sf::Vector2f(0, 0.5f));
-			}
+			zenShape->MoveObject(sf::Vector2f(0, 0.5f));
 			clollisionNormalVector = Vector2(0, 1);
 		}
 
