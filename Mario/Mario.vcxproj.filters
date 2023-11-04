@@ -108,6 +108,9 @@
     <ClCompile Include="Mario\Environment\Key.cpp">
       <Filter>Mario\Environment</Filter>
     </ClCompile>
+    <ClCompile Include="Mario\UIinGame\KeyPanel.cpp">
+      <Filter>Mario\UIinGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mario\Application\AppMarioGame.h">
@@ -187,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="Mario\Environment\Key.h">
       <Filter>Mario\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\UIinGame\KeyPanel.h">
+      <Filter>Mario\UIinGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

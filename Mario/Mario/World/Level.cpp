@@ -170,7 +170,7 @@ void Level::EnvironmentInitialize()
 			{
 				nlohmann::json key = keysJson.at(idx);
 
-				keys.push_back(new Key(key["id"], key["name"], KEY_GRAPHIC_PATH, sf::Vector2f(key["x"] * TILE_SCALE, key["y"] * TILE_SCALE)));
+				keys.push_back(new Key(key["id"], key["name"], KEY_GRAPHIC_PATH, sf::Vector2f(key["x"] * TILE_SCALE, key["y"] * TILE_SCALE), uiScene->GetKeyPanel()));
 			}
 		}
 		else

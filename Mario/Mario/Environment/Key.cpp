@@ -7,9 +7,13 @@
 #include <Zengine/Animation/Animation.h>
 #include <Zengine/Animation/AnimationDefinitionManager.h>
 
+#include "../UIinGame/KeyPanel.h"
 
-Key::Key(int IDIn, string NameIn, string CoinPath, sf::Vector2f position)
+
+Key::Key(int IDIn, string NameIn, string CoinPath, sf::Vector2f position, class KeyPanel* keyPanel)
 {
+	this->keyPanel = keyPanel;
+
 	zenShape = new ZenShape(IDIn, NameIn, sf::Vector2f(32, 32));
 	zenShape->SetTexture(CoinPath);
 	zenShape->SetPosition(position);
@@ -54,5 +58,7 @@ void Key::HandleCollisionStart(Collider* other)
 	{
 		renderStack->RemoveFromRenderLayers(keyRenderObject);
 		ZenPhysics2D::Get()->UnregisterCollider(collider);
+
+		keyPanel->UpdateKeysState();
 	}
 }

@@ -173,6 +173,7 @@
     <ClCompile Include="Mario\StateMachine\WaitingRoomState.cpp" />
     <ClCompile Include="Mario\StateMachine\WinState.cpp" />
     <ClCompile Include="Mario\UIinGame\HeartsPanel.cpp" />
+    <ClCompile Include="Mario\UIinGame\KeyPanel.cpp" />
     <ClCompile Include="Mario\UIinGame\MainMenuPanel.cpp" />
     <ClCompile Include="Mario\UIinGame\UIScene.cpp" />
     <ClCompile Include="Mario\World\Confiner.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="Mario\StateMachine\WaitingRoomState.h" />
     <ClInclude Include="Mario\StateMachine\WinState.h" />
     <ClInclude Include="Mario\UIinGame\HeartsPanel.h" />
+    <ClInclude Include="Mario\UIinGame\KeyPanel.h" />
     <ClInclude Include="Mario\UIinGame\MainMenuPanel.h" />
     <ClInclude Include="Mario\UIinGame\UIScene.h" />
     <ClInclude Include="Mario\World\Confiner.h" />

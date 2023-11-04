@@ -10,8 +10,11 @@ public:
 	void Draw(RenderingStack* renderStack);
 	class CoinCounter* GetCoinCounter();
 	class HeartsPanel* GetHeartPanel();
+	class KeyPanel* GetKeyPanel();
+
 private:
 	class CoinCounter* coinCounter = nullptr;
 	class HeartsPanel* heartPanel = nullptr;
+	class KeyPanel* keyPanel = nullptr;
 };
 

@@ -6,7 +6,7 @@
 class Key
 {
 public:
-	Key(int IDIn, string NameIn, string KeyPath, sf::Vector2f position);
+	Key(int IDIn, string NameIn, string KeyPath, sf::Vector2f position, class KeyPanel* keyPanel);
 	~Key();
 
 	void Draw(RenderingStack* renderStack);
@@ -24,5 +24,6 @@ private:
 	class CircleCollider2D* collider = nullptr;
 	class Animation* animation = nullptr;
 	class Animator* animator = nullptr;
+	class KeyPanel* keyPanel = nullptr;
 };
 
