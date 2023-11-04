@@ -27,6 +27,7 @@ void ZenShape::SetTexture(sf::Texture* texture)
 
 void ZenShape::SetPosition(sf::Vector2f vector)
 {
+	previousPosition = position;
 	position = vector;
 	rectangleShape->setPosition(vector);
 }
@@ -38,6 +39,7 @@ void ZenShape::SetSize(sf::Vector2f vector)
 
 void ZenShape::MoveObject(sf::Vector2f vector)
 {
+	previousPosition = position;
 	rectangleShape->move(vector);
 	position = rectangleShape->getPosition();
 }

@@ -26,6 +26,8 @@ void PhysicalZenObject2D::SetCollider(class Collider* collider)
 
 void PhysicalZenObject2D::HandleCollisionStart(Collider* other)
 {
+	CalculationColliderPush();
+
 	for (auto itr = collisionColliders[other->tag].begin(); itr != collisionColliders[other->tag].end(); itr++)
 	{
 		if (*itr == other)
@@ -55,7 +57,7 @@ void PhysicalZenObject2D::HandleCollisionEnd(Collider* other)
 
 void PhysicalZenObject2D::CalculatePhysics()
 {
-	CalculationColliderPush();
+	//CalculationColliderPush();
 
 	transposition.x = velocity.x;
 	transposition.y = velocity.y;
@@ -134,43 +136,56 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		collider = colliders[i];
 		bounds = zenShape->GetGlobalBounds();
 
-		if (collider->GetPosition()->y > zenShape->position.y && collider->GetPosition()->y < zenShape->position.y + COLLIDER_PUSH_Y)
+		sf::Vector2f pushPosition = sf::Vector2f(zenShape->position.x, zenShape->position.y);
+
+		//top
+		if (collider->GetPosition()->y > zenShape->position.y
+			&& collider->GetPosition()->y < zenShape->position.y + zenShape->size.y
+			&& collider->GetPosition()->x < zenShape->position.x + zenShape->size.x
+			&& collider->GetPosition()->x + collider->size.x > zenShape->position.x)
 		{
-			float yToMove = abs(collider->GetPosition()->y - (zenShape->position.y + COLLIDER_PUSH_Y));
-			zenShape->MoveObject(sf::Vector2f(0, -yToMove));
+			pushPosition.y = collider->GetPosition()->y - zenShape->GetSize().y;
+			zenShape->SetPosition(pushPosition);
 			clollisionNormalVector = Vector2(0, -1);
 			canUseGravity = false;
 			return;
 		}
 
-		if (collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_2 > zenShape->position.y && collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_X < zenShape->position.y + COLLIDER_PUSH_Y)
+		//bottom
+		if (collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_2 > zenShape->previousPosition.y
+			&& collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_X < zenShape->position.y + COLLIDER_PUSH_Y)
 		{
 			velocity.y = 0;
-			zenShape->MoveObject(sf::Vector2f(0, 0.5f));
+			pushPosition.y = collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_2;
 			clollisionNormalVector = Vector2(0, 1);
 		}
 
+		//left
 		if (bounds.left < collider->GetPosition()->x
 			&& bounds.left + bounds.width < collider->GetPosition()->x + collider->size.x
-			&& bounds.top < collider->GetPosition()->y + collider->size.y
-			&& bounds.top + bounds.height > collider->GetPosition()->y
+			&& collider->GetPosition()->y < bounds.top + bounds.height
+			&& collider->GetPosition()->y+collider->size.y >= bounds.top
 			)
 		{
 			velocity.x = 0.0f;
-			zenShape->SetPosition(sf::Vector2f(collider->GetPosition()->x - bounds.width - COLLIDER_PUSH_2, bounds.top));
+			pushPosition.x = collider->GetPosition()->x - bounds.width - COLLIDER_PUSH_2;
 			clollisionNormalVector = Vector2(1, 0);
 		}
 
+		//right
 		if (bounds.left > collider->GetPosition()->x
 			&& bounds.left + bounds.width > collider->GetPosition()->x + collider->size.x
-			&& bounds.top < collider->GetPosition()->y + collider->size.y
-			&& bounds.top + bounds.height > collider->GetPosition()->y
+			&& collider->GetPosition()->y < bounds.top + bounds.height
+			&& collider->GetPosition()->y + collider->size.y >= bounds.top
 			)
 		{
 			velocity.x = 0.0f;
-			zenShape->SetPosition(sf::Vector2f(collider->GetPosition()->x + collider->size.x + COLLIDER_PUSH_2, bounds.top));
+			pushPosition.x = collider->GetPosition()->x + collider->size.x + COLLIDER_PUSH_2;
 			clollisionNormalVector = Vector2(-1, 0);
 		}
+
+		zenShape->SetPosition(pushPosition);
+		
 	}
 
 	for (int i = 0; i < confiners.size(); i++)

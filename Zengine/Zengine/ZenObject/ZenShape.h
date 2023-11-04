@@ -23,6 +23,8 @@ public:
 	sf::Vector2f GetPosition();
 	sf::FloatRect GetGlobalBounds();
 
+	sf::Vector2f previousPosition = sf::Vector2f(0, 0);
+
 private:
 	sf::RectangleShape* rectangleShape = nullptr;
 	sf::Texture* texture = nullptr;
