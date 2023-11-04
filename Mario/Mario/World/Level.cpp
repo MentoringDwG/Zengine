@@ -10,6 +10,7 @@
 
 #include "../Environment/Ground.h"
 #include "../UIinGame/HeartsPanel.h"
+#include "../UIinGame/KeyPanel.h"
 #include "../Environment/CoinCounter.h"
 #include "../Character/Character.h"
 #include "../Environment/Enemy.h"
@@ -302,9 +303,18 @@ void Level::SetRendering(RenderingStack* renderStack, Renderer* renderModule)
 
 void Level::LoadMap(std::string textureFilePath, std::string levelJsonPath, int playerPositionId)
 {
-	// TODO: Zamienmy te stringi na sta³e.
+	
 	if (isFirstMap == false)
 	{
+		if (hasKey && uiScene->GetKeyPanel()->allKeyCollected == false)
+		{
+			playerCharacter->physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(playerPositions[0]->x * TILE_SCALE, playerPositions[0]->y * TILE_SCALE));
+			mainCamera->setCenter(sf::Vector2f(windowSize.x / 2, mainCamera->getCenter().y));
+			confiner->SetPositionLeft(Vector2(0, 0));
+
+			return;
+		}
+
 		audioSystem->PlaySingleShot("stageclear");
 	}
 

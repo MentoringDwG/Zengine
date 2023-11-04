@@ -16,5 +16,8 @@ public:
 
 	void Draw(struct RenderingStack* renderStack);
 	void UpdateKeysState();
+	void Clear();
+
+	bool allKeyCollected = false;
 };
 

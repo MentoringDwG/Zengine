@@ -21,13 +21,26 @@ void KeyPanel::Draw(RenderingStack* renderStack)
 
 void KeyPanel::UpdateKeysState()
 {
-	for (int i = 0; i<=(int)keys.size(); i++)
+	for (int i = 0; i<(int)keys.size(); i++)
 	{
 		if (keys[i]->GetIntRect().left == 0)
 		{
 			keys[i]->SetIntRect(sf::IntRect(32, 0, 32, 32));
 
+			if (i == 2)
+				allKeyCollected = true;
+
 			return;
 		}
 	}
+}
+
+void KeyPanel::Clear()
+{
+	for (int i = 0; i < (int)keys.size(); i++)
+	{
+		keys[i]->SetIntRect(sf::IntRect(0, 0, 32, 32));
+	}
+
+	allKeyCollected = false;
 }
