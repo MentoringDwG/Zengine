@@ -4,6 +4,9 @@
 #include <Zengine/Colliders/CircleCollider2D.h>
 #include <Zengine/Colliders/Collider.h>
 #include <Zengine/Structs/Vector2.h>
+#include <Zengine/Animation/Animator.h>
+#include <Zengine/Animation/Animation.h>
+#include <Zengine/Animation/AnimationDefinitionManager.h>
 
 Coin::Coin(int IDIn, string NameIn, string CoinPath, sf::Vector2f position, CoinCounter* coinCounter)
 {
@@ -14,6 +17,12 @@ Coin::Coin(int IDIn, string NameIn, string CoinPath, sf::Vector2f position, Coin
 
 	this->coinCounter = coinCounter;
 	SetCollider(Vector2(position.x, position.y), 20);
+
+	animator = new Animator(zenShape);
+	animation = new Animation(AnimationDefinitionManager::Get()->GetAnimationDefinition("Coin"));
+	animationId = animator->AddAnimation(animation);
+	animator->SetCurrentAnimation(animationId);
+	animator->Play();
 }
 
 Coin::~Coin()
@@ -22,6 +31,7 @@ Coin::~Coin()
 	delete coinRenderObject;
 	ZenPhysics2D::Get()->UnregisterCollider(collider);
 	delete collider;
+	animator->~Animator();
 }
 
 void Coin::Draw(RenderingStack* renderStack)

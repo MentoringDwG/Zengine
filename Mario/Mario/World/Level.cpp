@@ -27,6 +27,7 @@ Level::Level(std::string levelJsonPath)
 	jsonData = nlohmann::json::parse(jsonFileStream);
 
 	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/enemyWalk.json", "EnemyWalk");
+	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/coin.json", "Coin");
 }
 
 Level::~Level()

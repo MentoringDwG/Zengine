@@ -17,6 +17,7 @@ public:
 private:
 	void HandleCollisionStart(class Collider* other);
 
+	int animationId = 0;
 	int listenerIndexStart = 0;
 	int listenerIndexEnd = 0;
 	ZenShape* zenShape = nullptr;
@@ -24,5 +25,7 @@ private:
 	RenderingStack* renderStack = nullptr;
 	class CircleCollider2D* collider = nullptr;
 	CoinCounter* coinCounter = nullptr;
+	class Animation* animation = nullptr;
+	class Animator* animator = nullptr;
 };
 
