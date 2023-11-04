@@ -21,6 +21,7 @@ public:
 	void SetName(string nameIN);
 	string GetName();
 	void ProcesMovement();
+	int GetMovingStatesListSize();
 
 	enum class MovingStates
 	{

@@ -3,10 +3,21 @@
 #include "CharacterInputHandler.h"
 #include "../ZenObject/MovableObject.h"
 
+#include <iostream>
+
 bool CharacterInputHandler::ProcessInput(sf::Event& event, sf::RenderWindow* inWindow)
 {
 	KeyPressed(event);
 	KeyReleased(event);
+
+	if (movingStatesList.size() == 0)
+	{
+		owningCharacter->isStanding = true;
+	}
+	else
+	{
+		owningCharacter->isStanding = false;
+	}
 
     return false;
 }
@@ -143,4 +154,9 @@ void CharacterInputHandler::SetName(string nameIn)
 string CharacterInputHandler::GetName()
 {
     return name;
+}
+
+int CharacterInputHandler::GetMovingStatesListSize()
+{
+	return movingStatesList.size();
 }

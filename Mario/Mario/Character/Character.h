@@ -40,14 +40,20 @@ private:
 	int listenerIndexStart;
 	int listenerIndexEnd;
 	int walkAnimationId = 0;
+	int idleAnimationId = 0;
+	int jumpAnimationId = 0;
 	float moveSpeed;
 	class BoxCollider2D* collider2D = nullptr;
 	TextureAsset* textureAsset = nullptr;
 	struct RenderObject* characterRenderObject = nullptr;
 	sf::Texture* texture = nullptr;
+	sf::Texture* idleTexture = nullptr;
+	sf::Texture* jumpTexture = nullptr;
 	bool isGrounded = false;
 
 	class Animation* walkAnimation = nullptr;
+	class Animation* idleAnimation = nullptr;
+	class Animation* jumpAnimation = nullptr;
 	class Animator* animator = nullptr;
 	class AudioSystem* audioSystem = nullptr;
 };

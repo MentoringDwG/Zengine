@@ -157,7 +157,9 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		{
 			velocity.y = 0;
 			pushPosition.y = collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_2;
+			zenShape->SetPosition(pushPosition);
 			clollisionNormalVector = Vector2(0, 1);
+			return;
 		}
 
 		//left

@@ -1,0 +1,6 @@
+{
+	"SpriteSheets":[
+	{"Path" : "Graphics/Mario/Mario.png"}], 
+	"KeyFrames":[
+	{"KeyFrameId":0, "SpriteSheetId":0, "StartPointInSpriteSheetX":0, "StartPointInSpriteSheetY":0, "SpriteSizeX":16, "SpriteSizeY":32, "TimeStamp":500}]
+}

@@ -11,6 +11,8 @@
 #include <Zengine/Animation/AnimationDefinitionManager.h>
 #include <Zengine/Audio/AudioSystem.h>
 
+#include <iostream>
+
 Character::Character(std::string name, string Path, float playerMoveSpeed, class AudioSystem* audioSystem)
 {
 	this->audioSystem = audioSystem;
@@ -34,10 +36,26 @@ Character::Character(std::string name, string Path, float playerMoveSpeed, class
 	ZenPhysics2D::Get()->RegisterPhysicalObject(physicalZenObject2D);
 
 	animator = new Animator(physicalZenObject2D->zenShape);
+
 	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/marioWalk.json", "MarioWalk");
 	walkAnimation = new Animation(AnimationDefinitionManager::Get()->GetAnimationDefinition("MarioWalk"));
 	walkAnimationId = animator->AddAnimation(walkAnimation);
-	animator->SetCurrentAnimation(walkAnimationId);
+
+	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/marioIdle.json", "MarioIdle");
+	idleAnimation = new Animation(AnimationDefinitionManager::Get()->GetAnimationDefinition("MarioIdle"));
+	idleAnimationId = animator->AddAnimation(idleAnimation);
+
+	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/marioJump.json", "MarioJump");
+	jumpAnimation = new Animation(AnimationDefinitionManager::Get()->GetAnimationDefinition("MarioJump"));
+	jumpAnimationId = animator->AddAnimation(jumpAnimation);
+
+	animator->SetCurrentAnimation(idleAnimationId);
+
+	idleTexture = new sf::Texture;
+	idleTexture->loadFromFile("Graphics/Mario/Mario.png");
+
+	jumpTexture = new sf::Texture;
+	jumpTexture->loadFromFile("Graphics/Mario/MarioJump.png");
 }
 
 Character::~Character()
@@ -108,6 +126,27 @@ bool Character::IsCollisionWithOneGround()
 void Character::UpdateCharacter()
 {
 	collider2D->SetPosition(physicalZenObject2D->zenShape->GetPosition());
+
+	if (isStanding == true)
+	{
+		inputHandler.movingStates = CharacterInputHandler::MovingStates::standing;
+	}
+	
+	if (isGrounded==false)
+	{
+		if (animator->GetCurrentAnimation() != jumpAnimationId)
+			animator->SetCurrentAnimation(jumpAnimationId);
+	}
+	else if (inputHandler.movingStates == CharacterInputHandler::MovingStates::standing)
+	{
+		if (animator->GetCurrentAnimation() != idleAnimationId)
+			animator->SetCurrentAnimation(idleAnimationId);
+	}
+	else
+	{
+		if(animator->GetCurrentAnimation()!=walkAnimationId)
+		animator->SetCurrentAnimation(walkAnimationId);
+	}
 }
 
 CharacterInputHandler* Character::GetInputHandler()
