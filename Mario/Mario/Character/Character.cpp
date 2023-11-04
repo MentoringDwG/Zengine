@@ -11,8 +11,6 @@
 #include <Zengine/Animation/AnimationDefinitionManager.h>
 #include <Zengine/Audio/AudioSystem.h>
 
-#include <iostream>
-
 Character::Character(std::string name, string Path, float playerMoveSpeed, class AudioSystem* audioSystem)
 {
 	this->audioSystem = audioSystem;

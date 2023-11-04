@@ -87,5 +87,9 @@
 			{"id":57, "name":"Ground43", "width":16, "height":80, "x":2944, "y":160},
 			{"id":58, "name":"Ground44", "width":16, "height":96, "x":2960, "y":144},
 			{"id":59, "name":"Ground45", "width":16, "height":112, "x":2976, "y":128},
-			{"id":60, "name":"Ground46", "width":32, "height":128, "x":2992, "y":112}]
+			{"id":60, "name":"Ground46", "width":32, "height":128, "x":2992, "y":112}],
+"Keys":[
+			{"id":1, "name":"Key1", "x":480, "y":224},
+			{"id":2, "name":"Key2", "x":1952, "y":96},
+			{"id":2, "name":"Key2", "x":2288, "y":224}]
 }

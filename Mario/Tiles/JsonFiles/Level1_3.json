@@ -101,5 +101,9 @@
             {"id":81,"name":"Ground46","width":32,"height":128,"x":2272,"y":112}, 
             {"id":82,"name":"Ground47","width":32,"height":96,"x":2240,"y":144}, 
             {"id":83,"name":"Ground48","width":32,"height":64,"x":2208,"y":176}, 
-            {"id":84,"name":"Ground49","width":32,"height":32,"x":2176,"y":208}]
+            {"id":84,"name":"Ground49","width":32,"height":32,"x":2176,"y":208}],
+"Keys":[
+			{"id":1, "name":"Key1", "x":480, "y":160},
+			{"id":2, "name":"Key2", "x":960, "y":224},
+			{"id":2, "name":"Key2", "x":1712, "y":96}]
 }

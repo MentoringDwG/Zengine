@@ -114,5 +114,9 @@
             {"id":38, "name":"Enemy6", "x":2416, "y":224}],
 "MapLoader":[
                 {"id":112, "name":"MapLoader1", "x":1648, "y":192, "width":32, "height":16, "textureFilePath":"Textures/TexturesLevel_1_2_2.txt", "mapJsonPath":"Tiles//JsonFiles/Level1_2_3.json", "playerPositionId":0 , "tag":"tube"}, 
-                {"id":115, "name":"MapLoader3", "x":2656, "y":160, "width":16, "height":32, "textureFilePath":"Textures/TexturesLevel_1_2_4.txt", "mapJsonPath":"Tiles//JsonFiles/Level1_2_4.json","playerPositionId":0, "tag":"castle"}]
+                {"id":115, "name":"MapLoader3", "x":2656, "y":160, "width":16, "height":32, "textureFilePath":"Textures/TexturesLevel_1_2_4.txt", "mapJsonPath":"Tiles//JsonFiles/Level1_2_4.json","playerPositionId":0, "tag":"castle"}],
+"Keys":[
+			{"id":1, "name":"Key1", "x":256, "y":224},
+			{"id":2, "name":"Key2", "x":880, "y":160},
+			{"id":2, "name":"Key2", "x":2432, "y":224}]
 }

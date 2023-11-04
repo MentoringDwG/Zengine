@@ -18,6 +18,7 @@
 #include "../UIinGame/UIScene.h"
 #include "Confiner.h"
 #include "MapLoader.h"
+#include "../Environment/Key.h"
 
 #include <fstream>
 
@@ -28,6 +29,7 @@ Level::Level(std::string levelJsonPath)
 
 	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/enemyWalk.json", "EnemyWalk");
 	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/coin.json", "Coin");
+	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/key.json", "Key");
 }
 
 Level::~Level()
@@ -88,6 +90,12 @@ void Level::EnvironmentClear()
 		coins[i]->~Coin();
 	}
 	coins.clear();
+
+	for (int i = 0; i < keys.size(); i++)
+	{
+		keys[i]->~Key();
+	}
+	keys.clear();
 
 	for (int i = 0; i < enemys.size(); i++)
 	{
@@ -151,6 +159,26 @@ void Level::EnvironmentInitialize()
 		}
 	}
 
+	if (keys.size() == 0)
+	{
+		if (jsonData.contains(KEYS))
+		{
+			nlohmann::json keysJson = jsonData[KEYS];
+			hasKey = true;
+
+			for (size_t idx = 0; idx < keysJson.size(); idx++)
+			{
+				nlohmann::json key = keysJson.at(idx);
+
+				keys.push_back(new Key(key["id"], key["name"], KEY_GRAPHIC_PATH, sf::Vector2f(key["x"] * TILE_SCALE, key["y"] * TILE_SCALE)));
+			}
+		}
+		else
+		{
+			hasKey = false;
+		}
+	}
+
 	if (mapLoaders.size() == 0)
 	{
 		if (jsonData.contains(MAP_LOADER))
@@ -194,6 +222,11 @@ void Level::Draw(RenderingStack* renderStack)
 	for (int i = 0; i < coins.size(); i++)
 	{
 		coins[i]->Draw(renderStack);
+	}
+
+	for (int i = 0; i < keys.size(); i++)
+	{
+		keys[i]->Draw(renderStack);
 	}
 
 	uiScene->Draw(renderStack);

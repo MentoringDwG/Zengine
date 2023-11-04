@@ -8,7 +8,6 @@
 #include "../../../nlohmann/json.hpp"
 #include "MapManager.h"
 
-// PLZ FIX ME. I don't want to be one anymore.
 class Level: public World
 {
 public:
@@ -43,6 +42,7 @@ private:
 	class Ground* ground = nullptr;
 	std::vector<class Coin*> coins;
 	std::vector<class MapLoader*> mapLoaders;
+	std::vector<class Key*> keys;
 	std::map<int, struct Vector2*> playerPositions;
 	class Castle* castle = nullptr;
 	class Confiner* confiner = nullptr;
@@ -52,10 +52,12 @@ private:
 	Renderer* renderModule = nullptr;
 
 	bool isFirstMap = true;
+	bool hasKey = false;
 
 	//graphics
 	const std::string COIN_GRAPHIC_PATH = "Graphics/coin.png";
 	const std::string ENEMY_GRAPHIC_PATH = "Graphics/Enemy1.png";
+	const std::string KEY_GRAPHIC_PATH = "Graphics/Key/key1.png";
 
 	//json
 	const float TILE_SCALE = 2;
@@ -63,6 +65,7 @@ private:
 	const std::string ENEMYS = "Enemys";
 	const std::string MAP_LOADER = "MapLoader";
 	const std::string PLAYER_POSITIONS = "PlayerPositions";
+	const std::string KEYS = "Keys";
 
 	//camera
 	const int TILE_SIZE = 32;

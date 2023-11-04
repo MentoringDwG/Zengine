@@ -105,6 +105,9 @@
     <ClCompile Include="Mario\World\Level.cpp">
       <Filter>Mario\World</Filter>
     </ClCompile>
+    <ClCompile Include="Mario\Environment\Key.cpp">
+      <Filter>Mario\Environment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mario\Application\AppMarioGame.h">
@@ -181,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="Mario\World\Level.h">
       <Filter>Mario\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario\Environment\Key.h">
+      <Filter>Mario\Environment</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
