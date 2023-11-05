@@ -26,8 +26,6 @@ void PhysicalZenObject2D::SetCollider(class Collider* collider)
 
 void PhysicalZenObject2D::HandleCollisionStart(Collider* other)
 {
-	CalculationColliderPush();
-
 	for (auto itr = collisionColliders[other->tag].begin(); itr != collisionColliders[other->tag].end(); itr++)
 	{
 		if (*itr == other)
@@ -57,7 +55,7 @@ void PhysicalZenObject2D::HandleCollisionEnd(Collider* other)
 
 void PhysicalZenObject2D::CalculatePhysics()
 {
-	//CalculationColliderPush();
+	CalculationColliderPush();
 
 	transposition.x = velocity.x;
 	transposition.y = velocity.y;
@@ -145,28 +143,25 @@ void PhysicalZenObject2D::CalculationColliderPush()
 			&& collider->GetPosition()->x + collider->size.x > zenShape->position.x)
 		{
 			pushPosition.y = collider->GetPosition()->y - zenShape->GetSize().y;
-			zenShape->SetPosition(pushPosition);
 			clollisionNormalVector = Vector2(0, -1);
 			canUseGravity = false;
-			return;
 		}
 
 		//bottom
-		if (collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_2 > zenShape->previousPosition.y
+		else if (collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_2 > zenShape->previousPosition.y
 			&& collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_X < zenShape->position.y + COLLIDER_PUSH_Y)
 		{
 			velocity.y = 0;
 			pushPosition.y = collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_2;
-			zenShape->SetPosition(pushPosition);
+			pushPosition.x = zenShape->position.x;
 			clollisionNormalVector = Vector2(0, 1);
-			return;
 		}
 
 		//left
-		if (bounds.left < collider->GetPosition()->x
+		else if (bounds.left < collider->GetPosition()->x
 			&& bounds.left + bounds.width < collider->GetPosition()->x + collider->size.x
-			&& collider->GetPosition()->y < bounds.top + bounds.height
-			&& collider->GetPosition()->y+collider->size.y >= bounds.top
+			&& bounds.top < collider->GetPosition()->y + collider->size.y
+			&& bounds.top + bounds.height > collider->GetPosition()->y
 			)
 		{
 			velocity.x = 0.0f;
@@ -175,10 +170,10 @@ void PhysicalZenObject2D::CalculationColliderPush()
 		}
 
 		//right
-		if (bounds.left > collider->GetPosition()->x
+		else if (bounds.left > collider->GetPosition()->x
 			&& bounds.left + bounds.width > collider->GetPosition()->x + collider->size.x
-			&& collider->GetPosition()->y < bounds.top + bounds.height
-			&& collider->GetPosition()->y + collider->size.y >= bounds.top
+			&& bounds.top < collider->GetPosition()->y + collider->size.y
+			&& bounds.top + bounds.height > collider->GetPosition()->y
 			)
 		{
 			velocity.x = 0.0f;
