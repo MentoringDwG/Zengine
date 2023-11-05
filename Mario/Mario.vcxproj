@@ -164,6 +164,7 @@
     <ClCompile Include="Mario\Environment\Enemy.cpp" />
     <ClCompile Include="Mario\Environment\Ground.cpp" />
     <ClCompile Include="Mario\Environment\Key.cpp" />
+    <ClCompile Include="Mario\Environment\QuestionMark.cpp" />
     <ClCompile Include="Mario\StateMachine\AuthorsState.cpp" />
     <ClCompile Include="Mario\StateMachine\ControlsPanelState.cpp" />
     <ClCompile Include="Mario\StateMachine\GameOverState.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="Mario\Environment\Enemy.h" />
     <ClInclude Include="Mario\Environment\Ground.h" />
     <ClInclude Include="Mario\Environment\Key.h" />
+    <ClInclude Include="Mario\Environment\QuestionMark.h" />
     <ClInclude Include="Mario\StateMachine\AuthorsState.h" />
     <ClInclude Include="Mario\StateMachine\ControlsPanelState.h" />
     <ClInclude Include="Mario\StateMachine\GameOverState.h" />

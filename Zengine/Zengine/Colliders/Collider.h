@@ -22,6 +22,7 @@ public:
 		CASTLE = 5,
 		CONFINER = 6,
 		MAP_LOADER = 7,
+		QUESTION_MARK = 7,
 		Max,
 	};
 

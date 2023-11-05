@@ -32,6 +32,7 @@ public:
 	void PlayerRespawn();
 
 	int gameStateId = 0;
+	bool canCheckKays = true;
 
 private:
 	nlohmann::json jsonData;
@@ -43,6 +44,7 @@ private:
 	std::vector<class Coin*> coins;
 	std::vector<class MapLoader*> mapLoaders;
 	std::vector<class Key*> keys;
+	std::vector<class QuestionMark*> questionMarks;
 	std::map<int, struct Vector2*> playerPositions;
 	class Castle* castle = nullptr;
 	class Confiner* confiner = nullptr;
@@ -58,6 +60,7 @@ private:
 	const std::string COIN_GRAPHIC_PATH = "Graphics/coin.png";
 	const std::string ENEMY_GRAPHIC_PATH = "Graphics/Enemy1.png";
 	const std::string KEY_GRAPHIC_PATH = "Graphics/Key/key1.png";
+	const std::string QUESTION_MARK_GRAPHIC_PATH = "Graphics/Map/67.png";
 
 	//json
 	const float TILE_SCALE = 2;
@@ -66,6 +69,7 @@ private:
 	const std::string MAP_LOADER = "MapLoader";
 	const std::string PLAYER_POSITIONS = "PlayerPositions";
 	const std::string KEYS = "Keys";
+	const std::string QUESTION_MARKS = "QuestionMark";
 
 	//camera
 	const int TILE_SIZE = 32;

@@ -16,6 +16,7 @@
 #include "../Environment/Enemy.h"
 #include "../Environment/Coin.h"
 #include "../Environment/Castle.h"
+#include "../Environment/QuestionMark.h"
 #include "../UIinGame/UIScene.h"
 #include "Confiner.h"
 #include "MapLoader.h"
@@ -43,6 +44,8 @@ Level::~Level()
 
 	coins.clear();
 	enemys.clear();
+	keys.clear();
+	questionMarks.clear();
 }
 
 void Level::Initialize(AudioSystem* audioSystem)
@@ -97,6 +100,12 @@ void Level::EnvironmentClear()
 		keys[i]->~Key();
 	}
 	keys.clear();
+
+	for (int i = 0; i < questionMarks.size(); i++)
+	{
+		questionMarks[i]->~QuestionMark();
+	}
+	questionMarks.clear();
 
 	for (int i = 0; i < enemys.size(); i++)
 	{
@@ -156,6 +165,21 @@ void Level::EnvironmentInitialize()
 				nlohmann::json coin = coinsJson.at(idx);
 
 				coins.push_back(new Coin(coin["id"], coin["name"], COIN_GRAPHIC_PATH, sf::Vector2f(coin["x"]*TILE_SCALE, coin["y"]*TILE_SCALE), uiScene->GetCoinCounter()));
+			}
+		}
+	}
+
+	if (questionMarks.size() == 0)
+	{
+		if (jsonData.contains(QUESTION_MARKS))
+		{
+			nlohmann::json questionMarksJson = jsonData[QUESTION_MARKS];
+
+			for (size_t idx = 0; idx < questionMarksJson.size(); idx++)
+			{
+				nlohmann::json questionMark = questionMarksJson.at(idx);
+
+				questionMarks.push_back(new QuestionMark(questionMark["id"], questionMark["name"], QUESTION_MARK_GRAPHIC_PATH, sf::Vector2f(questionMark["x"] * TILE_SCALE, questionMark["y"] * TILE_SCALE)));
 			}
 		}
 	}
@@ -228,6 +252,11 @@ void Level::Draw(RenderingStack* renderStack)
 	for (int i = 0; i < keys.size(); i++)
 	{
 		keys[i]->Draw(renderStack);
+	}
+
+	for (int i = 0; i < questionMarks.size(); i++)
+	{
+		questionMarks[i]->Draw(renderStack);
 	}
 
 	uiScene->Draw(renderStack);
@@ -306,7 +335,7 @@ void Level::LoadMap(std::string textureFilePath, std::string levelJsonPath, int 
 	
 	if (isFirstMap == false)
 	{
-		if (hasKey && uiScene->GetKeyPanel()->allKeyCollected == false)
+		if (hasKey && uiScene->GetKeyPanel()->allKeyCollected == false && canCheckKays)
 		{
 			playerCharacter->physicalZenObject2D->zenShape->SetPosition(sf::Vector2f(playerPositions[0]->x * TILE_SCALE, playerPositions[0]->y * TILE_SCALE));
 			mainCamera->setCenter(sf::Vector2f(windowSize.x / 2, mainCamera->getCenter().y));
@@ -316,6 +345,9 @@ void Level::LoadMap(std::string textureFilePath, std::string levelJsonPath, int 
 		}
 
 		audioSystem->PlaySingleShot("stageclear");
+
+		if(canCheckKays && hasKey)
+		uiScene->GetKeyPanel()->Clear();
 	}
 
 	renderStack->Clear();

@@ -4,6 +4,7 @@
 #include <Zengine/StateMachine/StateMachine.h>
 #include <Zengine/World/World.h>
 
+#include "Level.h"
 #include "../Character/Character.h"
 
 const static std::string CASTLE = "castle";
@@ -32,7 +33,7 @@ MapLoader::~MapLoader()
 	delete boxCollider;
 }
 
-void MapLoader::SetMapToLoad(std::string textureFilePath, std::string mapJsonPath, class World* owner, int playerPositionId)
+void MapLoader::SetMapToLoad(std::string textureFilePath, std::string mapJsonPath, Level* owner, int playerPositionId)
 {
 	this->textureFilePath = textureFilePath;
 	this->mapJsonPath = mapJsonPath;
@@ -47,6 +48,7 @@ void MapLoader::HandleCollisionStart(Collider* other)
 		if (tag == CASTLE)
 		{
 			isCollisionWithMario = true;
+			owner->canCheckKays = true;
 			owner->LoadMap(textureFilePath, mapJsonPath, playerPositionId);
 		}
 
@@ -55,6 +57,7 @@ void MapLoader::HandleCollisionStart(Collider* other)
 		if (tag == TUBE && playerCharacter->GetInputHandler()->movingStates==CharacterInputHandler::MovingStates::movingDown)
 		{
 			isCollisionWithMario = true;
+			owner->canCheckKays = false;
 			owner->LoadMap(textureFilePath, mapJsonPath, playerPositionId);
 		}
 	}

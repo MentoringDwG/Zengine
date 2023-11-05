@@ -1,2 +1,7 @@
-﻿  PhysicalZenObject2D.cpp
+﻿  BoxCollider2D.cpp
+  CircleCollider2D.cpp
+  Collider.cpp
+  PhysicalZenObject2D.cpp
+  ZenPhysics2D.cpp
+  Zengine.cpp
   Zengine.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\Zengine.lib

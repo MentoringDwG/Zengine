@@ -9,6 +9,7 @@ class KeyPanel
 private:
 	std::vector<shared_ptr<UIButton>> keys;
 	class StateMachine* stateMachine = nullptr;
+	std::vector<sf::IntRect* > intRects;
 
 public:
 	KeyPanel();
