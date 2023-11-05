@@ -42,6 +42,14 @@ void Coin::Draw(RenderingStack* renderStack)
 	renderStack->renderQueue.push_back(coinRenderObject);
 }
 
+void Coin::DrawOverQuestionMark(RenderingStack* renderStack)
+{
+	ZenPhysics2D::Get()->RegisterCollider(collider);
+	this->renderStack = renderStack;
+	coinRenderObject = new RenderObject(zenShape->Draw(), 100, 1);
+	renderStack->AddObjectToLayer(1, coinRenderObject);
+}
+
 void Coin::SetCollider(Vector2 position, float radius)
 {
 	collider = new CircleCollider2D(position, radius, zenShape, Collider::ColliderTags::COIN);

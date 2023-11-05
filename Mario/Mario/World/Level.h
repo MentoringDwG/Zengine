@@ -30,6 +30,7 @@ public:
 	void SetPlayer(class Character* playerCharacter);
 	void SetUIScene(class UIScene* uiScene);
 	void PlayerRespawn();
+	void AddCoin(sf::Vector2f position);
 
 	int gameStateId = 0;
 	bool canCheckKays = true;

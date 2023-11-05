@@ -7,8 +7,12 @@
 #include <Zengine/Animation/Animation.h>
 #include <Zengine/Animation/AnimationDefinitionManager.h>
 
-QuestionMark::QuestionMark(int IDIn, string NameIn, string CoinPath, sf::Vector2f position)
+#include "../World/Level.h"
+
+QuestionMark::QuestionMark(int IDIn, string NameIn, string CoinPath, sf::Vector2f position, Level* owner)
 {
+	this->owner = owner;
+
 	zenShape = new ZenShape(IDIn, NameIn, sf::Vector2f(32, 32));
 	zenShape->SetTexture(CoinPath);
 	zenShape->SetPosition(position);
@@ -51,7 +55,15 @@ void QuestionMark::HandleCollisionStart(Collider* other)
 {
 	if (other->GetOwner()->name == "Mario")
 	{
-		renderStack->RemoveFromRenderLayers(questionMarkRenderObject);
-		ZenPhysics2D::Get()->UnregisterCollider(boxCollider);
+		if (other->GetPosition()->y > zenShape->position.y
+			&& other->GetPosition()->y < zenShape->position.y + zenShape->size.y
+			&& other->GetPosition()->x < zenShape->position.x + zenShape->size.x
+			&& other->GetPosition()->x + other->size.x > zenShape->position.x)
+		{
+			renderStack->RemoveFromRenderLayers(questionMarkRenderObject);
+			ZenPhysics2D::Get()->UnregisterCollider(boxCollider);
+			owner->AddCoin(sf::Vector2f(zenShape->position.x, zenShape->position.y-32));
+		}
+
 	}
 }

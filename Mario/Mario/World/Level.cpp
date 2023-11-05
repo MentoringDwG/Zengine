@@ -180,7 +180,7 @@ void Level::EnvironmentInitialize()
 			{
 				nlohmann::json questionMark = questionMarksJson.at(idx);
 
-				questionMarks.push_back(new QuestionMark(questionMark["id"], questionMark["name"], QUESTION_MARK_GRAPHIC_PATH, sf::Vector2f(questionMark["x"] * TILE_SCALE, questionMark["y"] * TILE_SCALE)));
+				questionMarks.push_back(new QuestionMark(questionMark["id"], questionMark["name"], QUESTION_MARK_GRAPHIC_PATH, sf::Vector2f(questionMark["x"] * TILE_SCALE, questionMark["y"] * TILE_SCALE), this));
 			}
 		}
 	}
@@ -383,4 +383,10 @@ void Level::LoadMap(std::string textureFilePath, std::string levelJsonPath, int 
 bool Level::IsWorldLoaded()
 {
 	return isMapLoaded;
+}
+
+void Level::AddCoin(sf::Vector2f position)
+{
+	coins.push_back(new Coin(coins.size(), "NewCoin", COIN_GRAPHIC_PATH, position, uiScene->GetCoinCounter()));
+	coins[coins.size() - 1]->DrawOverQuestionMark(renderStack);
 }

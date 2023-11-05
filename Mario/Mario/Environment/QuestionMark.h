@@ -6,7 +6,7 @@
 class QuestionMark
 {
 public:
-	QuestionMark(int IDIn, string NameIn, string KeyPath, sf::Vector2f position);
+	QuestionMark(int IDIn, string NameIn, string KeyPath, sf::Vector2f position, class Level* owner);
 	~QuestionMark();
 
 	void Draw(RenderingStack* renderStack);
@@ -24,5 +24,6 @@ private:
 	class BoxCollider2D* boxCollider = nullptr;
 	class Animation* animation = nullptr;
 	class Animator* animator = nullptr;
+	class Level* owner = nullptr;
 };
 

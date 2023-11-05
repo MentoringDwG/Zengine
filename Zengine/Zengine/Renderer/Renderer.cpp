@@ -49,6 +49,11 @@ void RenderingStack::DivisionOfObjectsIntoLayersByLayerId()
 	}
 }
 
+void RenderingStack::AddObjectToLayer(int layerId, RenderObject* renderObj)
+{
+	renderLayers[layerId].push_back(renderObj);
+}
+
 void RenderingStack::RemoveFromRenderLayers(RenderObject* renderObjectToRemove)
 {
 	for (auto itr = renderLayers[renderObjectToRemove->layerId].begin(); itr != renderLayers[renderObjectToRemove->layerId].end(); ++itr)

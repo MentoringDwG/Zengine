@@ -1,2 +1,8 @@
 ﻿  PhysicalZenObject2D.cpp
+  ZenPhysics2D.cpp
+  Renderer.cpp
+  UIButton.cpp
+  Map.cpp
+  World.cpp
+  Zengine.cpp
   Zengine.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\Zengine.lib

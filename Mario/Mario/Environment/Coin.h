@@ -12,6 +12,7 @@ public:
 	~Coin();
 
 	void Draw(RenderingStack* renderStack);
+	void DrawOverQuestionMark(RenderingStack* renderStack);
 	void SetCollider(struct Vector2 position, float radius);
 
 private:

@@ -23,6 +23,7 @@ struct RenderingStack
 	void Clear();
 	void ClearUI();
 	void DivisionOfObjectsIntoLayersByLayerId();
+	void AddObjectToLayer(int layerId, RenderObject* renderObj);
 	void RemoveFromRenderLayers(RenderObject* renderObjectToRemove);
 
 	std::vector<RenderObject*> renderQueue;
