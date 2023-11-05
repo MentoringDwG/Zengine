@@ -16,11 +16,11 @@ QuestionMark::QuestionMark(int IDIn, string NameIn, string CoinPath, sf::Vector2
 
 	SetCollider(Vector2(position.x, position.y));
 
-	//animator = new Animator(zenShape);
-	//animation = new Animation(AnimationDefinitionManager::Get()->GetAnimationDefinition("Key"));
-	//animationId = animator->AddAnimation(animation);
-	//animator->SetCurrentAnimation(animationId);
-	//animator->Play();
+	animator = new Animator(zenShape);
+	animation = new Animation(AnimationDefinitionManager::Get()->GetAnimationDefinition("QuestionMark"));
+	animationId = animator->AddAnimation(animation);
+	animator->SetCurrentAnimation(animationId);
+	animator->Play();
 }
 
 QuestionMark::~QuestionMark()
@@ -29,7 +29,7 @@ QuestionMark::~QuestionMark()
 	delete questionMarkRenderObject;
 	ZenPhysics2D::Get()->UnregisterCollider(boxCollider);
 	delete boxCollider;
-	//animator->~Animator();
+	animator->~Animator();
 }
 
 void QuestionMark::Draw(RenderingStack* renderStack)

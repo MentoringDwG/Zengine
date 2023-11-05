@@ -32,6 +32,7 @@ Level::Level(std::string levelJsonPath)
 	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/enemyWalk.json", "EnemyWalk");
 	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/coin.json", "Coin");
 	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/key.json", "Key");
+	AnimationDefinitionManager::Get()->AddAnimationDefinition("Json/Animations/questionmark.json", "QuestionMark");
 }
 
 Level::~Level()
