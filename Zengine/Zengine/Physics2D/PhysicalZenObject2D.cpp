@@ -3,12 +3,23 @@
 #include "PhysicalZenObject2D.h"
 #include "../Structs/Vector2.h"
 
+#include <iostream>
+
 PhysicalZenObject2D::PhysicalZenObject2D(int inID, string inName, string enemySpritePath, sf::Vector2f startPosition, sf::Vector2f inSize) :ZenObject(inID, inName, inSize)
 {
 	zenShape = new ZenShape(3, "zenShape", sf::Vector2f(32, 32));
 	zenShape->SetTexture(enemySpritePath);
 	zenShape->SetPosition(startPosition);
 	zenShape->SetSize(inSize);
+
+	int radius = 2;
+	collisionPoint1.setRadius(radius);
+	collisionPoint1.setOrigin(radius, radius);
+	collisionPoint1.setFillColor(sf::Color::Red);
+
+	collisionPoint2.setRadius(radius);
+	collisionPoint2.setOrigin(radius, radius);
+	collisionPoint2.setFillColor(sf::Color::Red);
 }
 
 PhysicalZenObject2D::~PhysicalZenObject2D()
@@ -129,6 +140,132 @@ void PhysicalZenObject2D::CalculationColliderPush()
 	Collider* confiner = confiners[0];
 	sf::FloatRect bounds = zenShape->GetGlobalBounds();
 
+	//collision points position
+	for (int i = 0; i < colliders.size(); i++)
+	{
+		collider = colliders[i];
+		bounds = zenShape->GetGlobalBounds();
+
+		//top left corner
+		if (collider->GetPosition()->y > zenShape->position.y
+			&& collider->GetPosition()->y + collider->size.y > zenShape->position.y + zenShape->size.y
+			&& zenShape->position.x < collider->GetPosition()->x
+			&& zenShape->position.x + zenShape->size.x > collider->GetPosition()->x)
+		{
+			std::cout << "top left corner" << std::endl;
+			positionPoint1 = sf::Vector2f(collider->GetPosition()->x, zenShape->position.y + zenShape->size.y);
+			positionPoint2 = sf::Vector2f(zenShape->position.x + zenShape->size.x, collider->GetPosition()->y);
+		}
+		//top right corner
+		else if (collider->GetPosition()->y > zenShape->position.y
+			&& collider->GetPosition()->y + collider->size.y > zenShape->position.y + zenShape->size.y
+			&& zenShape->position.x < collider->GetPosition()->x + collider->size.x
+			&& zenShape->position.x + zenShape->size.x > collider->GetPosition()->x + collider->size.x)
+		{
+			positionPoint1 = sf::Vector2f(zenShape->position.x, collider->GetPosition()->y);
+			positionPoint2 = sf::Vector2f(collider->GetPosition()->x + collider->size.x, zenShape->position.y + zenShape->size.y);
+		}
+		//bottom left corner
+		else if (zenShape->position.y > collider->GetPosition()->y
+			&& zenShape->position.y + zenShape->size.y > collider->GetPosition()->y + collider->size.y
+			&& zenShape->position.x < collider->GetPosition()->x
+			&& zenShape->position.x + zenShape->size.x > collider->GetPosition()->x)
+		{
+			std::cout << "bottom left corner" << std::endl;
+			positionPoint1 = sf::Vector2f(collider->GetPosition()->x, zenShape->position.y);
+			positionPoint2 = sf::Vector2f(zenShape->position.x + zenShape->size.x, collider->GetPosition()->y + collider->size.y);
+		}
+		//bottom right corner
+		else if (zenShape->position.y > collider->GetPosition()->y
+			&& zenShape->position.y + zenShape->size.y > collider->GetPosition()->y + collider->size.y
+			&& zenShape->position.x > collider->GetPosition()->x
+			&& zenShape->position.x + zenShape->size.x > collider->GetPosition()->x + collider->size.x)
+		{
+			positionPoint1 = sf::Vector2f(zenShape->position.x, collider->GetPosition()->y + collider->size.y);
+			positionPoint2 = sf::Vector2f(collider->GetPosition()->x + collider->size.x, zenShape->position.y);
+		}
+		//top
+		else if (collider->GetPosition()->y > zenShape->position.y
+			&& zenShape->position.y + zenShape->size.y < collider->GetPosition()->y + collider->size.y)
+		{
+			std::cout << "top" << std::endl;
+			if (bounds.left < collider->GetPosition()->x)
+			{
+				positionPoint1 = sf::Vector2f(bounds.left + bounds.width, collider->GetPosition()->y);
+				positionPoint2 = sf::Vector2f(bounds.left + bounds.width, collider->GetPosition()->y);
+			}
+			else if (bounds.left + bounds.width > collider->GetPosition()->x + collider->size.x)
+			{
+				positionPoint1 = sf::Vector2f(bounds.left, collider->GetPosition()->y);
+				positionPoint2 = sf::Vector2f(bounds.left, collider->GetPosition()->y);
+			}
+			else
+			{
+				positionPoint1 = sf::Vector2f(bounds.left + bounds.width, collider->GetPosition()->y);
+				positionPoint2 = sf::Vector2f(bounds.left, collider->GetPosition()->y);
+			}	
+		}
+		//bottom
+		else if (collider->GetPosition()->y < zenShape->GetPosition().y)
+		{
+			std::cout << "bottom" << std::endl;
+			if (bounds.left < collider->GetPosition()->x)
+			{
+				positionPoint1 = sf::Vector2f(bounds.left + bounds.width, collider->GetPosition()->y + collider->size.y);
+				positionPoint2 = sf::Vector2f(bounds.left + bounds.width, collider->GetPosition()->y + collider->size.y);
+			}
+			else if (bounds.left + bounds.width > collider->GetPosition()->x + collider->size.x)
+			{
+				positionPoint1 = sf::Vector2f(bounds.left, collider->GetPosition()->y + collider->size.y);
+				positionPoint2 = sf::Vector2f(bounds.left, collider->GetPosition()->y + collider->size.y);
+			}
+			else
+			{
+				positionPoint1 = sf::Vector2f(bounds.left + bounds.width, collider->GetPosition()->y + collider->size.y);
+				positionPoint2 = sf::Vector2f(bounds.left, collider->GetPosition()->y + collider->size.y);
+			}
+		}
+		//left
+		else if (bounds.left < collider->GetPosition()->x
+			&& bounds.left + bounds.width < collider->GetPosition()->x + collider->size.x)
+		{
+			std::cout << "Left" << std::endl;
+
+			if (collider->GetPosition()->y < bounds.top)
+			{
+				positionPoint1 = sf::Vector2f(bounds.left + bounds.width, bounds.top);
+				positionPoint2 = sf::Vector2f(bounds.left + bounds.width, bounds.top + bounds.height);
+			}
+			else
+			{
+				positionPoint1 = sf::Vector2f(bounds.left + bounds.width, collider->GetPosition()->y);
+				positionPoint2 = sf::Vector2f(bounds.left + bounds.width, collider->GetPosition()->y + collider->size.y);
+			}
+		}
+		//right
+		else if (bounds.left > collider->GetPosition()->x
+			&& bounds.left + bounds.width > collider->GetPosition()->x + collider->size.x)
+		{
+			std::cout << "Right" << std::endl;
+
+			if (collider->GetPosition()->y < bounds.top)
+			{
+				positionPoint1 = sf::Vector2f(bounds.left, bounds.top);
+				positionPoint2 = sf::Vector2f(bounds.left, bounds.top + bounds.height);
+			}
+			else
+			{
+				positionPoint1 = sf::Vector2f(bounds.left, collider->GetPosition()->y);
+				positionPoint2 = sf::Vector2f(bounds.left, collider->GetPosition()->y + collider->size.y);
+			}
+		}
+
+		collisionPoint1.setPosition(positionPoint1);
+		collisionPoint2.setPosition(positionPoint2);
+	}
+
+	//Here will be collider push tomorrow based on collision points
+
 	for (int i = 0; i < colliders.size(); i++)
 	{
 		collider = colliders[i];
@@ -142,8 +279,8 @@ void PhysicalZenObject2D::CalculationColliderPush()
 			&& collider->GetPosition()->x < zenShape->position.x + zenShape->size.x
 			&& collider->GetPosition()->x + collider->size.x > zenShape->position.x)
 		{
-			pushPosition.y = collider->GetPosition()->y - zenShape->GetSize().y;
-			clollisionNormalVector = Vector2(0, -1);
+			//pushPosition.y = collider->GetPosition()->y - zenShape->GetSize().y;
+			clollisionNormalVector.y -1;
 			canUseGravity = false;
 		}
 
@@ -152,9 +289,9 @@ void PhysicalZenObject2D::CalculationColliderPush()
 			&& collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_X < zenShape->position.y + COLLIDER_PUSH_Y)
 		{
 			velocity.y = 0;
-			pushPosition.y = collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_2;
-			pushPosition.x = zenShape->position.x;
-			clollisionNormalVector = Vector2(0, 1);
+			//pushPosition.y = collider->GetPosition()->y + collider->size.y + COLLIDER_PUSH_2;
+			//pushPosition.x = zenShape->position.x;
+			clollisionNormalVector.y = 1;
 		}
 
 		//left

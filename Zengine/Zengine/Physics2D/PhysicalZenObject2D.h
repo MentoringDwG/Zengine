@@ -29,6 +29,9 @@ public:
 	Vector2 clollisionNormalVector = Vector2(0, 0);
 	ZenShape* zenShape = nullptr;
 
+	sf::CircleShape collisionPoint1;
+	sf::CircleShape collisionPoint2;
+
 private:
 	void CalculationColliderPush();
 	void ResettingVariables();
@@ -51,5 +54,8 @@ private:
 	Vector2 acceleration = Vector2(0, 0);
 	Collider* collider = nullptr;
 	bool canUseGravity = false;
+
+	sf::Vector2f positionPoint1;
+	sf::Vector2f positionPoint2;
 };
 

@@ -144,6 +144,12 @@ void ZenPhysics2D::DrawColliders(sf::RenderWindow* window)
 	{
 		window->draw(collider->debugRectangleShape);
 	}
+
+	for (PhysicalZenObject2D* object : physicalObjects)
+	{
+		window->draw(object->collisionPoint1);
+		window->draw(object->collisionPoint2);
+	}
 }
 
 int ZenPhysics2D::GetPhysicsTimeStep()
