@@ -5,5 +5,4 @@ C:\Users\Admin\Documents\GitHub\Zengine\Zengine\Zengine\Physics2D\PhysicalZenObj
 C:\Users\Admin\Documents\GitHub\Zengine\Zengine\Zengine\Physics2D\PhysicalZenObject2D.cpp(20,28): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
 C:\Users\Admin\Documents\GitHub\Zengine\Zengine\Zengine\Physics2D\PhysicalZenObject2D.cpp(21,36): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
 C:\Users\Admin\Documents\GitHub\Zengine\Zengine\Zengine\Physics2D\PhysicalZenObject2D.cpp(21,28): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\Admin\Documents\GitHub\Zengine\Zengine\Zengine\Physics2D\PhysicalZenObject2D.cpp(283,29): warning C4552: „-”: Wynik wyrażenia nie jest używany
   Zengine.vcxproj -> C:\Users\Admin\Documents\GitHub\Zengine\x64\Release\Zengine.lib

@@ -33,10 +33,29 @@ public:
 	sf::CircleShape collisionPoint2;
 
 private:
+	enum class ColliderPushState
+	{
+		Top = 1,
+		Bottom = 2,
+		Left = 3,
+		Right = 4,
+		TopLeft = 5,
+		TopRight = 6,
+		BottomLeft = 7,
+		BottomRight = 8,
+	};
+	ColliderPushState colliderPushState = ColliderPushState::Top;
+
 	void CalculationColliderPush();
 	void ResettingVariables();
 	void HandleCollisionStart(Collider* other);
 	void HandleCollisionEnd(Collider* other);
+	void CalculationCollisionPoints(Collider* collider);
+	void PushTop(Collider* collider);
+	void PushBottom(Collider* collider);
+	void PushRight(Collider* collider);
+	void PushLeft(Collider* collider);
+
 
 	const int COLLIDER_PUSH_Y = 64;
 	const int COLLIDER_PUSH_X = 8;

@@ -9,6 +9,8 @@
 
 #include "../World/Level.h"
 
+#include <iostream>
+
 QuestionMark::QuestionMark(int IDIn, string NameIn, string CoinPath, sf::Vector2f position, Level* owner)
 {
 	this->owner = owner;
@@ -46,7 +48,7 @@ void QuestionMark::Draw(RenderingStack* renderStack)
 
 void QuestionMark::SetCollider(Vector2 position)
 {
-	boxCollider = new BoxCollider2D(position, Vector2(32,32), zenShape, Collider::ColliderTags::QUESTION_MARK);
+	boxCollider = new BoxCollider2D(position, Vector2(34,34), zenShape, Collider::ColliderTags::QUESTION_MARK);
 	listenerIndexStart = boxCollider->OnCollisionStart.AddListener(&QuestionMark::HandleCollisionStart, this);
 	ZenPhysics2D::Get()->RegisterCollider(boxCollider);
 }
@@ -55,10 +57,10 @@ void QuestionMark::HandleCollisionStart(Collider* other)
 {
 	if (other->GetOwner()->name == "Mario")
 	{
-		if (other->GetPosition()->y > zenShape->position.y
-			&& other->GetPosition()->y < zenShape->position.y + zenShape->size.y
-			&& other->GetPosition()->x < zenShape->position.x + zenShape->size.x
-			&& other->GetPosition()->x + other->size.x > zenShape->position.x)
+		if (other->GetPosition()->y > boxCollider->GetPosition()->y
+			&& other->GetPosition()->y < boxCollider->GetPosition()->y + boxCollider->GetSize().y
+			&& other->GetPosition()->x < boxCollider->GetPosition()->x + boxCollider->GetSize().x
+			&& other->GetPosition()->x + other->size.x > boxCollider->GetPosition()->x)
 		{
 			renderStack->RemoveFromRenderLayers(questionMarkRenderObject);
 			ZenPhysics2D::Get()->UnregisterCollider(boxCollider);
